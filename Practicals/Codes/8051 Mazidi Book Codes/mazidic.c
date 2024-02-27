@@ -923,7 +923,7 @@ void main(void)
     unsigned char Mess1[] = "Normal Speed";
     unsigned char Mess2[] = "High Speed";
     TMOD = 0x20; // use Timer 1, mode 2
-    TH1 = 0xFF;     // 28800 for normal
+    TH1 = 0xFF;  // 28800 for normal
     SCON = 0x50;
     TR1 = 1; // start timer
     if (MYSW == 0)
@@ -1020,7 +1020,7 @@ void main()
     SW = 1; // make switch input
     TMOD = 0x02;
     TH0 = 0xA4; // TH0=-92
-    IE = 0x82;    // enable interrupt for timer 0
+    IE = 0x82;  // enable interrupt for timer 0
     while (1)
     {
         IND = SW; // send switch to LED

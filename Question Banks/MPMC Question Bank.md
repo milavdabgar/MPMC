@@ -10,8 +10,6 @@
 8. Explain T- state, Machine cycle and Instruction cycle.
 10. What is stack and stack pointer?
 
-    MCU Question Bank
-
 ## Unit – 1: Introduction of Microcontrollers
 
 1. ​	Describe block diagram of generic digital computer. (3)
@@ -119,8 +117,7 @@
 6. ​	Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
 7. ​	Write software delay loop using two registers and explain in brief. (4)
 8. ​	Write sequence of instructions for masking 4 lower bits of content of R2. (3)
-9. ​	Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
-10. ​	
+9. ​	Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)10. ​	
 11. ​	Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
 12. ​	Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
 13. ​	Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
