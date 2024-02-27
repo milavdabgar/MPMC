@@ -15,7 +15,7 @@ DJNZ R2,AGAIN ;repeat it 70 times
 DJNZ R3,NEXT
 
 ;Find the sum of the values 79H, F5H, E2H. Put the sum in registers
-R0 (low byte) and R5 (high byte).
+;R0 (low byte) and R5 (high byte).
 MOV A,#0 ;A=0
 MOV R5,A ;clear R5
 ADD A,#79H ;A=0+79H=79H
