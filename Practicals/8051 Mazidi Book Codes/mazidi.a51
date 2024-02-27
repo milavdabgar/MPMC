@@ -172,28 +172,28 @@ SJMP HERE ;keep repeating
 
 ;A switch is connected to pin P1.7. Write a program to check the status
 ;of SW and perform the following:
-;(a) If SW=0, send letter �N� to P2
-;(b) If SW=1, send letter �Y� to P2
+;(a) If SW=0, send letter 'N' to P2
+;(b) If SW=1, send letter 'Y' to P2
 
 SETB P1.7 ;make P1.7 an input
 AGAIN: JB P1.2,OVER ;jump if P1.7=1
-MOV P2,'N' ;SW=0, issue �N� to P2
+MOV P2,'N' ;SW=0, issue 'N' to P2
 SJMP AGAIN ;keep monitoring
-OVER: MOV P2,#'Y' ;SW=1, issue �Y� to P2
+OVER: MOV P2,#'Y' ;SW=1, issue 'Y' to P2
 SJMP AGAIN ;keep monitoring
 
 ;A switch is connected to pin P1.7. Write a program to check the status
 ;of SW and perform the following:
-;(a) If SW=0, send letter �N� to P2
-;(b) If SW=1, send letter �Y� to P2
+;(a) If SW=0, send letter 'N' to P2
+;(b) If SW=1, send letter 'Y' to P2
 ;Use the carry flag to check the switch status.
 
 SETB P1.7 ;make P1.7 an input
 AGAIN: MOV C,P1.2 ;read SW status into CF
 JC OVER ;jump if SW=1
-MOV P2,#'N' ;SW=0, issue �N� to P2
+MOV P2,#'N' ;SW=0, issue 'N' to P2
 SJMP AGAIN ;keep monitoring
-OVER: MOV P2,#'Y' ;SW=1, issue �Y� to P2
+OVER: MOV P2,#'Y' ;SW=1, issue 'Y' to P2
 SJMP AGAIN ;keep monitoring
 
 ;Example 4-7
@@ -283,10 +283,10 @@ DJNZ R3,BACK ;keep doing for ten bytes
 
 
 ;Example 5-6
-;In this program, assume that the word �USA� is burned into ROM
+;In this program, assume that the word 'USA' is burned into ROM
 ;locations starting at 200H. And that the program is burned into ROM
 ;locations starting at 0. Analyze how the program works and state
-;where �USA� is stored after this program is run.
+;where 'USA' is stored after this program is run.
 ;Solution:
 ORG 0000H ;burn into ROM starting at 0
 MOV DPTR,#200H ;DPTR=200H look-up table addr
@@ -305,7 +305,7 @@ Here: SJMP HERE ;stay here
 
 ;Data is burned into code space starting at 200H
 ORG 200H
-MYDATA:DB �USA�
+MYDATA:DB 'USA'
 END ;end of program
 
 
@@ -329,7 +329,7 @@ END
 
 ;Example 5-10
 ;Write a program to toggle P1 a total of 200 times. Use RAM
-;location 32H to hold your counter value instead of registers R0 � R7
+;location 32H to hold your counter value instead of registers R0 - R7
 ;Solution:
 
 MOV P1,#55H ;P1=55H
@@ -348,8 +348,8 @@ RET ;return to caller (when R5 =0)
 ;Example 5-24
 ;A switch is connected to pin P1.7. Write a program to check the status
 ;of the switch and make the following decision.
-;(a) If SW = 0, send �0� to P2
-;(b) If SW = 1, send �1� to P2
+;(a) If SW = 0, send '0' to P2
+;(b) If SW = 1, send '1' to P2
 ;Solution:
 SW EQU P1.7
 MYDATA EQU P2
@@ -387,7 +387,7 @@ MYDATA: DB "The Promise of World Peace",0
 END
 	
 	
-;Assume that RAM locations 40 � 44H have the following values.
+;Assume that RAM locations 40 - 44H have the following values.
 ;Write a program to find the sum of the values. At the end of the
 ;program, register A should contain the low byte and R7 the high byte.
 ;40 = (7D)
@@ -402,7 +402,7 @@ MOV R2,#5 ;load counter
 CLR A ;A=0
 MOV R7,A ;clear R7
 AGAIN: ADD A,@R0 ;add the byte ptr to by R0
-JNC NEXT ;if CY=0 don�t add carry
+JNC NEXT ;if CY=0 don't add carry
 INC R7 ;keep track of carry
 NEXT: INC R0 ;increment pointer
 DJNZ R2,AGAIN ;repeat until R2 is zero	
@@ -436,7 +436,7 @@ CLR A ;A=0
 MOV R7,A ;Clear R7
 AGAIN: ADD A,@R0 ;add the byte pointer to by R0
 DA A ;adjust for BCD
-JNC NEXT ;if CY=0 don�t accumulate carry
+JNC NEXT ;if CY=0 don't accumulate carry
 INC R7 ;keep track of carries
 NEXT: INC R0 ;increment pointer
 DJNZ R2,AGAIN ;repeat until R2 is 0	
@@ -447,7 +447,7 @@ DJNZ R2,AGAIN ;repeat until R2 is 0
 MOV A,#29H ;A=29H, packed BCD
 MOV R2,A ;keep a copy of BCD data
 ANL A,#0FH ;mask the upper nibble (A=09)
-ORL A,#30H ;make it an ASCII, A=39H(�9�)
+ORL A,#30H ;make it an ASCII, A=39H('9')
 MOV R6,A ;save it
 MOV A,R2 ;A=29H, get the original data
 ANL A,#0F0H ;mask the lower nibble
@@ -455,7 +455,7 @@ RR A ;rotate right
 RR A ;rotate right
 RR A ;rotate right
 RR A ;rotate right
-ORL A,#30H ;A=32H, ASCII char. �2�
+ORL A,#30H ;A=32H, ASCII char. '2'
 MOV R2,A ;save ASCII char in R2
 
 
@@ -475,13 +475,13 @@ CLR TR0 ;Stop the timer 0
 CLR TF0 ;Clear TF0 for next round
 CLR P2.3
 ;Solution:
-;(a) (FFFFH � B83E + 1) = 47C2H = 18370 in decimal and 18370 �
+;(a) (FFFFH - B83E + 1) = 47C2H = 18370 in decimal and 18370 *
 ;1.085 us = 19.93145 ms
-;(b) Since TH � TL = B83EH = 47166 (in decimal) we have 65536 �
+;(b) Since TH - TL = B83EH = 47166 (in decimal) we have 65536 -
 ;47166 = 18370. This means that the timer counts from B38EH to
 ;FFFF. This plus Rolling over to 0 goes through a total of 18370 clock
 ;cycles, where each clock is 1.085 us in duration. Therefore, we have
-;18370 � 1.085 us = 19.93145 ms as the width of the pulse.
+;18370 * 1.085 us = 19.93145 ms as the width of the pulse.
 
 
 ;Example 9-8
@@ -504,7 +504,7 @@ CLR P2.3
 ;Making TH and TL both zero means that the timer will count from
 ;0000 to FFFF, and then roll over to raise the TF flag. As a result, it
 ;goes through a total Of 65536 states. Therefore, we have delay =
-;(65536 - 0) � 1.085 us = 71.1065ms.
+;(65536 - 0) * 1.085 us = 71.1065ms.
 
 
 ;Example 9-9
@@ -522,8 +522,8 @@ CPL P1.5 ;comp. p1. to get hi, lo
 CLR TF1 ;clear timer flag 1
 SJMP AGAIN ;is not auto-reload
 ;Solution:
-;Since FFFFH � 7634H = 89CBH + 1 = 89CCH and 89CCH = 35276
-;clock count and 35276 � 1.085 us = 38.274 ms for half of the
+;Since FFFFH - 7634H = 89CBH + 1 = 89CCH and 89CCH = 35276
+;clock count and 35276 * 1.085 us = 38.274 ms for half of the
 ;square wave. The frequency = 13.064Hz.
 ;Also notice that the high portion and low portion of the square wave
 ;pulse are equal. In the above calculation, the overhead due to all
@@ -532,7 +532,7 @@ SJMP AGAIN ;is not auto-reload
 
 ;Example 9-10
 ;Assume that XTAL = 11.0592 MHz. What value do we need to load
-;the timer�s register if we want to have a time delay of 5 ms
+;the timer's register if we want to have a time delay of 5 ms
 ;(milliseconds)? Show the program for timer 0 to create a pulse width
 ;of 5 ms on P2.3.
 ;Solution:
@@ -540,7 +540,7 @@ SJMP AGAIN ;is not auto-reload
 ;This means that out of many 1.085 us intervals we must make a 5 ms
 ;pulse. To get that, we divide one by the other. We need 5 ms / 1.085
 ;us = 4608 clocks. To Achieve that we need to load into TL and TH
-;the value 65536 � 4608 = EE00H. Therefore, we have TH = EE and TL = 00.
+;the value 65536 - 4608 = EE00H. Therefore, we have TH = EE and TL = 00.
 CLR P2.3 ;Clear P2.3
 MOV TMOD,#01 ;Timer 0, 16-bitmode
 HERE: MOV TL0,#0 ;TL0=0, the low byte
@@ -560,7 +560,7 @@ CLR TF0 ;Clear timer 0 flag
 ;generate the square wave. Look at the following steps.
 ;(a) T = 1 / f = 1 / 2 kHz = 500 us the period of square wave.
 ;(b) 1 / 2 of it for the high and low portion of the pulse is 250 us.
-;(c) 250 us / 1.085 us = 230 and 65536 � 230 = 65306 which in hex
+;(c) 250 us / 1.085 us = 230 and 65536 - 230 = 65306 which in hex
 ;is FF1AH.
 ;(d) TL = 1A and TH = FF, all in hex. The program is as follow.
 MOV TMOD,#01 ;Timer 0, 16-bitmode
@@ -581,7 +581,7 @@ SJMP AGAIN ;Reload timer
 ;Look at the following steps.
 ;(a) T = 1 / 50 = 20 ms, the period of square wave.
 ;(b) 1 / 2 of it for the high and low portion of the pulse is 10 ms.
-;(c) 10 ms / 1.085 us = 9216 and 65536 � 9216 = 56320 in decimal,
+;(c) 10 ms / 1.085 us = 9216 and 65536 - 9216 = 56320 in decimal,
 ;and in hex it is DC00H.
 ;(d) TL = 00 and TH = DC (hex).
 MOV TMOD,#10H ;Timer 1, mod 1
@@ -591,7 +591,7 @@ SETB TR1 ;Start timer 1
 BACK: JNB TF1,BACK ;until timer rolls over
 CLR TR1 ;Stop the timer 1
 CLR P2.3 ;Comp. p2.3 to get hi, lo
-SJMP AGAIN ;Reload timer, mode 1 isn�t auto-reload
+SJMP AGAIN ;Reload timer, mode 1 isn't auto-reload
 
 ;Example 9-14
 ;Assume XTAL = 11.0592 MHz, find the frequency of the square
@@ -605,10 +605,10 @@ CLR TF1 ;clear Timer 1 flag
 SJMP BACK ;mode 2 is auto-reload
 ;Solution:
 ;First notice the target address of SJMP. In mode 2 we do not need to
-;reload TH since it is auto-reload. Now (256 - 05) � 1.085 us =
-;251 � 1.085 us = 272.33 us is the high portion of the pulse. Since
+;reload TH since it is auto-reload. Now (256 - 05) * 1.085 us =
+;251 * 1.085 us = 272.33 us is the high portion of the pulse. Since
 ;it is a 50% duty cycle square wave, the period T is twice that; as
-;a result T = 2 � 272.33 us = 544.67 us and the frequency =
+;a result T = 2 * 272.33 us = 544.67 us and the frequency =
 ;1.83597 kHz
 
 
@@ -628,7 +628,7 @@ CLR TR0 ;stop timer
 CLR TF0 ;clear TF for next round
 DJNZ R5,DELAY
 RET
-;T = 2 ( 250 � 256 � 1.085 us ) = 138.88ms, and frequency = 72 Hz
+;T = 2 ( 250 * 256 * 1.085 us ) = 138.88ms, and frequency = 72 Hz
 
 
 ;Example 9-18
@@ -648,30 +648,30 @@ CLR TF1 ;make TF=0
 SJMP AGAIN ;keep doing it
 
 
-;Write a program for the 8051 to transfer letter �A� serially at 4800
+;Write a program for the 8051 to transfer letter 'A' serially at 4800
 ;baud, continuously.
 ;Solution:
 MOV TMOD,#20H ;timer 1,mode 2(auto reload)
 MOV TH1,#-6 ;4800 baud rate
 MOV SCON,#50H ;8-bit, 1 stop, REN enabled
 SETB TR1 ;start timer 1
-AGAIN: MOV SBUF,#"A" ;letter �A� to transfer
+AGAIN: MOV SBUF,#"A" ;letter 'A' to transfer
 HERE: JNB TI,HERE ;wait for the last bit
 CLR TI ;clear TI for next char
 SJMP AGAIN ;keep sending A
 
-;Write a program for the 8051 to transfer �YES� serially at 9600
+;Write a program for the 8051 to transfer 'YES' serially at 9600
 ;baud, 8-bit data, 1 stop bit, do this continuously
 ;Solution:
 MOV TMOD,#20H ;timer 1,mode 2(auto reload)
 MOV TH1,#-3 ;9600 baud rate
 MOV SCON,#50H ;8-bit, 1 stop, REN enabled
 SETB TR1 ;start timer 1
-AGAIN: MOV A,#"Y" ;transfer �Y�
+AGAIN: MOV A,#"Y" ;transfer 'Y'
 ACALL TRANS
-MOV A,#"E" ;transfer �E�
+MOV A,#"E" ;transfer 'E'
 ACALL TRANS
-MOV A,#"S" ;transfer �S�
+MOV A,#"S" ;transfer 'S'
 ACALL TRANS
 SJMP AGAIN ;keep doing it
 ;serial data transfer subroutine
@@ -699,7 +699,7 @@ SJMP HERE ;keep getting data
 ;IBM PC, and on the PC, we are using the terminal.exe program to
 ;send and receive data serially. P1 and P2 of the 8051 are connected
 ;to LEDs and switches, respectively. Write an 8051 program to (a)
-;send to PC the message �We Are Ready�, (b) receive any data send
+;send to PC the message 'We Are Ready', (b) receive any data send
 ;by PC and put it on LEDs connected to P1, and (c) get data on
 ;switches connected to P2 and send it to PC serially. The program
 ;should perform part (a) once, but parts (b) and (c) continuously, use
@@ -762,18 +762,18 @@ MOV TMOD,#20H ;timer 1, mode 2
 MOV TH1,-3 ;19200 (57600/3 =19200)
 MOV SCON,#50H ;8-bit data, 1 stop bit, RI enabled
 SETB TR1 ;start timer 1
-MOV A,#�B� ;transfer letter B
+MOV A,#'B' ;transfer letter B
 A_1: CLR TI ;make sure TI=0
 MOV SBUF,A ;transfer it
 H_1: JNB TI,H_1 ;stay here until the last bit is gone
-SJMP A_1 ;keep sending �B� again
+SJMP A_1 ;keep sending 'B' again
 
 
 
 
 ;Example 10-10
-;Write a program to send the message �The Earth is but One
-;Country� to serial port. Assume a SW is connected to pin P1.2.
+;Write a program to send the message 'The Earth is but One
+;Country' to serial port. Assume a SW is connected to pin P1.2.
 ;Monitor its status and set the baud rate as follows:
 ;SW = 0, 4800 baud rate
 ;SW = 1, 9600 baud rate
@@ -817,7 +817,7 @@ END
 	
 ;Example 11-2
 ;Write a program that continuously get 8-bit data from P0 and sends it
-;to P1 while simultaneously creating a square wave of 200 �s period
+;to P1 while simultaneously creating a square wave of 200 us period
 ;on pin P2.1. Use timer 0 to create the square wave. Assume that
 ;XTAL = 11.0592 MHz.
 ;Solution:
@@ -851,7 +851,7 @@ END
 ;of 1085 us and a low portion of 15 us. Assume XTAL=11.0592MHz.
 ;Use timer 1.
 ;Solution:
-;Since 1085 us is 1000 � 1.085 we need to use mode 1 of timer 1.
+;Since 1085 us is 1000 * 1.085 we need to use mode 1 of timer 1.
 ;--upon wake-up go to main, avoid using
 ;memory allocated to Interrupt Vector Table
 ORG 0000H
@@ -953,9 +953,9 @@ SJMP BACK ;stay in loop indefinitely
 ORG 100H
 SERIAL: JB TI,TRANS;jump if TI is high
 MOV A,SBUF ;otherwise due to receive
-CLR RI ;clear RI since CPU doesn�t
+CLR RI ;clear RI since CPU doesn't
 RETI ;return from ISR
-TRANS: CLR TI ;clear TI since CPU doesn�t
+TRANS: CLR TI ;clear TI since CPU doesn't
 RETI ;return from ISR
 END
 	
@@ -984,9 +984,9 @@ ORG 100H
 SERIAL: JB TI,TRANS;jump if TI is high
 MOV A,SBUF ;otherwise due to receive
 MOV P0,A ;send incoming data to P0
-CLR RI ;clear RI since CPU doesn�t
+CLR RI ;clear RI since CPU doesn't
 RETI ;return from ISR
-TRANS: CLR TI ;clear TI since CPU doesn�t
+TRANS: CLR TI ;clear TI since CPU doesn't
 RETI ;return from ISR
 END
 
@@ -1023,9 +1023,9 @@ ORG 100H
 SERIAL:JB TI,TRANS;jump if TI is high
 MOV A,SBUF ;otherwise due to receive
 MOV P0,A ;send serial data to P0
-CLR RI ;clear RI since CPU doesn�t
+CLR RI ;clear RI since CPU doesn't
 RETI ;return from ISR
-TRANS: CLR TI ;clear TI since CPU doesn�t
+TRANS: CLR TI ;clear TI since CPU doesn't
 RETI ;return from ISR
 END
 

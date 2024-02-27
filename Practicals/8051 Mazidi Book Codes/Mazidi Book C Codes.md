@@ -1,4 +1,4 @@
-# Mazidi Book C Codes
+## Mazidi Book C Codes
 
 ### Write an 8051 C program to send values 00 – FF to port P1.
 
