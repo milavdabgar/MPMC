@@ -6,7 +6,7 @@
 
 A digital computer is considered to be a calculating device that can perform arithmetic operations at enormous speed. It is defined as a device that operates upon information/data. To be able to process data the computer is made of various functional units to perform its specified task.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
 
 ### Input Unit: 
 
@@ -48,7 +48,7 @@ An output unit performs the reverse operation of that of an input unit. As compu
 
 Central Processing Unit or CPU is the brain of the Microcontroller. It consists of an Arithmetic Logic Unit (ALU) and a Control Unit (CU). A CPU reads, decodes and executes instructions to perform Arithmetic, Logic and Data Transfer operations.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_87f3259625e90fef.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_87f3259625e90fef.png)
 
 ### Memory
 
@@ -131,7 +131,7 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 | Harvard architecture                                                                                                                                                                                                                     | Von Neumann architecture                                                                                                                                                                                                                             |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Harvard architecture – diagram [![Harvard architecture](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Harvard-architecture.jpg) | Von Neumann architecture – diagram [![Von Neumann architecture](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Von-Neumann-architecture.jpg) |
+| Harvard architecture – diagram [![Harvard architecture](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Harvard-architecture.jpg) | Von Neumann architecture – diagram [![Von Neumann architecture](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Von-Neumann-architecture.jpg) |
 | The name is originated from “Harvard Mark I” a relay based old computer.                                                                                                                                                                 | It is named after the mathematician and early computer scientist John Von Neumann.                                                                                                                                                                   |
 | It required two memories for their instruction and data.                                                                                                                                                                                 | It required only one memory for their instruction and data.                                                                                                                                                                                          |
 | Design of Harvard architecture is complicated.                                                                                                                                                                                           | Design of the von Neumann architecture is simple.                                                                                                                                                                                                    |
@@ -173,7 +173,7 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 ## Draw and Explain Block diagram of 8051. (4)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
 
 **OSC:** This is on chip RC Oscillator for providing Clock Signals to all the internals of 8051 MCU. We can connect Externals Quartz Crystal Oscillator to the pins XTAL1 and XTAL2. Crystal frequency ranges from 1MHz to 16MHz.
 
@@ -192,7 +192,7 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 - **External Memory:** In additon to On Chip internal memory we can extend both the memory upto 64KB by interfacing External Memories.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_a9f6d83e89bf83f5.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_a9f6d83e89bf83f5.jpg)
 
 **System Bus:** 8051 has 16bit wide Address Bus and 8 bit wide Data Bus.
 
@@ -220,7 +220,7 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 The Accumulator or Register A is the most important and most used 8051 Microcontroller SFRs. The Register A is located at the address E0H in the SFR memory space. The Accumulator is used to hold the data for almost all the ALU Operations.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_f2e2e268e61dcaa4.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_f2e2e268e61dcaa4.png)
 
 Some of the operations where the Accumulator is used are:
 
@@ -244,7 +244,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Pin 9 (RST):** Pin 9 is the Reset Input Pin. It is an active HIGH Pin i.e. if the RST Pin is HIGH for a minimum of two machine cycles, the microcontroller will be reset. During this time, the oscillator must be running.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_f9cfed602ece3d54.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_f9cfed602ece3d54.png)
 
 **Pins 10 – 17 (PORT 3):** Pins 10 to 17 form the PORT 3 pins of the 8051 Microcontroller. PORT 3 also acts as a bidirectional Input / Output PORT with internal pull-ups. Additionally, all the PORT 3 Pins have special functions. The following table gives the details of the additional functions of PORT 3 Pins.
 
@@ -279,7 +279,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 Port-3 has 8 pin (P3.0-P3.7) . Port-3 pins have alternate functions. The structure of a port-3 pin is shown in fig.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_2cd39a5244fef9f1.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_2cd39a5244fef9f1.png)
 
 Each pin of Port-3 can be individually programmed for I/O operation or for alternate function. The alternate function can be activated only if the corresponding latch has been written to '1'. To use the port as input port, '1' should be written to the latch. This port also has internal pull-up and limited current driving capability.
 
@@ -300,15 +300,15 @@ Alternate functions of Port-3 pins are -
 
 An 8051 clock circuit is shown above. In general cases, a quartz crystal is used to make the clock circuit. The connection is shown in figure (a) and note the connections to XTAL 1 and XTAL 2. In some cases external clock sources are used and you can see the various connections above. Clock frequency limits (maximum and minimum) may change from device to device. Standard practice is to use 12MHz frequency. If serial communications are involved then its best to use 11.0592 MHz frequency.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_385cbabce14faed6.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_385cbabce14faed6.jpg)
 
 Okay, take a look at the above machine cycle waveform. One complete oscillation of the clock source is called a pulse. Two pulses forms a state and six states forms one machine cycle. Also note that, two pulses of ALE are available for 1 machine cycle.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_9d0056ef87594057.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_9d0056ef87594057.jpg)
 
 8051 can be reset in two ways 1) is power-on reset – which resets the 8051 when power is turned ON and 2) manual reset – in which a reset happens only when a push button is pressed manually. Two different reset circuits are shown above. A reset doesn’t affect contents of internal RAM. For reset to happen, the reset input pin (pin 9) must be active high for atleast 2 machine cycles. During a reset operation :- Program counter is cleared and it starts from 00H, register bank #0 is selected as default, Stack pointer is initialized to 07H, all ports are written with FFH.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_e37cae4eefef2d85.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_e37cae4eefef2d85.jpg)
 
 ## Draw and Explain program and data memory of 8051. (4)
 
@@ -318,17 +318,17 @@ The 8051 microcontroller's memory is divided into Program Memory and Data Memory
 
 Now lets dive into the program memory organization 0f 8051. It has an internal program of 4K size and if needed an external memory can be added (by interfacing ) of size 60K maximum. So in total 64K size memory is available for 8051 micro controller. By default, the External Access (EA) pin should be connected Vcc so that instructions are fetched from internal memory initially. When the limit of internal memory (4K) is crossed, control will automatically move to external memory to fetch remaining instructions. If the programmer wants to fetch instruction from external memory only (bypassing the internal memory), then he must connect External Access (EA) pin to ground (GND).
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_9e16af640b46000c.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_9e16af640b46000c.jpg)
 
 **Data Memory (RAM):**
 
 In the MCS-51 family, 8051 has 128 bytes of internal data memory and it allows interfacing external data memory of maximum size up to 64K. So the total size of data memory in 8051 can be upto 64K (external) + 128 bytes (internal). Observe the diagram carefully to get more understanding. So there are 3 separations/divisions of the data memory:- 1) Register banks 2) Bit addressable area 3) Scratch pad area.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_a65de6d19f0e8367.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_a65de6d19f0e8367.jpg)
 
 Register banks form the lowest 32 bytes on internal memory and there are 4 register banks designated bank #0,#1, #2 and #3. Each bank has 8 registers which are designated as R0,R1…R7. At a time only one register bank is selected for operations and the registers inside the selected bank are accessed using mnemonics R0..R1.. etc. Other registers can be accessed simultaneously only by direct addressing. Registers are used to store data or operands during executions. By default register bank #0 is selected (after a system reset).
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_b02f962a91927fcb.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_b02f962a91927fcb.jpg)
 
 The bit addressable areas of 8051 is usually used to store bit variables. The bit addressable area is formed by the 16 bytes next to register banks. They are designated from address 20H to 2FH (total 128 bits). Each bits can be accessed from 00H to 7FH within this 128 bits from 20H to 2FH. Bit addressable area is mainly used to store bit variables from application program, like status of an output device like LED or Motor (ON/OFF) etc. We need only a bit to store this status and using a complete byte addressable area for storing this is really bad programming practice, since it results in wastage of memory.
 
@@ -348,7 +348,7 @@ A maximum of 64KB of Program Memory (ROM) and Data Memory (RAM) each can be inte
 
 The following image shows the block diagram of interfacing 64KB of External RAM and 64KB of External ROM with the 8051 Microcontroller.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
 
 ## Draw and explain external memory interface for 8KB EPROM and 4KB RAM with 8051. (7)
 
@@ -360,7 +360,7 @@ But almost all modern variants of 8051 Microcontroller have 256B of RAM. In this
 
 In the first 128B of RAM (from 00H to 7FH), the first 32B i.e. memory from addresses 00H to 1FH consists of 32 Working Registers that are organized as four banks with 8 Registers in each Bank.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
 
 The 4 banks are named as Bank0, Bank1, Bank2 and Bank3. Each Bank consists of 8 registers named as R0 – R7. Each Register can be addressed in two ways: either by name or by address.
 
@@ -378,7 +378,7 @@ These lower 128B of RAM can be addressed directly or indirectly.
 
 The upper 128B of the RAM i.e. memory addresses from 80H to FFH is allocated for Special Function Registers (SFRs). SFRs control specific functions of the 8051 Microcontroller. Some of the SFRs are I/O Port Registers (P0, P1, P2 and P3), PSW (Program Status Word), A (Accumulator), IE (Interrupt Enable), PCON (Power Control), etc.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_cb20f39704d09ff3.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb20f39704d09ff3.png)
 
 SRFs Memory addresses are only direct addressable. Even though some of the addresses between 80H and FFH are not assigned to any SFR, they cannot be used as additional RAM area.
 
@@ -388,7 +388,7 @@ In some microcontrollers, there is an additional 128B of RAM, which share the me
 
 **The Stack:** The stack is a section of RAM used by the CPU to store information temporarily. This information could be data or an address.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_d922510a8750c6be.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_d922510a8750c6be.jpg)
 
 **The Stack Pointer:** The register used to access the stack is called the SP (stack pointer) register. The stack pointer in the 8051 is only 8 bit wide, which means that it can take value of 00 to FFH. When the 8051 is powered up, the SP register contains value 07 RAM location 08 is the first location begin used for the stack by the 8051.
 
@@ -407,7 +407,7 @@ PUSH 1
 PUSH 4
 ```
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_354d90835c983729.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_354d90835c983729.png)
 
 **Popping from the Stack:**
 
@@ -421,7 +421,7 @@ POP 5 ; POP stack into R5
 POP 2 ; POP stack into R2
 ```
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_94d65ad39a469b39.jpg)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_94d65ad39a469b39.jpg)
 
 ## I/O Ports structure: Port 0, Port 1, Port2, Port 3.
 
@@ -433,7 +433,7 @@ Port -0 has 8 pins (P0.0-P0.7).
 
 The structure of a Port-0 pin is shown in fig.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_3411f9b9256cfcd0.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_3411f9b9256cfcd0.png)
 
 Port-0 can be configured as a normal bidirectional I/O port or it can be used for address/data interfacing for accessing external memory. When control is '1', the port is used for address/data interfacing. When the control is '0', the port can be used as a normal bidirectional I/O port.
 
@@ -445,7 +445,7 @@ When the control is '1', address/data bus controls the output driver MOSFETs. If
 
 Port-1 has 8 pins (P1.1-P1.7) .The structure of a port-1 pin is shown in fig
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_1bbcd9539232851b.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_1bbcd9539232851b.png)
 
 Port-1 does not have any alternate function i.e. it is dedicated solely for I/O interfacing. When used as output port, the pin is pulled up or down through internal pull-up. To use port-1 as input port, '1' has to be written to the latch. In this input mode when '1' is written to the pin by the external device then it read fine. But when '0' is written to the pin by the external device then the external source must sink current due to internal pull-up. If the external device is not able to sink the current the pin voltage may rise, leading to a possible wrong reading.
 
@@ -453,7 +453,7 @@ Port-1 does not have any alternate function i.e. it is dedicated solely for I/O 
 
 Port-2 has 8-pins (P2.0-P2.7) . The structure of a port-2 pin is shown in fig.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_ff86744d95f884c6.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_ff86744d95f884c6.png)
 
 Port-2 is used for higher external address byte or a normal input/output port. The I/O operation is similar to Port-1. Port-2 latch remains stable when Port-2 pin are used for external memory access. Here again due to internal pull-up there is limited current driving capability.
 
@@ -461,7 +461,7 @@ Port-2 is used for higher external address byte or a normal input/output port. T
 
 Port-3 has 8 pin (P3.0-P3.7) . Port-3 pins have alternate functions. The structure of a port-3 pin is shown in fig.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_1523265967e3e07f.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_1523265967e3e07f.png)
 
 Each pin of Port-3 can be individually programmed for I/O operation or for alternate function. The alternate function can be activated only if the corresponding latch has been written to '1'. To use the port as input port, '1' should be written to the latch. This port also has internal pull-up and limited current driving capability.
 
@@ -570,7 +570,7 @@ TIMER MODE 0 (13 bit mode)
 
 MODE 0 is a 13 bit mode. In this mode the THx acts as an 8 bit timer & TLx acts as a 5 bit timer. The TLx counts up to 31 & then resets to 00 & increment THx by 1. Suppose you load 0 in the timer then the timer will overflow in 2^13 i.e. 8192 machine cycles.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
 
 Mode 0 is exactly same like mode 1 except that it is a 13-bit timer instead of 16-bit. The 13-bit counter can hold values between 0000 to 1FFFH in TH-TL. Therefore, when the timer reaches its maximum of 1FFH, it rolls over to 0000, and TF is raised.
 
@@ -578,7 +578,7 @@ TIMER MODE 1 (16 bit mode)
 
 MODE 1 is similar to MODE 0 except it is a 16 bit mode. In this mode the THx & TLx both acts as an 8 bit timer. The TLx counts upto 255 & then resets to 00 & increment THx by 1. Since this is a full 16 bit timer we can get maximum of 2^16 i.e. 65536 Machine cycle before the timer overflows.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
 
 It is a 16-bit timer; therefore it allows values from 0000 to FFFFH to be loaded into the timer’s registers TL and TH. After TH and TL are loaded with a 16-bit initial value, the timer must be started. We can do it by “SETB TR0” for timer 0 and “SETB TR1” for timer 1. After the timer is started. It starts count up until it reaches its limit of FFFFH. When it rolls over from FFFF to 0000H, it sets high a flag bit called TF (timer flag). This timer flag can be monitored. When this timer flag is raised, one option would be stop the timer with the instructions “CLR TR0“ or CLR TR1 for timer 0 and timer 1 respectively. Again, it must be noted that each timer flag TF0 for timer 0 and TF1 for timer1. After the timer reaches its limit and rolls over, in order to repeat the process the registers TH and TL must be reloaded with the original value and TF must be reset to 0.
 
@@ -586,7 +586,7 @@ TIMER MODE 2 (8 bit mode)
 
 In this Mode TLx acts as the timer & THx contains the Reload Value i.e. THx is loaded in TLx everytime it overflows i.e. when TLx reaches 255 & is incremented then instead of resetting it to 0 it will be reset to the value stored in THx. This mode is very commonly used for generating baud rate used in serial communication.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_a63407a2fb9d9df6.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_a63407a2fb9d9df6.png)
 
 It is an 8 bit timer that allows only values of 00 to FFH to be loaded into the timer’s register TH. After TH is loaded with 8 bit value, the 8051 gives a copy of it to TL. Then the timer must be started. It is done by the instruction “SETB TR0” for timer 0 and “SETB TR1” for timer1. This is like mode 1. After timer is started, it starts to count up by incrementing the TL register. It counts up until it reaches its limit of FFH. When it rolls over from FFH to 00. It sets high the TF (timer flag). If we are using timer 0, TF0 goes high; if using TF1 then TF1 is raised. When Tl register rolls from FFH to 00 and TF is set to 1, TL is reloaded automatically with the original value kept by the TH register. To repeat the process, we must simply clear TF and let it go without any need by the programmer to reload the original value. This makes mode 2 auto reload, in contrast in mode 1 in which programmer has to reload TH and TL.
 
@@ -594,7 +594,7 @@ TIMER MODE 3 (Split Mode)
 
 Timer mode “3” is known as split-timer mode. Timers 0 and 1 may be programmed to be in mode 0, 1, or 2 independently of a similar mode for the other timer. But in mode 3 the timers do not operate independently, if mode 3 is chosen for timer 0. When Timer 0 is placed in mode 3, it essentially becomes two separate 8-bit timers. Timer 0 is TL0 and Timer 1 is TH0. Both timers count from 0 to 255 and overflow back to 0. All the bits that are related to Timer 1 will now be tied to TH0. Now placing timer 1 in mode 3 causes it to stop counting, the control bit TR1 and the Timer 1 flag TF1 are now used by timer 0. So even if you use Timer 1 in Mode 0, 1 or 2 you won’t be able to START or STOP the timer & no INTERRUPT will be generated by Timer 1. The real Timer 1 will be incremented every machine cycle no matter what.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_9d69089b6ba947bf.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_9d69089b6ba947bf.png)
 
 Mode 3 is also known as a split timer mode. Timer 0 and 1 may be programmed to be in mode 0, 1 and 2 independently of similar mode for other timer. This is not true for mode 3; timers do not operate independently if mode 3 is chosen for timer 0. Placing timer 1 in mode 3 causes it to stop counting; the control bit TR1 and the timer 1 flag TF1 are then used by timer0.
 
@@ -606,7 +606,7 @@ Same thing happens in microcontrollers. 8051 architecture handles 5 interrupt so
 
 Now, it is necessary to explain a few details referring to external interrupts- INT0 and INT1. If the IT0 and IT1 bits of the TCON register are set, an interrupt will be generated on high to low transition, i.e. on the falling pulse edge (only in that moment). If these bits are cleared, an interrupt will be continuously executed as far as the pins are held low.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
 
 Vector Address: This is the address where controller jumps after the interrupt to serve the ISR (interrupt service routine).
 
@@ -1126,37 +1126,37 @@ Examples:
 
 ## Interface Input Devices with 8051 micro-controller: Switch, Push-button & DIP.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_de2ea01722e2ce88.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_de2ea01722e2ce88.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_e23e4e6ed8c25d45.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_e23e4e6ed8c25d45.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_328066646485eb64.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_328066646485eb64.png)
 
 ## Interface Output devices with 8051 microcontroller: LED.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_49368ac6f54d1722.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_49368ac6f54d1722.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_e163929df693a819.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_e163929df693a819.png)
 
 ## Draw circuit diagram for interfacing of relay with 8051. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_62d8cd123ac4b469.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_62d8cd123ac4b469.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_71f03f4ccf0de505.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_71f03f4ccf0de505.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_cc30c58bd64747aa.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_cc30c58bd64747aa.png)
 
 ## Draw block diagram to interface one common anode seven segment LED with port P0 of 8051.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_10b11f2bcaf55e61.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_10b11f2bcaf55e61.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_32bf665d29e7e447.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_32bf665d29e7e447.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_be26dd28d46b9131.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_be26dd28d46b9131.png)
 
 ## Write steps to Initialize LCD. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_1f8d9a5ebb02c1e1.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_1f8d9a5ebb02c1e1.png)
 
 ```c
 void LCD_init()
@@ -1189,47 +1189,47 @@ void LCD_init()
 
 ## Explain interfacing of LCD in brief. (4)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_fc1c93235e7669eb.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_fc1c93235e7669eb.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_cb8b02fcff93f213.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb8b02fcff93f213.png)
 
 ## Explain temperature sensor LM35 in brief. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_8b3244abea729276.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_8b3244abea729276.png)
 
 ## Draw circuit diagram for interfacing ADC 0804 with 8051. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_3d8dc52f5e66fee0.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_3d8dc52f5e66fee0.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_b1e4e731f7178dfd.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_b1e4e731f7178dfd.png)
 
 ## Interface ADC 0808 with 8051 and write a program to read digital output. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_1200720ab58c8d53.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_1200720ab58c8d53.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_274d819c6cd23904.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_274d819c6cd23904.png)
 
 ## Interface DAC 0808 with 8051 and write a program to create ramp signal. (4) & Draw interface diagram of DAC 0808 with 8051 microcontroller and write a program to generate Triangular wave. (7)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_145f316714bc984f.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_145f316714bc984f.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_cef39bc8a3eeae4d.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_cef39bc8a3eeae4d.png)
 
 ## Draw diagram of interfacing dc motor and explain in brief. (4)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_caf5d6f29475a454.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_caf5d6f29475a454.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_975eda0bdb235063.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_975eda0bdb235063.png)
 
 ## Draw diagram of interfacing stepper motor and explain in brief. (4)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_3e590d621acc08fa.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_3e590d621acc08fa.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_e22e145bc7829fa1.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_e22e145bc7829fa1.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_ebfadda19e8e1674.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_ebfadda19e8e1674.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_2ba010187338c44e.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_2ba010187338c44e.png)
 
 **Wave Drive**
 
@@ -1264,29 +1264,29 @@ void LCD_init()
 
 ## Draw block diagram of MAX 232 and explain in brief. (4)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_f729911c98d5e8e8.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_f729911c98d5e8e8.png)
 
 # Unit – 5: 8051 Applications
 
 ## Draw block diagram of room temperature indicator system using 8051, LM35, ADCC0804, Microcontroller, 7 segment LED. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_75b4db4005f407f7.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_75b4db4005f407f7.png)
 
 ## Explain GSM based security system GSM Modem, Microcontroller, Relay, Switches. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_eec44dfa48ebc913.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_eec44dfa48ebc913.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_ce58a517153b290d.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_ce58a517153b290d.png)
 
 ## Explain RPM meter using Photo interrupter, Microcontroller, 7 Segment LED. (3)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_b8fc2fb4587e8a0f.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_b8fc2fb4587e8a0f.png)
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_2c256d3e0d757c70.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_2c256d3e0d757c70.png)
 
 ## Draw circuit diagram of application based on RTC DS1307.
 
-![img](/home/milav/code/MPMC/assets/imgs/181001_MCU_Question_Bank_Solved_html_4a23504b381b1e0b.png)
+![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_4a23504b381b1e0b.png)
 
 # Unit – Extra: 8051 GTU Programs
 
