@@ -8,23 +8,23 @@ A digital computer is considered to be a calculating device that can perform ari
 
 ![img](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
 
-### Input Unit: 
+### Input Unit:
 
 The data and instructions are inputted into the computer using keyboard which is one of the most commonly used input devices. Other commonly used input devices are mouse, floppy disk drive, magnetic tape etc. Thus, we can conclude that, all the input devices accepts the data and instruction from outside world, convert it to a form that the computer can understand, supply the converted data to the computer system for further processing.
 
-### Storage Unit: 
+### Storage Unit:
 
 The storage unit of a computer holds data and instructions that are entered through the input unit, before they are processed. It stores programs, data as well as intermediate results and results for output. Its main function is to store information. The various storage devices can be divided into two main categories:
 
-#### Primary Storage (Main Memory): 
+#### Primary Storage (Main Memory):
 
 This memory is generally used to hold the program being currently executed in the computer, the data being received from input device, the intermediate and final results of a program. The primary memory is temporary in nature. The data is lost when the computer is switched off. The data is electronically represented in the main memory chip’s circuitry and while it remains in the main memory, central processing unit (CPU) can access it directly at a very fast speed. Primary storage has limited storage capacity because it is very expensive and generally made up of semiconductor devices.
 
-#### Secondary Storage (Auxiliary Memory): 
+#### Secondary Storage (Auxiliary Memory):
 
 It is used like an archive. It stores operating system, data files, compilers, assemblers, application programs etc. The Program and data if needed by central processing unit (CPU) are first transferred from the secondary memory to main memory. The results are also stored in secondary memory to main memory. It is a mass storage memory, slower but cheaper. It is non-volatile in nature i.e. data is not lost even if the power supply is switched off. Some of the most commonly used secondary storage devices are Hard Disk, Compact Disk etc. Their access time is in milliseconds.
 
-### Central Processing Unit (CPU) : 
+### Central Processing Unit (CPU) :
 
 The control unit and arithmetic logic unit of computer are together known as central processing unit (CPU). The CPU is like brain and performs following functions: It performs all calculations, it takes all decisions, and it controls all units of a computer.
 
@@ -34,11 +34,11 @@ A personal computer may have CPU-IC such as Intel 8088, 80386, 80486, Celeron, P
 
 It controls all other units in a computer. The control unit instructs the input unit where to store the data after receiving it from user. It controls the flow of data and instructions from the storage unit to Arithmetic logic unit (ALU), it does not perform any actual processing of data. It manages and coordinates the entire computer system and synchronizes its working, thus referred to as “Central Nervous System” or “Brain of the Computer”.
 
-#### (b) Arithmetic and Logic Unit: 
+#### (b) Arithmetic and Logic Unit:
 
 The function of an Arithmetic logic unit (ALU) is to perform arithmetic and logical operations such as addition, subtraction, multiplication, division, AND, OR, NOT, Exclusive OR etc. It also performs increment, decrements, shift and clear operations. It is the place where the actual execution of instructions takes place during processing operation. To be precise, all calculations and comparisons are made in the Arithmetic and Logical Unit (ALU).
 
-### Output Unit: 
+### Output Unit:
 
 An output unit performs the reverse operation of that of an input unit. As computers, work with binary code the results produced are also in binary form. So before applying results to the outside world it must be converted to human acceptable (readable) form. So, it supplies information obtained from processing to outside world. Units called output interfaces accomplish this task.
 
@@ -88,7 +88,7 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 ## Common features of Microcontrollers. (2)
 
-   Basically, a Microcontroller consists of the following components.
+Basically, a Microcontroller consists of the following components.
 
 - Central Processing Unit (CPU)
 - Program Memory (ROM – Read Only Memory)
@@ -114,50 +114,50 @@ DIgital to Analog Converter or DAC is a circuit, that works in contrast to an AD
 
 ## Compare Microprocessor and Microcontroller. (3)
 
-| Microprocessors                                              | Microcontrollers                                             |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| It is only a general purpose computer CPU                    | It is a micro computer itself                                |
-| Memory, I/O ports, timers, interrupts are not available inside the chip | All are integrated inside the microcontroller chip           |
+| Microprocessors                                                            | Microcontrollers                                                    |
+| -------------------------------------------------------------------------- | ------------------------------------------------------------------- |
+| It is only a general purpose computer CPU                                  | It is a micro computer itself                                       |
+| Memory, I/O ports, timers, interrupts are not available inside the chip    | All are integrated inside the microcontroller chip                  |
 | This must have many additional digital components to perform its operation | Can function as a micro computer without any additional components. |
-| Systems become bulkier and expensive.                        | Make the system simple, economic and compact                 |
-| Not capable for handling Boolean functions                   | Handling Boolean functions                                   |
-| Higher accessing time required                               | Low accessing time                                           |
-| Very few pins are programmable                               | Most of the pins are programmable                            |
-| Very few number of bit handling instructions                 | Many bit handling instructions                               |
-| Widely Used in modern PC and laptops                         | widely in small control systems                              |
-| INTEL 8086,INTEL Pentium series                              | INTEL8051,89960,PIC16F877                                    |
+| Systems become bulkier and expensive.                                      | Make the system simple, economic and compact                        |
+| Not capable for handling Boolean functions                                 | Handling Boolean functions                                          |
+| Higher accessing time required                                             | Low accessing time                                                  |
+| Very few pins are programmable                                             | Most of the pins are programmable                                   |
+| Very few number of bit handling instructions                               | Many bit handling instructions                                      |
+| Widely Used in modern PC and laptops                                       | widely in small control systems                                     |
+| INTEL 8086,INTEL Pentium series                                            | INTEL8051,89960,PIC16F877                                           |
 
 ## Compare Von Neumann and Harvard architecture. (3)
 
-| Harvard architecture                                                                                                                                                                                                                     | Von Neumann architecture                                                                                                                                                                                                                             |
-| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Harvard architecture                                                                                                                                                                                                     | Von Neumann architecture                                                                                                                                                                                                             |
+| ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
 | Harvard architecture – diagram [![Harvard architecture](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Harvard-architecture.jpg) | Von Neumann architecture – diagram [![Von Neumann architecture](../../assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Von-Neumann-architecture.jpg) |
-| The name is originated from “Harvard Mark I” a relay based old computer.                                                                                                                                                                 | It is named after the mathematician and early computer scientist John Von Neumann.                                                                                                                                                                   |
-| It required two memories for their instruction and data.                                                                                                                                                                                 | It required only one memory for their instruction and data.                                                                                                                                                                                          |
-| Design of Harvard architecture is complicated.                                                                                                                                                                                           | Design of the von Neumann architecture is simple.                                                                                                                                                                                                    |
-| Harvard architecture is required separate bus for instruction and data.                                                                                                                                                                  | Von Neumann architecture is required only one bus for instruction and data.                                                                                                                                                                          |
-| Processor can complete an instruction in one cycle                                                                                                                                                                                       | Processor needs two clock cycles to complete an instruction.                                                                                                                                                                                         |
-| Easier to pipeline, so high performance can be achieve.                                                                                                                                                                                  | Low performance as compared to Harvard architecture.                                                                                                                                                                                                 |
-| Comparatively high cost.                                                                                                                                                                                                                 | It is cheaper.                                                                                                                                                                                                                                       |
+| The name is originated from “Harvard Mark I” a relay based old computer.                                                                                                                                                 | It is named after the mathematician and early computer scientist John Von Neumann.                                                                                                                                                   |
+| It required two memories for their instruction and data.                                                                                                                                                                 | It required only one memory for their instruction and data.                                                                                                                                                                          |
+| Design of Harvard architecture is complicated.                                                                                                                                                                           | Design of the von Neumann architecture is simple.                                                                                                                                                                                    |
+| Harvard architecture is required separate bus for instruction and data.                                                                                                                                                  | Von Neumann architecture is required only one bus for instruction and data.                                                                                                                                                          |
+| Processor can complete an instruction in one cycle                                                                                                                                                                       | Processor needs two clock cycles to complete an instruction.                                                                                                                                                                         |
+| Easier to pipeline, so high performance can be achieve.                                                                                                                                                                  | Low performance as compared to Harvard architecture.                                                                                                                                                                                 |
+| Comparatively high cost.                                                                                                                                                                                                 | It is cheaper.                                                                                                                                                                                                                       |
 
 ## Compare RISC and CISC architecture. (3)
 
-|                 | RISC                                                         | CISC                                                         |
-| --------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Acronym         | It stands for ‘Reduced Instruction Set Computer’.            | It stands for ‘Complex Instruction Set Computer’.            |
-| Definition      | The RISC processors have a smaller set of instructions with few addressing nodes. | The CISC processors have a larger set of instructions with many addressing nodes. |
-| Memory unit     | It has no memory unit and uses a separate hardware to implement instructions. | It has a memory unit to implement complex instructions.      |
-| Program         | It has a hard-wired unit of programming.                     | It has a micro-programming unit.                             |
-| Design          | It is a complex complier design.                             | It is an easy complier design.                               |
-| Calculations    | The calculations are faster and precise.                     | The calculations are slow and precise.                       |
-| Decoding        | Decoding of instructions is simple.                          | Decoding of instructions is complex.                         |
-| Time            | Execution time is very less.                                 | Execution time is very high.                                 |
-| External memory | It does not require external memory for calculations.        | It requires external memory for calculations.                |
-| Pipelining      | Pipelining does function correctly.                          | Pipelining does not function correctly.                      |
-| Stalling        | Stalling is mostly reduced in processors.                    | The processors often stall.                                  |
-| Code expansion  | Code expansion can be a problem.                             | Code expansion is not a problem.                             |
-| Disc space      | The space is saved.                                          | The space is wasted.                                         |
-| Applications    | Used in high end applications such as video processing, telecommunications and image processing. | Used in low end applications such as security systems, home automations, etc. |
+|                 | RISC                                                                                             | CISC                                                                              |
+| --------------- | ------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------- |
+| Acronym         | It stands for ‘Reduced Instruction Set Computer’.                                                | It stands for ‘Complex Instruction Set Computer’.                                 |
+| Definition      | The RISC processors have a smaller set of instructions with few addressing nodes.                | The CISC processors have a larger set of instructions with many addressing nodes. |
+| Memory unit     | It has no memory unit and uses a separate hardware to implement instructions.                    | It has a memory unit to implement complex instructions.                           |
+| Program         | It has a hard-wired unit of programming.                                                         | It has a micro-programming unit.                                                  |
+| Design          | It is a complex complier design.                                                                 | It is an easy complier design.                                                    |
+| Calculations    | The calculations are faster and precise.                                                         | The calculations are slow and precise.                                            |
+| Decoding        | Decoding of instructions is simple.                                                              | Decoding of instructions is complex.                                              |
+| Time            | Execution time is very less.                                                                     | Execution time is very high.                                                      |
+| External memory | It does not require external memory for calculations.                                            | It requires external memory for calculations.                                     |
+| Pipelining      | Pipelining does function correctly.                                                              | Pipelining does not function correctly.                                           |
+| Stalling        | Stalling is mostly reduced in processors.                                                        | The processors often stall.                                                       |
+| Code expansion  | Code expansion can be a problem.                                                                 | Code expansion is not a problem.                                                  |
+| Disc space      | The space is saved.                                                                              | The space is wasted.                                                              |
+| Applications    | Used in high end applications such as video processing, telecommunications and image processing. | Used in low end applications such as security systems, home automations, etc.     |
 
 ## List applications of mocrocontrollers in various fields. (2)
 
@@ -234,13 +234,12 @@ The name “Accumulator” came from the fact this register is used to accumulat
 
 The following image shows the 8051 Microcontroller Pin Diagram with respect to a 40 – pin Dual In-line Package (DIP).
 
-**Pins 1 – 8 (PORT 1):** 
+**Pins 1 – 8 (PORT 1):**
 
 - Pins 1 to 8 are the PORT 1 Pins of 8051. PORT 1 Pins consists of 8 – bit bidirectional Input / Output Port with internal pull – up resistors. In older 8051 Microcontrollers, PORT 1 doesn’t serve any additional purpose but just 8 – bit I/O PORT.
 - In some of the newer 8051 Microcontrollers, few PORT 1 Pins have dual functions. P1.0 and P1.1 act as Timer 2 and Timer 2 Trigger Input respectively.
 
 - P1.5, P1.6 and P1.7 act as In-System Programming Pins i.e. MOSI, MISO and SCK respectively.
-
 
 **Pin 9 (RST):** Pin 9 is the Reset Input Pin. It is an active HIGH Pin i.e. if the RST Pin is HIGH for a minimum of two machine cycles, the microcontroller will be reset. During this time, the oscillator must be running.
 
@@ -514,15 +513,15 @@ TCON Register:
 
 Description of All the Bits of TCON:
 
-| Flag | Function                                                     |
-| ---- | ------------------------------------------------------------ |
-| TF1  | Timer 1 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 001Bh. |
-| TR1  | Timer 1 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer. |
-| TF0  | Timer 0 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 000Bh. |
-| TR0  | Timer 0 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer. |
-| IE1  | External interrupt 1 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.3 (INT1). Cleared when processor vectors to interrupt service routine at program address 0013h. Not related to timer operations. |
+| Flag | Function                                                                                                                                                                                                                                      |
+| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| TF1  | Timer 1 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 001Bh.                                                                          |
+| TR1  | Timer 1 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer.                                                                                                                                 |
+| TF0  | Timer 0 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 000Bh.                                                                          |
+| TR0  | Timer 0 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer.                                                                                                                                 |
+| IE1  | External interrupt 1 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.3 (INT1). Cleared when processor vectors to interrupt service routine at program address 0013h. Not related to timer operations.                |
 | IT1  | External interrupt 1 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 1 to generate an interrupt. |
-| IE0  | External interrupt 0 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.2 (INT0). Cleared when processor vectors to interrupt service routine at program address 0003h. Not related to timer operations. |
+| IE0  | External interrupt 0 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.2 (INT0). Cleared when processor vectors to interrupt service routine at program address 0003h. Not related to timer operations.                |
 | IT0  | External interrupt 0 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 0 to generate an interrupt. |
 
 ## Draw and explain function of all bits of TMOD register. (4)
@@ -544,16 +543,16 @@ TMOD Register:
 
 Description of All the Bits of TMOD:
 
-| Timer  | Bit  | Function                                                     |
-| ------ | ---- | ------------------------------------------------------------ |
+| Timer  | Bit  | Function                                                                                                                                                                                                  |
+| ------ | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | Timer1 | GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin:<br />1 – Timer operates only if the INTx bit is set.<br />0 – Timer operates regardless of the logic state of the INTx bit. |
-|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator. |
-|        | M1   | M1, M0 These two bits select the operational mode Timer.     |
-|        | M0   | M1, M0 These two bits select the operational mode Timer.     |
+|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator.                           |
+|        | M1   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
+|        | M0   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
 | Timer0 | GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin:<br />1 – Timer operates only if the INTx bit is set.<br />0 – Timer operates regardless of the logic state of the INTx bit. |
-|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator. |
-|        | M1   | M1, M0 These two bits select the operational mode Timer.     |
-|        | M0   | M1, M0 These two bits select the operational mode Timer.     |
+|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator.                           |
+|        | M1   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
+|        | M0   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
 
 Timer Mode Control Bits:
 
@@ -818,13 +817,13 @@ PCON Register:
 
 Description of All the Bits of PCON:
 
-| Bit  | Function                                                     |
-| ---- | ------------------------------------------------------------ |
+| Bit  | Function                                                                                                           |
+| ---- | ------------------------------------------------------------------------------------------------------------------ |
 | SMOD | Serial baud rate MODify bit – If SMOD = 1, the Baud rate is doubled when the serial port is used in mode 1,2 and 3 |
-| GF1  | General Purpose Flag Bit 1                                   |
-| GF0  | General Purpose Flag Bit 0                                   |
-| PD   | Power Down Mode. If set, the oscillator is stopped. A reset or an interrupt can cancel this mode. |
-| IDL  | Idle Mode. If set, the CPU is stopped. A reset or an interrupt can cancel this mode. |
+| GF1  | General Purpose Flag Bit 1                                                                                         |
+| GF0  | General Purpose Flag Bit 0                                                                                         |
+| PD   | Power Down Mode. If set, the oscillator is stopped. A reset or an interrupt can cancel this mode.                  |
+| IDL  | Idle Mode. If set, the CPU is stopped. A reset or an interrupt can cancel this mode.                               |
 
 ## List full form of these: RISC, CISC, ALU, PC, DPTR, PSW, SFR, SP. (4)
 
@@ -843,7 +842,6 @@ Description of All the Bits of PCON:
 - SFR: Special Function Register
 
 - SP: Stack Pointer
-
 
 # Unit – 3: 8051 Programming
 
@@ -1233,34 +1231,34 @@ void LCD_init()
 
 **Wave Drive**
 
-| A    | B    | C    | D    |
-| ---- | ---- | ---- | ---- |
-| 1    | 0    | 0    | 0    |
-| 0    | 1    | 0    | 0    |
-| 0    | 1    | 0    | 0    |
-| 0    | 0    | 0    | 1    |
+| A   | B   | C   | D   |
+| --- | --- | --- | --- |
+| 1   | 0   | 0   | 0   |
+| 0   | 1   | 0   | 0   |
+| 0   | 1   | 0   | 0   |
+| 0   | 0   | 0   | 1   |
 
 **Full Drive**
 
-| A    | B    | C    | D    |
-| ---- | ---- | ---- | ---- |
-| 1    | 1    | 0    | 0    |
-| 0    | 1    | 1    | 0    |
-| 0    | 0    | 1    | 1    |
-| 1    | 0    | 0    | 1    |
+| A   | B   | C   | D   |
+| --- | --- | --- | --- |
+| 1   | 1   | 0   | 0   |
+| 0   | 1   | 1   | 0   |
+| 0   | 0   | 1   | 1   |
+| 1   | 0   | 0   | 1   |
 
 **Half Drive**
 
-| A    | B    | C    | D    |
-| ---- | ---- | ---- | ---- |
-| 1    | 0    | 0    | 0    |
-| 1    | 1    | 0    | 0    |
-| 0    | 1    | 0    | 0    |
-| 0    | 1    | 1    | 0    |
-| 0    | 0    | 1    | 0    |
-| 0    | 0    | 1    | 1    |
-| 0    | 0    | 0    | 1    |
-| 1    | 0    | 0    | 1    |
+| A   | B   | C   | D   |
+| --- | --- | --- | --- |
+| 1   | 0   | 0   | 0   |
+| 1   | 1   | 0   | 0   |
+| 0   | 1   | 0   | 0   |
+| 0   | 1   | 1   | 0   |
+| 0   | 0   | 1   | 0   |
+| 0   | 0   | 1   | 1   |
+| 0   | 0   | 0   | 1   |
+| 1   | 0   | 0   | 1   |
 
 ## Draw block diagram of MAX 232 and explain in brief. (4)
 
