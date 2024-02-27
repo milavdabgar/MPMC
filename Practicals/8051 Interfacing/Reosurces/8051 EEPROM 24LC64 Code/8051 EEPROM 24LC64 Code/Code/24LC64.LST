@@ -1,0 +1,149 @@
+C51 COMPILER V9.02   24LC64                                                                11/06/2012 22:18:19 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE 24LC64
+OBJECT MODULE PLACED IN 24LC64.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE 24LC64.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Includes.h"
+   2          
+   3          
+   4          
+   5          
+   6          // Function Purpose: Write_Byte_To_24LC64_EEPROM writes a single byte on given address
+   7          // Address can have any value fromm 0 to 0x1FFF, and DataByte can have a value of 0 to 0xFF.
+   8          void Write_Byte_To_24LC64_EEPROM(unsigned int Address, unsigned char DataByte)
+   9          {
+  10   1              I2C_Start();                                                                            // Start i2c communication
+  11   1      
+  12   1              // Send i2c address of 24LC64 with write command
+  13   1              while(I2C_Write_Byte(Device_Address_24LC64_EEPROM + 0) == 1)// Wait until device is free
+  14   1              {       I2C_Start();    }               
+  15   1      
+  16   1              I2C_Write_Byte(Address>>8);                                                     // Write Address upper byte
+  17   1              I2C_Write_Byte((unsigned char)Address);                         // Write Address lower byte
+  18   1              I2C_Write_Byte(DataByte);                                                       // Write data byte
+  19   1              I2C_Stop();                                                                                     // Stop i2c communication
+  20   1      }
+  21          
+  22          
+  23          
+  24          // Function Purpose: Read_Byte_From_24LC64_EEPROM reads a single byte from given address
+  25          // Address can have any value fromm 0 to 0x1FFF.
+  26          unsigned char Read_Byte_From_24LC64_EEPROM(unsigned int Address)
+  27          {
+  28   1              unsigned char Byte = 0;                                                         // Variable to store Received byte
+  29   1      
+  30   1              I2C_Start();                                                                            // Start i2c communication
+  31   1      
+  32   1              // Send i2c address of 24LC64 with write command
+  33   1              while(I2C_Write_Byte(Device_Address_24LC64_EEPROM + 0) == 1)// Wait until device is free
+  34   1              {       I2C_Start();    }               
+  35   1      
+  36   1              I2C_Write_Byte(Address>>8);                                                     // Write Address upper byte
+  37   1              I2C_Write_Byte((unsigned char)Address);                         // Write Address lower byte
+  38   1              I2C_ReStart();                                                                          // Restart i2c
+  39   1      
+  40   1              // Send i2c address of 24LC64 EEPROM with read command  
+  41   1              I2C_Write_Byte(Device_Address_24LC64_EEPROM + 1);               
+  42   1      
+  43   1              Byte = I2C_Read_Byte();                                                         // Read byte from EEPROM
+  44   1      
+  45   1              // Make SCK low, so that slave can stop driving SDA pin
+  46   1              // Send a NACK to indiacate single byte read is complete
+  47   1              I2C_Send_NACK();
+  48   1      
+  49   1              // Send start bit and then stop bit to stop transmission
+  50   1              Set_SDA_Low;                            // Make SDA Low
+  51   1              __delay_us(HalfBitDelay);       // Half bit delay
+  52   1              Set_SDA_High;                           // Make SDA high
+  53   1              __delay_us(HalfBitDelay);       // Half bit delay
+  54   1      
+  55   1              return Byte;                            // Return the byte received from 24LC64 EEPROM
+C51 COMPILER V9.02   24LC64                                                                11/06/2012 22:18:19 PAGE 2   
+
+  56   1      }
+  57          
+  58          
+  59          
+  60          // Function Purpose: Write_Page_To_24LC64_EEPROM writes a page on given address
+  61          // Address can have value 0, 32, 64, .... only and pData is pointer to the array
+  62          // containing NoOfBytes bytes in it. NoOfBytes can have a value from 1 to 32 only.
+  63          void Write_Page_To_24LC64_EEPROM(unsigned int Address,unsigned char* pData,unsigned char NoOfBytes)
+  64          {
+  65   1              unsigned int i;
+  66   1      
+  67   1              I2C_Start();                                                                            // Start i2c communication
+  68   1      
+  69   1              // Send i2c address of 24LC64 with write command
+  70   1              while(I2C_Write_Byte(Device_Address_24LC64_EEPROM + 0) == 1)// Wait until device is free
+  71   1              {       I2C_Start();    }       
+  72   1      
+  73   1              I2C_Write_Byte(Address>>8);                                                     // Write Address upper byte
+  74   1              I2C_Write_Byte((unsigned char)Address);                         // Write Address lower byte
+  75   1      
+  76   1              for(i=0;i<NoOfBytes;i++)                                                        // Write NoOfBytes
+  77   1                      I2C_Write_Byte(pData[i]);                                               // Write data byte
+  78   1      
+  79   1              I2C_Stop();                                                                                     // Stop i2c communication
+  80   1      }
+  81          
+  82          
+  83          
+  84          
+  85          // Function Purpose: Read_Bytes_From_24LC64_EEPROM reads a NoOfBytes bytes from given starting address.
+  86          // Address can have any value fromm 0 to 0x1FFF. Also, NoOfBytes can have any value 0 to 0x1FFF.
+  87          // Read bytes are returned in pData array.
+  88          void Read_Bytes_From_24LC64_EEPROM(unsigned int Address, unsigned char* pData, unsigned int NoOfBytes)
+  89          {
+  90   1              unsigned int i;
+  91   1      
+  92   1              I2C_Start();                                                                            // Start i2c communication
+  93   1      
+  94   1              // Send i2c address of 24LC64 with write command
+  95   1              while(I2C_Write_Byte(Device_Address_24LC64_EEPROM + 0) == 1)// Wait until device is free
+  96   1              {       I2C_Start();    }               
+  97   1      
+  98   1              I2C_Write_Byte(Address>>8);                                                     // Write Address upper byte
+  99   1              I2C_Write_Byte((unsigned char)Address);                         // Write Address lower byte
+ 100   1              I2C_ReStart();                                                                          // Restart i2c
+ 101   1      
+ 102   1              // Send i2c address of 24LC64 EEPROM with read command  
+ 103   1              I2C_Write_Byte(Device_Address_24LC64_EEPROM + 1);               
+ 104   1      
+ 105   1              pData[0] = I2C_Read_Byte();                                                     // Read First byte from EEPROM
+ 106   1      
+ 107   1              for(i=1;i<NoOfBytes;i++)                                                        // Read NoOfBytes
+ 108   1              {               
+ 109   2                      I2C_Send_ACK();                                 // Give Ack to slave to start receiving next byte
+ 110   2                      pData[i] = I2C_Read_Byte();             // Read next byte from EEPROM
+ 111   2              }
+ 112   1      
+ 113   1              // Make SCK low, so that slave can stop driving SDA pin
+ 114   1              // Send a NACK to indiacate read operation is complete
+ 115   1              I2C_Send_NACK();
+ 116   1      
+ 117   1              // Send start bit and then stop bit to stop transmission
+C51 COMPILER V9.02   24LC64                                                                11/06/2012 22:18:19 PAGE 3   
+
+ 118   1              Set_SDA_Low;                            // Make SDA Low
+ 119   1              __delay_us(HalfBitDelay);       // Half bit delay
+ 120   1              Set_SDA_High;                           // Make SDA high
+ 121   1              __delay_us(HalfBitDelay);       // Half bit delay
+ 122   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    317    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      23
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

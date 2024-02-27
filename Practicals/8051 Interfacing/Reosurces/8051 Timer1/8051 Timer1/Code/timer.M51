@@ -1,0 +1,117 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/08/2012  22:20:10  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE code.obj TO timer
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  code.obj (CODE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  timer (CODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0013H     UNIT         ?PR?INITTIMER1?CODE
+            CODE    0016H     0005H     UNIT         ?PR?TIMER1_ISR?CODE
+            CODE    001BH     0003H     ABSOLUTE     
+            CODE    001EH     000CH     UNIT         ?C_C51STARTUP
+            CODE    002AH     000AH     UNIT         ?PR?CCT_INIT?CODE
+            CODE    0034H     0008H     UNIT         ?PR?MAIN?CODE
+
+
+
+OVERLAY MAP OF MODULE:   timer (CODE)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CODE
+
+?PR?MAIN?CODE
+  +--> ?PR?CCT_INIT?CODE
+  +--> ?PR?INITTIMER1?CODE
+
+
+
+SYMBOL TABLE OF MODULE:  timer (CODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/08/2012  22:20:10  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  C:0016H         PUBLIC        Timer1_ISR
+  B:00A8H.7       PUBLIC        EA
+  C:0034H         PUBLIC        main
+  D:0089H         PUBLIC        TMOD
+  B:00A0H.0       PUBLIC        Out
+  B:00A8H.3       PUBLIC        ET1
+  B:0088H.7       PUBLIC        TF1
+  C:0003H         PUBLIC        InitTimer1
+  D:008DH         PUBLIC        TH1
+  D:008BH         PUBLIC        TL1
+  C:002AH         PUBLIC        cct_init
+  B:0088H.6       PUBLIC        TR1
+  -------         PROC          MAIN
+  C:0034H         LINE#         17
+  C:0034H         LINE#         18
+  C:0034H         LINE#         19
+  C:0037H         LINE#         20
+  C:003AH         LINE#         22
+  C:003AH         LINE#         23
+  C:003AH         LINE#         24
+  -------         ENDPROC       MAIN
+  -------         PROC          CCT_INIT
+  C:002AH         LINE#         27
+  C:002AH         LINE#         28
+  C:002AH         LINE#         29
+  C:002DH         LINE#         30
+  C:002FH         LINE#         31
+  C:0031H         LINE#         32
+  C:0033H         LINE#         33
+  -------         ENDPROC       CCT_INIT
+  -------         PROC          INITTIMER1
+  C:0003H         LINE#         36
+  C:0003H         LINE#         37
+  C:0003H         LINE#         38
+  C:0006H         LINE#         39
+  C:0009H         LINE#         41
+  C:000CH         LINE#         42
+  C:000FH         LINE#         44
+  C:0011H         LINE#         45
+  C:0013H         LINE#         47
+  C:0015H         LINE#         48
+  -------         ENDPROC       INITTIMER1
+  -------         PROC          TIMER1_ISR
+  C:0016H         LINE#         51
+  C:0016H         LINE#         53
+  C:0018H         LINE#         55
+  C:001AH         LINE#         56
+  -------         ENDPROC       TIMER1_ISR
+  -------         ENDMOD        CODE
+
+Program Size: data=9.0 xdata=0 code=60
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

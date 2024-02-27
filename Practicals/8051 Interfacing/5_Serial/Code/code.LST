@@ -1,0 +1,127 @@
+C51 COMPILER V6.20c  CODE                                                                  11/14/2010 16:23:54 PAGE 1   
+
+
+C51 COMPILER V6.20c, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN .\code.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE .\code.c DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          ////////////////////////////////////// ////////
+   2          // Project: Internet to serial port Control  //
+   3          // Author:  M.Saeed Yasin                    //
+   4          // Date:    14/11/2010                       //
+   5          ///////////////////////////////////////////////
+   6          
+   7          #include <reg52.h>
+   8          
+   9          //DEFINE CONSTANT
+  10          #define Baud_rate 0xFD  // BAUD RATE 9600                     
+  11          
+  12          
+  13          //DEFINE PROTOTYPES
+  14          void SerialInitialize(void);
+  15          void SendByteSerially(unsigned char);	
+  16          void cct_init(void);
+  17          
+  18          sbit Appliance1 = P1^0;
+  19          sbit Appliance2 = P1^1;
+  20          sbit Appliance3 = P1^2;
+  21          sbit Appliance4 = P1^3;
+  22          sbit Appliance5 = P1^4;
+  23          sbit Appliance6 = P1^5;
+  24          sbit Appliance7 = P1^6;
+  25          sbit Appliance8 = P1^7;
+  26          
+  27          
+  28          void main()
+  29          {
+  30   1      	cct_init();
+  31   1      	SerialInitialize();	
+  32   1      
+  33   1          EA = 1;
+  34   1      	ES = 1;
+  35   1      
+  36   1      	while(1) {;}
+  37   1      }
+  38          
+  39          
+  40          void cct_init(void)   //initialize cct
+  41          {
+  42   1      	P0 = 0x00; //not used
+  43   1      	P1 = 0x00; //Used for Appliances
+  44   1      	P2 = 0x00; //not used
+  45   1      	P3 = 0x03; //used for serial
+  46   1      
+  47   1      }
+  48          
+  49          void SerialInitialize(void)		           // INITIALIZE SERIAL PORT
+  50          {
+  51   1      	TMOD = 0x20;	                       // Timer 1 IN MODE 2 -AUTO RELOAD TO GENERATE BAUD RATE
+  52   1      	SCON = 0x50;			               // SERIAL MODE 1, 8-DATA BIT 1-START BIT, 1-STOP BIT, REN ENABLED
+  53   1      	TH1 = Baud_rate;		               // LOAD BAUDRATE TO TIMER REGISTER
+  54   1      	TR1 = 1;			                   // START TIMER
+  55   1      }
+C51 COMPILER V6.20c  CODE                                                                  11/14/2010 16:23:54 PAGE 2   
+
+  56          
+  57          void SendByteSerially(unsigned char serialdata)
+  58          {
+  59   1      	SBUF = serialdata;			            // LOAD DATA TO SERIAL BUFFER REGISTER
+  60   1      	while(TI == 0);			            	// WAIT UNTIL TRANSMISSION TO COMPLETE
+  61   1      	TI = 0;				                	// CLEAR TRANSMISSION INTERRUPT FLAG
+  62   1      }
+  63          
+  64          void serial_ISR (void) interrupt 4
+  65          {
+  66   1          //receive character
+  67   1      	char chr;
+  68   1      	if(RI==1)
+  69   1      	{
+  70   2      		chr = SBUF;
+  71   2      		RI = 0;
+  72   2      	}
+  73   1      
+  74   1          P0 = ~P0;    //Show the data has been updated
+  75   1      
+  76   1          switch(chr)
+  77   1      	{
+  78   2           case '1':  Appliance1 = 1; SendByteSerially('k');  break;
+  79   2           case '2':  Appliance2 = 1; SendByteSerially('k');  break;
+  80   2      	 case '3':  Appliance3 = 1; SendByteSerially('k');  break;
+  81   2      	 case '4':  Appliance4 = 1; SendByteSerially('k');  break;
+  82   2      	 case '5':  Appliance5 = 1; SendByteSerially('k');  break;
+  83   2      	 case '6':  Appliance6 = 1; SendByteSerially('k');  break;
+  84   2      	 case '7':  Appliance7 = 1; SendByteSerially('k');  break;
+  85   2      	 case '8':  Appliance8 = 1; SendByteSerially('k');  break;
+  86   2      
+  87   2      
+  88   2           case 'a':  Appliance1 = 0; SendByteSerially('k');  break;
+  89   2           case 'b':  Appliance2 = 0; SendByteSerially('k');  break;
+  90   2           case 'c':  Appliance3 = 0; SendByteSerially('k');  break;
+  91   2           case 'd':  Appliance4 = 0; SendByteSerially('k');  break;
+  92   2           case 'e':  Appliance5 = 0; SendByteSerially('k');  break;
+  93   2           case 'f':  Appliance6 = 0; SendByteSerially('k');  break;
+  94   2           case 'g':  Appliance7 = 0; SendByteSerially('k');  break;
+  95   2           case 'h':  Appliance8 = 0; SendByteSerially('k');  break;
+  96   2      
+  97   2      
+  98   2           default: ;	break;     //do nothing
+  99   2      	}
+ 100   1      
+ 101   1      	RI = 0;
+ 102   1      }   	  
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    208    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       1
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

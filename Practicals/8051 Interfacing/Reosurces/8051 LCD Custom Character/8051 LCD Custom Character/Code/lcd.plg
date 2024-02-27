@@ -1,0 +1,33 @@
+<html>
+<body>
+<pre>
+<h1>µVision Build Log</h1>
+<h2>Project:</h2>
+C:\Users\Saeed\Desktop\LCD Custom Character\Code\lcd.uvproj
+Project File Date:  <unknown>
+
+<h2>Output:</h2>
+Build target 'Target 1'
+compiling lcd.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_WRITELINE?LCD
+Program Size: data=82.0 xdata=0 code=748
+creating hex file from "lcd"...
+"lcd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_WRITELINE?LCD
+Program Size: data=82.0 xdata=0 code=748
+creating hex file from "lcd"...
+"lcd" - 0 Error(s), 1 Warning(s).
+Build target 'Target 1'
+compiling lcd.c...
+linking...
+*** WARNING L16: UNCALLED SEGMENT, IGNORED FOR OVERLAY PROCESS
+    SEGMENT: ?PR?_WRITELINE?LCD
+Program Size: data=82.0 xdata=0 code=748
+creating hex file from "lcd"...
+"lcd" - 0 Error(s), 1 Warning(s).

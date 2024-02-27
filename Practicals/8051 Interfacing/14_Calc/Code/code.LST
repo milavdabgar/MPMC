@@ -1,0 +1,334 @@
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE code.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          // ***********************************************************
+   2          // Project:   Calculator
+   3          // Author:    M.Saeed Yasin
+   4          // Module description:  4 function single positive digit calculator 
+   5          // ***********************************************************
+   6          
+   7          #include<reg51.h>
+   8          #include<string.h>
+   9          
+  10          //Define Macros
+  11          #define Error  13    // Any value other than 0 to 9 is good here
+  12          
+  13          //Function declarations
+  14          void cct_init(void);
+  15          void delay(int);
+  16          void lcdinit(void);
+  17          void writecmd(int);
+  18          void writedata(char);
+  19          void writeline(char[]);
+  20          void ReturnHome(void);
+  21          char READ_SWITCHES(void);
+  22          char get_key(void);
+  23          int get_num(char);
+  24          char get_func(char);
+  25          void DispError(int);
+  26          void disp_num(int);
+  27          
+  28          //*******************
+  29          //Pin description
+  30          /*
+  31          P2 is data bus
+  32          P3.7 is RS
+  33          P3.6 is E
+  34          P1.0 to P1.3 are keypad row outputs
+  35          P1.4 to P1.7 are keypad column inputs
+  36          */
+  37          //********************
+  38          // Define Pins
+  39          //********************
+  40          sbit RowA = P1^0;     //RowA
+  41          sbit RowB = P1^1;     //RowB
+  42          sbit RowC = P1^2;     //RowC
+  43          sbit RowD = P1^3;     //RowD
+  44          
+  45          sbit C1   = P1^4;     //Column1
+  46          sbit C2   = P1^5;     //Column2
+  47          sbit C3   = P1^6;     //Column3
+  48          sbit C4   = P1^7;     //Column4
+  49          
+  50          sbit E    = P3^6;     //E pin for LCD
+  51          sbit RS   = P3^7;     //RS pin for LCD
+  52          
+  53          // ***********************************************************
+  54          // Main program
+  55          //
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 2   
+
+  56          int main(void)
+  57          {
+  58   1         char key;                     //key char for keeping record of pressed key
+  59   1         int num1 = 0;                 //First number
+  60   1         char func = '+';              //Function to be performed among two numbers
+  61   1         int num2 = 0;                 //Second number
+  62   1         
+  63   1         cct_init();                   //Make input and output pins as required
+  64   1         lcdinit();                    //Initilize LCD
+  65   1      
+  66   1         while(1)
+  67   1         { 
+  68   2           //get numb1
+  69   2           key = get_key();
+  70   2           writecmd(0x01);            //clear display
+  71   2               writedata(key);            //Echo the key pressed to LCD
+  72   2               num1 = get_num(key);       //Get int number from char value, it checks for wrong input as well
+  73   2           
+  74   2               if(num1!=Error)            //if correct input then proceed, num1==13 means wrong input
+  75   2               {
+  76   3                       //get function
+  77   3                       key = get_key();
+  78   3                       writedata(key);                  //Echo the key pressed to LCD
+  79   3                       func = get_func(key);            //it checks for wrong func
+  80   3                       
+  81   3                       if(func!='e')                    //if correct input then proceed, func=='e' means wrong input
+  82   3                       {
+  83   4                               //get numb2
+  84   4                               key = get_key();
+  85   4                               writedata(key);              //Echo the key pressed to LCD
+  86   4                               num2 = get_num(key);         //Get int number from char value, it checks for wrong input as well
+  87   4                               
+  88   4                               if(num2!=Error)              //if correct input then proceed, num2==Error means wrong input
+  89   4                               {
+  90   5                                       //get equal sign
+  91   5                                       key = get_key();
+  92   5                                       writedata(key);          //Echo the key pressed to LCD
+  93   5                                       
+  94   5                                       if(key == '=')           //if = is pressed then proceed
+  95   5                                       {
+  96   6                                               switch(func)         //switch on function
+  97   6                                               {
+  98   7                                               case '+': disp_num(num1+num2); break;
+  99   7                                               case '-': disp_num(num1-num2); break;
+ 100   7                                               case 'x': disp_num(num1*num2); break;
+ 101   7                                               case '/': disp_num(num1/num2); break;
+ 102   7                                               }
+ 103   6                                       }
+ 104   5                                       else                                 //key other then = here means error wrong input
+ 105   5                                       { 
+ 106   6                                               if(key == 'C')       //if clear screen is pressed then clear screen and reset
+ 107   6                                                      writecmd(0x01);   //Clear Screen
+ 108   6                                               else
+ 109   6                                                      DispError(0);     //Display wrong input error
+ 110   6                                       }                                 
+ 111   5                               }
+ 112   4                       }
+ 113   3           }
+ 114   2         }
+ 115   1      }
+ 116          
+ 117          
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 3   
+
+ 118          void cct_init(void)
+ 119          {
+ 120   1              P0 = 0x00;   //not used
+ 121   1              P1 = 0xf0;   //used for generating outputs and taking inputs from Keypad
+ 122   1              P2 = 0x00;   //used as data port for LCD
+ 123   1              P3 = 0x00;   //used for RS and E   
+ 124   1      }
+ 125          
+ 126          void delay(int a)
+ 127          {
+ 128   1         int i;
+ 129   1         for(i=0;i<a;i++);   //null statement
+ 130   1      }
+ 131          
+ 132          void writedata(char t)
+ 133          {
+ 134   1         RS = 1;             // This is data
+ 135   1         P2 = t;             //Data transfer
+ 136   1         E  = 1;             // => E = 1
+ 137   1         delay(150);
+ 138   1         E  = 0;             // => E = 0
+ 139   1         delay(150);
+ 140   1      }
+ 141          
+ 142          
+ 143          void writecmd(int z)
+ 144          {
+ 145   1         RS = 0;             // This is command
+ 146   1         P2 = z;             //Data transfer
+ 147   1         E  = 1;             // => E = 1
+ 148   1         delay(150);
+ 149   1         E  = 0;             // => E = 0
+ 150   1         delay(150);
+ 151   1      }
+ 152          
+ 153          void lcdinit(void)
+ 154          {
+ 155   1        ///////////// Reset process from datasheet /////////
+ 156   1           delay(15000);
+ 157   1         writecmd(0x30);
+ 158   1           delay(4500);
+ 159   1         writecmd(0x30);
+ 160   1           delay(300);
+ 161   1         writecmd(0x30);
+ 162   1           delay(650);
+ 163   1        /////////////////////////////////////////////////////
+ 164   1         writecmd(0x38);    //function set
+ 165   1         writecmd(0x0c);    //display on,cursor off,blink off
+ 166   1         writecmd(0x01);    //clear display
+ 167   1         writecmd(0x06);    //entry mode, set increment
+ 168   1      }
+ 169          
+ 170          void ReturnHome(void)     /* Return to 0 cursor location */
+ 171          {
+ 172   1         writecmd(0x02);
+ 173   1         delay(1500);
+ 174   1      }
+ 175          
+ 176          void writeline(char Line[])
+ 177          {
+ 178   1         int i;
+ 179   1         for(i=0;i<strlen(Line);i++)
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 4   
+
+ 180   1         {
+ 181   2            writedata(Line[i]);     /* Write Character */
+ 182   2         }
+ 183   1         
+ 184   1         ReturnHome();          /* Return to 0 cursor position */
+ 185   1      }
+ 186          
+ 187          char READ_SWITCHES(void)        
+ 188          {       
+ 189   1              RowA = 0; RowB = 1; RowC = 1; RowD = 1;         //Test Row A
+ 190   1      
+ 191   1              if (C1 == 0) { delay(10000); while (C1==0); return '7'; }
+ 192   1              if (C2 == 0) { delay(10000); while (C2==0); return '8'; }
+ 193   1              if (C3 == 0) { delay(10000); while (C3==0); return '9'; }
+ 194   1              if (C4 == 0) { delay(10000); while (C4==0); return '/'; }
+ 195   1      
+ 196   1              RowA = 1; RowB = 0; RowC = 1; RowD = 1;         //Test Row B
+ 197   1      
+ 198   1              if (C1 == 0) { delay(10000); while (C1==0); return '4'; }
+ 199   1              if (C2 == 0) { delay(10000); while (C2==0); return '5'; }
+ 200   1              if (C3 == 0) { delay(10000); while (C3==0); return '6'; }
+ 201   1              if (C4 == 0) { delay(10000); while (C4==0); return 'x'; }
+ 202   1              
+ 203   1              RowA = 1; RowB = 1; RowC = 0; RowD = 1;         //Test Row C
+ 204   1      
+ 205   1              if (C1 == 0) { delay(10000); while (C1==0); return '1'; }
+ 206   1              if (C2 == 0) { delay(10000); while (C2==0); return '2'; }
+ 207   1              if (C3 == 0) { delay(10000); while (C3==0); return '3'; }
+ 208   1              if (C4 == 0) { delay(10000); while (C4==0); return '-'; }
+ 209   1              
+ 210   1              RowA = 1; RowB = 1; RowC = 1; RowD = 0;         //Test Row D
+ 211   1      
+ 212   1              if (C1 == 0) { delay(10000); while (C1==0); return 'C'; }
+ 213   1              if (C2 == 0) { delay(10000); while (C2==0); return '0'; }
+ 214   1              if (C3 == 0) { delay(10000); while (C3==0); return '='; }
+ 215   1              if (C4 == 0) { delay(10000); while (C4==0); return '+'; }
+ 216   1      
+ 217   1              return 'n';             // Means no key has been pressed
+ 218   1      }
+ 219          
+ 220          char get_key(void)           //get key from user
+ 221          {
+ 222   1              char key = 'n';              //assume no key pressed
+ 223   1      
+ 224   1              while(key=='n')              //wait untill a key is pressed
+ 225   1                      key = READ_SWITCHES();   //scan the keys again and again
+ 226   1      
+ 227   1              return key;                  //when key pressed then return its value
+ 228   1      }
+ 229          
+ 230          int get_num(char ch)         //convert char into int
+ 231          {
+ 232   1              switch(ch)
+ 233   1              {
+ 234   2                      case '0': return 0; break;
+ 235   2                      case '1': return 1; break;
+ 236   2                      case '2': return 2; break;
+ 237   2                      case '3': return 3; break;
+ 238   2                      case '4': return 4; break;
+ 239   2                      case '5': return 5; break;
+ 240   2                      case '6': return 6; break;
+ 241   2                      case '7': return 7; break;
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 5   
+
+ 242   2                      case '8': return 8; break;
+ 243   2                      case '9': return 9; break;
+ 244   2                      case 'C': writecmd(0x01); return Error; break;  //this is used as a clear screen and then reset by setti
+             -ng error
+ 245   2                      default: DispError(0); return Error; break;     //it means wrong input
+ 246   2              }
+ 247   1      }
+ 248          
+ 249          char get_func(char chf)            //detects the errors in inputted function
+ 250          {
+ 251   1              if(chf=='C')                   //if clear screen then clear the LCD and reset
+ 252   1              { 
+ 253   2                      writecmd(0x01);            //clear display
+ 254   2                      return 'e'; 
+ 255   2              }
+ 256   1              
+ 257   1              if( chf!='+' && chf!='-' && chf!='x' && chf!='/' )  //if input is not from allowed funtions then show err
+             -or
+ 258   1              { 
+ 259   2                      DispError(1); 
+ 260   2                      return 'e'; 
+ 261   2              }
+ 262   1      
+ 263   1              return chf;                        //function is correct so return the correct function
+ 264   1      }
+ 265          
+ 266          
+ 267          void DispError(int numb)           //displays differet error messages
+ 268          {
+ 269   1              writecmd(0x01);                //clear display
+ 270   1              
+ 271   1              switch(numb)
+ 272   1              {
+ 273   2              case 0:         writeline("Wrong Input");      break;
+ 274   2              case 1:         writeline("Wrong Function");   break;
+ 275   2              default:    writeline("Wrong Input");      break;
+ 276   2              }
+ 277   1      }
+ 278          
+ 279          void disp_num(int numb)            //displays number on LCD
+ 280          {       
+ 281   1              unsigned char UnitDigit  = 0;  //It will contain unit digit of numb
+ 282   1              unsigned char TenthDigit = 0;  //It will contain 10th position digit of numb
+ 283   1      
+ 284   1              if(numb<0)
+ 285   1              {
+ 286   2                      numb = -1*numb;  // Make number positive
+ 287   2                      writedata('-');  // Display a negative sign on LCD
+ 288   2              }
+ 289   1      
+ 290   1              TenthDigit = (numb/10);           // Findout Tenth Digit
+ 291   1      
+ 292   1              if( TenthDigit != 0)              // If it is zero, then don't display
+ 293   1                      writedata(TenthDigit+0x30);       // Make Char of TenthDigit and then display it on LCD
+ 294   1      
+ 295   1              UnitDigit = numb - TenthDigit*10;
+ 296   1      
+ 297   1              writedata(UnitDigit+0x30);        // Make Char of UnitDigit and then display it on LCD
+ 298   1      }
+ 299          
+
+
+C51 COMPILER V9.02   CODE                                                                  06/01/2012 23:23:56 PAGE 6   
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    936    ----
+   CONSTANT SIZE    =     27    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----      13
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

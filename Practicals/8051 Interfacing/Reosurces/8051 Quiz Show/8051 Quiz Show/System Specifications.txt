@@ -1,0 +1,25 @@
+
+Quiz Show
+
+The features of quiz show are,
+
+- Support for two Users, userA and userB
+- UserA on keypad
+- UserB on keyboard
+
+- Mode selection in the start ... 
+- mode0 for single player on keypad
+- mode1 for double players
+
+- Mode0: - A question is displayed on the screen and the user is shown 4 possible answers.
+           User has to decide the answer and press the corresponding number. 
+         - Correct answer gives +5 marks while wrong answer gives -2.
+         - A total of 3 questions are asked from the user randomly picked from a total of 6 questions stored.
+         - At the end result is displayed and pressing any key will restart the system.
+
+- Mode1: - A question is displayed on the LCD + PC screen simultabeously and options are also displayed. The user who                  presses 0 button first is given the chance to give answer first.
+         - if the user gives wrong answer then -3 marks are deducted, and for a correct answer +5 marks are given to the               user. If first user gives wrong answer then second user is given the chance to answer the question, if he can               answer +5 points are given if he can't no marks are deducted. 
+         - A total of 3 questions are asked from the users randomly picked from a total of 6 questions stored.
+         - At the end result is diplayed and pressing any key will restart the system.
+
+

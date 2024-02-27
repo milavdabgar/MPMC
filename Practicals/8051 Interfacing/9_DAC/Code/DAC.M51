@@ -1,0 +1,174 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        07/11/2013  13:01:22  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE DAC0808.obj, Main.obj TO DAC
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  DAC0808.obj (DAC0808)
+  Main.obj (MAIN)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?IMUL)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?UIDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?ULDIV)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?LIMUL)
+
+
+LINK MAP OF MODULE:  DAC (DAC0808)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0004H     UNIT         _DATA_GROUP_
+            IDATA   000CH     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0162H     UNIT         ?C?LIB_CODE
+            CODE    0165H     0033H     UNIT         ?PR?_DELAY_SEC?MAIN
+            CODE    0198H     002CH     UNIT         ?PR?_GENERATE_DAC_VOLTAGE?DAC0808
+            CODE    01C4H     002CH     UNIT         ?PR?MAIN?MAIN
+            CODE    01F0H     0019H     UNIT         ?PR?___DELAY_US?MAIN
+            CODE    0209H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0215H     0004H     UNIT         ?PR?INITDAC?DAC0808
+
+
+
+OVERLAY MAP OF MODULE:   DAC (DAC0808)
+
+
+SEGMENT                                     DATA_GROUP 
+  +--> CALLED SEGMENT                     START    LENGTH
+---------------------------------------------------------
+?C_C51STARTUP                             -----    -----
+  +--> ?PR?MAIN?MAIN
+
+?PR?MAIN?MAIN                             -----    -----
+  +--> ?PR?INITDAC?DAC0808
+  +--> ?PR?_GENERATE_DAC_VOLTAGE?DAC0808
+  +--> ?PR?_DELAY_SEC?MAIN
+
+?PR?_GENERATE_DAC_VOLTAGE?DAC0808         0008H    0004H
+
+?PR?_DELAY_SEC?MAIN                       0008H    0004H
+  +--> ?PR?___DELAY_US?MAIN
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/11/2013  13:01:22  PAGE 2
+
+
+
+
+
+SYMBOL TABLE OF MODULE:  DAC (DAC0808)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        DAC0808
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:00A0H         PUBLIC        P2
+  C:0198H         PUBLIC        _Generate_DAC_Voltage
+  C:0215H         PUBLIC        InitDAC
+  -------         PROC          INITDAC
+  C:0215H         LINE#         4
+  C:0215H         LINE#         5
+  C:0215H         LINE#         6
+  C:0218H         LINE#         7
+  -------         ENDPROC       INITDAC
+  -------         PROC          _GENERATE_DAC_VOLTAGE
+  D:0006H         SYMBOL        mV
+  -------         DO            
+  D:0008H         SYMBOL        V
+  -------         ENDDO         
+  C:0198H         LINE#         10
+  C:0198H         LINE#         11
+  C:0198H         LINE#         12
+  C:01B0H         LINE#         13
+  C:01C1H         LINE#         15
+  C:01C3H         LINE#         16
+  -------         ENDPROC       _GENERATE_DAC_VOLTAGE
+  -------         ENDMOD        DAC0808
+
+  -------         MODULE        MAIN
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:01F0H         PUBLIC        ___delay_us
+  C:01C4H         PUBLIC        main
+  C:0169H         PUBLIC        _delay_sec
+  -------         PROC          MAIN
+  C:01C4H         LINE#         15
+  C:01C4H         LINE#         16
+  C:01C4H         LINE#         17
+  C:01C7H         LINE#         18
+  C:01C9H         LINE#         19
+  C:01CBH         LINE#         20
+  C:01CDH         LINE#         22
+  C:01D0H         LINE#         24
+  C:01D0H         LINE#         25
+  C:01D0H         LINE#         26
+  C:01D7H         LINE#         27
+  C:01DAH         LINE#         28
+  C:01E1H         LINE#         29
+  C:01E4H         LINE#         30
+BL51 BANKED LINKER/LOCATER V6.22                                                      07/11/2013  13:01:22  PAGE 3
+
+
+  C:01EBH         LINE#         31
+  C:01EEH         LINE#         32
+  -------         ENDPROC       MAIN
+  C:0165H         SYMBOL        L?0015
+  -------         PROC          L?0014
+  -------         ENDPROC       L?0014
+  C:0165H         SYMBOL        L?0015
+  -------         PROC          _DELAY_SEC
+  D:0008H         SYMBOL        d
+  -------         DO            
+  D:000AH         SYMBOL        i
+  -------         ENDDO         
+  C:0169H         LINE#         38
+  C:016DH         LINE#         39
+  C:016DH         LINE#         42
+  C:0186H         LINE#         43
+  C:0197H         LINE#         44
+  -------         ENDPROC       _DELAY_SEC
+  -------         PROC          ___DELAY_US
+  D:0006H         SYMBOL        d
+  -------         DO            
+  D:0004H         SYMBOL        i
+  D:0006H         SYMBOL        limit
+  -------         ENDDO         
+  C:01F0H         LINE#         49
+  C:01F0H         LINE#         50
+  C:01F0H         LINE#         52
+  C:01F7H         LINE#         54
+  C:0208H         LINE#         55
+  -------         ENDPROC       ___DELAY_US
+  -------         ENDMOD        MAIN
+
+  -------         MODULE        ?C?IMUL
+  C:0003H         PUBLIC        ?C?IMUL
+  -------         ENDMOD        ?C?IMUL
+
+  -------         MODULE        ?C?UIDIV
+  C:0015H         PUBLIC        ?C?UIDIV
+  -------         ENDMOD        ?C?UIDIV
+
+  -------         MODULE        ?C?ULDIV
+  C:00A6H         PUBLIC        ?C?ULDIV
+  -------         ENDMOD        ?C?ULDIV
+
+  -------         MODULE        ?C?LIMUL
+  C:0138H         PUBLIC        ?C?LIMUL
+  -------         ENDMOD        ?C?LIMUL
+
+Program Size: data=13.0 xdata=0 code=537
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

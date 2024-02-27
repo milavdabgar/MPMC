@@ -1,0 +1,82 @@
+C51 COMPILER V9.02   CODE                                                                  06/08/2012 22:14:29 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE code.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*  Name     : code.c
+   2           *  Purpose  : Main file for using timer0 of 8051.
+   3           *  Author   : M.Saeed Yasin
+   4           *  Date     : 08-06-12
+   5           *  Revision : None
+   6           */
+   7          #include<reg51.h>
+   8          
+   9          // Out Pin
+  10          sbit Out = P2^0;                   // Pin P2.0 is named as Out
+  11          
+  12          //Function declarations
+  13          void cct_init(void);
+  14          void InitTimer0(void);
+  15          
+  16          
+  17          int main(void)
+  18          {
+  19   1         cct_init();                 // Make all ports zero
+  20   1         InitTimer0();           // Start Timer0
+  21   1       
+  22   1         while(1)                // Rest is done in Timer0 interrupt
+  23   1         {
+  24   2         }
+  25   1      }
+  26          
+  27          void cct_init(void)
+  28          {
+  29   1              P0 = 0x00;   
+  30   1              P1 = 0x00;   
+  31   1              P2 = 0x00;   
+  32   1              P3 = 0x00;  
+  33   1      }
+  34          
+  35          
+  36          void InitTimer0(void)
+  37          {
+  38   1              TMOD &= 0xF0;    // Clear 4bit field for timer0
+  39   1              TMOD |= 0x02;    // Set timer0 in mode 2
+  40   1              
+  41   1              TH0 = 0x05;      // 250 usec reloading time
+  42   1              TL0 = 0x05;      // First time value
+  43   1              
+  44   1              ET0 = 1;         // Enable Timer0 interrupts
+  45   1              EA  = 1;         // Global interrupt enable
+  46   1              
+  47   1              TR0 = 1;         // Start Timer 0
+  48   1      }
+  49          
+  50          
+  51          void Timer0_ISR (void) interrupt 1   // It is called after every 250usec
+  52          {
+  53   1              Out = ~Out;  // Toggle Out pin
+  54   1      
+  55   1              TF0 = 0;     // Clear the interrupt flag
+C51 COMPILER V9.02   CODE                                                                  06/08/2012 22:14:29 PAGE 2   
+
+  56   1      }
+  57          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     42    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

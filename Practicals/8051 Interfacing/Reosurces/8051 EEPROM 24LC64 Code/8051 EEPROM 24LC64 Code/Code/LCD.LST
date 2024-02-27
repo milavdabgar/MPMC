@@ -1,0 +1,100 @@
+C51 COMPILER V9.02   LCD                                                                   11/06/2012 22:18:18 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN LCD.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE LCD.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Includes.h"
+   2          
+   3          void ToggleEpinOfLCD(void)
+   4          {
+   5   1              E = 1;                // Give a pulse on E pin
+   6   1              __delay_us(E_Delay);  // so that LCD can latch the
+   7   1              E = 0;                // data from data bus
+   8   1              __delay_us(E_Delay);    
+   9   1      }
+  10          
+  11          void WriteDataToLCD(char t)
+  12          {
+  13   1         RS = 1;             // This is data
+  14   1      
+  15   1         P2 &= 0x0F;             // Make P2.4 to P2.7 zero
+  16   1         P2 |= (t&0xF0);     // Write Upper nibble of data
+  17   1         ToggleEpinOfLCD();  // Toggle E pin to send data 
+  18   1      
+  19   1         P2 &= 0x0F;             // Make P2.4 to P2.7 zero
+  20   1         P2 |= ((t<<4)&0xF0);// Write Lower nibble of data
+  21   1         ToggleEpinOfLCD();  // Toggle E pin to send data 
+  22   1      }
+  23          
+  24          
+  25          void WriteCommandToLCD(int z)
+  26          {
+  27   1         RS = 0;             // This is command
+  28   1      
+  29   1         P2 &= 0x0F;             // Make P2.4 to P2.7 zero
+  30   1         P2 |= (z&0xF0);     // Write Upper nibble of data
+  31   1         ToggleEpinOfLCD();  // Toggle E pin to send data 
+  32   1      
+  33   1         P2 &= 0x0F;             // Make P2.4 to P2.7 zero
+  34   1         P2 |= ((z<<4)&0xF0);// Write Lower nibble of data
+  35   1         ToggleEpinOfLCD();  // Toggle E pin to send data 
+  36   1      }
+  37          
+  38          void InitLCD(void)
+  39          {
+  40   1              RS = 0;                 // Make pin zero
+  41   1              E  = 0;                 // Make Pin zero                                        
+  42   1      
+  43   1        ///////////// Reset process from datasheet /////////
+  44   1           __delay_us(15000);
+  45   1      
+  46   1               P2 &= 0x0F;               // Make P2.4 to P2.7 zero
+  47   1               P2 |= 0x30;               // Write 0x3
+  48   1           ToggleEpinOfLCD();    // Toggle E pin to send data 
+  49   1      
+  50   1           __delay_us(4500);
+  51   1      
+  52   1               P2 &= 0x0F;               // Make P2.4 to P2.7 zero
+  53   1               P2 |= 0x30;               // Write 0x3
+  54   1           ToggleEpinOfLCD();    // Toggle E pin to send data 
+  55   1      
+C51 COMPILER V9.02   LCD                                                                   11/06/2012 22:18:18 PAGE 2   
+
+  56   1           __delay_us(300);
+  57   1      
+  58   1               P2 &= 0x0F;               // Make P2.4 to P2.7 zero
+  59   1               P2 |= 0x30;               // Write 0x3
+  60   1           ToggleEpinOfLCD();    // Toggle E pin to send data 
+  61   1      
+  62   1           __delay_us(650);
+  63   1      
+  64   1               P2 &= 0x0F;               // Make P2.4 to P2.7 zero
+  65   1               P2 |= 0x20;               // Write 0x2
+  66   1           ToggleEpinOfLCD();    // Toggle E pin to send data 
+  67   1      
+  68   1               __delay_us(650);
+  69   1      
+  70   1        /////////////////////////////////////////////////////
+  71   1         WriteCommandToLCD(0x28);    //function set
+  72   1         WriteCommandToLCD(0x0c);    //display on,cursor off,blink off
+  73   1         WriteCommandToLCD(0x01);    //clear display
+  74   1         WriteCommandToLCD(0x06);    //entry mode, set increment
+  75   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    170    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

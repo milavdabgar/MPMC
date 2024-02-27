@@ -1,0 +1,72 @@
+C51 COMPILER V9.54   CODE                                                                  02/29/2016 11:54:09 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          /*  Name     : code.c
+   2           *  Purpose  : Main file for external pin (INT0) interrupt code for 8051.
+   3           *  Author   : M.Saeed Yasin
+   4           *  Date     : 15-06-12
+   5           *  Revision : None
+   6           */
+   7          #include<reg51.h>
+   8          
+   9          // LED Pin
+  10          sbit LED = P1^0;       // Pin P1.0 is named as LED
+  11          
+  12          //Function declarations
+  13          void cct_init(void);
+  14          void InitINT0(void);
+  15          
+  16          // Main function
+  17          void main(void)
+  18          {
+  19   1         cct_init();    // Make all ports zero
+  20   1         InitINT0();      // Intialize INT0 interrupts
+  21   1       
+  22   1         while(1)
+  23   1         {}
+  24   1      }
+  25          
+  26          // Init CCT function
+  27          void cct_init(void)
+  28          {
+  29   1        P0 = 0x00;    // Make all pins zero
+  30   1        P1 = 0x00;    // Make all pins zero
+  31   1        P2 = 0x00;    // Make all pins zero
+  32   1        P3 = 0x04;    // Make P3.2 (INT0) pin high only
+  33   1      }
+  34          
+  35          // External INT0 pin interrupt init function
+  36          void InitINT0(void)
+  37          {
+  38   1        IT0 = 1;      //Edge triggered interrupt mode (Neg Edge)
+  39   1        EX0 = 1;      //Enable external interrupt INT0
+  40   1        EA  = 1;      //Enable global interrupts
+  41   1      }
+  42          
+  43          // INT0 ISR
+  44          void external0_isr(void) interrupt 0     
+  45          {
+  46   1        LED = ~LED;   // Toggle LED pin
+  47   1      } 
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     29    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+C51 COMPILER V9.54   CODE                                                                  02/29/2016 11:54:09 PAGE 2   
+
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

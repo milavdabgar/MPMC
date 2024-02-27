@@ -1,0 +1,160 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        06/09/2012  14:11:32  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE code.obj TO counter
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  code.obj (CODE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+  C:\KEIL\C51\LIB\C51S.LIB (?C?CCASE)
+
+
+LINK MAP OF MODULE:  counter (CODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            DATA    0008H     0001H     UNIT         _DATA_GROUP_
+            IDATA   0009H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     00A6H     UNIT         ?PR?MAIN?CODE
+            CODE    00A9H     007AH     UNIT         ?PR?_DISPLAYON7SEGMENT?CODE
+            CODE    0123H     0026H     UNIT         ?C?LIB_CODE
+            CODE    0149H     0018H     UNIT         ?PR?_DELAY?CODE
+            CODE    0161H     000CH     UNIT         ?C_C51STARTUP
+            CODE    016DH     000AH     UNIT         ?PR?CCT_INIT?CODE
+
+
+
+OVERLAY MAP OF MODULE:   counter (CODE)
+
+
+SEGMENT                               DATA_GROUP 
+  +--> CALLED SEGMENT               START    LENGTH
+---------------------------------------------------
+?C_C51STARTUP                       -----    -----
+  +--> ?PR?MAIN?CODE
+
+?PR?MAIN?CODE                       0008H    0001H
+  +--> ?PR?CCT_INIT?CODE
+  +--> ?PR?_DISPLAYON7SEGMENT?CODE
+  +--> ?PR?_DELAY?CODE
+
+
+
+SYMBOL TABLE OF MODULE:  counter (CODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/09/2012  14:11:32  PAGE 2
+
+
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:0149H         PUBLIC        _delay
+  C:0003H         PUBLIC        main
+  C:00A9H         PUBLIC        _DisplayOn7Segment
+  C:016DH         PUBLIC        cct_init
+  -------         PROC          MAIN
+  -------         DO            
+  D:0008H         SYMBOL        ch
+  -------         ENDDO         
+  C:0003H         LINE#         26
+  C:0003H         LINE#         27
+  C:0003H         LINE#         28
+  C:0006H         LINE#         30
+  C:0009H         LINE#         32
+  C:0009H         LINE#         33
+  C:0009H         LINE#         34
+  C:000EH         LINE#         35
+  C:0015H         LINE#         37
+  C:004EH         LINE#         38
+  C:004EH         LINE#         39
+  C:0053H         LINE#         40
+  C:0058H         LINE#         41
+  C:005DH         LINE#         42
+  C:0062H         LINE#         43
+  C:0067H         LINE#         44
+  C:006CH         LINE#         45
+  C:0071H         LINE#         46
+  C:0076H         LINE#         47
+  C:007BH         LINE#         48
+  C:0080H         LINE#         49
+  C:0085H         LINE#         50
+  C:008BH         LINE#         51
+  C:0091H         LINE#         52
+  C:0097H         LINE#         53
+  C:009DH         LINE#         54
+  C:00A3H         LINE#         56
+  -------         ENDPROC       MAIN
+  -------         PROC          CCT_INIT
+  C:016DH         LINE#         61
+  C:016DH         LINE#         62
+  C:016DH         LINE#         63
+  C:0170H         LINE#         64
+  C:0172H         LINE#         65
+  C:0174H         LINE#         66
+  C:0176H         LINE#         67
+  -------         ENDPROC       CCT_INIT
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        a
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0149H         LINE#         69
+  C:0149H         LINE#         70
+  C:0149H         LINE#         72
+BL51 BANKED LINKER/LOCATER V6.22                                                      06/09/2012  14:11:32  PAGE 3
+
+
+  C:0160H         LINE#         73
+  -------         ENDPROC       _DELAY
+  -------         PROC          _DISPLAYON7SEGMENT
+  D:0007H         SYMBOL        ch
+  C:00A9H         LINE#         75
+  C:00A9H         LINE#         76
+  C:00A9H         LINE#         77
+  C:00E1H         LINE#         78
+  C:00E1H         LINE#         79
+  C:00E3H         LINE#         80
+  C:00E7H         LINE#         81
+  C:00EBH         LINE#         82
+  C:00EFH         LINE#         83
+  C:00F3H         LINE#         84
+  C:00F7H         LINE#         85
+  C:00FBH         LINE#         86
+  C:00FFH         LINE#         87
+  C:0103H         LINE#         88
+  C:0107H         LINE#         89
+  C:010BH         LINE#         90
+  C:010FH         LINE#         91
+  C:0113H         LINE#         92
+  C:0117H         LINE#         93
+  C:011BH         LINE#         94
+  C:011FH         LINE#         96
+  C:0122H         LINE#         97
+  C:0122H         LINE#         98
+  -------         ENDPROC       _DISPLAYON7SEGMENT
+  -------         ENDMOD        CODE
+
+  -------         MODULE        ?C?CCASE
+  C:0123H         PUBLIC        ?C?CCASE
+  -------         ENDMOD        ?C?CCASE
+
+Program Size: data=10.0 xdata=0 code=375
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

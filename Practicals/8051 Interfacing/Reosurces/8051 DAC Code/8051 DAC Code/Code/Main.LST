@@ -1,0 +1,81 @@
+C51 COMPILER V9.02   MAIN                                                                  07/11/2013 13:01:22 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*  Name     : main.c
+   2           *  Purpose  : Main file for DAC0808 code for AT89C51.
+   3           *  Author   : M.Saeed Yasin
+   4           *  Date     : 10-07-13
+   5           *  Website  : saeedsolutions.blogspot.com
+   6           *  Revision : None
+   7           */
+   8          #include "Includes.h"
+   9          
+  10          // Define Function Prototypes
+  11          void delay_sec(unsigned int);
+  12          void __delay_us(unsigned int);
+  13          
+  14          // Main function
+  15          void main()
+  16          {
+  17   1              P0 = 0x00;                              // Initialize all ports with a value of zero
+  18   1              P1 = 0x00;
+  19   1              P2 = 0x00;
+  20   1              P3 = 0x00;
+  21   1      
+  22   1              InitDAC();                              // Initialize DAC0808 data bus
+  23   1      
+  24   1              while(1)
+  25   1              {  
+  26   2                      Generate_DAC_Voltage(1000);             // Generate 1000mV = 1v at output
+  27   2                      delay_sec(2);                                   // Two second delay
+  28   2                      Generate_DAC_Voltage(2000);             // Generate 2000mV = 2v at output
+  29   2                      delay_sec(2);                                   // Two second delay
+  30   2                      Generate_DAC_Voltage(3000);             // Generate 3000mV = 3v at output
+  31   2                      delay_sec(2);                                   // Two second delay
+  32   2              }
+  33   1      }
+  34          
+  35          
+  36          
+  37          // Function Purpose: Produce approximate delay in Secs.
+  38          void delay_sec(unsigned int d)
+  39          {
+  40   1         unsigned int i;
+  41   1      
+  42   1         for(i=0;i<(d*20);i++)
+  43   1                      __delay_us(50000);
+  44   1      }
+  45          
+  46          
+  47          
+  48          // Function Purpose: Produce approximate delay in given uSecs.
+  49          void __delay_us(unsigned int d)
+  50          {
+  51   1         unsigned int i, limit;
+  52   1         limit = d/15;
+  53   1      
+  54   1         for(i=0;i<limit;i++);
+  55   1      }
+C51 COMPILER V9.02   MAIN                                                                  07/11/2013 13:01:22 PAGE 2   
+
+  56          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    120    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

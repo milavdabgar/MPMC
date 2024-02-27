@@ -1,0 +1,607 @@
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE code.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          // ***********************************************************
+   2          // Project:   Quiz Show
+   3          // Author:    M.Saeed Yasin
+   4          // Module description:  Use LCD, Keypad, and Computer Hyperterminal for a quiz show
+   5          // ***********************************************************
+   6          #include <reg51.h>
+   7          #include <string.h>
+   8          
+   9          //DEFINE CONSTANT
+  10          #define Baud_rate 0xFD  // BAUD RATE 9600 
+  11          
+  12          //Function declarations
+  13          void cct_init(void);
+  14          void delay(int);
+  15          void lcdinit(void);
+  16          void writecmd(int);
+  17          void writedata(char);
+  18          void newline2(void);
+  19          void Return(void);
+  20          char READ_SWITCHES(void);
+  21          char get_key(void);
+  22          void Error(int);              
+  23          void SerialInitialize(void);
+  24          void SendByteSerially(unsigned char);
+  25          unsigned char ReceiveByteSerially(void);        
+  26          void disp_welcome(void);
+  27          void writeline_lcd(char[]);
+  28          void writeline_serial(char[]);
+  29          void disp_msg_lcd(int);
+  30          void Ask_Question(void);
+  31          void Get_Answer_n_Give_Marks(void);
+  32          void Show_Results(void);
+  33          void disp_num_serial(int);
+  34          void disp_num_lcd(int);
+  35          
+  36          
+  37          //***********
+  38          //variables
+  39          char mode = '0';                     //mode = 0 means single player, mode = 1 means double player
+  40          char q1=0,q2=0,q3=0,q4=0,q5=0,q6=0;  //variable q associated with each question stored
+  41          int q_no = 13;                       //current question number being asked, 13 is a false intial value
+  42          int pc_answer = 0;                   //pc firstly pressed a button? 1 means yes
+  43          int keypress = 0;                    //pc key presses count
+  44          int userA_marks = 0;                 //userA marks are stored in this variable
+  45          int userB_marks = 0;                 //userB marks are stored in this variable
+  46          
+  47          //*******************
+  48          //Pin description
+  49          /*
+  50          P2 is data bus
+  51          P3.0 is UART RX
+  52          P3.1 is UART TX
+  53          P3.6 is E
+  54          P3.7 is RS
+  55          P1.0 to P1.3 are keypad row outputs
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 2   
+
+  56          P1.4 to P1.7 are keypad column inputs
+  57          */
+  58          //********************
+  59          // Define Pins
+  60          //********************
+  61          sbit RowA = P1^0;     //RowA
+  62          sbit RowB = P1^1;     //RowB
+  63          sbit RowC = P1^2;     //RowC
+  64          sbit RowD = P1^3;     //RowD
+  65          
+  66          sbit C1   = P1^4;     //Column1
+  67          sbit C2   = P1^5;     //Column2
+  68          sbit C3   = P1^6;     //Column3
+  69          sbit C4   = P1^7;     //Column4
+  70          
+  71          sbit E    = P3^6;     //E pin for LCD
+  72          sbit RS   = P3^7;     //RS pin for LCD
+  73          
+  74          // ***********************************************************
+  75          // Main program
+  76          //
+  77          int main(void)
+  78          {
+  79   1         cct_init();                                     //Initiate all the cct
+  80   1         disp_welcome();                                 //display welcome message
+  81   1         
+  82   1         while(1)
+  83   1         {
+  84   2                 // Initial varible values
+  85   2                 mode = 'e';
+  86   2                 q1=0,q2=0,q3=0,q4=0,q5=0,q6=0;
+  87   2                 q_no = 13;
+  88   2                 pc_answer = 0;
+  89   2                 keypress = 0;
+  90   2                 userA_marks = 0;
+  91   2                 userB_marks = 0;
+  92   2                 
+  93   2                 // Mode selection through key pad
+  94   2                 while(mode!='1' & mode!='0')
+  95   2                 { 
+  96   3                  writecmd(0x01);
+  97   3                      writeline_lcd("Mode 0 or 1?"); 
+  98   3                      mode = get_key();
+  99   3                      if(mode!='1' & mode!='0') { Error(0); newline2(); disp_msg_lcd(0); Return(); delay(30000); writecmd(0x01
+             -); }
+ 100   3                 }
+ 101   2      
+ 102   2                 // Display starting message
+ 103   2                 writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0A);}   //new line and carri
+             -age return
+ 104   2                 writeline_lcd("Start"); if(mode=='1') { writeline_serial("Start"); }
+ 105   2                 delay(30000); delay(30000);writecmd(0x01);
+ 106   2      
+ 107   2                 // Ask question 1
+ 108   2                 writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0A);}   //new line and carri
+             -age return
+ 109   2                 writeline_lcd("Q1"); if(mode=='1') { writeline_serial("Q1"); } 
+ 110   2                 delay(30000); delay(30000);writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0
+             -A);}   //new line and carriage return
+ 111   2                 Ask_Question(); Get_Answer_n_Give_Marks();
+ 112   2      
+ 113   2                 // Ask question 2
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 3   
+
+ 114   2                 writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0A);}   //new line and carri
+             -age return
+ 115   2                 writeline_lcd("Q2"); if(mode=='1') { writeline_serial("Q2"); } 
+ 116   2                 delay(30000); delay(30000); writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x
+             -0A);}   //new line and carriage return
+ 117   2                 Ask_Question(); Get_Answer_n_Give_Marks();
+ 118   2      
+ 119   2                 // Ask question 3
+ 120   2                 writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0A);}   //new line and carri
+             -age return
+ 121   2                 writeline_lcd("Q3"); if(mode=='1') { writeline_serial("Q3"); } 
+ 122   2                 delay(30000); delay(30000);writecmd(0x01); if(mode=='1') {SendByteSerially(0x0D); SendByteSerially(0x0
+             -A);}   //new line and carriage return
+ 123   2                 Ask_Question(); Get_Answer_n_Give_Marks();
+ 124   2                 
+ 125   2                 // Display results
+ 126   2                 Show_Results();   
+ 127   2         }
+ 128   1      }
+ 129          
+ 130          
+ 131          void cct_init(void)
+ 132          {
+ 133   1              P0 = 0x00;   //not used
+ 134   1              P1 = 0xf0;   //used for generating outputs and taking inputs from Keypad
+ 135   1              P2 = 0x00;   //used as data port for LCD
+ 136   1              P3 = 0x03;   //used for RS and E  and serial comm 
+ 137   1      
+ 138   1              SerialInitialize();   // Initialize serial port
+ 139   1              lcdinit();            // Initialize LCD display
+ 140   1      
+ 141   1              EA = 1; ES = 1;      // Enable global and serial interrupts 
+ 142   1      }
+ 143          
+ 144          void delay(int a)
+ 145          {
+ 146   1         int i;
+ 147   1         for(i=0;i<a;i++);   //null statement
+ 148   1      }
+ 149          
+ 150          void writeline_lcd(char line[])
+ 151          {
+ 152   1         int i;
+ 153   1         for(i=0;i<strlen(line);i++)
+ 154   1         { writedata(line[i]); } //write to lcd
+ 155   1      }
+ 156          
+ 157          void writeline_serial(char line1[])
+ 158          {  
+ 159   1         int i;
+ 160   1         EA = 0; ES = 0;
+ 161   1         for(i=0;i<strlen(line1);i++)
+ 162   1         { SendByteSerially(line1[i]); } // SEND DATA TO PC 
+ 163   1         EA = 1; ES = 1;
+ 164   1      }
+ 165          
+ 166          void writedata(char t)
+ 167          {
+ 168   1         RS = 1;             // This is data
+ 169   1         P2 = t;             //Data transfer
+ 170   1         E  = 1;             // => E = 1
+ 171   1         delay(150);
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 4   
+
+ 172   1         E  = 0;             // => E = 0
+ 173   1         delay(150);
+ 174   1      }
+ 175          
+ 176          void writecmd(int z)
+ 177          {
+ 178   1         RS = 0;             // This is command
+ 179   1         P2 = z;             //Data transfer
+ 180   1         E  = 1;             // => E = 1
+ 181   1         delay(150);
+ 182   1         E  = 0;             // => E = 0
+ 183   1         delay(150);
+ 184   1      }
+ 185          
+ 186          void lcdinit(void)
+ 187          {
+ 188   1        ///////////// Reset process from datasheet /////////
+ 189   1           delay(15000);
+ 190   1         writecmd(0x30);
+ 191   1           delay(4500);
+ 192   1         writecmd(0x30);
+ 193   1           delay(300);
+ 194   1         writecmd(0x30);
+ 195   1           delay(650);
+ 196   1        /////////////////////////////////////////////////////
+ 197   1         writecmd(0x38);    //function set
+ 198   1         writecmd(0x0c);    //display on,cursor off,blink off
+ 199   1         writecmd(0x01);    //clear display
+ 200   1         writecmd(0x06);    //entry mode, set increment
+ 201   1      }
+ 202          
+ 203          void Return(void)     //Return to 0 location
+ 204          {
+ 205   1              writecmd(0x02);
+ 206   1              delay(1500);
+ 207   1      }
+ 208          
+ 209          void newline2(void)    //shift to line 2
+ 210          {
+ 211   1              //set DDRAM address to line 2
+ 212   1              writecmd(0xc0);  //11000000
+ 213   1      }
+ 214          
+ 215          char READ_SWITCHES(void)        
+ 216          {       
+ 217   1              RowA = 0; RowB = 1; RowC = 1; RowD = 1;         //Test Row A
+ 218   1      
+ 219   1              if (C1 == 0) { delay(10000); while (C1==0); return '7'; }
+ 220   1              if (C2 == 0) { delay(10000); while (C2==0); return '8'; }
+ 221   1              if (C3 == 0) { delay(10000); while (C3==0); return '9'; }
+ 222   1              if (C4 == 0) { delay(10000); while (C4==0); return '/'; }
+ 223   1      
+ 224   1              RowA = 1; RowB = 0; RowC = 1; RowD = 1;         //Test Row B
+ 225   1      
+ 226   1              if (C1 == 0) { delay(10000); while (C1==0); return '4'; }
+ 227   1              if (C2 == 0) { delay(10000); while (C2==0); return '5'; }
+ 228   1              if (C3 == 0) { delay(10000); while (C3==0); return '6'; }
+ 229   1              if (C4 == 0) { delay(10000); while (C4==0); return 'x'; }
+ 230   1              
+ 231   1              RowA = 1; RowB = 1; RowC = 0; RowD = 1;         //Test Row C
+ 232   1      
+ 233   1              if (C1 == 0) { delay(10000); while (C1==0); return '1'; }
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 5   
+
+ 234   1              if (C2 == 0) { delay(10000); while (C2==0); return '2'; }
+ 235   1              if (C3 == 0) { delay(10000); while (C3==0); return '3'; }
+ 236   1              if (C4 == 0) { delay(10000); while (C4==0); return '-'; }
+ 237   1              
+ 238   1              RowA = 1; RowB = 1; RowC = 1; RowD = 0;         //Test Row D
+ 239   1      
+ 240   1              if (C1 == 0) { delay(10000); while (C1==0); return 'C'; }
+ 241   1              if (C2 == 0) { delay(10000); while (C2==0); return '0'; }
+ 242   1              if (C3 == 0) { delay(10000); while (C3==0); return '='; }
+ 243   1              if (C4 == 0) { delay(10000); while (C4==0); return '+'; }
+ 244   1      
+ 245   1              return 'n';             // Means no key has been pressed
+ 246   1      }
+ 247          
+ 248          char get_key(void)           //get key from user
+ 249          {
+ 250   1              char key = 'n';              //assume no key pressed
+ 251   1      
+ 252   1              while(key=='n')              //wait untill a key is pressed
+ 253   1                      key = READ_SWITCHES();   //scan the keys again and again
+ 254   1      
+ 255   1              return key;                  //when key pressed then return its value
+ 256   1      }
+ 257          
+ 258          void Error(int numb)             //displays differet error messages
+ 259          {
+ 260   1              writecmd(0x01);              //clear display
+ 261   1              
+ 262   1              switch(numb)
+ 263   1              {
+ 264   2              case 0: writeline_lcd("Wrong Input"); break;
+ 265   2              }
+ 266   1      }
+ 267          
+ 268          void SerialInitialize(void)                        // INITIALIZE SERIAL PORT
+ 269          {
+ 270   1              TMOD = 0x20;                           // Timer 1 IN MODE 2 -AUTO RELOAD TO GENERATE BAUD RATE
+ 271   1              SCON = 0x50;                                   // SERIAL MODE 1, 8-DATA BIT 1-START BIT, 1-STOP BIT, REN ENABLED
+ 272   1              TH1 = Baud_rate;                               // LOAD BAUDRATE TO TIMER REGISTER
+ 273   1              TR1 = 1;                                           // START TIMER
+ 274   1      }
+ 275          
+ 276          void SendByteSerially(unsigned char serialdata)
+ 277          {
+ 278   1              SBUF = serialdata;                                  // LOAD DATA TO SERIAL BUFFER REGISTER
+ 279   1              while(TI == 0);                                 // WAIT UNTIL TRANSMISSION TO COMPLETE
+ 280   1              TI = 0;                                                 // CLEAR TRANSMISSION INTERRUPT FLAG
+ 281   1      }
+ 282          
+ 283          
+ 284          unsigned char ReceiveByteSerially(void) 
+ 285          {
+ 286   1              while(RI == 0);                                 // WAIT UNTIL DATA IS RECEIVED 
+ 287   1              RI = 0;                                         // CLEAR FLAG
+ 288   1      
+ 289   1              //echo back
+ 290   1              SBUF = SBUF;
+ 291   1              while(TI == 0);                             // WAIT UNTIL TRANSMISSION TO COMPLETE
+ 292   1              TI = 0;                                         // CLEAR TRANSMISSION INTERRUPT FLAG
+ 293   1              return SBUF;                                    // RETURN SERIAL DATA
+ 294   1      }
+ 295          
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 6   
+
+ 296          void serial_ISR (void) interrupt 4
+ 297          {
+ 298   1          //receive character
+ 299   1              char chr;
+ 300   1              if(RI==1)
+ 301   1              {
+ 302   2                      chr=SBUF;
+ 303   2                      RI=0;
+ 304   2              }
+ 305   1      
+ 306   1              keypress++;
+ 307   1      
+ 308   1          switch(chr)
+ 309   1              {
+ 310   2              case '0': pc_answer = 1; break;
+ 311   2      
+ 312   2          default: ;  break;     //do nothing
+ 313   2              }
+ 314   1      
+ 315   1              RI = 0;
+ 316   1      }         
+ 317                    
+ 318          
+ 319          void disp_welcome(void)
+ 320          {
+ 321   1              //Write to PC
+ 322   1              writeline_serial("\tWelcome to Quiz Show");
+ 323   1              SendByteSerially(0x0D); SendByteSerially(0x0A);   //new line and carriage return
+ 324   1      
+ 325   1              //Write to LCD
+ 326   1              writeline_lcd("Welcome...");
+ 327   1              Return();                                        //Return to 0 position
+ 328   1      
+ 329   1              delay(30000);
+ 330   1              delay(30000);
+ 331   1              writecmd(0x01);                                  //clear display
+ 332   1      }
+ 333                  
+ 334                  
+ 335          void disp_msg_lcd(int numb)
+ 336          {
+ 337   1              switch(numb)
+ 338   1              {
+ 339   2              case 0: writeline_lcd("Try Again..."); break;
+ 340   2              }
+ 341   1      }
+ 342          
+ 343          void Ask_Question(void)
+ 344          {
+ 345   1              int q = 13;
+ 346   1              writecmd(0x01);
+ 347   1              
+ 348   1              //randomize question
+ 349   1              while(!(q<7 & q>-1))
+ 350   1              {
+ 351   2                      q = (TL1%6);
+ 352   2                      if(q1==1 & q==1)  { q = 6; }
+ 353   2                      if(q2==1 & q==2)  { q = 4; }
+ 354   2                      if(q3==1 & q==3)  { q = 5; }
+ 355   2                      if(q4==1 & q==4)  { q = 6; }
+ 356   2                      if(q5==1 & q==5)  { q = 2; }
+ 357   2                      if(q6==1 & q==6)  { q = 3; }
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 7   
+
+ 358   2              }
+ 359   1      
+ 360   1              switch(q)
+ 361   1              {
+ 362   2              case 1:  q1=1; writeline_lcd("3,8,15,24,35..."); newline2(); writeline_lcd("51  48  46  42"); Return();
+ 363   2                               if(mode=='1') { writeline_serial("3,8,15,24,35...   options are (1)51  (2)48  (3)46  (4)42"); } break;
+ 364   2              case 2:  q2=1; writeline_lcd("6,14,18,28,30..."); newline2(); writeline_lcd("32  46  42  28"); Return();
+ 365   2                               if(mode=='1') { writeline_serial("6,14,18,28,30...   options are (1)32  (2)46  (3)42  (4)28"); } break
+             -;
+ 366   2              case 3:  q3=1; writeline_lcd("4, 1, 0, 1, 4..."); newline2(); writeline_lcd("1   3   9   0"); Return();
+ 367   2                               if(mode=='1') { writeline_serial("4, 1, 0, 1, 4...   options are (1)1  (2)3  (3)9  (4)0"); } break;
+ 368   2              case 4:  q4=1; writeline_lcd("-1, 4, 1, 6, 3..."); newline2(); writeline_lcd("8   10   5   7"); Return();
+ 369   2                               if(mode=='1') { writeline_serial("-1, 4, 1, 6, 3...   options are (1)8  (2)10  (3)5  (4)7"); } break;
+ 370   2              case 5:  q5=1; writeline_lcd("10,21,33,46,60..."); newline2(); writeline_lcd("88   73   65   75"); Return
+             -();
+ 371   2                               if(mode=='1') { writeline_serial("10,21,33,46,60...   options are (1)88  (2)73  (3)65  (4)75"); } brea
+             -k;
+ 372   2              case 6:  q6=1; writeline_lcd("1-1+1-1+...inf=?"); newline2(); writeline_lcd("0   1   1/2   -1"); Return()
+             -;
+ 373   2                               if(mode=='1') { writeline_serial("1-1+1-1+...inf=?   options are (1)0  (2)1  (3)1/2  (4)-1"); } break;
+ 374   2              }
+ 375   1              
+ 376   1              q_no = q;
+ 377   1      }
+ 378          
+ 379          void Get_Answer_n_Give_Marks(void)
+ 380          {
+ 381   1              char answer = 'e';
+ 382   1              char user = 'a';
+ 383   1              pc_answer = 0;
+ 384   1      
+ 385   1              switch(mode)
+ 386   1              {
+ 387   2              case '0': answer = get_key(); break;
+ 388   2              case '1': while(answer!='0' & pc_answer == 0 )
+ 389   2                                {  answer = READ_SWITCHES(); }
+ 390   2                                if(answer == '0') { user = 'a'; writecmd(0x01); writeline_lcd("Answer: "); answer = get_key(); }
+ 391   2                                else if(pc_answer == 1) { user = 'b'; pc_answer = 0; writeline_serial("Answer: ");ES = 0; answer = Re
+             -ceiveByteSerially(); ES = 1; }
+ 392   2                                break;
+ 393   2              }
+ 394   1              
+ 395   1              if(user=='b' & mode=='1')
+ 396   1              {
+ 397   2              if(q_no==1 & answer == '2') { userB_marks+=5; }
+ 398   2              else if(q_no==2 & answer == '3') { userB_marks+=5; }
+ 399   2              else if(q_no==3 & answer == '3') { userB_marks+=5; }
+ 400   2              else if(q_no==4 & answer == '1') { userB_marks+=5; }
+ 401   2              else if(q_no==5 & answer == '4') { userB_marks+=5; }
+ 402   2              else if(q_no==6 & answer == '3') { userB_marks+=5; }
+ 403   2              else
+ 404   2              { userB_marks-=3; writeline_serial("  userA turn");writecmd(0x01); writeline_lcd("Answer: "); answer = ge
+             -t_key(); 
+ 405   3                if(q_no==1 & answer == '2') { userA_marks+=5; }
+ 406   3                else if(q_no==2 & answer == '3') { userA_marks+=5; }
+ 407   3                else if(q_no==3 & answer == '3') { userA_marks+=5; }
+ 408   3                else if(q_no==4 & answer == '1') { userA_marks+=5; }
+ 409   3                else if(q_no==5 & answer == '4') { userA_marks+=5; }
+ 410   3                else if(q_no==6 & answer == '3') { userA_marks+=5; }}
+ 411   2              }
+ 412   1              else if(user=='a' & mode=='1')
+ 413   1              {
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 8   
+
+ 414   2              if(q_no==1 & answer == '2') { userA_marks+=5; }
+ 415   2              else if(q_no==2 & answer == '3') { userA_marks+=5; }
+ 416   2              else if(q_no==3 & answer == '3') { userA_marks+=5; }
+ 417   2              else if(q_no==4 & answer == '1') { userA_marks+=5; }
+ 418   2              else if(q_no==5 & answer == '4') { userA_marks+=5; }
+ 419   2              else if(q_no==6 & answer == '3') { userA_marks+=5; }
+ 420   2              else
+ 421   2              { userA_marks-=3; newline2(); writeline_lcd("  userB turn");writeline_serial("Answer: ");ES = 0; answer =
+             - ReceiveByteSerially(); ES = 1;
+ 422   3                 if(q_no==1 & answer == '2') { userB_marks+=5; }
+ 423   3                 else if(q_no==2 & answer == '3') { userB_marks+=5; }
+ 424   3                 else if(q_no==3 & answer == '3') { userB_marks+=5; }
+ 425   3                 else if(q_no==4 & answer == '1') { userB_marks+=5; }
+ 426   3                 else if(q_no==5 & answer == '4') { userB_marks+=5; }
+ 427   3                 else if(q_no==6 & answer == '3') { userB_marks+=5; }}
+ 428   2              }
+ 429   1              else if(mode=='0')
+ 430   1              {
+ 431   2              if(q_no==1 & answer == '2') { userA_marks+=5; }
+ 432   2              else if(q_no==2 & answer == '3') { userA_marks+=5; }
+ 433   2              else if(q_no==3 & answer == '3') { userA_marks+=5; }
+ 434   2              else if(q_no==4 & answer == '1') { userA_marks+=5; }
+ 435   2              else if(q_no==5 & answer == '4') { userA_marks+=5; }
+ 436   2              else if(q_no==6 & answer == '3') { userA_marks+=5; }
+ 437   2              else
+ 438   2              { userA_marks-=2; }
+ 439   2              }
+ 440   1      }
+ 441          
+ 442          
+ 443          void Show_Results(void)
+ 444          {
+ 445   1              //UserA Marks
+ 446   1              writecmd(0x01);
+ 447   1              writeline_lcd("Ur Marks...");
+ 448   1              newline2();
+ 449   1              disp_num_lcd(userA_marks);
+ 450   1              writeline_lcd("/15");
+ 451   1              Return();
+ 452   1      
+ 453   1              SendByteSerially(0x0D); SendByteSerially(0x0A);   //new line and carriage return
+ 454   1              writeline_serial("userA Marks:");
+ 455   1              disp_num_serial(userA_marks);
+ 456   1              writeline_serial("/15");
+ 457   1              SendByteSerially(0x0D); SendByteSerially(0x0A);   //new line and carriage return
+ 458   1      
+ 459   1              if(mode=='1')
+ 460   1              {
+ 461   2              //UserB Marks
+ 462   2      
+ 463   2              SendByteSerially(0x0D); SendByteSerially(0x0A);   //new line and carriage return
+ 464   2              writeline_serial("userB Marks:");
+ 465   2              disp_num_serial(userB_marks);
+ 466   2              writeline_serial("/15");
+ 467   2              SendByteSerially(0x0D); SendByteSerially(0x0A);   //new line and carriage return
+ 468   2      
+ 469   2              delay(30000);
+ 470   2              delay(30000);
+ 471   2              delay(30000);
+ 472   2              delay(30000);
+ 473   2              writecmd(0x01);
+ 474   2              writeline_lcd("PC Marks...");
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 9   
+
+ 475   2              newline2();
+ 476   2              disp_num_lcd(userB_marks);
+ 477   2              writeline_lcd("/15");
+ 478   2              Return();
+ 479   2              }
+ 480   1      
+ 481   1              //wait for user key press
+ 482   1              keypress = 0;
+ 483   1              while(READ_SWITCHES()=='n' & keypress == 0 ) {;}
+ 484   1      }
+ 485          
+ 486          void disp_num_lcd(int numb)            //displays inputted number on LCD
+ 487          {
+ 488   1              writedata(' ');                    //write a space and then number
+ 489   1              
+ 490   1              switch(numb)
+ 491   1              {
+ 492   2              case -9: writedata('-'); writedata('9'); break;
+ 493   2              case -8: writedata('-'); writedata('8'); break;
+ 494   2              case -7: writedata('-'); writedata('7'); break;
+ 495   2              case -6: writedata('-'); writedata('6'); break;
+ 496   2              case -5: writedata('-'); writedata('5'); break;
+ 497   2              case -4: writedata('-'); writedata('4'); break;
+ 498   2              case -3: writedata('-'); writedata('3'); break;
+ 499   2              case -2: writedata('-'); writedata('2'); break;
+ 500   2              case -1: writedata('-'); writedata('1'); break;
+ 501   2              case 0:  writedata('0'); break;
+ 502   2              case 1:  writedata('1'); break;
+ 503   2              case 2:  writedata('2'); break;
+ 504   2              case 3:  writedata('3'); break;
+ 505   2              case 4:  writedata('4'); break;
+ 506   2              case 5:  writedata('5'); break;
+ 507   2              case 6:  writedata('6'); break;
+ 508   2              case 7:  writedata('7'); break;
+ 509   2              case 8:  writedata('8'); break;
+ 510   2              case 9:  writedata('9'); break;
+ 511   2              case 10: writedata('1'); writedata('0'); break;
+ 512   2              case 11: writedata('1'); writedata('1'); break;
+ 513   2              case 12: writedata('1'); writedata('2'); break;
+ 514   2              case 13: writedata('1'); writedata('3'); break;
+ 515   2              case 14: writedata('1'); writedata('4'); break;
+ 516   2              case 15: writedata('1'); writedata('5'); break;
+ 517   2              }
+ 518   1      }
+ 519          
+ 520          
+ 521          void disp_num_serial(int value)            //displays value on pc
+ 522          {
+ 523   1              switch(value)
+ 524   1              {
+ 525   2              case -9: SendByteSerially('-');SendByteSerially('9'); break;
+ 526   2              case -8: SendByteSerially('-');SendByteSerially('8'); break;
+ 527   2              case -7: SendByteSerially('-');SendByteSerially('7'); break;
+ 528   2              case -6: SendByteSerially('-');SendByteSerially('6'); break;
+ 529   2              case -5: SendByteSerially('-');SendByteSerially('5'); break;
+ 530   2              case -4: SendByteSerially('-');SendByteSerially('4'); break;
+ 531   2              case -3: SendByteSerially('-');SendByteSerially('3'); break;
+ 532   2              case -2: SendByteSerially('-');SendByteSerially('2'); break;
+ 533   2              case -1: SendByteSerially('-');SendByteSerially('1'); break;
+ 534   2              case 0: SendByteSerially('0'); break;
+ 535   2              case 1: SendByteSerially('1'); break;
+ 536   2              case 2: SendByteSerially('2'); break;
+C51 COMPILER V9.02   CODE                                                                  06/02/2012 20:30:01 PAGE 10  
+
+ 537   2              case 3: SendByteSerially('3'); break;
+ 538   2              case 4: SendByteSerially('4'); break;
+ 539   2              case 5: SendByteSerially('5'); break;
+ 540   2              case 6: SendByteSerially('6'); break;
+ 541   2              case 7: SendByteSerially('7'); break;
+ 542   2              case 8: SendByteSerially('8'); break;
+ 543   2              case 9: SendByteSerially('9'); break;
+ 544   2              case 10: SendByteSerially('1');SendByteSerially('0'); break;
+ 545   2              case 11: SendByteSerially('1');SendByteSerially('1'); break;
+ 546   2              case 12: SendByteSerially('1');SendByteSerially('2'); break;
+ 547   2              case 13: SendByteSerially('1');SendByteSerially('3'); break;
+ 548   2              case 14: SendByteSerially('1');SendByteSerially('4'); break;
+ 549   2              case 15: SendByteSerially('1');SendByteSerially('5'); break;
+ 550   2              }
+ 551   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =   3630    ----
+   CONSTANT SIZE    =    713    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     17      13
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

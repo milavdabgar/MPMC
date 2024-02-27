@@ -1,0 +1,144 @@
+C51 COMPILER V9.02   CODE                                                                  05/30/2012 14:28:53 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE code.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          // ***********************************************************
+   2          // Project:   LCD 8bit
+   3          // Author:    M.Saeed Yasin
+   4          // Module description:  Operate LCD in 8bit mode
+   5          // ***********************************************************
+   6          
+   7          #include<reg51.h>
+   8          
+   9          //Function declarations
+  10          void cct_init(void);
+  11          void delay(int);
+  12          void lcdinit(void);
+  13          void writecmd(int);
+  14          void writedata(char);
+  15          void ReturnHome(void);
+  16          
+  17          //*******************
+  18          //Pin description
+  19          /*
+  20          P2 is data bus
+  21          P1.0 is RS
+  22          P1.1 is E
+  23          */
+  24          //********************
+  25          
+  26          // Defines Pins
+  27          sbit RS = P1^0;
+  28          sbit E  = P1^1;
+  29          
+  30          // ***********************************************************
+  31          // Main program
+  32          //
+  33          void main(void)
+  34          {
+  35   1         cct_init();                                     //Make all ports zero
+  36   1      
+  37   1         lcdinit();                                      //Initilize LCD
+  38   1      
+  39   1         writedata('H');                                 //write
+  40   1         writedata('e');                                 //write
+  41   1         writedata('l');                                 //write
+  42   1         writedata('l');                                 //write
+  43   1         writedata('o');                                 //write
+  44   1         writedata(' ');                                 //write
+  45   1         writedata('W');                                 //write
+  46   1         writedata('o');                                 //write
+  47   1         writedata('r');                                 //write
+  48   1         writedata('l');                                 //write
+  49   1         writedata('d');                                 //write
+  50   1         writedata('!');                                 //write
+  51   1      
+  52   1         ReturnHome();                                   //Return to 0 position
+  53   1      
+  54   1              while(1)
+  55   1              {
+C51 COMPILER V9.02   CODE                                                                  05/30/2012 14:28:53 PAGE 2   
+
+  56   2              }
+  57   1      
+  58   1      }
+  59          
+  60          
+  61          void cct_init(void)
+  62          {
+  63   1      P0 = 0x00;   //not used 
+  64   1      P1 = 0x00;   //not used 
+  65   1      P2 = 0x00;   //used as data port
+  66   1      P3 = 0x00;   //used for generating E and RS
+  67   1      }
+  68          
+  69          void delay(int a)
+  70          {
+  71   1         int i;
+  72   1         for(i=0;i<a;i++);   //null statement
+  73   1      }
+  74          
+  75          void writedata(char t)
+  76          {
+  77   1         RS = 1;             // => RS = 1
+  78   1         P2 = t;             //Data transfer
+  79   1         E  = 1;             // => E = 1
+  80   1         delay(150);
+  81   1         E  = 0;             // => E = 0
+  82   1         delay(150);
+  83   1      }
+  84          
+  85          
+  86          void writecmd(int z)
+  87          {
+  88   1         RS = 0;             // => RS = 0
+  89   1         P2 = z;             //Data transfer
+  90   1         E  = 1;             // => E = 1
+  91   1         delay(150);
+  92   1         E  = 0;             // => E = 0
+  93   1         delay(150);
+  94   1      }
+  95          
+  96          void lcdinit(void)
+  97          {
+  98   1        ///////////// Reset process from datasheet /////////
+  99   1           delay(15000);
+ 100   1         writecmd(0x30);
+ 101   1           delay(4500);
+ 102   1         writecmd(0x30);
+ 103   1           delay(300);
+ 104   1         writecmd(0x30);
+ 105   1           delay(650);
+ 106   1        /////////////////////////////////////////////////////
+ 107   1         writecmd(0x38);    //function set
+ 108   1         writecmd(0x0c);    //display on,cursor off,blink off
+ 109   1         writecmd(0x01);    //clear display
+ 110   1         writecmd(0x06);    //entry mode, set increment
+ 111   1      }
+ 112          
+ 113          void ReturnHome(void)     //Return to 0 location
+ 114          {
+ 115   1        writecmd(0x02);
+ 116   1          delay(1500);
+ 117   1      }
+C51 COMPILER V9.02   CODE                                                                  05/30/2012 14:28:53 PAGE 3   
+
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    216    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

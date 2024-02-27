@@ -1,0 +1,63 @@
+C51 COMPILER V9.54   CODE                                                                  08/02/2018 14:20:16 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE CODE
+OBJECT MODULE PLACED IN code.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE code.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "lcd.h"
+   2          #include "delay.h"
+   3          // ***********************************************************
+   4          // Main program
+   5          //
+   6          void main(void)
+   7          {
+   8   1         cct_init();                                     //Make all ports zero
+   9   1         
+  10   1         lcdinit();                                      //Initilize LCD
+  11   1         
+  12   1         writedata('H');                                 //write
+  13   1         writedata('e');                                 //write
+  14   1         writedata('l');                                 //write
+  15   1         writedata('l');                                 //write
+  16   1         writedata('o');                                 //write
+  17   1         writedata(' ');                                 //write
+  18   1         writedata('W');                                 //write
+  19   1         writedata('o');                                 //write
+  20   1         writedata('r');                                 //write
+  21   1         writedata('l');                                 //write
+  22   1         writedata('d');                                 //write
+  23   1         writedata('!');                                 //write
+  24   1      
+  25   1         ReturnHome();                                   //Return to 0 position
+  26   1            
+  27   1        while(1)
+  28   1        {
+  29   2        }
+  30   1      
+  31   1      }
+  32          
+  33          
+  34          void cct_init(void)
+  35          {
+  36   1      P0 = 0x00;   //not used 
+  37   1      P1 = 0x00;   //not used 
+  38   1      P2 = 0x00;   //used as data port
+  39   1      P3 = 0x00;   //used for generating E and RS
+  40   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     81    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

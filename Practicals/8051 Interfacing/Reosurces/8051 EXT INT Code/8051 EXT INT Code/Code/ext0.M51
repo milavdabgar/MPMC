@@ -1,0 +1,107 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        02/29/2016  11:54:09  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE code.obj TO ext0
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  code.obj (CODE)
+  C:\KEIL_V5\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  ext0 (CODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0003H     ABSOLUTE     
+            CODE    0006H     000CH     UNIT         ?C_C51STARTUP
+            CODE    0012H     000BH     UNIT         ?PR?CCT_INIT?CODE
+            CODE    001DH     0008H     UNIT         ?PR?MAIN?CODE
+            CODE    0025H     0007H     UNIT         ?PR?INITINT0?CODE
+            CODE    002CH     0003H     UNIT         ?PR?EXTERNAL0_ISR?CODE
+
+
+
+OVERLAY MAP OF MODULE:   ext0 (CODE)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CODE
+
+?PR?MAIN?CODE
+  +--> ?PR?CCT_INIT?CODE
+  +--> ?PR?INITINT0?CODE
+
+
+
+SYMBOL TABLE OF MODULE:  ext0 (CODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+BL51 BANKED LINKER/LOCATER V6.22                                                      02/29/2016  11:54:09  PAGE 2
+
+
+  D:00B0H         PUBLIC        P3
+  B:00A8H.7       PUBLIC        EA
+  C:001DH         PUBLIC        main
+  C:0025H         PUBLIC        InitINT0
+  C:002CH         PUBLIC        external0_isr
+  B:00A8H.0       PUBLIC        EX0
+  B:0088H.0       PUBLIC        IT0
+  C:0012H         PUBLIC        cct_init
+  B:0090H.0       PUBLIC        LED
+  -------         PROC          MAIN
+  C:001DH         LINE#         17
+  C:001DH         LINE#         18
+  C:001DH         LINE#         19
+  C:0020H         LINE#         20
+  C:0023H         LINE#         22
+  C:0023H         LINE#         23
+  -------         ENDPROC       MAIN
+  -------         PROC          CCT_INIT
+  C:0012H         LINE#         27
+  C:0012H         LINE#         28
+  C:0012H         LINE#         29
+  C:0015H         LINE#         30
+  C:0017H         LINE#         31
+  C:0019H         LINE#         32
+  C:001CH         LINE#         33
+  -------         ENDPROC       CCT_INIT
+  -------         PROC          INITINT0
+  C:0025H         LINE#         36
+  C:0025H         LINE#         37
+  C:0025H         LINE#         38
+  C:0027H         LINE#         39
+  C:0029H         LINE#         40
+  C:002BH         LINE#         41
+  -------         ENDPROC       INITINT0
+  -------         PROC          EXTERNAL0_ISR
+  C:002CH         LINE#         44
+  C:002CH         LINE#         46
+  C:002EH         LINE#         47
+  -------         ENDPROC       EXTERNAL0_ISR
+  -------         ENDMOD        CODE
+
+Program Size: data=9.0 xdata=0 code=47
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)

@@ -1,0 +1,111 @@
+C51 COMPILER V9.02   ADC0808                                                               01/24/2013 17:55:19 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE ADC0808
+OBJECT MODULE PLACED IN ADC0808.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE ADC0808.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Includes.h"
+   2          
+   3          
+   4          void InitADC(void)
+   5          {
+   6   1              Add_A = 0;                // Make output
+   7   1              Add_B = 0;                // Make output 
+   8   1              Add_C = 0;                // Make output
+   9   1              ALE   = 0;                // Make output
+  10   1              EOC   = 1;                // Make input
+  11   1              OE    = 0;                // Make output
+  12   1              START = 0;                // Make output
+  13   1              CLK   = 0;                // Make output
+  14   1              
+  15   1              Data_Bus = 0xFF;  // Make Inputs        
+  16   1      }
+  17          
+  18          
+  19          
+  20          unsigned char ReadADC(unsigned char Channel)
+  21          {
+  22   1              unsigned int i = 0;
+  23   1              unsigned int ADC_value = 0;
+  24   1      
+  25   1              // Select Channel
+  26   1              switch(Channel)
+  27   1              {
+  28   2              case AN0: Add_C = 0;  Add_B = 0;  Add_A = 0; break;
+  29   2              case AN1: Add_C = 0;  Add_B = 0;  Add_A = 1; break;
+  30   2              case AN2: Add_C = 0;  Add_B = 1;  Add_A = 0; break;
+  31   2              case AN3: Add_C = 0;  Add_B = 1;  Add_A = 1; break;
+  32   2              case AN4: Add_C = 1;  Add_B = 0;  Add_A = 0; break;
+  33   2              case AN5: Add_C = 1;  Add_B = 0;  Add_A = 1; break;
+  34   2              case AN6: Add_C = 1;  Add_B = 1;  Add_A = 0; break;
+  35   2              case AN7: Add_C = 1;  Add_B = 1;  Add_A = 1; break;
+  36   2              }          
+  37   1      
+  38   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  39   1              ALE = 1;                                                // Enable Address Latch
+  40   1              CLK = 1;                                                // Make CLK High
+  41   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  42   1              CLK = 0;                                                // Make CLK Low
+  43   1              START = 1;                                              // Start ADC Conversion
+  44   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  45   1              CLK = 1;                                                // Make CLK High
+  46   1              ALE = 0;                                                // Disable Address Latch
+  47   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  48   1              CLK = 0;                                                // Make CLK Low
+  49   1              START = 0;                                              // Complete the start pulse
+  50   1      
+  51   1              for(i=0;i<2000;i++)
+  52   1              {
+  53   2                      CLK = !CLK;                                     // Toggle Clock
+  54   2                      __delay_us(HalfCycleDelay);     // 250kHz Frequency
+  55   2      
+C51 COMPILER V9.02   ADC0808                                                               01/24/2013 17:55:19 PAGE 2   
+
+  56   2                      if(!EOC)                                        // Wait for EOC to be low
+  57   2                              break;
+  58   2              }
+  59   1      
+  60   1              for(i=0;i<2000;i++)
+  61   1              {
+  62   2                      CLK = !CLK;                                     // Toggle Clock
+  63   2                      __delay_us(HalfCycleDelay);     // 250kHz Frequency
+  64   2      
+  65   2                      if(EOC)                                         // Wait for EOC to be High      
+  66   2                              break;
+  67   2              }
+  68   1      
+  69   1              CLK = 0;                                                // Make CLK Low
+  70   1              OE = 1;                                                 // Enable Output
+  71   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  72   1              CLK = 1;                                                // Make CLK High
+  73   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  74   1              CLK = 0;                                                // Make CLK Low
+  75   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  76   1              CLK = 1;                                                // Make CLK High
+  77   1      
+  78   1              ADC_value = Data_Bus;                   // Read value
+  79   1      
+  80   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  81   1              OE = 0;                                                 // Disable Output
+  82   1              CLK = 0;                                                // Make CLK Low
+  83   1              __delay_us(HalfCycleDelay);             // 250kHz Frequency
+  84   1      
+  85   1              return ADC_value;                               // Return ADC value
+  86   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    283    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

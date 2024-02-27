@@ -1,0 +1,4 @@
+"ADC0808.obj",
+"Main.obj",
+"LCD.obj" 
+TO "ADC" 

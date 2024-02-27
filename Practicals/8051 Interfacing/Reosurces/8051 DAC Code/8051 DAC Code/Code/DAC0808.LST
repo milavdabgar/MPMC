@@ -1,0 +1,39 @@
+C51 COMPILER V9.02   DAC0808                                                               07/11/2013 13:01:22 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE DAC0808
+OBJECT MODULE PLACED IN DAC0808.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE DAC0808.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          #include "Includes.h"
+   2          
+   3          
+   4          void InitDAC(void)
+   5          {       
+   6   1              DAC_Data_Bus = 0x00;  // Make Outputs   
+   7   1      }
+   8          
+   9          
+  10          void Generate_DAC_Voltage(unsigned int mV)                       // Input should be in mV
+  11          {
+  12   1               unsigned long V = ((unsigned long)mV * 25)/VREF;// Scale the input value
+  13   1               V = V/98;                                                                               // Conversion factor
+  14   1      
+  15   1              DAC_Data_Bus = (unsigned char)V;                                 // Assign proper value to DAC inputs
+  16   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     48    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

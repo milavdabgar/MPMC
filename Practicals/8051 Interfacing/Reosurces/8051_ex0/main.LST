@@ -1,0 +1,60 @@
+C51 COMPILER V7.00  MAIN                                                                   05/06/2002 11:23:48 PAGE 1   
+
+
+C51 COMPILER V7.00, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN main.OBJ
+COMPILER INVOKED BY: C:\KEIL\C51\BIN\C51.EXE main.c BROWSE DEBUG OBJECTEXTEND
+
+stmt level    source
+
+   1          #include <REG52.H>
+   2          
+   3          /*=============================================================================
+   4          =============================================================================*/
+   5          unsigned char ex0_isr_counter = 0;
+   6          
+   7          void ex0_isr (void) interrupt 0
+   8          {
+   9   1      ex0_isr_counter++;   // Increment the count
+  10   1      }
+  11          
+  12          /*=============================================================================
+  13          =============================================================================*/
+  14          void main (void)
+  15          {
+  16   1      
+  17   1      /*-----------------------------------------------
+  18   1      Configure INT0 (external interrupt 0) to generate
+  19   1      an interrupt on the falling-edge of /INT0 (P3.2).
+  20   1      Enable the EX0 interrupt and then enable the
+  21   1      global interrupt flag.
+  22   1      -----------------------------------------------*/
+  23   1      IT0 = 1;   // Configure interrupt 0 for falling edge on /INT0 (P3.2)
+  24   1      EX0 = 1;   // Enable EX0 Interrupt
+  25   1      EA = 1;    // Enable Global Interrupt Flag
+  26   1      
+  27   1      /*-----------------------------------------------
+  28   1      Wait forever.
+  29   1      -----------------------------------------------*/
+  30   1      while (1)
+  31   1        {
+  32   2        }
+  33   1      }
+  34          
+  35          /*=============================================================================
+  36          =============================================================================*/
+  37          
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =     11    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =      1    ----
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

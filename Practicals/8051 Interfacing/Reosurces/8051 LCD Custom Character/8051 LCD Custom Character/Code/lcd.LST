@@ -1,0 +1,191 @@
+C51 COMPILER V9.02   LCD                                                                   05/31/2012 12:42:19 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN lcd.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE lcd.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*-----------------------------------------------------------------------*/
+   2          /* Project Name: LCD 8bit Custom Character Generation                    */
+   3          /* Author: Saeed Yasin 24/08/2010
+   4          /* --------------------------------------------------------------------- */
+   5          
+   6          #include <reg51.h>
+   7          #include <string.h>
+   8          
+   9          /* Function declarations */
+  10          void cct_init(void);
+  11          void delay(int);
+  12          void lcdinit(void);
+  13          void writecmd(int);
+  14          void writedata(char);
+  15          void writeline(char[]);
+  16          void ReturnHome(void);
+  17          void LCDBuildChar(unsigned char, unsigned char*);
+  18          
+  19          /*-----------------------
+  20          Pin description
+  21          -------------------------
+  22          P2 is data bus
+  23          P3.0 is RS
+  24          P3.1 is E
+  25          -----------------------*/
+  26          
+  27          // -----------------------   Define Custom Characters ----------------------- //
+  28          unsigned char Character1[8] = { 0x1c,0x16,0x1d,0x01,0x1d,0x16,0x1c,0x00 };   // Phone Up 1
+  29          unsigned char Character2[8] = { 0x07,0x0d,0x17,0x10,0x17,0x0d,0x07,0x00 };   // Phone Up 2
+  30          unsigned char Character3[8] = { 0x1f,0x1f,0x12,0x04,0x09,0x10,0x1f,0x00 };   // Phone Down 1
+  31          unsigned char Character4[8] = { 0x1f,0x1f,0x09,0x04,0x12,0x01,0x1f,0x00 };   // Phone Down 2
+  32          unsigned char Character5[8] = { 0x04,0x04,0x04,0x04,0x15,0x0e,0x04,0x00 };   // Downward Arrow
+  33          unsigned char Character6[8] = { 0x04,0x0e,0x15,0x04,0x04,0x04,0x04,0x00 };   // Upward Arrow
+  34          unsigned char Character7[8] = { 0x01,0x02,0x04,0x08,0x10,0x11,0x1f,0x00 };   // Curvy Object
+  35          unsigned char Character8[8] = { 0x00,0x1f,0x11,0x11,0x11,0x1f,0x00,0x00 };   // Square Box
+  36          /*---------------------------------------------------*/
+  37          
+  38          
+  39          /* Main program */
+  40          int main(void)
+  41          {
+  42   1         cct_init();                                     /* Make all ports zero */
+  43   1         lcdinit();                                      /* Initilize LCD */
+  44   1      
+  45   1         writedata(0x00);                                /* Write Custom Character 1 */
+  46   1         writedata(0x01);                                /* Write Custom Character 2 */
+  47   1            writedata(' ');                              // Space
+  48   1         writedata(0x02);                                /* Write Custom Character 3 */
+  49   1         writedata(0x03);                                /* Write Custom Character 4 */
+  50   1            writedata(' ');                              // Space
+  51   1         writedata(0x04);                                /* Write Custom Character 5 */
+  52   1         writedata(0x05);                                /* Write Custom Character 6 */
+  53   1            writedata(' ');                              // Space
+  54   1         writedata(0x06);                                /* Write Custom Character 7 */
+  55   1         writedata(0x07);                                /* Write Custom Character 8 */
+C51 COMPILER V9.02   LCD                                                                   05/31/2012 12:42:19 PAGE 2   
+
+  56   1      
+  57   1         while(1)
+  58   1         {;}
+  59   1      }
+  60          /*---------------------------------------------------*/
+  61          
+  62          /* Function definitons */
+  63          
+  64          void cct_init(void)
+  65          {
+  66   1         P0 = 0x00;   /* not used */
+  67   1         P1 = 0x00;   /* not used */
+  68   1         P2 = 0x00;   /* used as data port */
+  69   1         P3 = 0x00;   /* used for generating E and RS */
+  70   1      }
+  71          
+  72          void delay(int a)
+  73          {
+  74   1         int i;
+  75   1         for(i=0;i<a;i++);   /* null statement */
+  76   1      }
+  77          
+  78          void writedata(char t)
+  79          {
+  80   1         P3 |= 0x01;         /*   => RS = 1     */
+  81   1         P2 = t;             /*   Data transfer */
+  82   1         P3 |= 0x02;         /*   => E = 1      */
+  83   1         delay(150);
+  84   1         P3 &= 0xfd;         /*   => E = 0      */
+  85   1         delay(150);
+  86   1      }
+  87          
+  88          
+  89          void writecmd(int z)
+  90          {
+  91   1         P3 &= 0xfe;         /*   => RS = 1     */
+  92   1         P2 = z;             /*   Data transfer */
+  93   1         P3 |= 0x02;         /*   => E = 1      */
+  94   1         delay(150);
+  95   1         P3 &= 0xfd;         /*   => E = 0      */
+  96   1         delay(150);
+  97   1      }
+  98          
+  99          void lcdinit(void)
+ 100          {
+ 101   1        /* ------------ Reset process from datasheet ----------- */
+ 102   1           delay(15000);
+ 103   1         writecmd(0x30);
+ 104   1           delay(4500);
+ 105   1         writecmd(0x30);
+ 106   1           delay(300);
+ 107   1         writecmd(0x30);
+ 108   1           delay(650);
+ 109   1        /* ----------------------------------------------------- */
+ 110   1         writecmd(0x38);    /* function set */
+ 111   1         writecmd(0x0c);    /* display on,cursor off,blink off */
+ 112   1         writecmd(0x01);    /* clear display */
+ 113   1         writecmd(0x06);    /* entry mode, set increment */
+ 114   1         
+ 115   1         /* ---------- Build Custom Characters -----------------*/
+ 116   1         
+ 117   1         LCDBuildChar(0, Character1);                    /* Build Character1 at position 0 */ 
+C51 COMPILER V9.02   LCD                                                                   05/31/2012 12:42:19 PAGE 3   
+
+ 118   1         LCDBuildChar(1, Character2);                    /* Build Character2 at position 1 */ 
+ 119   1         LCDBuildChar(2, Character3);                    /* Build Character3 at position 2 */ 
+ 120   1         LCDBuildChar(3, Character4);                    /* Build Character4 at position 3 */ 
+ 121   1         LCDBuildChar(4, Character5);                    /* Build Character5 at position 4 */ 
+ 122   1         LCDBuildChar(5, Character6);                    /* Build Character6 at position 5 */ 
+ 123   1         LCDBuildChar(6, Character7);                    /* Build Character6 at position 6 */ 
+ 124   1         LCDBuildChar(7, Character8);                    /* Build Character6 at position 7 */ 
+ 125   1      }
+ 126          
+ 127          void ReturnHome(void)     /* Return to 0 cursor location */
+ 128          {
+ 129   1         writecmd(0x02);
+ 130   1         delay(1500);
+ 131   1      }
+ 132          
+ 133          void writeline(char Line[])
+ 134          {
+ 135   1         int i;
+ 136   1         for(i=0;i<strlen(Line);i++)
+ 137   1         {
+ 138   2            writedata(Line[i]);     /* Write Character */
+ 139   2         }
+ 140   1         
+ 141   1         ReturnHome();          /* Return to 0 cursor position */
+ 142   1      }
+ 143          
+ 144          /********************************************************** 
+ 145          Function Name: LCDBuildChar
+ 146          Input:
+ 147               loc: location where you want to store  0,1,2,....7          
+ 148               p: Pointer to pattern data
+ 149          Usage:
+ 150               LCDBuildChar(1,pattern);
+ 151           ********************************************************* */
+ 152          
+ 153          void LCDBuildChar(unsigned char loc, unsigned char *p)
+ 154          {
+ 155   1           unsigned char i;
+ 156   1               
+ 157   1           if(loc<8)                                 //If valid address
+ 158   1               {
+ 159   2               writecmd(0x40+(loc*8));               //Write to CGRAM
+ 160   2               for(i=0;i<8;i++)
+ 161   2                  writedata(p[i]);                   //Write the character pattern to CGRAM
+ 162   2           }
+ 163   1               writecmd(0x80);                           //shift back to DDRAM location 0
+ 164   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    433    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =     64       9
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

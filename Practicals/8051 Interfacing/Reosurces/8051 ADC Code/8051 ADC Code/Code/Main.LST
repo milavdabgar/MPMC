@@ -1,0 +1,61 @@
+C51 COMPILER V9.02   MAIN                                                                  01/24/2013 17:55:20 PAGE 1   
+
+
+C51 COMPILER V9.02, COMPILATION OF MODULE MAIN
+OBJECT MODULE PLACED IN Main.OBJ
+COMPILER INVOKED BY: C:\Keil\C51\BIN\C51.EXE Main.c BROWSE DEBUG OBJECTEXTEND
+
+line level    source
+
+   1          /*  Name     : main.c
+   2           *  Purpose  : Main file for ADC0808 code for AT89C51.
+   3           *  Author   : M.Saeed Yasin
+   4           *  Date     : 24-01-13
+   5           *  Website  : saeedsolutions.blogspot.com
+   6           *  Revision : None
+   7           */
+   8          #include "Includes.h"
+   9          
+  10          // Main function
+  11          void main()
+  12          {
+  13   1              unsigned char ADC_Value = 0;            // To capture ADC value
+  14   1              unsigned char Digit[3] = { 0,0,0 };     // To make digits to display on LCD
+  15   1      
+  16   1              InitADC();                                                      // Initialize ADC
+  17   1              InitLCD();                                                      // Initialize LCD display
+  18   1              WriteStringToLCD("Starting...");        // Show Welcome Message
+  19   1              delay_sec(1);                                           // 2 Sec delay
+  20   1              ClearLCDScreen();                                       // Clear LCD
+  21   1      
+  22   1              while(1)
+  23   1              {
+  24   2                      ADC_Value = ReadADC(AN1);               // Read ADC value from Channel 1
+  25   2      
+  26   2                      Digit[2] = (unsigned char)(     ADC_Value/100);                                 // Find out first digit
+  27   2                      Digit[1] = (unsigned char)( ADC_Value/10) - Digit[2]*10;        // Find out second digit
+  28   2                      Digit[0] = ADC_Value - Digit[2]*100 - Digit[1]*10;                      // Find out third digit
+  29   2      
+  30   2                      ClearLCDScreen();                                                                                       // Clear LCD
+  31   2                      WriteStringToLCD("ADC value = ");                                                       // Display string
+  32   2                      WriteDataToLCD(Digit[2]+0x30);                                                          // Display first digit
+  33   2                      WriteDataToLCD(Digit[1]+0x30);                                                          // Display second digit
+  34   2                      WriteDataToLCD(Digit[0]+0x30);                                                          // Display third digit
+  35   2      
+  36   2                      delay_sec(1);                                                                                            // Delay of one second
+  37   2              }
+  38   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    144    ----
+   CONSTANT SIZE    =     28    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       4
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

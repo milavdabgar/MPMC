@@ -1,0 +1,22 @@
+
+;<Arrange data bytes in ascending order>
+
+LXI H,4150H
+MOV C,M
+DCR C
+REPEAT: MOV D,C
+LXI H,4151H
+LOOP: MOV A,M
+INX H
+CMP M
+JNC SKIP
+MOV B,M
+MOV M,A
+DCX H
+MOV M,B
+INX H
+SKIP:  DCR D
+JNZ LOOP
+DCR C
+JNZ REPEAT
+HLT

@@ -1,0 +1,128 @@
+C51 COMPILER V9.54   LCD                                                                   08/02/2018 14:20:16 PAGE 1   
+
+
+C51 COMPILER V9.54, COMPILATION OF MODULE LCD
+OBJECT MODULE PLACED IN lcd.OBJ
+COMPILER INVOKED BY: C:\Keil_v5\C51\BIN\C51.EXE lcd.c OPTIMIZE(8,SPEED) BROWSE DEBUG OBJECTEXTEND TABS(2)
+
+line level    source
+
+   1          #include "lcd.h"
+   2          #include "delay.h"
+   3          
+   4          void writedata(char t)
+   5          {
+   6   1         RS = 1;             // This is data
+   7   1      
+   8   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+   9   1         P2 |= (t&0xF0);     // Write Upper nibble of data
+  10   1      
+  11   1         E  = 1;             // => E = 1
+  12   1         delay_us(150);
+  13   1         E  = 0;             // => E = 0
+  14   1         delay_us(150);
+  15   1      
+  16   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  17   1         P2 |= ((t<<4)&0xF0);// Write Lower nibble of data
+  18   1      
+  19   1         E  = 1;             // => E = 1
+  20   1         delay_us(150);
+  21   1         E  = 0;             // => E = 0
+  22   1         delay_us(150);
+  23   1      }
+  24          
+  25          
+  26          void writecmd(int z)
+  27          {
+  28   1         RS = 0;             // This is command
+  29   1      
+  30   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  31   1         P2 |= (z&0xF0);     // Write Upper nibble of data
+  32   1      
+  33   1         E  = 1;             // => E = 1
+  34   1         delay_us(150);
+  35   1         E  = 0;             // => E = 0
+  36   1         delay_us(150);
+  37   1      
+  38   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  39   1         P2 |= ((z<<4)&0xF0);// Write Lower nibble of data
+  40   1      
+  41   1         E  = 1;             // => E = 1
+  42   1         delay_us(150);
+  43   1         E  = 0;             // => E = 0
+  44   1         delay_us(150);
+  45   1      }
+  46          
+  47          void lcdinit(void)
+  48          {
+  49   1        ///////////// Reset process from datasheet /////////
+  50   1           delay_us(15000);
+  51   1      
+  52   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  53   1         P2 |= (0x30&0xF0);    // Write 0x3
+  54   1        
+  55   1         E  = 1;               // => E = 1
+C51 COMPILER V9.54   LCD                                                                   08/02/2018 14:20:16 PAGE 2   
+
+  56   1         delay_us(150);
+  57   1         E  = 0;               // => E = 0
+  58   1         delay_us(150);
+  59   1      
+  60   1           delay_us(4500);
+  61   1      
+  62   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  63   1         P2 |= (0x30&0xF0);    // Write 0x3
+  64   1        
+  65   1         E  = 1;               // => E = 1
+  66   1         delay_us(150);
+  67   1         E  = 0;               // => E = 0
+  68   1         delay_us(150);
+  69   1      
+  70   1           delay_us(300);
+  71   1      
+  72   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  73   1         P2 |= (0x30&0xF0);    // Write 0x3
+  74   1        
+  75   1         E  = 1;               // => E = 1
+  76   1         delay_us(150);
+  77   1         E  = 0;               // => E = 0
+  78   1         delay_us(150);
+  79   1      
+  80   1           delay_us(650);
+  81   1      
+  82   1         P2 &= 0x0F;       // Make P2.4 to P2.7 zero
+  83   1         P2 |= (0x20&0xF0);    // Write 0x2
+  84   1        
+  85   1         E  = 1;               // => E = 1
+  86   1         delay_us(150);
+  87   1         E  = 0;               // => E = 0
+  88   1         delay_us(150);
+  89   1      
+  90   1         delay_us(650);
+  91   1      
+  92   1        /////////////////////////////////////////////////////
+  93   1         writecmd(0x28);    //function set
+  94   1         writecmd(0x0c);    //display on,cursor off,blink off
+  95   1         writecmd(0x01);    //clear display
+  96   1         writecmd(0x06);    //entry mode, set increment
+  97   1      }
+  98          
+  99          void ReturnHome(void)     //Return to 0 location
+ 100          {
+ 101   1        writecmd(0x02);
+ 102   1          delay_us(1500);
+ 103   1      }
+
+
+MODULE INFORMATION:   STATIC OVERLAYABLE
+   CODE SIZE        =    294    ----
+   CONSTANT SIZE    =   ----    ----
+   XDATA SIZE       =   ----    ----
+   PDATA SIZE       =   ----    ----
+   DATA SIZE        =   ----       3
+   IDATA SIZE       =   ----    ----
+   BIT SIZE         =   ----    ----
+END OF MODULE INFORMATION.
+
+
+C51 COMPILATION COMPLETE.  0 WARNING(S),  0 ERROR(S)

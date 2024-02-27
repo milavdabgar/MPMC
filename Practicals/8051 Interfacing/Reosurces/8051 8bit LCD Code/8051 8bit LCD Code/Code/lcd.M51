@@ -1,0 +1,190 @@
+BL51 BANKED LINKER/LOCATER V6.22                                                        05/30/2012  14:28:54  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22, INVOKED BY:
+C:\KEIL\C51\BIN\BL51.EXE code.obj TO lcd
+
+
+MEMORY MODEL: SMALL
+
+
+INPUT MODULES INCLUDED:
+  code.obj (CODE)
+  C:\KEIL\C51\LIB\C51S.LIB (?C_STARTUP)
+
+
+LINK MAP OF MODULE:  lcd (CODE)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+            CODE    0003H     0047H     UNIT         ?PR?MAIN?CODE
+            CODE    004AH     003EH     UNIT         ?PR?LCDINIT?CODE
+            CODE    0088H     0020H     UNIT         ?PR?_DELAY?CODE
+            CODE    00A8H     0011H     UNIT         ?PR?_WRITECMD?CODE
+            CODE    00B9H     000EH     UNIT         ?PR?RETURNHOME?CODE
+            CODE    00C7H     000CH     UNIT         ?C_C51STARTUP
+            CODE    00D3H     000AH     UNIT         ?PR?CCT_INIT?CODE
+            CODE    00DDH     000AH     UNIT         ?PR?_WRITEDATA?CODE
+
+
+
+OVERLAY MAP OF MODULE:   lcd (CODE)
+
+
+SEGMENT
+  +--> CALLED SEGMENT
+---------------------
+?C_C51STARTUP
+  +--> ?PR?MAIN?CODE
+
+?PR?MAIN?CODE
+  +--> ?PR?CCT_INIT?CODE
+  +--> ?PR?LCDINIT?CODE
+  +--> ?PR?_WRITEDATA?CODE
+  +--> ?PR?RETURNHOME?CODE
+
+?PR?LCDINIT?CODE
+  +--> ?PR?_WRITECMD?CODE
+  +--> ?PR?_DELAY?CODE
+
+?PR?_WRITECMD?CODE
+  +--> ?PR?_DELAY?CODE
+
+?PR?_WRITEDATA?CODE
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/30/2012  14:28:54  PAGE 2
+
+
+  +--> ?PR?_DELAY?CODE
+
+?PR?RETURNHOME?CODE
+  +--> ?PR?_WRITECMD?CODE
+  +--> ?PR?_DELAY?CODE
+
+
+
+SYMBOL TABLE OF MODULE:  lcd (CODE)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        CODE
+  C:0000H         SYMBOL        _ICE_DUMMY_
+  D:0080H         PUBLIC        P0
+  D:0090H         PUBLIC        P1
+  D:00A0H         PUBLIC        P2
+  D:00B0H         PUBLIC        P3
+  C:00B9H         PUBLIC        ReturnHome
+  C:0090H         PUBLIC        _delay
+  B:0090H.0       PUBLIC        RS
+  C:0003H         PUBLIC        main
+  B:0090H.1       PUBLIC        E
+  C:00DDH         PUBLIC        _writedata
+  C:00D3H         PUBLIC        cct_init
+  C:00AFH         PUBLIC        _writecmd
+  C:004AH         PUBLIC        lcdinit
+  -------         PROC          MAIN
+  C:0003H         LINE#         33
+  C:0003H         LINE#         34
+  C:0003H         LINE#         35
+  C:0006H         LINE#         37
+  C:0009H         LINE#         39
+  C:000EH         LINE#         40
+  C:0013H         LINE#         41
+  C:0018H         LINE#         42
+  C:001DH         LINE#         43
+  C:0022H         LINE#         44
+  C:0027H         LINE#         45
+  C:002CH         LINE#         46
+  C:0031H         LINE#         47
+  C:0036H         LINE#         48
+  C:003BH         LINE#         49
+  C:0040H         LINE#         50
+  C:0045H         LINE#         52
+  C:0048H         LINE#         54
+  C:0048H         LINE#         55
+  C:0048H         LINE#         56
+  -------         ENDPROC       MAIN
+  -------         PROC          CCT_INIT
+  C:00D3H         LINE#         61
+  C:00D3H         LINE#         62
+  C:00D3H         LINE#         63
+  C:00D6H         LINE#         64
+  C:00D8H         LINE#         65
+  C:00DAH         LINE#         66
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/30/2012  14:28:54  PAGE 3
+
+
+  C:00DCH         LINE#         67
+  -------         ENDPROC       CCT_INIT
+  -------         PROC          L?0014
+  -------         ENDPROC       L?0014
+  -------         PROC          _DELAY
+  D:0006H         SYMBOL        a
+  -------         DO            
+  D:0004H         SYMBOL        i
+  -------         ENDDO         
+  C:0090H         LINE#         69
+  C:0090H         LINE#         70
+  C:0090H         LINE#         72
+  C:00A7H         LINE#         73
+  -------         ENDPROC       _DELAY
+  -------         PROC          _WRITEDATA
+  D:0007H         SYMBOL        t
+  C:00DDH         LINE#         75
+  C:00DDH         LINE#         76
+  C:00DDH         LINE#         77
+  C:00DFH         LINE#         78
+  C:00DFH         LINE#         79
+  C:00DFH         LINE#         80
+  C:00E2H         LINE#         81
+  C:00E4H         LINE#         82
+  -------         ENDPROC       _WRITEDATA
+  -------         PROC          L?0015
+  -------         ENDPROC       L?0015
+  -------         PROC          _WRITECMD
+  D:0006H         SYMBOL        z
+  C:00AFH         LINE#         86
+  C:00AFH         LINE#         87
+  C:00AFH         LINE#         88
+  C:00B1H         LINE#         89
+  C:00B1H         LINE#         90
+  C:00B1H         LINE#         91
+  C:00B4H         LINE#         92
+  C:00B6H         LINE#         93
+  -------         ENDPROC       _WRITECMD
+  -------         PROC          LCDINIT
+  C:004AH         LINE#         96
+  C:004AH         LINE#         97
+  C:004AH         LINE#         99
+  C:004EH         LINE#         100
+  C:0051H         LINE#         101
+  C:0055H         LINE#         102
+  C:0058H         LINE#         103
+  C:005FH         LINE#         104
+  C:0065H         LINE#         105
+  C:006CH         LINE#         107
+  C:0073H         LINE#         108
+  C:007AH         LINE#         109
+  C:0081H         LINE#         110
+  -------         ENDPROC       LCDINIT
+  -------         PROC          RETURNHOME
+  C:00B9H         LINE#         113
+  C:00B9H         LINE#         114
+  C:00B9H         LINE#         115
+BL51 BANKED LINKER/LOCATER V6.22                                                      05/30/2012  14:28:54  PAGE 4
+
+
+  C:00C0H         LINE#         116
+  -------         ENDPROC       RETURNHOME
+  -------         ENDMOD        CODE
+
+Program Size: data=9.0 xdata=0 code=231
+LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
