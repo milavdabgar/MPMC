@@ -919,34 +919,34 @@ void main(void)
 sbit MYSW = P2 ^ 0; // input switch
 void main(void)
 {
-	unsigned char z;
-	unsigned char Mess1[] = "Normal Speed";
-	unsigned char Mess2[] = "High Speed";
-	TMOD = 0x20; // use Timer 1, mode 2
-	TH1 = 0xFF;	 // 28800 for normal
-	SCON = 0x50;
-	TR1 = 1; // start timer
-	if (MYSW == 0)
-	{
-		for (z = 0; z < 12; z++)
-		{
-			SBUF = Mess1[z]; // place value in buffer
-			while (TI == 0)
-				; // wait for transmit
-			TI = 0;
-		}
-	}
-	else
-	{
-		PCON = PCON | 0x80; // for high speed of 56K
-		for (z = 0; z < 10; z++)
-		{
-			SBUF = Mess2[z]; // place value in buffer
-			while (TI == 0)
-				; // wait for transmit
-			TI = 0;
-		}
-	}
+    unsigned char z;
+    unsigned char Mess1[] = "Normal Speed";
+    unsigned char Mess2[] = "High Speed";
+    TMOD = 0x20; // use Timer 1, mode 2
+    TH1 = 0xFF;     // 28800 for normal
+    SCON = 0x50;
+    TR1 = 1; // start timer
+    if (MYSW == 0)
+    {
+        for (z = 0; z < 12; z++)
+        {
+            SBUF = Mess1[z]; // place value in buffer
+            while (TI == 0)
+                ; // wait for transmit
+            TI = 0;
+        }
+    }
+    else
+    {
+        PCON = PCON | 0x80; // for high speed of 56K
+        for (z = 0; z < 10; z++)
+        {
+            SBUF = Mess2[z]; // place value in buffer
+            while (TI == 0)
+                ; // wait for transmit
+            TI = 0;
+        }
+    }
 }
 // Example 10-20
 // Write a C program for the DS89C4x0 to transfer the letter “A” serially
@@ -1012,19 +1012,19 @@ sbit WAVE = P2 ^ 5;
 
 void timer0(void) interrupt 1
 {
-	WAVE = ~WAVE; // toggle pin
+    WAVE = ~WAVE; // toggle pin
 }
 
 void main()
 {
-	SW = 1; // make switch input
-	TMOD = 0x02;
-	TH0 = 0xA4; // TH0=-92
-	IE = 0x82;	// enable interrupt for timer 0
-	while (1)
-	{
-		IND = SW; // send switch to LED
-	}
+    SW = 1; // make switch input
+    TMOD = 0x02;
+    TH0 = 0xA4; // TH0=-92
+    IE = 0x82;    // enable interrupt for timer 0
+    while (1)
+    {
+        IND = SW; // send switch to LED
+    }
 }
 // Example 11-16
 // Write a C program using interrupts to do the following:
