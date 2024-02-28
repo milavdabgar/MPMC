@@ -247,16 +247,16 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Pins 10 – 17 (PORT 3):** Pins 10 to 17 form the PORT 3 pins of the 8051 Microcontroller. PORT 3 also acts as a bidirectional Input / Output PORT with internal pull-ups. Additionally, all the PORT 3 Pins have special functions. The following table gives the details of the additional functions of PORT 3 Pins.
 
-| _PORT 3 Pin_ | _Function_ | _Description_         |
-| ------------ | ---------- | --------------------- |
-| P3.0         | RXD        | Serial Input          |
-| P3.1         | TXD        | Serial Output         |
-| P3.2         | INT0       | External Interrupt 0  |
-| P3.3         | INT1       | External Interrupt 1  |
-| P3.4         | T0         | Timer 0               |
-| P3.5         | T1         | Timer 1               |
-| P3.6         | WR         | External Memory Write |
-| P3.7         | RD         | External Memory Read  |
+| PORT 3 Pin | Function | Description           |
+| ---------- | -------- | --------------------- |
+| P3.0       | RXD      | Serial Input          |
+| P3.1       | TXD      | Serial Output         |
+| P3.2       | INT0     | External Interrupt 0  |
+| P3.3       | INT1     | External Interrupt 1  |
+| P3.4       | T0       | Timer 0               |
+| P3.5       | T1       | Timer 1               |
+| P3.6       | WR       | External Memory Write |
+| P3.7       | RD       | External Memory Read  |
 
 **Pins 18 & 19:** Pins 18 and 19 i.e. XTAL 2 and XTAL 1 are the pins for connecting external oscillator. Generally, a Quartz Crystal Oscillator is connected here.
 
@@ -1290,8 +1290,6 @@ void LCD_init()
 
 ## Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
 
-Here's a breakdown of the 8051 assembly program to multiply 05h and 03h, along with explanations:
-
 ```assembly
 ORG 0000H ; Set the starting address of the program to 0000H 
 
@@ -1323,17 +1321,8 @@ END           ; End of program
 * The 8051 can only multiply 8-bit numbers. The result of  05H * 03H = 0FH (15), fits within a single byte so there's no overflow in this case.
 * If the result was larger than 255 (FFh), the overflow flag (OV) in the program status word (PSW) would be set.
 
-**How to Assemble and Run:**
-
-To run this code, you would need:
-
-1. **An 8051 Assembler:** To convert the assembly code into machine code.
-2. **An 8051 Simulator or Emulator:**  To run the machine code and see the results. There are many 8051 simulators available online if you don't have an 8051 development board. 
-
 
 ## Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)
-
-Absolutely! Here's the 8051 ALP (Assembly Language Program) to accomplish this task:
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
@@ -1363,12 +1352,8 @@ END        ; End of program
 7. **MOV 52H, A:** Stores the lower byte (LSB) of the result in memory location 52H.
 8. **MOV 51H, B:** Stores the higher byte (MSB) of the result in memory location 51H.
 
-Let me know if you'd like any modifications or further tasks to be performed with this code! 
-
 
 ## Write a program using DIV instruction to divide two bytes 09h and 02h. (3)
-
-Here's the 8051 assembly program to divide 09h by 02h using the DIV instruction:
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
@@ -1406,8 +1391,6 @@ In this case, 09h / 02h = 4 (quotient) with a remainder of 1.
 
 ## Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
 
-Absolutely! Here's the 8051 assembly program to divide the numbers stored at 20h and 21h and store the results:
-
 ```assembly
 ORG 0000H ; Set the program's starting address
 
@@ -1436,12 +1419,8 @@ END           ; End of program
 7. **MOV 40H, A:** Stores the quotient (from A) into memory location 40H.
 8. **MOV 41H, B:** Stores the remainder (from B) into memory location 41H.
 
-**Let me know if you would like to do any other operations with the 8051 microcontroller!** 
-
 
 ## Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
-
-Here's a program to create a square wave with a 50% duty cycle on the P1.3 pin of an 8051 microcontroller. I'll provide the code, along with explanations, and some important considerations:
 
 **Code (Assuming Timer 0, Mode 1):**
 
@@ -1501,12 +1480,8 @@ SJMP HERE      ; Repeat indefinitely
 * **Output Pin:** Ensure that P1.3 is configured as an output pin.
 * **Desired Period/Frequency:** Adjust the calculation to achieve your specific square wave timing requirements.
 
-**Let me know if you have any specific timing requirements or want to customize this further!** 
-
 
 ## Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
-
-Here's the 8051 ALP code to generate a square wave on P1.1 using Timer 0 in Mode 1, along with explanations:
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -1556,12 +1531,8 @@ SJMP HERE      ; Loop back to create the square wave
 * **Desired Frequency:** Modify the calculation to get the square wave frequency you need.
 * **Pin Configuration:**  Ensure that P1.1 is configured as an output pin. 
 
-Let me know if you'd like to modify the frequency or target a different pin! 
-
 
 ## Write software delay loop using two registers and explain in brief. (4)
-
-Absolutely! Here's an 8051 ALP software delay loop using two registers, with a brief explanation:
 
 ```assembly
 ORG 0000H 
@@ -1599,12 +1570,8 @@ The nested loops create a series of decrement operations.  The combination of in
 * **Crystal Frequency:**  For more accurate delays, you'll need to calibrate the initial values (in R0 and R1) based on your crystal frequency.
 * **Timer Alternatives:** For very precise delays, consider using the 8051's built-in timers instead of software delay loops.
 
-**Let me know if you'd like help calibrating the delay for a specific time or if you want to explore using timers!** 
-
 
 ## Write sequence of instructions for masking 4 lower bits of content of R2. (3)
-
-Here's the sequence of 8051 instructions to mask the lower 4 bits of R2, along with an explanation:
 
 ```assembly
 MOV A, R2      ; Copy the contents of R2 into the accumulator
@@ -1627,12 +1594,8 @@ MOV R2, A      ; Move the result back into R2
 * **Hexadecimal Mask:** The value 0F0H (binary: 1111 0000) is used as a mask because it has '1's in the bit positions you want to preserve and '0's in the bit positions you want to clear.
 * **Masking:** Masking is a technique used to isolate or clear specific  bits within a byte.
 
-Let me know if you'd like an explanation of how the AND operation works at the bit level! 
-
 
 ## Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
-
-Here's a sequence of instructions to fill internal memory locations 20H to 2FH with the data FFH in an 8051 microcontroller:
 
 ```assembly
 MOV R0, #20H  ; Load starting address into a register (R0 in this case)
@@ -1663,12 +1626,8 @@ CJNE R0, #30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump t
 * **Indirect Addressing:** The `@R0` syntax means that the contents of R0 are used as the memory address.
 * **Loop Termination:** The CJNE instruction ensures the loop runs until memory location 2FH is filled. 
 
-Let me know if you'd like to modify this to fill a different range of memory locations! 
-
 
 ## Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
-
-Here's the ALP (Assembly Language Program) to accomplish this task:
 
 ```assembly
 ORG 0000H  ; Set origin of the program
@@ -1712,12 +1671,8 @@ END            ; End of program
 * **DPTR Setup:** Ensure that your DPTR register is correctly initialized to point to the start of external memory before executing this code.
 * **MOVC vs. MOVX:** `MOVC` is used to read from code memory (usually within the 8051), while `MOVX` is used for external data memory.
 
-Let me know if you have any other operations you'd like to perform with external memory on the 8051! 
-
 
 ## Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
-
-Absolutely! Here's the circuit diagram description, 8051 program, and the necessary explanations:
 
 **Circuit Diagram**
 
@@ -1782,12 +1737,10 @@ RET
 * **Resistor Calculation:** Calculate the correct resistor value for your LEDs and supply voltage.
 * **Delay Adjustment:** Modify values in the DELAY subroutine for your desired LED flashing speed.
 
-**Let me know if you have a specific LED sequence in mind or want a more calibrated delay!** 
-
 
 ## Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
 
-Here's how you can write a program to separate the data 71h in the accumulator into R3 = 07h and R4 = 01h. We'll use a combination of bit-shifting and masking operations:
+We'll use a combination of bit-shifting and masking operations:
 
 ```assembly
 MOV A, #71H   ; Load 71h into the accumulator
@@ -1818,12 +1771,8 @@ SHR A         ; Shift right by 4 positions (move upper nibble to lower)
 * **R3:** Contains 00000111 (7)
 * **R4:**  Contains 00000001 (1)
 
-**Let me know if you'd like to perform other data manipulation tasks with the 8051!**
-
 
 ## Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
-
-Absolutely! Here's the 8051 assembly program to add the first 9 numbers and store the result at memory location 77h:
 
 ```assembly
 ORG 0000H       ; Set the program's starting address
@@ -1855,12 +1804,8 @@ END              ; End of program
 * **Registers:** We use registers for calculations and as a loop counter.
 * **DJNZ Instruction:** The 'Decrement and Jump if Not Zero' instruction creates the loop.
 
-Let me know if you want to calculate the sum of a different series of numbers! 
-
 
 ## Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
-
-Here's the assembly code to exchange the data in registers R1 and R2 of an 8051 microcontroller using PUSH and POP:
 
 ```assembly
 PUSH R1  ; Push the contents of R1 onto the stack
@@ -1886,8 +1831,6 @@ The stack in the 8051 microcontroller operates in a LIFO (Last In, First Out) ma
 
 
 ## Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
-
-Absolutely! Here's the assembly code to copy the data 99H to RAM locations 30H to 50H using a counter:
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -1922,12 +1865,8 @@ END            ; End of program
 
 8. **DJNZ R1, COPY_LOOP:** Decrements the counter in R1 and jumps back to the `COPY_LOOP` label if the counter is not zero. The loop continues until the counter reaches zero.
 
-**Let me know if you'd like to copy a different data value or to a different range of memory locations!**
-
 
 ## Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
-
-Here's a breakdown of how to connect the switches and LEDs, along with the 8051 program. I'll describe the diagram, as creating a visual one is difficult in this format.
 
 **Circuit Diagram**
 
@@ -1979,12 +1918,8 @@ END           ; End of program
 * **Switch Logic:**  Make sure your switch connections result in a logic HIGH when pressed and a logic LOW when released.
 * **LED Considerations:** Ensure Port P2 can handle the current requirements of your LEDs.
 
-**Let me know if you have any specific questions about the connections or want a more complex control scheme for the LEDs!** 
-
 
 ## Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
-
-Absolutely! Here's the 8051 assembly program to accomplish this task:
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -2022,11 +1957,7 @@ END               ; End of program
 
 **At the end of this program, the largest number will be stored in internal RAM location 20H.**
 
-**Let me know if you want to modify the number of elements or the storage locations!** 
-
 ## Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
-
-Here's the 8051 assembly program to add the numbers in R0 and R1, storing the result in external RAM at locations 1030h and 1031h.
 
 ```assembly
 ORG 0000H ; Set the starting address of the program
@@ -2060,12 +1991,8 @@ END                ; End of program
 * **DPTR Setup:** Make sure your DPTR is correctly set up to point to the external memory region you want to use.
 * **Overflow Handling:**  This code correctly handles the potential overflow when adding 8-bit numbers.
 
-**Let me know if you have other calculations you'd like to perform!** 
-
 
 ## Write an ALP to exchange the content of A and B (3)
-
-Absolutely! Here are a few different methods to exchange the contents of the accumulator (A) and register B in 8051 assembly language:
 
 **Method 1: Using a Temporary Register (e.g., R0)**
 
@@ -2095,14 +2022,8 @@ XOR A, B    ; XOR A and B again (result in original value of A, now in B)
 * **Method 2:**  The `XCH` instruction is specifically designed for exchanging values between the accumulator and another register. It's the most efficient way if your 8051 microcontroller supports it.
 * **Method 3:**  This method uses the XOR (Exclusive OR) operation, which has the interesting property that when you XOR a value with itself, the result is zero. This allows for a clever exchange mechanism.
 
-**Choose the method that best suits your needs or the instructions available on your specific 8051 microcontroller.**
-
-Let me know if you'd like to exchange values between other registers or memory locations! 
-
 
 ## Write an ALP to multiply the content of A and B. (3)
-
-Here's the ALP (Assembly Language Program) to multiply the contents of the accumulator (A) and register B in the 8051 microcontroller:
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -2129,12 +2050,8 @@ If A = 5 (00000101) and B = 3 (00000011), then after `MUL AB`:
 * A (Accumulator) would contain 15 (00001111) - the lower byte 
 * B would contain 0 (00000000) - the higher byte (in this case, it's zero)
 
-**Let me know if you need help writing a multiplication algorithm for larger numbers!** 
-
 
 ## Write an ALP to divide the content of A and B. (3)
-
-Here's the ALP (Assembly Language Program) to divide the contents of the accumulator (A) by register B in the 8051:
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -2162,6 +2079,4 @@ If A = 10 (00001010) and B = 3 (00000011), then after `DIV AB`:
 
 * A (Accumulator) would contain 3 (00000011) – the quotient
 * B would contain 1 (00000001) – the remainder 
-
-**Let me know if you need to handle potential overflow situations or want to work with fractional values!** 
 
