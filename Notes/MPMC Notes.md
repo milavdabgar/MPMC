@@ -535,49 +535,88 @@ AD0-AD7  |Addr |_______| Data |________
 * The ALE signal is crucial for the 8085 to correctly interface with memory and I/O devices.
 * The external latch holds the lower order address bits, freeing the 8085 to continue its fetch or write operation.
 
-### Instruction Fetching
+### Instruction Fetching, Decoding and Execution
 
-### Instruction Decoding and Execution
+#### **Instruction Fetching**
+
+1. **Program Counter (PC):** The PC, a 16-bit register, holds the memory address of the next instruction to be fetched.
+2. **Memory Address Register (MAR):**  The contents of the PC are copied into the MAR.
+3. **Memory Read:** The 8085's control unit sends a read signal to the memory, and  the instruction code at the address specified by the MAR is placed on the data bus.
+4. **Instruction Register (IR):** The instruction code is transferred from the data bus to the Instruction Register.
+5. **PC Increment:**  The PC is incremented to point to the next instruction in memory.
+
+#### **Instruction Decoding**
+
+1. **Instruction Decoder:** The instruction code in the IR is interpreted by the 8085's instruction decoder circuitry. It identifies the specific operation to be performed (opcode) and the operands involved.
+2. **Control Signals:** The instruction decoder generates appropriate control signals to coordinate the upcoming execution. These signals control the flow of data within the 8085, directing the ALU, registers, and the timing of operations.
+
+#### **Instruction Execution**
+
+The execution phase varies significantly depending on the specific instruction. Here's a general breakdown of the kinds of steps involved:
+
+* **Operand Fetching:** If the instruction uses operands (data), additional machine cycles may be involved in fetching these from either:
+    * **Registers:** Accessed directly within the microprocessor.
+    * **Memory:**  The MAR is loaded with the memory address of the operand, and another memory read operation is performed.
+* **ALU Operations:** For arithmetic or logical instructions, the ALU is engaged to perform the required calculation or comparison.
+* **Result Storage:** The results of an operation may be stored in:
+    * **Accumulator:** A special register within the 8085.
+    * **Other General-Purpose Registers**
+    * **Memory:** Another memory write operation might be needed.
+* **Update Status Flags:** The ALU sets flags (Zero, Carry, Sign, etc.) to reflect the results of its operations, which can be used for conditional branching later.
+
+#### **Example: ADD B Instruction**
+
+Let's assume the instruction "ADD B" (add the value in register B to the accumulator) is being executed:
+
+1. **Fetch:**  The opcode for ADD B is fetched from memory and placed in the IR.
+2. **Decode:** The instruction decoder determines that this is an addition operation and that the operand is in register B.
+3. **Execute:**
+    *  The contents of register B are fetched. 
+    *  The ALU performs the addition between the accumulator's current value and the value from register B.
+    *  The result is stored back into the accumulator.
+
 
 ## Microprocessor vs. Microcontroller
 
-| Feature             | Microprocessor                                     | Microcontroller                                     |
-| ------------------- | -------------------------------------------------- | --------------------------------------------------- |
-| **Complexity**      | Less complex                                       | More complex                                        |
-| **Instruction Set** | Larger and more versatile                          | Smaller and more application-specific               |
-| **Memory**          | Requires external memory (RAM, ROM)                | Has built-in memory (RAM, ROM, Flash)               |
-| **Peripherals**     | Requires external peripherals (e.g., display, I/O) | Has built-in peripherals (e.g., timers, ADCs, DACs) |
-| **Cost**            | Generally lower cost                               | Generally higher cost                               |
-| **Applications**    | General-purpose computing                          | Embedded systems, specific tasks                    |
-| **Examples**        | Intel 8085, Intel x86                              | Atmel AVR, PIC, ARM Cortex-M                        |
+**Core Distinction**
 
-| Microprocessors                                              | Microcontrollers                                             |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| It is only a general purpose computer CPU                    | It is a micro computer itself                                |
-| Memory, I/O ports, timers, interrupts are not available inside the chip | All are integrated inside the microcontroller chip           |
-| This must have many additional digital components to perform its operation | Can function as a micro computer without any additional components. |
-| Systems become bulkier and expensive.                        | Make the system simple, economic and compact                 |
-| Not capable for handling Boolean functions                   | Handling Boolean functions                                   |
-| Higher accessing time required                               | Low accessing time                                           |
-| Very few pins are programmable                               | Most of the pins are programmable                            |
-| Very few number of bit handling instructions                 | Many bit handling instructions                               |
-| Widely Used in modern PC and laptops                         | widely in small control systems                              |
-| INTEL 8086,INTEL Pentium series                              | INTEL8051,89960,PIC16F877                                    |
+* **Microprocessor:** A Central Processing Unit (CPU) on a chip. It's the "brain" of a computer system, designed for general-purpose computing and requires external components to form a functional system.
+* **Microcontroller:** A self-contained "computer-on-a-chip." It integrates a CPU, memory, and peripherals, optimized for embedded control applications.
+
+**Key Features**
+
+| Feature             | Microprocessor                                              | Microcontroller                                                 |
+| ------------------- | ----------------------------------------------------------- | ---------------------------------------------------------------- |
+| **System Design**  | Core of a complex system                                    | Often the entire system                                         |
+| **Complexity**      | Less complex internally                                       | More complex internally due to integrated components           |
+| **Instruction Set** | Larger, versatile instruction set for diverse operations     | Smaller, tailored instruction set for specific applications    |
+| **Memory**          | External RAM, ROM, flash required                           | On-chip RAM, ROM, often with flash memory                     |
+| **Peripherals**     | Requires external interfacing                               | Built-in peripherals (timers, ADCs, DACs, communication ports)  |
+| **Power Consumption** | Generally higher power consumption                          | Optimized for low power operation                               |
+| **Cost**            | Generally lower cost                                         | Can be higher due to integrated components                       |
+| **Flexibility**     | Highly flexible for various tasks                            | More specialized, less adaptable to diverse use cases           |
+| **Applications**    | Desktop computers, laptops, servers, complex systems        | Embedded systems, appliances, medical devices, IoT devices      |
+| **Examples**        | Intel Core Series, AMD Ryzen, IBM Power                     | Atmel AVR, PIC, ARM Cortex-M, Texas Instruments MSP430         |
+
+**Additional Considerations**
+
+* **Programming:** Microcontrollers often require more low-level knowledge of hardware for efficient programming. 
+* **Performance:** Microprocessors generally excel in raw computational performance, while microcontrollers prioritize power efficiency and responsiveness.
+* **Bit Handling:** Microcontrollers frequently offer better support for bit-level operations on I/O pins.
+
+**Illustrative Analogy**
+
+Imagine building a custom robot:
+
+* **Microprocessor:**  Like buying the high-performance brain for your robot.  You'd still need to buy sensors, motors, a power supply, and design the entire body.
+* **Microcontroller:** Like buying a pre-assembled robot kit with a basic brain, sensors, and motors. You focus on programming behavior, potentially adding some external components if needed.
+
+**When to Choose Which**
+
+* **Microprocessor:**  Need high computational power, flexibility for a variety of tasks, or working with large amounts of data.
+* **Microcontroller:** Self-contained solution, low-power, real-time control, or cost-sensitive applications are priorities.
 
 # Unit III: Microcontroller Architecture
-
-## Explain Hierarchy of Microcontroller. (4)
-
-| **DEVICE** | ON-CHIP DATA MEMORY (bytes) | ON-CHIP PROGRAM MEMORY (bytes) | 16-BIT TIMER/COUNTER | NO. OF VECTORED INTERUPTS | FULL DUPLEX I/O |
-| ---------- | --------------------------- | ------------------------------ | -------------------- | ------------------------- | --------------- |
-| 8031       | 128                         | None                           | 2                    | 5                         | 1               |
-| 8032       | 256                         | none                           | 2                    | 6                         | 1               |
-| 8051       | 128                         | 4k ROM                         | 2                    | 5                         | 1               |
-| 8052       | 256                         | 8k ROM                         | 3                    | 6                         | 1               |
-| 8751       | 128                         | 4k EPROM                       | 2                    | 5                         | 1               |
-| 8752       | 256                         | 8k EPROM                       | 3                    | 6                         | 1               |
-| AT89C51    | 128                         | 4k Flash Memory                | 2                    | 5                         | 1               |
-| AT89C52    | 256                         | 8k Flash memory                | 3                    | 6                         | 1               |
 
 ### List full form of these: RISC, CISC, ALU, PC, DPTR, PSW, SFR, SP. (4)
 
