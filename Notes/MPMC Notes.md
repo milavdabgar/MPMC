@@ -1645,7 +1645,51 @@ POP A          ; Pop the original (first) number into the accumulator
 
 ## Timers/Counters
 
-### Draw and explain function of all bits of TCON register. (4)
+### TCON Register
+
+**What is the TCON Register?**
+
+* The TCON (Timer Control) register is an 8-bit, bit-addressable register present in 8051 microcontrollers. 
+* It's primarily responsible for controlling the operation of the microcontroller's internal timers and counters.
+
+**TCON Register Structure**
+
+The 8 bits of the TCON register are assigned specific functions:
+
+* **TF1 (Timer 1 Overflow Flag):** Set to '1' when Timer 1 overflows. Cleared by software.
+* **TR1 (Timer 1 Run Control Bit):**  Controls the Run/Stop status of Timer 1.
+    * '1' = Timer 1 is running
+    * '0' = Timer 1 is stopped
+* **TF0 (Timer 0 Overflow Flag):** Set to '1' when Timer 0 overflows. Cleared by software.
+* **TR0 (Timer 0 Run Control Bit):** Controls the Run/Stop status of Timer 0.
+    * '1' = Timer 0 is running
+    * '0' = Timer 0 is stopped
+* **IE1 (External Interrupt 1 Edge Flag):** Set to '1' when an external interrupt 1 occurs on a falling edge transition. Cleared by software.
+* **IT1 (External Interrupt 1 Type Control Bit):** Configures external interrupt 1 trigger type.
+    * '1' = Falling edge triggered
+    * '0' = Low-level triggered.
+* **IE0 (External Interrupt 0 Edge Flag):** Set to '1' when an external interrupt 0 occurs on a falling edge transition. Cleared by software.
+* **IT0 (External Interrupt 0 Type Control Bit):** Configures external interrupt 0 trigger type.
+    * '1' = Falling edge triggered
+    * '0' = Low-level triggered
+
+**Key Functions of TCON Register**
+
+1. **Timer/Counter Start/Stop:**  The TR1 and TR0 bits enable you to start and stop Timer 1 and Timer 0, respectively.
+
+2. **Overflow Monitoring:** The overflow flags TF1 and TF0 indicate when a timer has reached its maximum count and rolled over. These are often used to generate interrupts.
+
+3. **External Interrupt Configuration:** The IE0, IT0, IE1, and IT1 bits control how external interrupts are triggered and detected by the microcontroller.
+
+**Example: Setting up Timer 0 as an interval timer**
+
+1. **Set the Mode:**  To use Timer 0 in a specific mode, you'll configure the TMOD register (Timer Mode Register).  Let's assume you want Timer 0 as a 16-bit interval timer.
+
+2. **Load Initial Value:** Load the desired starting count into the TH0 (Timer 0 High Byte) and TL0 (Timer 0 Low Byte) registers.
+
+3. **Start the Timer:** Set TR0 (Timer 0 Run Control Bit) in the TCON register to '1' to begin the timer.
+
+4. **Interrupt Handling (Optional):** If you want an interrupt to be generated when the timer overflows, set the interrupt enable bits in relevant registers and create an interrupt service routine (ISR). The TF0 flag in TCON will be set when an overflow occurs.
 
 TCON register is also one of the registers whose bits are directly in control of timer operation. Only 4 bits of this register are used for this purpose, while rest of them is used for interrupt control.
 
@@ -1670,7 +1714,57 @@ Description of All the Bits of TCON:
 | IE0  | External interrupt 0 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.2 (INT0). Cleared when processor vectors to interrupt service routine at program address 0003h. Not related to timer operations.                |
 | IT0  | External interrupt 0 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 0 to generate an interrupt. |
 
-### Draw and explain function of all bits of TMOD register. (4)
+### TMOD Register
+
+**What is the TMOD Register?**
+
+* The TMOD (Timer Mode) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
+* Its primary role is to select and configure the operating modes of the two built-in timers: Timer 0 and Timer 1.
+
+**TMOD Register Structure**
+
+The TMOD register has a specific function assigned to each of its 8 bits:
+
+* **Bits 7-4 (Timer 1 Configuration)**
+    * **Gate:** Controls Timer 1  gating for external control (described later).
+    * **C/T̄:** Selects Timer vs. Counter mode for Timer 1.
+        * '1' = Counter mode (counts external pulses)
+        * '0' = Timer mode (counts internal machine cycles)
+    * **M1 M0:**  Selects the operating mode of Timer 1 (Modes 0, 1, 2, or 3)
+* **Bits 3-0 (Timer 0 Configuration)**: Same structure as Timer 1 configuration bits above, but control the settings for Timer 0.
+
+**Operating Modes**
+
+The TMOD register allows you to configure each timer into one of four operating modes:
+
+* **Mode 0 (13-bit Timer):** 
+    * Timer register is effectively 13 bits (THx: 8 bits, TLx: 5 bits)
+    *  This mode is often used for simple timing or event counting where extremely long delays are  not required.  
+* **Mode 1 (16-bit Timer):** 
+    *  The standard 16-bit timer/counter mode, providing the full range of counting.
+* **Mode 2 (8-bit Auto-Reload Timer):**
+    *  TLx is reloaded with the value in THx automatically after each overflow. Useful for generating fixed periodic events.
+* **Mode 3 (Split Timer):**
+    *  Timer 1 is stopped. TL0 is used as an 8-bit Timer/Counter and can be controlled independently, while TH0 runs as a separate 8-bit timer (usually controlled by the system clock).
+
+**Gate Bit**
+
+The Gate bit for each timer provides additional control:
+
+* **Gate = '0':** The timer runs continuously when the TRx bit (in TCON) is set to '1'.
+* **Gate = '1':** The timer runs only when the TRx bit is '1' AND an external pin (INT0 or INT1) receives a high-to-low transition.
+
+**Example: Configuring Timer 0 as a 16-bit timer with gating**
+
+1. **Setting the Mode:** To configure Timer 0 as a 16-bit timer, set the corresponding bits in the TMOD register as follows:
+   ```
+   TMOD = 0x01; // Assuming you want Timer 0 in Mode 1, Timer 1 is not important here
+   ```
+
+2. **Enabling Gating:** If you want to control Timer 0 with an external signal on INT0 pin:
+    ```
+    TMOD |= 0x08; // Set the Gate bit for Timer 0
+    ```
 
 This register contains bits controlling the operation of timer 0 & 1. To select the operating mode and the timer/counter operation of the timers we use TMOD register. Timer 0 and timer 1 are two timer registers in 8051. Both of these registers use the same register called TMOD to set various timer operation modes.
 
@@ -1797,7 +1891,109 @@ Mode 3 is also known as a split timer mode. Timer 0 and 1 may be programmed to b
 
 ## Serial Communication
 
+**What is Serial Communication?**
+
+* Serial communication is a method of transmitting data between devices where the bits of data are sent sequentially over a single communication line or channel. This contrasts with parallel communication where multiple bits are sent at the same time over multiple lines.
+
+**Key Modes of Serial Communication**
+
+1. **Simplex Mode**
+
+   * **Unidirectional transmission:** Data flows in only one direction, from the transmitter to the receiver.
+   * **Example:**  A TV broadcasting station transmits signals to countless television sets (receivers). TVs can't transmit back to the station.
+
+2. **Half-Duplex Mode**
+
+   * **Bidirectional, but not simultaneous:** Both devices can transmit and receive, but not at the same time. They must take turns.
+   * **Example:** Walkie-talkies. A user presses a button to talk (transmit) and releases the button to listen (receive).  Both users cannot talk at the same time.
+
+3. **Full-Duplex Mode**
+
+   * **Simultaneous bidirectional transmission:** Both devices can transmit and receive data at the same time.
+   * **Example:** Modern phone calls. Both parties can talk and listen simultaneously.
+
+**Asynchronous vs. Synchronous Communication**
+
+Within serial communication, there's an important distinction between asynchronous and synchronous modes:
+
+* **Asynchronous:**
+   * No shared clock signal between devices.
+   * Data is framed using start and stop bits to signal the beginning and end of a data packet.
+   * Good for irregular data transmission with potential gaps between bytes.
+
+* **Synchronous:**
+   * Devices share a clock signal that synchronizes the timing of data transmission. 
+   * Data bytes flow in a continuous stream without the need for start and stop bits.
+   * Ideal for high-speed, continuous data transmission. 
+
+**Example: UART Communication (Typically Asynchronous)**
+
+* **Hardware:**  A Universal Asynchronous Receiver/Transmitter (UART) is a common hardware component for serial communication.
+* **Protocol:**  Data is framed with a start bit, 5-9 data bits, an optional parity bit (for error checking), and one or more stop bits.
+* **Transmission:**
+    *  The transmitter sends out the start bit (logic low)
+    *  Data bits are sent one by one (least significant bit first)
+    *  Parity bit (if used) is sent
+    * Stop bit (logic high) signals packet's end
+* **Example Use Case:**  Computer sending commands to a microcontroller over a serial connection.
+
+**Note:**  Other serial protocols exist, such as SPI (Serial Peripheral Interface) and I2C (Inter-Integrated Circuit), each with specific features and applications.
+
 ### Modes
+
+**The SCON Register's Role**
+
+The SCON (Serial Control) register holds bits that determine the operating mode, baud rate, and other serial communication settings for the 8051's integrated UART. The pertinent bits are:
+
+* **SM0, SM1:** Serial Mode selection bits.
+* **REN:** Receive enable bit.
+
+**Serial Modes in 8051**
+
+The 8051 supports four primary serial communication modes, as outlined below:
+
+**1. Mode 0 (Shift Register Mode)**
+
+* **Synchronous:** Data is transmitted and received with clock pulses generated on the TxD pin (transmit data pin) of the 8051.  RxD (receive data pin) is used for receiving data.
+* **Framing:**  Data transmission occurs in bytes (8-bit frames) without the overhead of start and stop bits.
+* **Baud Rate:** Fixed at 1/12th of the microcontroller's oscillator frequency.
+
+**2. Mode 1 (10-bit UART)**
+
+* **Asynchronous:** No shared clock signal between devices. Start and stop bits frame each byte for synchronization.
+* **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
+* **Baud Rate:**  Variable, usually determined by using Timer 1 to generate the baud-rate ticks.
+* **Common Use:** General-purpose serial communication with external devices.
+
+**3. Mode 2 (11-bit UART)**
+
+* **Asynchronous:**  Same principle as Mode 1.
+* **Framing:** 1 start bit, 8 data bits, a programmable 9th bit, and 1 stop bit.
+* **9th Bit:**  Can be used as an extra data bit, a parity bit (for error checking), or for multiprocessor communication.
+* **Baud Rate:** Variable, often calculated using Timer 1. 
+
+**4. Mode 3 (9-bit UART)**
+
+* **Similar to Mode 2:**  Asynchronous with a programmable 9th bit.
+* **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
+* **Key Difference:** The 9th bit is always transmitted as '1'.
+* **Baud Rate:** Variable, based on calculations with Timer 1. 
+
+**Mode Selection & Configuration Example**
+
+Let's configure the 8051 for serial communication in Mode 1, a classic UART setup:
+
+1. **Mode Setting:**
+    ```c
+    SCON = 0x50; // SM0 = 0, SM1 = 1 (Mode 1), REN = 1 (enable reception) 
+    ```
+
+2. **Baud Rate Calculation:** Determine the desired baud rate and calculate the appropriate reload value to load into the TH1 register used as the baud rate generator. (Consult your microcontroller datasheet for the calculation formula).
+
+**Remember:** 
+
+* To transmit data, load the byte to be sent into the SBUF (Serial Buffer) register. Hardware handles the rest.
+* Reception often involves setting up interrupts to detect when the RI flag in SCON is set, indicating received data.
 
 ### Explain Serial Communication in various modes.
 
@@ -1866,7 +2062,60 @@ The various bits are: a start bit (usually '0'), 8 data bits (LSB first), a prog
 
 Mode-3 is same as mode-2, except the fact that the baud rate in mode-3 is variable (i.e., just as in mode-1).
 
-## Explain SCON register in brief.
+### SCON Register
+
+**What is the SCON Register?**
+
+* The SCON (Serial Control) register is an 8-bit, bit-addressable Special Function Register (SFR) responsible for managing serial communication in 8051 microcontrollers.
+* It holds settings and status flags that control how the microcontroller sends and receives data serially.
+
+**SCON Register Structure**
+
+Here's how the SCON register's bits function:
+
+* **SM0, SM1 (Serial Mode Selection Bits):** These bits define the serial communication mode for the 8051. There are four primary modes:
+    * **Mode 0:** 8-bit shift register for serial port output, clock for serial port input is generated internally.
+    * **Mode 1:** 10-bit UART mode (8 data bits, 1 start bit, 1 stop bit).
+    * **Mode 2:** 11-bit UART mode (8 data bits, 1 start bit, 1 programmable stop bit, 1 additional bit for addressing or other purposes) 
+    * **Mode 3:** Similar to mode 2, but with 9 data bits.
+
+* **SM2 (Enable Multiprocessor Communication):** Specifically designed for multiprocessor systems to distinguish between data from other processors and address information.
+
+* **REN (Receive Enable):**
+    * '1' =  Enables serial reception
+    * '0' = Disables serial reception.
+
+* **TB8 (Transmit Bit 8):** In Modes 2 and 3, this is the 9th data bit that is transmitted.
+
+* **RB8 (Receive Bit 8):**  There are two interpretations:
+   * Modes 1, 2, and 3: This is the 9th data bit received.
+   * Mode 0: RB8 becomes the stop bit when received.
+
+* **TI (Transmit Interrupt Flag):** 
+    * '1' = Signals that the transmit buffer is empty, ready for new data (set by hardware).
+    * '0'  = Transmission is in progress (cleared by software). 
+
+* **RI (Receive Interrupt Flag):**
+    * '1' = Signals that the receive buffer is full (set by hardware).
+    * '0' =  No data in the buffer to be read (cleared by software).
+
+**Example: Setting up Serial Communication in Mode 1 (10-bit UART)**
+
+1. **Mode Selection:** Set the SM0 and SM1 bits in the SCON register:
+   ```
+   SCON = 0x50; // Mode 1: 10-bit UART, Receiver Enabled
+   ```
+
+2. **Baud Rate Calculation:** Determine the desired baud rate and calculate the appropriate reload value for the TH1 register (which acts as the baud rate generator). Consult your 8051 microcontroller datasheet for the calculation formula.
+
+3. **Enabling Reception (if needed):** Set the REN bit in SCON to '1' to enable incoming serial data reception.
+
+4. **Transmitting Data:**
+   * Wait for the TI flag in SCON to become '1' (meaning the transmit buffer is empty).
+   * Load the data byte to be transmitted into the SBUF register. The hardware handles the rest for you.
+
+**Note:** To receive data, you'll usually create an interrupt service routine (ISR) that triggers when the RI flag in SCON is set. 
+
 
 Serial Port Control Register (SCON): Register SCON controls serial data communication. The serial port control and status register is the Special Function Register SCON. This register contains not only the mode selection bits, but also the 9th data bit for transmit and receive (TB8 and RB8), and the serial ports interrupt bits (TI and RI).
 
@@ -1897,7 +2146,56 @@ Description of All the Bits of SCON:
 | 1   | 0   | Mode 2 | Fixed Baud Rate (fosc/64) or (fosc/32)     | 9-bit Multiprocessor Comm. mode       |
 | 1   | 1   | Mode 3 | Variable Baud Rate (Can be set by Timer 1) | 9-bit Multiprocessor Comm. mode       |
 
-## Explain PCON register in brief. Or Explain idle and power down modes of 8051 in brief. (4)
+## PCON Register
+
+**What is the PCON Register?**
+
+* The PCON (Power Control) register is an 8-bit Special Function Register (SFR) primarily used to manage power-saving modes within the 8051 microcontroller.
+* It also includes a few additional control bits for baud rate adjustment and general-purpose usage.
+
+**PCON Register Structure**
+
+Here's a breakdown of the bits within the PCON register:
+
+* **SMOD (Serial Mode Doubler):**
+   * '1' = Doubles the baud rate for serial communication (UART) when Timer 1 is used for baud rate generation.  Useful for increasing communication speeds.
+   * '0'  =  Normal baud rate.
+
+* **GF1 (General Purpose Flag 1), GF0 (General Purpose Flag 0):**
+   * These bits can be set and cleared by software for various purposes chosen by the programmer.  They have no predefined function assigned to them.
+
+* **PD (Power-Down Mode):**
+    * '1' = Enables Power-Down Mode. In this state, the oscillator is stopped to reduce power consumption dramatically.
+    * '0' =  Disables Power-Down Mode, the microcontroller runs normally.
+
+* **IDL (Idle Mode):**
+    * '1' = Enables Idle Mode. The CPU stops functioning, but peripherals like timers, serial ports, and interrupts remain active. This mode reduces power consumption while maintaining some functionality.
+    * '0' = Disables Idle Mode.
+
+**Key Points about Power Modes**
+
+* **Exiting Power-Down Mode:** The microcontroller can only exit Power-Down mode with a hardware reset.
+* **Exiting Idle Mode:** The microcontroller exits Idle mode upon an interrupt or a hardware reset.
+
+**Examples**
+
+1. **Enabling Power-Down Mode**
+   ```
+   PCON |= 0x01; // Set the PD bit (bit 0) of PCON to '1' 
+   ```
+
+2. **Enabling Idle Mode**
+   ```
+   PCON |= 0x02; // Set the IDL bit (bit 1) of PCON to '1'
+   ```
+
+3. **Doubling Serial Communication Baud Rate**
+   ```
+   PCON |= 0x80; // Set the SMOD bit (bit 7) of PCON to '1' (assuming you want to double the baud rate)
+   ```
+
+**Important Note:** It is crucial to check your specific microcontroller datasheet, as certain manufacturers might have slightly different or additional assignments for the remaining unused bits in the PCON register.
+
 
 Power Mode control Register (PCON): Register PCON controls processor powerdown, sleep modes and serial data bandrate. Only one bit of PCON is used with respect to serial communication. The seventh bit (b7)(SMOD) is used to generate the baud rate of serial communication.
 
@@ -2006,7 +2304,67 @@ Internal interrupt (Timer Interrupt): 8051 has two internal interrupts namely ti
 
 Serial interrupt: 8051 has serial communication port and have related serial interrupt flags (TI/RI). When the last bit (stop bit) of a byte is transmitted, TI serial interrupt flag is set and when last bit (stop bit) of receiving data byte is received, RI flag get set.
 
-### Explain IE register in brief.
+### IE Register
+
+**What is the IE Register?**
+
+* The IE (Interrupt Enable) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
+* Each bit in this register controls the enabling or disabling of specific interrupts within the system.
+
+**IE Register Structure**
+
+Here's the breakdown of the IE Register's bit functionality:
+
+* **EA (Enable All):**
+    * '1' = Enables all interrupt sources (if their individual bits are also set to '1').
+    * '0' = Disables all interrupts, regardless of other bit settings.
+
+* **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
+
+* **ES (Enable Serial Interrupt):**
+    * '1' = Enables serial port interrupt.
+    * '0' = Disables serial port interrupt.
+
+* **ET1 (Enable Timer 1 Interrupt):**
+    * '1' = Enables the interrupt generated by Timer 1 overflow.
+    * '0'  = Disables the Timer 1 interrupt.
+
+* **EX1 (Enable External Interrupt 1):**
+    * '1' = Enables the external interrupt 1.
+    * '0' =  Disables the external interrupt 1.
+
+* **ET0 (Enable Timer 0 Interrupt):**
+    * '1' = Enables the interrupt generated by Timer  0 overflow.
+    * '0' = Disables the Timer 0 interrupt.
+
+* **EX0 (Enable External Interrupt 0):**
+    * '1' = Enables the external interrupt 0.
+    * '0' = Disables the external interrupt 0.
+
+**How Interrupts Work with IE**
+
+1. **Global Enable:** The EA bit in the IE register must be set to '1' for any interrupt to function.
+2. **Individual Enable:** Even if EA is set to '1', a specific interrupt request will be recognized only if the corresponding bit in the IE register is also set to '1'.
+
+**Examples**
+
+1. **Enabling All Interrupts**
+   ```
+   IE = 0xFF;  // Set all bits in IE to '1' 
+   ```
+
+2. **Enabling Only Timer 0 and External Interrupt 1**
+   ```
+   IE = 0x89;  // Sets the ET0 and EX1 bits, the rest are '0'
+   ```
+
+**Important Note:**
+
+* Interrupts must also be configured in other registers for them to be active. For example:
+   * Timer interrupts require the timers to be started (TRx = '1' in TCON).
+   * External interrupts may need edge or level triggering configured (ITx bits in TCON).
+* The 8051 has a priority system for multiple simultaneous interrupts. You can control the priority using the IP (Interrupt Priority) register.
+
 
 IE Register:
 
@@ -2028,7 +2386,65 @@ Description of All the Bits of IE:
 
 ## Priorities
 
-### Explain IP register in brief. Or Explain Interrupt priority with vector address. (3)
+### IP Register
+
+**What is the IP Register?**
+
+* The IP (Interrupt Priority) register is an 8-bit, bit-addressable Special Function Register (SFR) used to manage the priority of interrupt sources in 8051 microcontrollers. 
+* When multiple interrupts occur simultaneously, the IP register helps the system determine which interrupt to handle first.
+
+**IP Register Structure**
+
+Each bit in the IP register is assigned a specific interrupt source, providing two levels of priority (high or low):
+
+* **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
+
+* **PS (Serial Interrupt Priority):**
+    * '1' = High priority.
+    * '0' = Low priority.
+
+* **PT1 (Timer 1 Interrupt Priority):**
+    * '1' = High priority.
+    * '0'  = Low priority.
+
+* **PX1 (External Interrupt 1 Priority):**
+    * '1' = High priority.
+    * '0' =  Low priority.
+
+* **PT0 (Timer 0 Interrupt Priority):**
+    * '1' = High priority.
+    * '0' = Low priority.
+
+* **PX0 (External Interrupt 0 Priority):**
+    * '1' = High priority.
+    * '0' = Low priority.
+
+**How Interrupt Priorities Work with IP**
+
+1. **Interrupt Occurrence:** When one or more interrupts occur, the 8051 checks the corresponding bits in the IP register.
+
+2. **Priority Handling**
+   * Higher priority interrupts always take precedence over lower priority interrupts.
+   * If multiple interrupts of the same priority level occur, then the 8051 uses a predefined internal polling sequence to determine the order for servicing the interrupts.
+
+**Examples**
+
+1. **Configuring Timer 0 as Highest Priority, External Interrupt 1 as Lowest**
+   ```
+   IP = 0x12; // Sets PT0 to '1' (high), PX1 to '0' (low), others remain '0'
+   ```
+
+2. **Setting All Interrupts to Low Priority**
+   ```
+   IP = 0x00; // All bits set to '0' for low priority  
+   ```
+
+**Important Notes:**
+
+* The IP register only determines the priority among simultaneously occurring interrupts.  The interrupt itself still needs to be enabled globally (EA bit in the IE register) and individually (Ex and ETx bits in the IE register). 
+
+* The priority structure and internal polling sequence for the 8051 microcontroller  can be found in your specific microcontroller's datasheet.
+
 
 Priority to the interrupt can be assigned by using interrupt priority register (IP)
 
