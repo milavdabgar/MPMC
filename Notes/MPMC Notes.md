@@ -346,10 +346,6 @@ Instructions in the 8085 microprocessor can be 1, 2, or 3 bytes long. The struct
    - **HOLD:** Input from a DMA device to request control of buses.
    - **HLDA:** Acknowledge signal, indicating the 8085 has relinquished control of buses.
 
-### Address, Data, and Control Buses
-
-### Essential Signals
-
 ## Block Diagram of 8085
 
 ![Image of a standard 8085 microprocessor block diagram](https://www.electronicsengineering.nbcafe.in/wp-content/uploads/2017/02/8085_architeccher.png)
@@ -500,7 +496,7 @@ Demultiplexing is the process of separating the address and data information so 
 - Demultiplexing enables the 8085 to interface with memory and I/O devices correctly by separating the address and data functions of the same physical bus lines.
 - The ALE signal plays a crucial role in timing the latching of address information.
 
-#### Q2a: Explain function of ALE signal with diagram.
+#### Role of ALE signal in Demultiplexing
 
 **What is the ALE Signal?**
 
@@ -760,27 +756,6 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Pin 40 (VCC):** Pin 40 is the power supply pin to which the supply voltage is given (+5V).
 
-### Explain functions of all 8 pins of Port 3 in 8051. (3)
-
-Port-3 has 8 pin (P3.0-P3.7) . Port-3 pins have alternate functions. The structure of a port-3 pin is shown in fig.
-
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_2cd39a5244fef9f1.png)
-
-Each pin of Port-3 can be individually programmed for I/O operation or for alternate function. The alternate function can be activated only if the corresponding latch has been written to '1'. To use the port as input port, '1' should be written to the latch. This port also has internal pull-up and limited current driving capability.
-
-Alternate functions of Port-3 pins are -
-
-| PORT 3 Pin | Function | Description           |
-| ---------- | -------- | --------------------- |
-| P3.0       | RXD      | Serial Input          |
-| P3.1       | TXD      | Serial Output         |
-| P3.2       | INT0     | External Interrupt 0  |
-| P3.3       | INT1     | External Interrupt 1  |
-| P3.4       | T0       | Timer 0               |
-| P3.5       | T1       | Timer 1               |
-| P3.6       | WR       | External Memory Write |
-| P3.7       | RD       | External Memory Read  |
-
 ## 8051 Microcontroller Block Diagram
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
@@ -843,72 +818,77 @@ Alternate functions of Port-3 pins are -
 
 **8051 ALU (Arithmetic Logic Unit)**
 
-* **The Computational Heart:** The ALU is responsible for executing the core calculations and logical manipulations within the 8051 microcontroller. As its name suggests, it handles two primary types of operations:
+- **The Computational Heart:** The ALU is responsible for executing the core calculations and logical manipulations within the 8051 microcontroller. As its name suggests, it handles two primary types of operations:
 
-* **Arithmetic Operations**
-   *  Addition (`ADD`)
-   *  Subtraction (`SUBB`)
-   *  Multiplication (`MUL`)
-   *  Division (`DIV`)
-   *  Incrementing (`INC`)
-   *  Decrementing (`DEC`)
+- **Arithmetic Operations**
 
-* **Logical Operations**
-    * AND (`ANL`)
-    * OR (`ORL`)
-    * Exclusive-OR (`XRL`)
-    * NOT (`CLR`, `CPL`)
-    * Comparisons (for setting flags in the PSW register)
+  - Addition (`ADD`)
+  - Subtraction (`SUBB`)
+  - Multiplication (`MUL`)
+  - Division (`DIV`)
+  - Incrementing (`INC`)
+  - Decrementing (`DEC`)
 
-* **Key Components:**  
-    * **Accumulator:** Data typically flows in and out of the Accumulator (A Register) during ALU operations.
-    * **Temporary Register:** Holds the second operand during calculations.
-    * **Arithmetic/Logic Circuits:** The actual hardware circuitry that performs the computations and manipulations.
+- **Logical Operations**
 
-* **Relationship to PSW:** The ALU interacts closely with the PSW register. ALU operations set flags like Carry (CY), Auxiliary Carry (AC), Overflow (OV), and Parity (P) in the PSW, which then become decision points for control flow in the program.
+  - AND (`ANL`)
+  - OR (`ORL`)
+  - Exclusive-OR (`XRL`)
+  - NOT (`CLR`, `CPL`)
+  - Comparisons (for setting flags in the PSW register)
+
+- **Key Components:**
+
+  - **Accumulator:** Data typically flows in and out of the Accumulator (A Register) during ALU operations.
+  - **Temporary Register:** Holds the second operand during calculations.
+  - **Arithmetic/Logic Circuits:** The actual hardware circuitry that performs the computations and manipulations.
+
+- **Relationship to PSW:** The ALU interacts closely with the PSW register. ALU operations set flags like Carry (CY), Auxiliary Carry (AC), Overflow (OV), and Parity (P) in the PSW, which then become decision points for control flow in the program.
 
 **8051 Timing and Control Unit**
 
-* **Conductor of the Orchestra:**  The Timing and Control Unit is the mastermind that synchronizes all the actions within the 8051 microcontroller. It ensures everything happens at the right time and in the correct sequence.
+- **Conductor of the Orchestra:** The Timing and Control Unit is the mastermind that synchronizes all the actions within the 8051 microcontroller. It ensures everything happens at the right time and in the correct sequence.
 
-* **Key Functions:**
-    * **Instruction Fetching and Decoding:**  Fetches instructions from memory and interprets their meaning, figuring out what actions need to be performed.
-    * **Machine Cycle and State Control:**  Divides instructions into smaller steps (machine cycles) and generates timing signals that tell each part of the microcontroller when to do what.
-    * **Signal Generation:**  Produces the precise electrical pulses that activate registers, the ALU, data buses, and other components within the microcontroller.
-    * **Interrupt Handling:**  Coordinates what happens when an external event (like a timer overflow or a button press) interrupts the currently executing program.
+- **Key Functions:**
 
-* **Crystal Oscillator's Role:** The Timing and Control Unit relies on a crystal oscillator, generating a steady clock signal. This clock signal determines the fundamental speed at which the microcontroller operates.
+  - **Instruction Fetching and Decoding:** Fetches instructions from memory and interprets their meaning, figuring out what actions need to be performed.
+  - **Machine Cycle and State Control:** Divides instructions into smaller steps (machine cycles) and generates timing signals that tell each part of the microcontroller when to do what.
+  - **Signal Generation:** Produces the precise electrical pulses that activate registers, the ALU, data buses, and other components within the microcontroller.
+  - **Interrupt Handling:** Coordinates what happens when an external event (like a timer overflow or a button press) interrupts the currently executing program.
+
+- **Crystal Oscillator's Role:** The Timing and Control Unit relies on a crystal oscillator, generating a steady clock signal. This clock signal determines the fundamental speed at which the microcontroller operates.
 
 ### Instruction Register and Instruction Decoder
 
 **Instruction Register (IR)**
 
-* **Temporary Holding Area:** The Instruction Register is a special, temporary holding space within the microcontroller where the currently fetched instruction resides. It's closely connected to the Instruction Decoder.
+- **Temporary Holding Area:** The Instruction Register is a special, temporary holding space within the microcontroller where the currently fetched instruction resides. It's closely connected to the Instruction Decoder.
 
-* **Size:** The size of the Instruction Register typically matches the width of instructions for the microcontroller. In the case of the 8051, instructions can be 1, 2, or 3 bytes long, so the Instruction Register has to accommodate that.
+- **Size:** The size of the Instruction Register typically matches the width of instructions for the microcontroller. In the case of the 8051, instructions can be 1, 2, or 3 bytes long, so the Instruction Register has to accommodate that.
 
-* **Two Main Parts (often):**  In some architectures, the Instruction Register is divided into:
-    * **Shift Register:**  Shifts in the instruction, bit by bit, as it's retrieved from memory. This process is synchronized with the microcontroller's clock.
-    * **Hold Register:** Holds the fully fetched instruction once the shifting is complete, making it available to the Instruction Decoder.
+- **Two Main Parts (often):** In some architectures, the Instruction Register is divided into:
+  - **Shift Register:** Shifts in the instruction, bit by bit, as it's retrieved from memory. This process is synchronized with the microcontroller's clock.
+  - **Hold Register:** Holds the fully fetched instruction once the shifting is complete, making it available to the Instruction Decoder.
 
 **Instruction Decoder**
 
-* **The Translator:** The Instruction Decoder is the circuit that analyzes the instruction currently residing in the Instruction Register. It breaks the instruction down into its meaningful components:
+- **The Translator:** The Instruction Decoder is the circuit that analyzes the instruction currently residing in the Instruction Register. It breaks the instruction down into its meaningful components:
 
-* **Opcode:** The opcode (operation code) is the part of the instruction that tells the microcontroller what fundamental operation to perform (ADD, MOV, JUMP, etc.).
+- **Opcode:** The opcode (operation code) is the part of the instruction that tells the microcontroller what fundamental operation to perform (ADD, MOV, JUMP, etc.).
 
-* **Operands:** Operands are the pieces of data the instruction acts upon. This could be register names, immediate data (values hard-coded into the instruction), or memory addresses. 
+- **Operands:** Operands are the pieces of data the instruction acts upon. This could be register names, immediate data (values hard-coded into the instruction), or memory addresses.
 
-* **Decoding Process:** The Instruction Decoder possesses 'knowledge' of all valid instructions in the microcontroller's instruction set. It compares the opcode to this knowledge base to determine:
-    * What the operation is
-    * What type of operands are involved
-    * How many machine cycles are likely needed for execution
+- **Decoding Process:** The Instruction Decoder possesses 'knowledge' of all valid instructions in the microcontroller's instruction set. It compares the opcode to this knowledge base to determine:
 
-* **Control Signal Generation:**  The Instruction Decoder produces  control signals that activate different parts of the microcontroller, ensuring the correct actions are taken for the specified instruction. These signals will direct things like:
-    * Data transfers from registers to the ALU
-    * ALU operation selection (add, subtract, etc.)
-    * Setting of flags in the PSW register 
-    * Flow of data to and from memory
+  - What the operation is
+  - What type of operands are involved
+  - How many machine cycles are likely needed for execution
+
+- **Control Signal Generation:** The Instruction Decoder produces control signals that activate different parts of the microcontroller, ensuring the correct actions are taken for the specified instruction. These signals will direct things like:
+  - Data transfers from registers to the ALU
+  - ALU operation selection (add, subtract, etc.)
+  - Setting of flags in the PSW register
+  - Flow of data to and from memory
 
 **The Dance of Fetching, Decoding, and Execution**
 
@@ -920,71 +900,71 @@ Alternate functions of Port-3 pins are -
 
 4. **Execute:** The microcontroller, directed by the control signals, carries out the steps required by the instruction.
 
+### Accumulator (A)
 
-### Accumulator (A) 
+- **The Workhorse:** The Accumulator is the central hub for most arithmetic, logical, and data transfer operations within the microcontroller. If you think of the microcontroller as a tiny calculator, the Accumulator is where you see the numbers being entered and the results being displayed.
 
-* **The Workhorse:** The Accumulator is the central hub for most arithmetic, logical, and data transfer operations within the microcontroller. If you think of the microcontroller as a tiny calculator, the Accumulator is where you see the numbers being entered and the results being displayed.
-
-* **Key Operations:**
-   * **Arithmetic:**  Addition, subtraction, incrementing, decrementing.
-   * **Logical:** AND, OR, XOR, NOT (complements), bit rotations, shifts.
-   * **Data Movement:** Transfers data to and from internal RAM or external memory.
-  
-* **Special Role in Instructions:** Many instructions in the microcontroller's instruction set implicitly use the Accumulator as either the source of data, the destination for the result, or both.
+- **Key Operations:**
+  - **Arithmetic:** Addition, subtraction, incrementing, decrementing.
+  - **Logical:** AND, OR, XOR, NOT (complements), bit rotations, shifts.
+  - **Data Movement:** Transfers data to and from internal RAM or external memory.
+- **Special Role in Instructions:** Many instructions in the microcontroller's instruction set implicitly use the Accumulator as either the source of data, the destination for the result, or both.
 
 ### Register B
 
-* **Versatile Assistant:** The B Register serves as a secondary register, often used to temporarily hold values to assist in calculations or data manipulation. 
+- **Versatile Assistant:** The B Register serves as a secondary register, often used to temporarily hold values to assist in calculations or data manipulation.
 
-* **Specialized Tasks:**
-    * **Multiplication and Division:** The B Register is essential for the `MUL AB` (multiply) and `DIV AB` (divide) instructions. It holds one of the operands and, in the case of division, stores the remainder of the operation.
-    * **Data Manipulation:** It can be used as a temporary holding space for values during complex operations that might involve multiple steps.
+- **Specialized Tasks:**
+  - **Multiplication and Division:** The B Register is essential for the `MUL AB` (multiply) and `DIV AB` (divide) instructions. It holds one of the operands and, in the case of division, stores the remainder of the operation.
+  - **Data Manipulation:** It can be used as a temporary holding space for values during complex operations that might involve multiple steps.
 
 **Key Points**
 
-* **Size:** Both the Accumulator and B Register are usually 8-bit registers. This means they can each store a single byte of data (a value from 0 to 255).
-* **Not General Purpose:** Unlike general-purpose registers (like R0, R1, etc. in the 8051), the Accumulator and B Register have more defined roles due to their connection to specific instructions.
-
+- **Size:** Both the Accumulator and B Register are usually 8-bit registers. This means they can each store a single byte of data (a value from 0 to 255).
+- **Not General Purpose:** Unlike general-purpose registers (like R0, R1, etc. in the 8051), the Accumulator and B Register have more defined roles due to their connection to specific instructions.
 
 ### PC (Program Counter)
 
-* **The Program's Navigator:** The Program Counter holds the address of the next instruction to be executed by the microcontroller. It's like the microcontroller's bookmark within the program.
+- **The Program's Navigator:** The Program Counter holds the address of the next instruction to be executed by the microcontroller. It's like the microcontroller's bookmark within the program.
 
-* **How it Works:**
-    1. **Fetch:** The PC sends its current address to fetch the next instruction from program memory.
-    2. **Increment:**  By default, the PC is automatically incremented after fetching, preparing it for the following instruction.
-    3. **Control Flow Changes:** Instructions like jumps (`JMP`) and calls (`CALL`) can change the PC's value, altering the program's execution order.
+- **How it Works:**
 
-* **Size:**  The PC is 16 bits wide in the 8051, allowing it to address up to 64KB of program memory. 
+  1. **Fetch:** The PC sends its current address to fetch the next instruction from program memory.
+  2. **Increment:** By default, the PC is automatically incremented after fetching, preparing it for the following instruction.
+  3. **Control Flow Changes:** Instructions like jumps (`JMP`) and calls (`CALL`) can change the PC's value, altering the program's execution order.
+
+- **Size:** The PC is 16 bits wide in the 8051, allowing it to address up to 64KB of program memory.
 
 ### SP (Stack Pointer)
 
-* **LIFO Storage:** The Stack Pointer points to the current 'top' of the stack. The stack is a last-in, first-out (LIFO) data structure within the 8051's internal RAM.
+- **LIFO Storage:** The Stack Pointer points to the current 'top' of the stack. The stack is a last-in, first-out (LIFO) data structure within the 8051's internal RAM.
 
-* **Key Operations:**
-    * **PUSH:**  Adds data to the top of the stack. The SP is then decremented to point to the new top.
-    * **POP:**  Removes data from the top of the stack. The SP is incremented as data is removed.
+- **Key Operations:**
 
-* **Essential for:**
-    * **Subroutines (CALL and RET):** Stores the return address when a subroutine is called so the program knows where to resume after the subroutine finishes.
-    * **Interrupt Handling:** Stores register values when an interrupt occurs, preserving the state before the interrupt routine is executed.
+  - **PUSH:** Adds data to the top of the stack. The SP is then decremented to point to the new top.
+  - **POP:** Removes data from the top of the stack. The SP is incremented as data is removed.
 
-* **Size:** The SP is 8 bits wide in the 8051.  
+- **Essential for:**
+
+  - **Subroutines (CALL and RET):** Stores the return address when a subroutine is called so the program knows where to resume after the subroutine finishes.
+  - **Interrupt Handling:** Stores register values when an interrupt occurs, preserving the state before the interrupt routine is executed.
+
+- **Size:** The SP is 8 bits wide in the 8051.
 
 ### DPTR (Data Pointer)
 
-* **Accessing External Data:** The DPTR is a special 16-bit register used for addressing external memory (data memory outside the 8051's internal space).
+- **Accessing External Data:** The DPTR is a special 16-bit register used for addressing external memory (data memory outside the 8051's internal space).
 
-* **Key Functions:**
-    * **Indirect Addressing:**  The value in DPTR acts as a pointer. Instructions like `MOVX` (move external data) use DPTR to specify the source or destination address in external memory.
-    * **Lookup Tables:**  DPTR is useful for storing the starting address of tables or data structures located in external memory.
+- **Key Functions:**
+  - **Indirect Addressing:** The value in DPTR acts as a pointer. Instructions like `MOVX` (move external data) use DPTR to specify the source or destination address in external memory.
+  - **Lookup Tables:** DPTR is useful for storing the starting address of tables or data structures located in external memory.
 
 ### Special Function Registers (SFRs)
 
 **What is an SFR?**
 
-* **Special Function Registers (SFRs)** are unique memory locations within the 8051 microcontroller's architecture. Unlike general-purpose RAM, SFRs directly control and configure various hardware peripherals and functions of the microcontroller.
-* **Location:** They occupy the address space from 80H to FFH within the internal RAM.
+- **Special Function Registers (SFRs)** are unique memory locations within the 8051 microcontroller's architecture. Unlike general-purpose RAM, SFRs directly control and configure various hardware peripherals and functions of the microcontroller.
+- **Location:** They occupy the address space from 80H to FFH within the internal RAM.
 
 **Important 8051 SFRs**
 
@@ -992,61 +972,61 @@ Here's a breakdown of the most common 8051 SFRs, along with their roles:
 
 **1. Accumulator (A)**
 
-* **Address:** E0H
-* **Function:**  The heart of most arithmetic and logical operations in the 8051. It acts as a source or destination for data.
+- **Address:** E0H
+- **Function:** The heart of most arithmetic and logical operations in the 8051. It acts as a source or destination for data.
 
 **2. Program Status Word (PSW)**
 
-* **Address:** D0H
-* **Function:** Contains critical flags indicating the status of the microcontroller, including:
-    * CY (Carry Flag)
-    * AC (Auxiliary Carry Flag)
-    * F0 (User-definable flag)
-    * RS1, RS0 (Register Bank select bits)
-    * OV (Overflow Flag)
-    * P (Parity Flag)
+- **Address:** D0H
+- **Function:** Contains critical flags indicating the status of the microcontroller, including:
+  - CY (Carry Flag)
+  - AC (Auxiliary Carry Flag)
+  - F0 (User-definable flag)
+  - RS1, RS0 (Register Bank select bits)
+  - OV (Overflow Flag)
+  - P (Parity Flag)
 
 **3. B Register (B)**
 
-* **Address:** F0H
-* **Function:** Often used in conjunction with the Accumulator:
-    * Multiplication and division operations
-    * Temporary storage of data
+- **Address:** F0H
+- **Function:** Often used in conjunction with the Accumulator:
+  - Multiplication and division operations
+  - Temporary storage of data
 
 **4. Timer Registers**
 
-* **TH0, TL0 (Timer 0):** 98H, 99H
-* **TH1, TL1 (Timer 1):** 8AH, 8BH
-* **Function:**  Generate time delays, count external events, and form the basis of baud rate generation for serial communication.
+- **TH0, TL0 (Timer 0):** 98H, 99H
+- **TH1, TL1 (Timer 1):** 8AH, 8BH
+- **Function:** Generate time delays, count external events, and form the basis of baud rate generation for serial communication.
 
 **5. Serial Port Registers**
 
-* **SBUF:** 99H 
-    * Holds the data to be transmitted (write) or received data (read) during serial communication.
-* **SCON:** 98H
-    * Controls the mode of serial communication (framing, baud rate, etc.).
+- **SBUF:** 99H
+  - Holds the data to be transmitted (write) or received data (read) during serial communication.
+- **SCON:** 98H
+  - Controls the mode of serial communication (framing, baud rate, etc.).
 
 **6. Interrupt Registers**
 
-* **IE (Interrupt Enable):** A0H 
-    * Enables or disables specific interrupts.
-* **IP (Interrupt Priority):** B0H
-    * Determines the priority level of different interrupt sources.
+- **IE (Interrupt Enable):** A0H
+  - Enables or disables specific interrupts.
+- **IP (Interrupt Priority):** B0H
+  - Determines the priority level of different interrupt sources.
 
 **7. Port Registers (P0, P1, P2, P3)**
 
-* **P0:** 80H
-* **P1:** 90H
-* **P2:** A0H
-* **P3:** B0H
-* **Function:**  Control input and output operations on the 8051's I/O pins.
+- **P0:** 80H
+- **P1:** 90H
+- **P2:** A0H
+- **P3:** B0H
+- **Function:** Control input and output operations on the 8051's I/O pins.
 
 **8. Power Control Register (PCON)**
 
-* **Address:** 87H
-* **Function:** Manages power-saving modes of the 8051 (idle mode, power-down mode).
+- **Address:** 87H
+- **Function:** Manages power-saving modes of the 8051 (idle mode, power-down mode).
 
-**Note:**  The exact set of SFRs can vary slightly depending on the specific 8051 microcontroller variant you are using.
+**Note:** The exact set of SFRs can vary slightly depending on the specific 8051 microcontroller variant you are using.
 
 **How SFRs Work**
 
@@ -1079,7 +1059,7 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 | 1           | 0          | RB2                    |
 | 1           | 1          | RB3                    |
 
-### Explain clock and reset circuit for 8051 with sketch. (3)
+### Clock & Reset Circuit
 
 **Clock Circuit**
 
@@ -1121,61 +1101,60 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 - Simple and inexpensive reset circuits can be designed using just a capacitor and resistor.
 - Supervisory circuits offer improved power monitoring and enhanced reset reliability.
 
-
 ### I/O Ports
 
 **General I/O Port Features**
 
-* **Bidirectional:** All four I/O ports (Port 0, Port 1, Port 2, and Port 3) are bidirectional. Each pin can be configured as either an input or an output.
-* **Latches:**  Each port has an associated latch that holds the output data. When a value is written to a port, it is stored in this latch, driving the output pins.
-* **Internal Pull-ups (Except Port 0):** Ports 1, 2, and 3 have built-in pull-up resistors. When configured as inputs, these resistors weakly pull the pins high. If you need a strong pull-down for a '0' input, you'll need to add external resistors.
-* **Dual Functionality:** Some port pins serve additional purposes, as explained below.
+- **Bidirectional:** All four I/O ports (Port 0, Port 1, Port 2, and Port 3) are bidirectional. Each pin can be configured as either an input or an output.
+- **Latches:** Each port has an associated latch that holds the output data. When a value is written to a port, it is stored in this latch, driving the output pins.
+- **Internal Pull-ups (Except Port 0):** Ports 1, 2, and 3 have built-in pull-up resistors. When configured as inputs, these resistors weakly pull the pins high. If you need a strong pull-down for a '0' input, you'll need to add external resistors.
+- **Dual Functionality:** Some port pins serve additional purposes, as explained below.
 
 **Port 0 (P0)**
 
-* **Address/Data Bus Duties:**  Port 0 shares its pins to serve as:
-    * **The lower 8-bits of the address bus (AD0-AD7)** when connecting to external memory.
-    * **An 8-bit data bus (D0-D7)** for external memory read/write operations.
-* **Open Drain:**  Port 0's output drivers have an open-drain configuration. This means they can actively drive a pin low (logic '0'), but for high outputs (logic '1'), an external pull-up resistor is required.
-* **Needs Pull-Ups:** When used as general-purpose I/O, Port 0 needs external pull-up resistors.
+- **Address/Data Bus Duties:** Port 0 shares its pins to serve as:
+  - **The lower 8-bits of the address bus (AD0-AD7)** when connecting to external memory.
+  - **An 8-bit data bus (D0-D7)** for external memory read/write operations.
+- **Open Drain:** Port 0's output drivers have an open-drain configuration. This means they can actively drive a pin low (logic '0'), but for high outputs (logic '1'), an external pull-up resistor is required.
+- **Needs Pull-Ups:** When used as general-purpose I/O, Port 0 needs external pull-up resistors.
 
 **Port 1 (P1)**
 
-* **Standard I/O:** Primarily used as a general-purpose I/O port.
-* **No Additional Functions:** Pins of Port 1 don't have other roles like addressing.
+- **Standard I/O:** Primarily used as a general-purpose I/O port.
+- **No Additional Functions:** Pins of Port 1 don't have other roles like addressing.
 
 **Port 2 (P2)**
 
-* **Address Bus Duties:** When external memory is used, Port 2 provides the upper 8-bits of the 16-bit address (A8-A15). 
-* **Limited I/O Availability:** In systems with external memory, Port 2 loses its ability to be used for general-purpose input/output.
+- **Address Bus Duties:** When external memory is used, Port 2 provides the upper 8-bits of the 16-bit address (A8-A15).
+- **Limited I/O Availability:** In systems with external memory, Port 2 loses its ability to be used for general-purpose input/output.
 
 **Port 3 (P3)**
 
-* **Diverse Roles:** Pins on Port 3 have multiple alternate functions, making it quite versatile:
-    * Serial Communication (RXD, TXD)
-    * Timer/Counter External Inputs
-    * Control Signals for External Memory (RD, WR)
-    * Interrupts
+- **Diverse Roles:** Pins on Port 3 have multiple alternate functions, making it quite versatile:
+  - Serial Communication (RXD, TXD)
+  - Timer/Counter External Inputs
+  - Control Signals for External Memory (RD, WR)
+  - Interrupts
 
 **Important Notes:**
 
-* **Initial State:** Upon reset, all I/O ports are configured as inputs.
-* **Configuring as Outputs:** To use a port pin as an output, you need to write a '1' to the corresponding bit in the port's SFR.
-* **Configuring as Inputs:** To use a port pin as an input, you must write a '1' to the corresponding bit in the port's SFR, ensuring the internal pull-ups are working as intended.
+- **Initial State:** Upon reset, all I/O ports are configured as inputs.
+- **Configuring as Outputs:** To use a port pin as an output, you need to write a '1' to the corresponding bit in the port's SFR.
+- **Configuring as Inputs:** To use a port pin as an input, you must write a '1' to the corresponding bit in the port's SFR, ensuring the internal pull-ups are working as intended.
 
 **Example (C code):**
 
 ```c
 #include <reg51.h> // Header file for 8051 SFRs
 
-// Configure P1.0 as output, the rest of Port 1 as input 
-P1 = 0x01;  
+// Configure P1.0 as output, the rest of Port 1 as input
+P1 = 0x01;
 
 // Write a logic 1 (high) to P1.0
-P1_0 = 1; 
+P1_0 = 1;
 
 // Read the value from P1.5
-unsigned char input_value = P1_5; 
+unsigned char input_value = P1_5;
 ```
 
 ## I/O Ports structure: Port 0, Port 1, Port2, Port 3.
@@ -1184,173 +1163,183 @@ Each port of 8051 has bidirectional capability. Port 0 is called 'true bidirecti
 
 ### Port-0 Pin Structure:
 
-* **Dual Purpose:**
-   * **General Purpose I/O:** Can be configured as a standard 8-bit bidirectional input/output port.
-   * **Address/Data Bus:** Serves as the lower 8-bits of the address bus (AD0-AD7) and the data bus (D0-D7) when interfacing with external memory.
+- **Dual Purpose:**
 
-* **Open-Drain Outputs:**  Port 0 pins use an open-drain configuration for outputs. This means they can actively drive a pin low (logic '0'), but require an external pull-up resistor to achieve a high output (logic '1').
+  - **General Purpose I/O:** Can be configured as a standard 8-bit bidirectional input/output port.
+  - **Address/Data Bus:** Serves as the lower 8-bits of the address bus (AD0-AD7) and the data bus (D0-D7) when interfacing with external memory.
 
-* **Latch:** Each Port 0 pin is connected to a latch. Data written to the P0 SFR (Special Function Register) is held in this latch.
+- **Open-Drain Outputs:** Port 0 pins use an open-drain configuration for outputs. This means they can actively drive a pin low (logic '0'), but require an external pull-up resistor to achieve a high output (logic '1').
 
-* **Internal Diagram (Simplified):**
+- **Latch:** Each Port 0 pin is connected to a latch. Data written to the P0 SFR (Special Function Register) is held in this latch.
+
+- **Internal Diagram (Simplified):**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3411f9b9256cfcd0.png)
 
 **Operation**
 
-* **Input Mode:**
-    1. To configure as input, write a '1' to the corresponding latch bit.
-    2. Both output MOSFETs are turned off, resulting in a high-impedance state.
-    3. External devices or pull-up resistors determine the pin's voltage level.
+- **Input Mode:**
 
-* **Output Mode:**
-    1. **Writing '0':** The lower MOSFET turns on, pulling the pin to ground (logic '0').
-    2. **Writing '1':** 
-       * Both MOSFETs turn off, resulting in a high-impedance state.
-       * An external pull-up resistor is **required** to achieve a high output (logic '1').
+  1. To configure as input, write a '1' to the corresponding latch bit.
+  2. Both output MOSFETs are turned off, resulting in a high-impedance state.
+  3. External devices or pull-up resistors determine the pin's voltage level.
 
-* **External Memory Interfacing:**
-   1. A control signal (likely ALE) determines if Port 0 functions in address/data mode.
-   2. When acting as the address/data bus:
-       * **'0' Output:** Lower MOSFET on, upper MOSFET off.
-       * **'1' Output:** Lower MOSFET off, upper MOSFET on (the bus itself will pull the line high).
+- **Output Mode:**
+
+  1. **Writing '0':** The lower MOSFET turns on, pulling the pin to ground (logic '0').
+  2. **Writing '1':**
+     - Both MOSFETs turn off, resulting in a high-impedance state.
+     - An external pull-up resistor is **required** to achieve a high output (logic '1').
+
+- **External Memory Interfacing:**
+  1.  A control signal (likely ALE) determines if Port 0 functions in address/data mode.
+  2.  When acting as the address/data bus:
+      - **'0' Output:** Lower MOSFET on, upper MOSFET off.
+      - **'1' Output:** Lower MOSFET off, upper MOSFET on (the bus itself will pull the line high).
 
 **Key Points**
 
-* **Pull-up Resistors:**  Port 0 absolutely requires external pull-up resistors when used as general-purpose I/O in situations where you need to output a logic '1'.
-* **Versatility with Tradeoffs:** The dual-functionality of Port 0 offers flexibility, but  adds a layer of complexity when interfacing external memory.
+- **Pull-up Resistors:** Port 0 absolutely requires external pull-up resistors when used as general-purpose I/O in situations where you need to output a logic '1'.
+- **Versatility with Tradeoffs:** The dual-functionality of Port 0 offers flexibility, but adds a layer of complexity when interfacing external memory.
 
 ### Port 1 Pin Structure
 
-* **Dedicated I/O:** Port 1 is a simple 8-bit bidirectional I/O port. Its pins do not have any additional alternate functionality like serving as address lines or special control signals.
+- **Dedicated I/O:** Port 1 is a simple 8-bit bidirectional I/O port. Its pins do not have any additional alternate functionality like serving as address lines or special control signals.
 
-* **Internal Pull-up Resistors:** A crucial feature of Port 1 is that each pin is connected to a weak internal pull-up resistor. These resistors are automatically enabled when the port pin is configured as an input.
+- **Internal Pull-up Resistors:** A crucial feature of Port 1 is that each pin is connected to a weak internal pull-up resistor. These resistors are automatically enabled when the port pin is configured as an input.
 
-* **Internal Diagram (Simplified):**
+- **Internal Diagram (Simplified):**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1bbcd9539232851b.png)
 
 **Operation**
 
-* **Input Mode:**
-    1. To configure as input, write a '1' to the corresponding latch bit.
-    2. The internal pull-up resistor weakly pulls the pin towards a high voltage level (logic '1').
-    3. To read a logic '0', an external device must be strong enough to overcome the internal pull-up and pull the pin to ground.
+- **Input Mode:**
 
-* **Output Mode:**
-    1. To configure as output, write a '0' or '1' to the corresponding latch bit.
-    2. The internal pull-up resistor is effectively overridden.
-    3. **Writing '0':**  The output driver actively pulls the pin low.
-    4. **Writing '1':** The output becomes high-impedance, but the internal pull-up resistor weakly pulls the pin towards a high state.
+  1. To configure as input, write a '1' to the corresponding latch bit.
+  2. The internal pull-up resistor weakly pulls the pin towards a high voltage level (logic '1').
+  3. To read a logic '0', an external device must be strong enough to overcome the internal pull-up and pull the pin to ground.
+
+- **Output Mode:**
+  1. To configure as output, write a '0' or '1' to the corresponding latch bit.
+  2. The internal pull-up resistor is effectively overridden.
+  3. **Writing '0':** The output driver actively pulls the pin low.
+  4. **Writing '1':** The output becomes high-impedance, but the internal pull-up resistor weakly pulls the pin towards a high state.
 
 **Important Considerations**
 
-* **Weak Pull-ups:** The internal pull-up resistors on Port 1 are relatively weak. If a connected external device attempts to strongly drive a pin low, it might not be able to fully bring the voltage to a valid logic '0' level.
-* **Sinking Current:** When a Port 1 pin is configured as an input and an external device drives it low, the external circuitry needs to be able to sink the current flowing through the internal pull-up resistor.
-* **Potential for Incorrect Readings:** If an external device is not strong enough or is configured incorrectly, the input may not register a true '0' even when the external device intends to drive it low. 
+- **Weak Pull-ups:** The internal pull-up resistors on Port 1 are relatively weak. If a connected external device attempts to strongly drive a pin low, it might not be able to fully bring the voltage to a valid logic '0' level.
+- **Sinking Current:** When a Port 1 pin is configured as an input and an external device drives it low, the external circuitry needs to be able to sink the current flowing through the internal pull-up resistor.
+- **Potential for Incorrect Readings:** If an external device is not strong enough or is configured incorrectly, the input may not register a true '0' even when the external device intends to drive it low.
 
 **Recommendations**
 
-* **Input Considerations:**  If using Port 1 for inputs where strong logic '0' signals are needed, consider either:
-    * Disabling the internal pull-ups (if software/hardware allows it) and using external pull-down resistors.
-    * Using a different port without built-in pull-ups.
-* **Output Considerations:** Port 1 can drive outputs effectively, but keep in mind that writing a '1' relies on the internal pull-up or an external pull-up to achieve the high state.
+- **Input Considerations:** If using Port 1 for inputs where strong logic '0' signals are needed, consider either:
+  - Disabling the internal pull-ups (if software/hardware allows it) and using external pull-down resistors.
+  - Using a different port without built-in pull-ups.
+- **Output Considerations:** Port 1 can drive outputs effectively, but keep in mind that writing a '1' relies on the internal pull-up or an external pull-up to achieve the high state.
 
 ### Port 2 Pin Structure
 
-* **Dual Roles:**
-    1. **Higher Order Address Bus:**  When the 8051 is interfaced with external memory, Port 2 provides the upper 8-bits of the 16-bit address (A8-A15).
-    2. **General Purpose I/O:** If external memory is not in use, Port 2 can function as a standard 8-bit bidirectional I/O port.
+- **Dual Roles:**
 
-* **Internal Pull-up Resistors:**  Similar to Port 1, each pin of Port 2 has an internal pull-up resistor that is active when the pin is configured as an input.
+  1. **Higher Order Address Bus:** When the 8051 is interfaced with external memory, Port 2 provides the upper 8-bits of the 16-bit address (A8-A15).
+  2. **General Purpose I/O:** If external memory is not in use, Port 2 can function as a standard 8-bit bidirectional I/O port.
 
-* **Internal Diagram (Simplified):**
+- **Internal Pull-up Resistors:** Similar to Port 1, each pin of Port 2 has an internal pull-up resistor that is active when the pin is configured as an input.
+
+- **Internal Diagram (Simplified):**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_ff86744d95f884c6.png)
 
 **Operation**
 
-* **Input Mode:**
-    1. To configure as input, write a '1' to the corresponding latch bit.
-    2. The internal pull-up weakly pulls the pin high (logic '1').
-    3. External devices must be strong enough to overcome the pull-up resistor to drive a logic '0'.
+- **Input Mode:**
 
-* **Output Mode:**
-    1. To configure as output, write a '0' or '1' to the corresponding latch bit.
-    2. The output driver actively drives the pin high or low, overriding the internal pull-up.
+  1. To configure as input, write a '1' to the corresponding latch bit.
+  2. The internal pull-up weakly pulls the pin high (logic '1').
+  3. External devices must be strong enough to overcome the pull-up resistor to drive a logic '0'.
 
-* **External Memory Interfacing:**
-    1. When used as the higher address byte, the Port 2 latch holds the address information.
-    2. Latch values remain stable during external memory operations.
+- **Output Mode:**
+
+  1. To configure as output, write a '0' or '1' to the corresponding latch bit.
+  2. The output driver actively drives the pin high or low, overriding the internal pull-up.
+
+- **External Memory Interfacing:**
+  1. When used as the higher address byte, the Port 2 latch holds the address information.
+  2. Latch values remain stable during external memory operations.
 
 **Important Considerations**
 
-* **Limited Current Capacity:** As with Port 1, the internal pull-ups on Port 2 mean it's not ideal for driving heavy loads or sinking significant current, especially in input mode.
-* **Conflict with External Memory:** When using external memory, Port 2's general-purpose I/O functionality is effectively unavailable. 
-* **Design Trade-offs:** The dual-role capability of Port 2 adds flexibility, but requires careful consideration of its function in relation to other system requirements.
+- **Limited Current Capacity:** As with Port 1, the internal pull-ups on Port 2 mean it's not ideal for driving heavy loads or sinking significant current, especially in input mode.
+- **Conflict with External Memory:** When using external memory, Port 2's general-purpose I/O functionality is effectively unavailable.
+- **Design Trade-offs:** The dual-role capability of Port 2 adds flexibility, but requires careful consideration of its function in relation to other system requirements.
 
 **Recommendations**
 
-* **Input Considerations:**  The same recommendations for Port 1 apply to Port 2.  Consider external pull-down resistors or disabling the internal pull-ups if reliable '0' inputs are crucial and your external devices are weak drivers.
-* **External Memory Considerations:** If using external memory, avoid relying on Port 2 for general-purpose inputs.
+- **Input Considerations:** The same recommendations for Port 1 apply to Port 2. Consider external pull-down resistors or disabling the internal pull-ups if reliable '0' inputs are crucial and your external devices are weak drivers.
+- **External Memory Considerations:** If using external memory, avoid relying on Port 2 for general-purpose inputs.
 
 ### Port 3 Pin Structure
 
-* **Multifunctional:** Port 3, unlike Ports 1 and 2, is the most versatile port on the 8051. Each of its 8 pins (P3.0-P3.7) can serve either as a general-purpose I/O pin or take on a specialized alternate function.
+- **Multifunctional:** Port 3, unlike Ports 1 and 2, is the most versatile port on the 8051. Each of its 8 pins (P3.0-P3.7) can serve either as a general-purpose I/O pin or take on a specialized alternate function.
 
-* **Internal Pull-ups:** Each pin on Port 3 has a weak internal pull-up resistor, similar to Ports 1 and 2. This pull-up is active when the pin is configured as an input.
+- **Internal Pull-ups:** Each pin on Port 3 has a weak internal pull-up resistor, similar to Ports 1 and 2. This pull-up is active when the pin is configured as an input.
 
-* **Alternate Function Control:**
-   * **Latch:** Each Port 3 bit has a corresponding latch bit. Writing a '1' to the latch allows the alternate function to be used.
-   * **Priority:** If multiple alternate functions compete for the same pin, a priority system exists to determine which function takes precedence.
+- **Alternate Function Control:**
 
-* **Internal Diagram (Simplified):**
+  - **Latch:** Each Port 3 bit has a corresponding latch bit. Writing a '1' to the latch allows the alternate function to be used.
+  - **Priority:** If multiple alternate functions compete for the same pin, a priority system exists to determine which function takes precedence.
+
+- **Internal Diagram (Simplified):**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1523265967e3e07f.png)
 
 **Alternate Functions of Port 3**
 
-* **P3.0 (RxD):** Serial Data Receive for UART communication.
-* **P3.1 (TxD):** Serial Data Transmit for UART communication.
-* **P3.2 (INT0):** External Interrupt 0 input.
-* **P3.3 (INT1):** External Interrupt 1 input.
-* **P3.4 (T0):** Timer/Counter 0 external input.
-* **P3.5 (T1):** Timer/Counter 1 external input.
-* **P3.6 (WR):** Write strobe for external memory.
-* **P3.7 (RD):** Read strobe for external memory.
+| PORT 3 Pin | Function | Description                                  |
+| ---------- | -------- | -------------------------------------------- |
+| P3.0       | RXD      | Serial Data Receive for UART communication.  |
+| P3.1       | TXD      | Serial Data Transmit for UART communication. |
+| P3.2       | INT0     | External Interrupt 0 input.                  |
+| P3.3       | INT1     | External Interrupt 1 input.                  |
+| P3.4       | T0       | Timer/Counter 0 external input.              |
+| P3.5       | T1       | Timer/Counter 1 external input.              |
+| P3.6       | WR       | Write strobe for external memory.            |
+| P3.7       | RD       | Read strobe for external memory.             |
 
 **Operation**
 
-* **Input Mode:**
-   1. Write a '1' to the pin's latch bit.
-   2. The internal pull-up pulls the pin high.
-   3. External devices must overcome the pull-up to drive a strong logic '0'.
+- **Input Mode:**
 
-* **Output Mode:** 
-   1. Write a '0' or '1' to the pin's latch bit.
-   2. Output drivers actively drive the pin high or low.
+  1.  Write a '1' to the pin's latch bit.
+  2.  The internal pull-up pulls the pin high.
+  3.  External devices must overcome the pull-up to drive a strong logic '0'.
 
-* **Alternate Function Mode:**
-   1. Write a '1' to the corresponding latch bit to enable the alternate function.
-   2. The pin is now dedicated to its special role (serial communication, interrupt, etc.).
+- **Output Mode:**
+
+  1.  Write a '0' or '1' to the pin's latch bit.
+  2.  Output drivers actively drive the pin high or low.
+
+- **Alternate Function Mode:**
+  1.  Write a '1' to the corresponding latch bit to enable the alternate function.
+  2.  The pin is now dedicated to its special role (serial communication, interrupt, etc.).
 
 **Important Notes**
 
-* **Flexibility and Tradeoffs:** Port 3's versatility comes at the cost of reduced I/O capability if many alternate functions are in use.
-* **Configuration:** Careful software configuration is essential to determine whether a Port 3 pin acts as general-purpose I/O or in its alternate function role.
+- **Flexibility and Tradeoffs:** Port 3's versatility comes at the cost of reduced I/O capability if many alternate functions are in use.
+- **Configuration:** Careful software configuration is essential to determine whether a Port 3 pin acts as general-purpose I/O or in its alternate function role.
 
 ## Memory Organization
 
-### Draw and Explain program and data memory of 8051. (4)
+### Program Memory (ROM)
 
-**Program Memory (ROM)**
-
-* **Purpose:** The program memory is where the 8051 stores the instructions that make up the program it's executing.  Think of it as the microcontroller's 'recipe book' of code.
-* **Types:**
-    * **Internal ROM:** Most 8051 derivatives have some amount of built-in program memory (often around 4KB).
-    * **External ROM:** If a program is too large to fit in the internal ROM, the 8051 can interface with external memory chips to expand its program storage.
-* **Non-volatile:**  This means that the program code remains stored even when the 8051 loses power.
-* **Access Control:** The external memory is accessed through the External Access (EA) pin. By default, the EA pin is connected to VCC, so the microcontroller fetches instructions from internal memory first. If the program size exceeds 4KB, the microcontroller will automatically switch to external memory. To force the microcontroller to use external memory only, connect the EA pin to GND.
+- **Purpose:** The program memory is where the 8051 stores the instructions that make up the program it's executing. Think of it as the microcontroller's 'recipe book' of code.
+- **Types:**
+  - **Internal ROM:** Most 8051 derivatives have some amount of built-in program memory (often around 4KB).
+  - **External ROM:** If a program is too large to fit in the internal ROM, the 8051 can interface with external memory chips to expand its program storage.
+- **Non-volatile:** This means that the program code remains stored even when the 8051 loses power.
+- **Access Control:** The external memory is accessed through the External Access (EA) pin. By default, the EA pin is connected to VCC, so the microcontroller fetches instructions from internal memory first. If the program size exceeds 4KB, the microcontroller will automatically switch to external memory. To force the microcontroller to use external memory only, connect the EA pin to GND.
 
 **Diagram (Program Memory)**
 
@@ -1369,13 +1358,13 @@ A simplified visual representation of program memory might look like this:
 +--------------------+
 ```
 
-**Data Memory (RAM)**
+### Data Memory (RAM)
 
-* **Purpose:** The data memory acts as the 8051's workspace. It holds temporary variables, intermediate calculations, and other data the program needs while running.
-* **Types**
-    * **Internal RAM:**  The 8051 has a limited amount of internal RAM (usually 128 bytes).
-    * **External RAM:**  Like with program memory, the 8051 can utilize external RAM for additional data storage.
-* **Volatile:** Data in RAM is lost when the 8051 loses power.
+- **Purpose:** The data memory acts as the 8051's workspace. It holds temporary variables, intermediate calculations, and other data the program needs while running.
+- **Types**
+  - **Internal RAM:** The 8051 has a limited amount of internal RAM (usually 128 bytes).
+  - **External RAM:** Like with program memory, the 8051 can utilize external RAM for additional data storage.
+- **Volatile:** Data in RAM is lost when the 8051 loses power.
 
 **Structure of Internal Data Memory**
 
@@ -1384,24 +1373,26 @@ A simplified visual representation of program memory might look like this:
 The internal RAM is divided into several important areas:
 
 1. **Register Banks (00H - 1FH):**
-   * Four banks of 8 general-purpose registers (R0-R7).
-   * Only one bank is active at a time.
-   * Used for frequently accessed data and arithmetic operations.
+
+   - Four banks of 8 general-purpose registers (R0-R7).
+   - Only one bank is active at a time.
+   - Used for frequently accessed data and arithmetic operations.
 
 2. **Bit-Addressable Area (20H - 2FH):**
-   * 128 single bits that can be addressed individually.
-   * Efficient for storing flags, status bits, or control signals.
+
+   - 128 single bits that can be addressed individually.
+   - Efficient for storing flags, status bits, or control signals.
 
 3. **Scratch Pad Area (30H-7FH):**
-   * General-purpose area for variables and temporary data.
-   * Also includes the stack (used for storing return addresses during function calls and interrupts).
+   - General-purpose area for variables and temporary data.
+   - Also includes the stack (used for storing return addresses during function calls and interrupts).
 
 **Diagram (Data Memory)**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b02f962a91927fcb.jpg)
 
 ```
-+--------------------+ 
++--------------------+
 |  Data Memory (RAM) |
 +--------------------+
 | Register Banks 0-3 | (00H - 1FH)
@@ -1414,66 +1405,11 @@ The internal RAM is divided into several important areas:
 
 **Key Points**
 
-* **Memory Access:**  The 8051 uses specific instructions and addressing modes to interact with both its program and data memory.
-* **Limited Internal Resources:**  The internal RAM and ROM of the 8051 are relatively small, highlighting the potential need for external memory in more complex applications.
-* **Memory Trade-offs:** Program and data memory share the same external memory address space, often necessitating careful planning of how memory is used by a program.
+- **Memory Access:** The 8051 uses specific instructions and addressing modes to interact with both its program and data memory.
+- **Limited Internal Resources:** The internal RAM and ROM of the 8051 are relatively small, highlighting the potential need for external memory in more complex applications.
+- **Memory Trade-offs:** Program and data memory share the same external memory address space, often necessitating careful planning of how memory is used by a program.
 
-### Draw and Explain External Memory Addressing and Decoding Logic of 8051.
-
-**External Memory Interfacing in the 8051**
-
-The 8051 microcontroller offers limited internal program and data memory, which might not be sufficient for complex applications. To expand its memory capacity, the 8051 can be interfaced with external memory devices like ROM and RAM. This capability allows you to store larger programs and work with more data.
-
-**Key Components Involved:**
-
-* **Microcontroller:** The 8051 itself, responsible for controlling data flow and program execution.
-* **External Memory:** ROM chips for program storage and RAM chips for data storage. Both can be up to 64KB in size.
-* **Address Decoding Logic:** Circuitry that translates the microcontroller's memory addresses into specific chip select signals for each external memory device.
-* **Control Signals:** Signals like PSEN (Program Store Enable), RD (Read), and WR (Write) from the microcontroller to control external memory operations.
-* **Data Bus:** A bidirectional bus that carries data between the microcontroller and external memory.
-
-**Addressing and Decoding Process:**
-
-1. **Memory Access Initiation:** The microcontroller initiates a memory access operation, specifying an address and indicating whether it's a read or write operation.
-2. **Address Bus Decoding:** The address decoding logic receives the address from the microcontroller.
-3. **Chip Select Generation:** Based on the decoded address and the memory map, the decoding logic generates individual chip select signals for the appropriate ROM or RAM chip(s).
-4. **Control Signal Assertion:** The microcontroller asserts control signals like PSEN, RD, or WR along with the data (for write operations) onto the control and data buses.
-5. **Data Transfer:** The selected memory chip(s) perform the read or write operation based on the control signals and data provided.
-6. **Data Bus Interaction:** The data is transferred between the microcontroller and the selected memory chip(s) on the data bus.
-
-**Example:**
-
-Imagine the microcontroller wants to read data from byte address 40000 (64KB ROM, 0-31KB for ROM, 32KB-63KB for RAM) in external memory.
-
-1. The address 40000 is sent to the address decoding logic.
-2. The logic recognizes it's within the ROM address range (0-31KB) and generates a chip select for the ROM chip.
-3. The microcontroller asserts the RD (read) signal and places the address 40000 on the address bus.
-4. The selected ROM chip reads the data at byte address 40000 and places it on the data bus.
-5. The microcontroller reads the data from the data bus and stores it internally.
-
-The below image shows a simplified block diagram of interfacing 64KB ROM and 64KB RAM with the 8051:
-
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
-
-* **Microcontroller:** Represented by the 8051 block.
-* **External Memory:** ROM and RAM blocks labeled as "64K ROM" and "64K RAM".
-* **Address Decoding Logic:** Not explicitly shown but implied by the connections between the address bus and chip select signals.
-* **Control Signals:** PSEN, RD, and WR signals are shown from the microcontroller.
-* **Data Bus:** Represented by the bidirectional "Data (0-7)" lines.
-
-We know that a typical 8051 Microcontroller has 4KB of ROM and 128B of RAM
-
-The designer of an 8051 Microcontroller based system is not limited to the internal RAM and ROM present in the 8051 Microcontroller. There is a provision of connecting both external RAM and ROM i.e. Data Memory and Program.
-
-The reason for interfacing external Program Memory or ROM is that complex programs written in high – level languages often tend to be larger and occupy more memory.
-
-Another important reason is that chips like 8031 or 8032, which doesn’t have any internal ROM, have to be interfaced with external ROM.
-
-A maximum of 64KB of Program Memory (ROM) and Data Memory (RAM) each can be interface with the 8051 Microcontroller.
-
-The following image shows the block diagram of interfacing 64KB of External RAM and 64KB of External ROM with the 8051 Microcontroller.
-
-### Draw and explain internal RAM architecture of the 8051 microcontroller. (4)
+### Internal RAM Architecture
 
 **Internal RAM Organization**
 
@@ -1522,67 +1458,122 @@ Absolutely! Here's a heavily refined and improved version of the information on 
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
 
-The 8051's data memory (RAM) serves as a workspace for storing temporary data, variables, and intermediate results during program execution. Most modern 8051 variants provide 256 bytes of internal RAM, which is organized  into the following distinct areas:
+The 8051's data memory (RAM) serves as a workspace for storing temporary data, variables, and intermediate results during program execution. Most modern 8051 variants provide 256 bytes of internal RAM, which is organized into the following distinct areas:
 
 **1. Working Registers (00H - 1FH)**
 
-* **Register Banks:** The first 32 bytes of RAM are divided into four register banks (Bank 0, Bank 1, Bank 2, Bank 3). Each bank contains eight general-purpose registers (R0-R7).
-* **Addressing:**
-    * **By Name:** Access registers by name (R0, R1, etc.) after selecting the appropriate bank using the RS0 and RS1 bits in the Program Status Word (PSW) register.
-    * **By Address** Access registers directly by their address (e.g., 12H for R2 in Bank 2), regardless of the currently selected bank.
+- **Register Banks:** The first 32 bytes of RAM are divided into four register banks (Bank 0, Bank 1, Bank 2, Bank 3). Each bank contains eight general-purpose registers (R0-R7).
+- **Addressing:**
+  - **By Name:** Access registers by name (R0, R1, etc.) after selecting the appropriate bank using the RS0 and RS1 bits in the Program Status Word (PSW) register.
+  - **By Address** Access registers directly by their address (e.g., 12H for R2 in Bank 2), regardless of the currently selected bank.
 
 **2. Bit-Addressable Memory (20H - 2FH)**
 
-* **Individual Bit Control:** This area contains 128 individually addressable bits (00H - 7FH within the byte range 20H-2FH). This is efficient for storing single-bit values like flags or control signals.
+- **Individual Bit Control:** This area contains 128 individually addressable bits (00H - 7FH within the byte range 20H-2FH). This is efficient for storing single-bit values like flags or control signals.
 
 **3. General Purpose RAM (Scratchpad) (30H - 7FH)**
 
-* **Flexible Storage:** This 80-byte area provides general-purpose data storage for variables and temporary data.
-* **Stack:** The stack, used for storing function call return addresses and temporary storage during interrupts, also resides within this area. 
+- **Flexible Storage:** This 80-byte area provides general-purpose data storage for variables and temporary data.
+- **Stack:** The stack, used for storing function call return addresses and temporary storage during interrupts, also resides within this area.
 
 **4. Special Function Registers (SFRs) (80H - FFH)**
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb20f39704d09ff3.png)
 
-* **Hardware Control:** SFRs occupy the upper 128 bytes of RAM and directly control various hardware functions of the 8051, such as:
-    * I/O Ports (P0, P1, P2, P3)
-    * Program Status Word (PSW)
-    * Accumulator (A)
-    * Interrupt Control (IE, IP)
-    * Power Management (PCON)
-* **Direct Addressing Only:** SFRs can only be accessed using their specific addresses. Unused addresses within this range are reserved and cannot be used for general-purpose data storage.
+- **Hardware Control:** SFRs occupy the upper 128 bytes of RAM and directly control various hardware functions of the 8051, such as:
+  - I/O Ports (P0, P1, P2, P3)
+  - Program Status Word (PSW)
+  - Accumulator (A)
+  - Interrupt Control (IE, IP)
+  - Power Management (PCON)
+- **Direct Addressing Only:** SFRs can only be accessed using their specific addresses. Unused addresses within this range are reserved and cannot be used for general-purpose data storage.
 
 **Additional Notes**
 
-* **Indirect Addressing:** The lower 128 bytes of RAM (working registers, bit-addressable area, and scratchpad) can be addressed both directly (by their address) and indirectly (using a register to hold the address).
-* **Limited RAM Capacity:** The 8051's internal RAM is relatively small. Many applications require interfacing external RAM to support larger datasets.
-* **Variant Differences:** Some 8051 variants may have an additional 128 bytes of RAM sharing the same address space as SFRs. This extra RAM is usually only accessible via indirect addressing.
+- **Indirect Addressing:** The lower 128 bytes of RAM (working registers, bit-addressable area, and scratchpad) can be addressed both directly (by their address) and indirectly (using a register to hold the address).
+- **Limited RAM Capacity:** The 8051's internal RAM is relatively small. Many applications require interfacing external RAM to support larger datasets.
+- **Variant Differences:** Some 8051 variants may have an additional 128 bytes of RAM sharing the same address space as SFRs. This extra RAM is usually only accessible via indirect addressing.
+
+### External Memory Interfacing and Decoding Logic
+
+**External Memory Interfacing in the 8051**
+
+The 8051 microcontroller offers limited internal program and data memory, which might not be sufficient for complex applications. To expand its memory capacity, the 8051 can be interfaced with external memory devices like ROM and RAM. This capability allows you to store larger programs and work with more data.
+
+**Key Components Involved:**
+
+- **Microcontroller:** The 8051 itself, responsible for controlling data flow and program execution.
+- **External Memory:** ROM chips for program storage and RAM chips for data storage. Both can be up to 64KB in size.
+- **Address Decoding Logic:** Circuitry that translates the microcontroller's memory addresses into specific chip select signals for each external memory device.
+- **Control Signals:** Signals like PSEN (Program Store Enable), RD (Read), and WR (Write) from the microcontroller to control external memory operations.
+- **Data Bus:** A bidirectional bus that carries data between the microcontroller and external memory.
+
+**Addressing and Decoding Process:**
+
+1. **Memory Access Initiation:** The microcontroller initiates a memory access operation, specifying an address and indicating whether it's a read or write operation.
+2. **Address Bus Decoding:** The address decoding logic receives the address from the microcontroller.
+3. **Chip Select Generation:** Based on the decoded address and the memory map, the decoding logic generates individual chip select signals for the appropriate ROM or RAM chip(s).
+4. **Control Signal Assertion:** The microcontroller asserts control signals like PSEN, RD, or WR along with the data (for write operations) onto the control and data buses.
+5. **Data Transfer:** The selected memory chip(s) perform the read or write operation based on the control signals and data provided.
+6. **Data Bus Interaction:** The data is transferred between the microcontroller and the selected memory chip(s) on the data bus.
+
+**Example:**
+
+Imagine the microcontroller wants to read data from byte address 40000 (64KB ROM, 0-31KB for ROM, 32KB-63KB for RAM) in external memory.
+
+1. The address 40000 is sent to the address decoding logic.
+2. The logic recognizes it's within the ROM address range (0-31KB) and generates a chip select for the ROM chip.
+3. The microcontroller asserts the RD (read) signal and places the address 40000 on the address bus.
+4. The selected ROM chip reads the data at byte address 40000 and places it on the data bus.
+5. The microcontroller reads the data from the data bus and stores it internally.
+
+The below image shows a simplified block diagram of interfacing 64KB ROM and 64KB RAM with the 8051:
+
+![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
+
+- **Microcontroller:** Represented by the 8051 block.
+- **External Memory:** ROM and RAM blocks labeled as "64K ROM" and "64K RAM".
+- **Address Decoding Logic:** Not explicitly shown but implied by the connections between the address bus and chip select signals.
+- **Control Signals:** PSEN, RD, and WR signals are shown from the microcontroller.
+- **Data Bus:** Represented by the bidirectional "Data (0-7)" lines.
+
+We know that a typical 8051 Microcontroller has 4KB of ROM and 128B of RAM
+
+The designer of an 8051 Microcontroller based system is not limited to the internal RAM and ROM present in the 8051 Microcontroller. There is a provision of connecting both external RAM and ROM i.e. Data Memory and Program.
+
+The reason for interfacing external Program Memory or ROM is that complex programs written in high – level languages often tend to be larger and occupy more memory.
+
+Another important reason is that chips like 8031 or 8032, which doesn’t have any internal ROM, have to be interfaced with external ROM.
+
+A maximum of 64KB of Program Memory (ROM) and Data Memory (RAM) each can be interface with the 8051 Microcontroller.
+
+The following image shows the block diagram of interfacing 64KB of External RAM and 64KB of External ROM with the 8051 Microcontroller.
 
 ## Stack, Stack Pointer, and Stack Operations
 
 **What is the Stack?**
 
-* **LIFO Structure:** The stack is a section of the 8051's internal RAM that follows a Last-In, First-Out (LIFO) principle. Imagine it like a stack of plates; you always add and remove from the top.
-* **Purpose:**
-    * **Temporary Storage:** The stack stores data temporarily during program execution.
-    * **Function Calls:** It saves the return address when a function (subroutine) is called, allowing the program to return to the correct point after the function completes.
-    * **Interrupts:**  When an interrupt occurs, the 8051 temporarily pushes the current program counter (PC) onto the stack, allowing it to later resume execution where it was interrupted.
+- **LIFO Structure:** The stack is a section of the 8051's internal RAM that follows a Last-In, First-Out (LIFO) principle. Imagine it like a stack of plates; you always add and remove from the top.
+- **Purpose:**
+  - **Temporary Storage:** The stack stores data temporarily during program execution.
+  - **Function Calls:** It saves the return address when a function (subroutine) is called, allowing the program to return to the correct point after the function completes.
+  - **Interrupts:** When an interrupt occurs, the 8051 temporarily pushes the current program counter (PC) onto the stack, allowing it to later resume execution where it was interrupted.
 
 **Stack Pointer (SP)**
 
-* **Address Tracker:** The Stack Pointer (SP) is an 8-bit register that holds the address of the top of the stack (the last item added).
-* **Initialization:** Upon reset, the SP is usually initialized to 07H within the 8051's internal RAM.
-* **Dynamic:** The SP changes automatically during stack operations (push and pop).
+- **Address Tracker:** The Stack Pointer (SP) is an 8-bit register that holds the address of the top of the stack (the last item added).
+- **Initialization:** Upon reset, the SP is usually initialized to 07H within the 8051's internal RAM.
+- **Dynamic:** The SP changes automatically during stack operations (push and pop).
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d922510a8750c6be.jpg)
 
 **Stack Operations**
 
 1. **PUSH Instruction:**
-   * **Stores Data:** The PUSH instruction puts a byte of data onto the top of the stack.
-   * **SP Modification:**
-      1. The SP is incremented.
-      2. The data is then stored at the memory location now pointed to by the SP.
+   - **Stores Data:** The PUSH instruction puts a byte of data onto the top of the stack.
+   - **SP Modification:**
+     1. The SP is incremented.
+     2. The data is then stored at the memory location now pointed to by the SP.
 
 **PUSH Example:**
 
@@ -1598,10 +1589,10 @@ PUSH R4
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_354d90835c983729.png)
 
 2. **POP Instruction:**
-   * **Retrieves Data:**  The POP instruction removes a byte of data from the top of the stack. 
-   * **SP Modification:**
-      1. The data at the location pointed to by the SP is retrieved.
-      2. The SP is then decremented.
+   - **Retrieves Data:** The POP instruction removes a byte of data from the top of the stack.
+   - **SP Modification:**
+     1. The data at the location pointed to by the SP is retrieved.
+     2. The SP is then decremented.
 
 **POP Example:**
 
@@ -1622,11 +1613,13 @@ POP R2 ; POP stack into R2
 - **Interrupt Handling:** When an interrupt occurs, the 8051 automatically pushes the Program Counter (PC) onto the stack, allowing seamless return to the interrupted code after the interrupt service routine.
 
 **Important Considerations**
-* **Limited Stack Size:** The 8051's internal RAM is small, which limits the size of the stack. Be mindful of stack usage to avoid overflow conditions. 
-* **Stack Overflow:** This occurs if you try to PUSH data when the stack is full. This can lead to unpredictable behavior.
-* **Stack Underflow:** This occurs if you try to POP data when the stack is empty. This can also result in errors.
-- **Stack Size:** The 8051's internal RAM for the stack is limited; it's crucial to prevent stack overflow.
-- **Initialization:** The SP is initialized to 07H when the 8051 resets; your code often needs to set it to a custom location.
+
+- **Limited Stack Size:** The 8051's internal RAM is small, which limits the size of the stack. Be mindful of stack usage to avoid overflow conditions.
+- **Stack Overflow:** This occurs if you try to PUSH data when the stack is full. This can lead to unpredictable behavior.
+- **Stack Underflow:** This occurs if you try to POP data when the stack is empty. This can also result in errors.
+
+* **Stack Size:** The 8051's internal RAM for the stack is limited; it's crucial to prevent stack overflow.
+* **Initialization:** The SP is initialized to 07H when the 8051 resets; your code often needs to set it to a custom location.
 
 **Example: Swapping Two Numbers**
 
@@ -1645,37 +1638,67 @@ POP A          ; Pop the original (first) number into the accumulator
 
 ## Timers/Counters
 
+8051 Timers/Counters have two primary modes of operation:
+
+- **Timer Mode:**
+  - Increments on internal machine cycles.
+  - Used to generate time delays or measure time intervals between events.
+- **Counter Mode:**
+  - Increments on external pulses applied to designated input pins.
+  - Used to count external events, like sensor inputs or rotations of a shaft.
+
+**Structure**
+
+- **Two Timers/Counters:** The 8051 has two flexible 16-bit timers/counters, named Timer 0 and Timer 1.
+- **Registers:** Each timer/counter has the following registers:
+  - **THx and TLx:** "x" denotes the timer number – Timer 0 (TH0, TL0) and Timer 1 (TH1, TL1). These hold the actual timer/counter values.
+  - **TMOD:** The Timer Mode register (configuration of modes).
+  - **TCON:** The Timer Control register (start, stop, interrupt flags, etc.).
+
+**Applications**
+
+- **Timing and Delays:** Generating precise delays in code.
+- **Event Counting:** Counting occurrences of external events (button presses, sensor triggers, etc.).
+- **PWM (Pulse-Width Modulation):** Used to control the speed of motors, brightness of LEDs, etc.
+- **Baud Rate Generation:** Essential for serial communication in the 8051.
+- **Real-Time Clock (RTC):** Along with external circuitry, Timers can be used to implement an RTC.
+
+**Limitations**
+
+- **Resolution:** Limited by the 8051's clock speed and the timer/counter's 16-bit design. Fine-grained timings and very high-frequency counting may be difficult.
+- **Only Two Timers:** Some complex applications might require more than the two timers the 8051 provides.
+
 ### TCON Register
 
 **What is the TCON Register?**
 
-* The TCON (Timer Control) register is an 8-bit, bit-addressable register present in 8051 microcontrollers. 
-* It's primarily responsible for controlling the operation of the microcontroller's internal timers and counters.
+- The TCON (Timer Control) register is an 8-bit, bit-addressable register present in 8051 microcontrollers.
+- It's primarily responsible for controlling the operation of the microcontroller's internal timers and counters.
 
 **TCON Register Structure**
 
 The 8 bits of the TCON register are assigned specific functions:
 
-* **TF1 (Timer 1 Overflow Flag):** Set to '1' when Timer 1 overflows. Cleared by software.
-* **TR1 (Timer 1 Run Control Bit):**  Controls the Run/Stop status of Timer 1.
-    * '1' = Timer 1 is running
-    * '0' = Timer 1 is stopped
-* **TF0 (Timer 0 Overflow Flag):** Set to '1' when Timer 0 overflows. Cleared by software.
-* **TR0 (Timer 0 Run Control Bit):** Controls the Run/Stop status of Timer 0.
-    * '1' = Timer 0 is running
-    * '0' = Timer 0 is stopped
-* **IE1 (External Interrupt 1 Edge Flag):** Set to '1' when an external interrupt 1 occurs on a falling edge transition. Cleared by software.
-* **IT1 (External Interrupt 1 Type Control Bit):** Configures external interrupt 1 trigger type.
-    * '1' = Falling edge triggered
-    * '0' = Low-level triggered.
-* **IE0 (External Interrupt 0 Edge Flag):** Set to '1' when an external interrupt 0 occurs on a falling edge transition. Cleared by software.
-* **IT0 (External Interrupt 0 Type Control Bit):** Configures external interrupt 0 trigger type.
-    * '1' = Falling edge triggered
-    * '0' = Low-level triggered
+- **TF1 (Timer 1 Overflow Flag):** Set to '1' when Timer 1 overflows. Cleared by software.
+- **TR1 (Timer 1 Run Control Bit):** Controls the Run/Stop status of Timer 1.
+  - '1' = Timer 1 is running
+  - '0' = Timer 1 is stopped
+- **TF0 (Timer 0 Overflow Flag):** Set to '1' when Timer 0 overflows. Cleared by software.
+- **TR0 (Timer 0 Run Control Bit):** Controls the Run/Stop status of Timer 0.
+  - '1' = Timer 0 is running
+  - '0' = Timer 0 is stopped
+- **IE1 (External Interrupt 1 Edge Flag):** Set to '1' when an external interrupt 1 occurs on a falling edge transition. Cleared by software.
+- **IT1 (External Interrupt 1 Type Control Bit):** Configures external interrupt 1 trigger type.
+  - '1' = Falling edge triggered
+  - '0' = Low-level triggered.
+- **IE0 (External Interrupt 0 Edge Flag):** Set to '1' when an external interrupt 0 occurs on a falling edge transition. Cleared by software.
+- **IT0 (External Interrupt 0 Type Control Bit):** Configures external interrupt 0 trigger type.
+  - '1' = Falling edge triggered
+  - '0' = Low-level triggered
 
 **Key Functions of TCON Register**
 
-1. **Timer/Counter Start/Stop:**  The TR1 and TR0 bits enable you to start and stop Timer 1 and Timer 0, respectively.
+1. **Timer/Counter Start/Stop:** The TR1 and TR0 bits enable you to start and stop Timer 1 and Timer 0, respectively.
 
 2. **Overflow Monitoring:** The overflow flags TF1 and TF0 indicate when a timer has reached its maximum count and rolled over. These are often used to generate interrupts.
 
@@ -1683,7 +1706,7 @@ The 8 bits of the TCON register are assigned specific functions:
 
 **Example: Setting up Timer 0 as an interval timer**
 
-1. **Set the Mode:**  To use Timer 0 in a specific mode, you'll configure the TMOD register (Timer Mode Register).  Let's assume you want Timer 0 as a 16-bit interval timer.
+1. **Set the Mode:** To use Timer 0 in a specific mode, you'll configure the TMOD register (Timer Mode Register). Let's assume you want Timer 0 as a 16-bit interval timer.
 
 2. **Load Initial Value:** Load the desired starting count into the TH0 (Timer 0 High Byte) and TL0 (Timer 0 Low Byte) registers.
 
@@ -1718,53 +1741,54 @@ Description of All the Bits of TCON:
 
 **What is the TMOD Register?**
 
-* The TMOD (Timer Mode) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
-* Its primary role is to select and configure the operating modes of the two built-in timers: Timer 0 and Timer 1.
+- The TMOD (Timer Mode) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
+- Its primary role is to select and configure the operating modes of the two built-in timers: Timer 0 and Timer 1.
 
 **TMOD Register Structure**
 
 The TMOD register has a specific function assigned to each of its 8 bits:
 
-* **Bits 7-4 (Timer 1 Configuration)**
-    * **Gate:** Controls Timer 1  gating for external control (described later).
-    * **C/T̄:** Selects Timer vs. Counter mode for Timer 1.
-        * '1' = Counter mode (counts external pulses)
-        * '0' = Timer mode (counts internal machine cycles)
-    * **M1 M0:**  Selects the operating mode of Timer 1 (Modes 0, 1, 2, or 3)
-* **Bits 3-0 (Timer 0 Configuration)**: Same structure as Timer 1 configuration bits above, but control the settings for Timer 0.
+- **Bits 7-4 (Timer 1 Configuration)**
+  - **Gate:** Controls Timer 1 gating for external control (described later).
+  - **C/T̄:** Selects Timer vs. Counter mode for Timer 1.
+    - '1' = Counter mode (counts external pulses)
+    - '0' = Timer mode (counts internal machine cycles)
+  - **M1 M0:** Selects the operating mode of Timer 1 (Modes 0, 1, 2, or 3)
+- **Bits 3-0 (Timer 0 Configuration)**: Same structure as Timer 1 configuration bits above, but control the settings for Timer 0.
 
 **Operating Modes**
 
 The TMOD register allows you to configure each timer into one of four operating modes:
 
-* **Mode 0 (13-bit Timer):** 
-    * Timer register is effectively 13 bits (THx: 8 bits, TLx: 5 bits)
-    *  This mode is often used for simple timing or event counting where extremely long delays are  not required.  
-* **Mode 1 (16-bit Timer):** 
-    *  The standard 16-bit timer/counter mode, providing the full range of counting.
-* **Mode 2 (8-bit Auto-Reload Timer):**
-    *  TLx is reloaded with the value in THx automatically after each overflow. Useful for generating fixed periodic events.
-* **Mode 3 (Split Timer):**
-    *  Timer 1 is stopped. TL0 is used as an 8-bit Timer/Counter and can be controlled independently, while TH0 runs as a separate 8-bit timer (usually controlled by the system clock).
+- **Mode 0 (13-bit Timer):**
+  - Timer register is effectively 13 bits (THx: 8 bits, TLx: 5 bits)
+  - This mode is often used for simple timing or event counting where extremely long delays are not required.
+- **Mode 1 (16-bit Timer):**
+  - The standard 16-bit timer/counter mode, providing the full range of counting.
+- **Mode 2 (8-bit Auto-Reload Timer):**
+  - TLx is reloaded with the value in THx automatically after each overflow. Useful for generating fixed periodic events.
+- **Mode 3 (Split Timer):**
+  - Timer 1 is stopped. TL0 is used as an 8-bit Timer/Counter and can be controlled independently, while TH0 runs as a separate 8-bit timer (usually controlled by the system clock).
 
 **Gate Bit**
 
 The Gate bit for each timer provides additional control:
 
-* **Gate = '0':** The timer runs continuously when the TRx bit (in TCON) is set to '1'.
-* **Gate = '1':** The timer runs only when the TRx bit is '1' AND an external pin (INT0 or INT1) receives a high-to-low transition.
+- **Gate = '0':** The timer runs continuously when the TRx bit (in TCON) is set to '1'.
+- **Gate = '1':** The timer runs only when the TRx bit is '1' AND an external pin (INT0 or INT1) receives a high-to-low transition.
 
 **Example: Configuring Timer 0 as a 16-bit timer with gating**
 
 1. **Setting the Mode:** To configure Timer 0 as a 16-bit timer, set the corresponding bits in the TMOD register as follows:
+
    ```
    TMOD = 0x01; // Assuming you want Timer 0 in Mode 1, Timer 1 is not important here
    ```
 
 2. **Enabling Gating:** If you want to control Timer 0 with an external signal on INT0 pin:
-    ```
-    TMOD |= 0x08; // Set the Gate bit for Timer 0
-    ```
+   ```
+   TMOD |= 0x08; // Set the Gate bit for Timer 0
+   ```
 
 This register contains bits controlling the operation of timer 0 & 1. To select the operating mode and the timer/counter operation of the timers we use TMOD register. Timer 0 and timer 1 are two timer registers in 8051. Both of these registers use the same register called TMOD to set various timer operation modes.
 
@@ -1803,9 +1827,7 @@ Timer Mode Control Bits:
 | 1   | 0   | 2    | 8-bit Auto Reaload Mode |
 | 1   | 1   | 3    | Split Timer Mode        |
 
-## Modes of Operation
-
-### Explain different timer modes of 8051 microcontroller.
+### Modes of Operation
 
 **Mode 0: 13-Bit Timer**
 
@@ -1855,89 +1877,275 @@ Mode selection depends on:
 - **Recurring Intervals:** Auto-reload mode vs. manual restart.
 - **Number of Timers Needed:** Split timer mode provides two independent 8-bit timers if needed within Timer 0.
 
-### Timers/Counters logic diagram and its operation in various modes.
+#### Timer Mode 0 (13-bit Timer Mode)
 
-TIMER MODE 0 (13 bit mode)
+- **Split Registers:** In Mode 0, each timer's 16-bit register is effectively split into:
+  - **THx (8 bits):** Holds the upper 8 bits of the timer count.
+  - **TLx (5 bits):** Holds the lower 5 bits of the timer count.
+- **Counter Behavior:** Only TLx is actually incremented. Whenever TLx overflows (reaches 32 counts), it's reset to zero, and THx is incremented by one.
+- **Effective Count:** This provides a 13-bit count. The maximum count is effectively 8192 (2^13).
 
-MODE 0 is a 13 bit mode. In this mode the THx acts as an 8 bit timer & TLx acts as a 5 bit timer. The TLx counts up to 31 & then resets to 00 & increment THx by 1. Suppose you load 0 in the timer then the timer will overflow in 2^13 i.e. 8192 machine cycles.
+**Key Points about Mode 0**
+
+- **Timer vs. Counter:** Mode 0 can be used as either a timer (counting internal machine cycles) or as a counter (counting external pulses). This is controlled by the C/T̄ bit in the TMOD register.
+- **Limited Range:** Due to the 13-bit design, Mode 0 is primarily useful for relatively short delays or event counting where extremely long intervals are not required.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
 
-Mode 0 is exactly same like mode 1 except that it is a 13-bit timer instead of 16-bit. The 13-bit counter can hold values between 0000 to 1FFFH in TH-TL. Therefore, when the timer reaches its maximum of 1FFH, it rolls over to 0000, and TF is raised.
+**Example: Creating a Delay Using Timer 0 in Mode 0**
 
-TIMER MODE 1 (16 bit mode)
+Assuming you have a 12 MHz crystal oscillator for your 8051 (1 machine cycle = 1 microsecond):
 
-MODE 1 is similar to MODE 0 except it is a 16 bit mode. In this mode the THx & TLx both acts as an 8 bit timer. The TLx counts upto 255 & then resets to 00 & increment THx by 1. Since this is a full 16 bit timer we can get maximum of 2^16 i.e. 65536 Machine cycle before the timer overflows.
+1. **Mode Setup:**
+
+   ```c
+   TMOD = 0x01;  // Set Timer 0 in Mode 0 (13-bit timer)
+   ```
+
+2. **Calculate Delay Value:**
+
+   - Let's say you want a 50-millisecond (0.05 seconds) delay.
+   - We need 50000 machine cycles (50,000 microseconds).
+   - Because the timer counts up, calculate the value to subtract from the max value: 8192 - 50000 = -41808.
+   - Since the counter is unsigned, the 16-bit representation of -41808 is 3CAF (hex).
+
+3. **Load Timer Registers:**
+
+   ```c
+   TH0 = 0x3C;
+   TL0 = 0xAF;
+   ```
+
+4. **Start Timer:**
+
+   ```c
+   TR0 = 1; // Set the TR0 bit in TCON to start Timer 0
+   ```
+
+5. **Wait for Overflow:**
+   ```c
+   while (TF0 == 0); // Wait for the Timer 0 Overflow flag (TF0 in TCON) to be set
+   TR0 = 0; // Stop the timer
+   TF0 = 0; // Clear the overflow flag
+   ```
+
+**Explanation**
+
+The timer will start counting up from 0x3CAF. After 41808 machine cycles, an overflow will occur, setting TF0 to '1'. Your code detects this and stops the timer. You have now generated your desired 50-millisecond delay.
+
+#### Timer Mode 1 (16-bit Timer Mode)
+
+- **Full 16-bit Register:** In Mode 1, both THx and TLx registers of a timer act as a single 16-bit register.
+- **Counting:** The 16-bit register is incremented on each timer pulse (either internal machine cycles or external pulses, depending on the C/T̄ bit in TMOD).
+- **Maximum Count:** Timers in Mode 1 can count up to the full 16-bit range, which is 65,536.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
 
-It is a 16-bit timer; therefore it allows values from 0000 to FFFFH to be loaded into the timer’s registers TL and TH. After TH and TL are loaded with a 16-bit initial value, the timer must be started. We can do it by “SETB TR0” for timer 0 and “SETB TR1” for timer 1. After the timer is started. It starts count up until it reaches its limit of FFFFH. When it rolls over from FFFF to 0000H, it sets high a flag bit called TF (timer flag). This timer flag can be monitored. When this timer flag is raised, one option would be stop the timer with the instructions “CLR TR0“ or CLR TR1 for timer 0 and timer 1 respectively. Again, it must be noted that each timer flag TF0 for timer 0 and TF1 for timer1. After the timer reaches its limit and rolls over, in order to repeat the process the registers TH and TL must be reloaded with the original value and TF must be reset to 0.
+**Example: Generating a 1-Second Delay with Timer 0 in Mode 1**
 
-TIMER MODE 2 (8 bit mode)
+Let's assume a 12 MHz crystal oscillator (1 machine cycle = 1 microsecond):
 
-In this Mode TLx acts as the timer & THx contains the Reload Value i.e. THx is loaded in TLx everytime it overflows i.e. when TLx reaches 255 & is incremented then instead of resetting it to 0 it will be reset to the value stored in THx. This mode is very commonly used for generating baud rate used in serial communication.
+1. **Mode Setup:**
+
+   ```assembly
+   MOV TMOD, #01H ; Set Timer 0 in Mode 1 (16-bit timer)
+   ```
+
+2. **Calculating the Reload Value:**
+
+   - We need a 1-second delay (1,000,000 microseconds).
+   - Since the timer increments on each machine cycle, we need 1,000,000 counts.
+   - To create a delay, we subtract this from the max count and load the result: 65536 - 1000000 = -934464
+   - As the counter is unsigned, the 16-bit representation is FC18 (hex).
+
+3. **Loading Timer Registers:**
+
+   ```assembly
+   MOV TH0, #0FCH ; Load the high byte of the reload value
+   MOV TL0, #18H  ; Load the low byte of the reload value
+   ```
+
+4. **Starting the Timer:**
+
+   ```assembly
+   SETB TR0 ; Start Timer 0
+   ```
+
+5. **Waiting for Overflow:**
+   ```assembly
+   JNB TF0, $  ; Keep checking the Timer 0 Overflow flag (TF0 in TCON) and jump back to this line if not yet set
+   CLR TR0    ; Stop the timer
+   CLR TF0    ; Clear the overflow flag
+   ```
+
+**Explanation**
+
+- The timer starts counting from FC18. When it reaches FFFF, it overflows, setting the TF0 flag to '1'.
+- The `JNB TF0, $` instruction creates a loop that checks the TF0 flag, effectively waiting for the overflow.
+- Once the overflow occurs, the timer is stopped, and the flag is cleared.
+
+**Important Notes:**
+
+- The C/T̄ bit in the TMOD register determines whether the timer counts internal machine cycles (timer mode) or external pulses (counter mode).
+- Mode 1 is the most common mode for timers in 8051 microcontrollers due to its flexibility and larger counting range.
+
+#### Timer Mode 2 (8-bit Auto-Reload Timer Mode)
+
+- **Key Feature:** In Mode 2, the TLx register acts as the timer itself, while the THx register holds a reload value.
+- **Auto-Reload Behavior:**
+  - TLx counts up.
+  - When TLx overflows from FFH to 00H, it's automatically reloaded with the value stored in THx.
+  - This cycle repeats, generating a continuous timer.
+
+**Advantages of Mode 2**
+
+- **Fixed-Period Generation:** Mode 2 is ideal for generating fixed-period delays or timing events without requiring software intervention to reload the timer after each cycle.
+- **Baud Rate Generation:** Mode 2 is often used in serial communication to create a reliable clock for baud rate generation.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_a63407a2fb9d9df6.png)
 
-It is an 8 bit timer that allows only values of 00 to FFH to be loaded into the timer’s register TH. After TH is loaded with 8 bit value, the 8051 gives a copy of it to TL. Then the timer must be started. It is done by the instruction “SETB TR0” for timer 0 and “SETB TR1” for timer1. This is like mode 1. After timer is started, it starts to count up by incrementing the TL register. It counts up until it reaches its limit of FFH. When it rolls over from FFH to 00. It sets high the TF (timer flag). If we are using timer 0, TF0 goes high; if using TF1 then TF1 is raised. When Tl register rolls from FFH to 00 and TF is set to 1, TL is reloaded automatically with the original value kept by the TH register. To repeat the process, we must simply clear TF and let it go without any need by the programmer to reload the original value. This makes mode 2 auto reload, in contrast in mode 1 in which programmer has to reload TH and TL.
+**Example: Creating a Square Wave with 50% Duty Cycle on Timer 1**
 
-TIMER MODE 3 (Split Mode)
+Assumptions:
 
-Timer mode “3” is known as split-timer mode. Timers 0 and 1 may be programmed to be in mode 0, 1, or 2 independently of a similar mode for the other timer. But in mode 3 the timers do not operate independently, if mode 3 is chosen for timer 0. When Timer 0 is placed in mode 3, it essentially becomes two separate 8-bit timers. Timer 0 is TL0 and Timer 1 is TH0. Both timers count from 0 to 255 and overflow back to 0. All the bits that are related to Timer 1 will now be tied to TH0. Now placing timer 1 in mode 3 causes it to stop counting, the control bit TR1 and the Timer 1 flag TF1 are now used by timer 0. So even if you use Timer 1 in Mode 0, 1 or 2 you won’t be able to START or STOP the timer & no INTERRUPT will be generated by Timer 1. The real Timer 1 will be incremented every machine cycle no matter what.
+- 12 MHz crystal oscillator.
+- Desired square wave frequency: 1 kHz (period = 1 millisecond).
+
+1. **Mode Setup:**
+
+   ```assembly
+   MOV TMOD, #20H ; Set Timer 1 in Mode 2 (8-bit auto-reload)
+   ```
+
+2. **Calculating Reload Value:**
+
+   - A 1 kHz wave with a 50% duty cycle requires a 0.5 millisecond on-time and a 0.5 millisecond off-time.
+   - 0.5 ms corresponds to 6000 machine cycles (0.5 ms \* 12,000 cycles/ms).
+   - To make the timer count for 6000 cycles, we need to load the reload value with 256 - 6000 = -5744.
+   - The 8-bit representation of -5744 is DAH (hex).
+
+3. **Loading TH1:**
+
+   ```assembly
+   MOV TH1, #0DAH ; Load the reload value
+   ```
+
+4. **Starting the Timer:**
+
+   ```assembly
+   SETB TR1 ; Start Timer 1
+   ```
+
+5. **Generating the Square Wave (Hardware handles most of this):**
+   - Connect an output pin of your microcontroller to the T1 pin (P3.4) for the 8051.
+
+**Explanation**
+
+- Timer 1 will begin counting up from 00H. When it reaches FFH, it overflows, automatically reloads with DAH from TH1, and the process repeats.
+- The hardware of the 8051 will automatically toggle the T1 pin on each overflow, creating the square wave output.
+
+**Important Notes**
+
+- Mode 2 is exclusively a timer mode – it always counts internal machine cycles.
+- You can adjust the duty cycle of the square wave in the example by changing the reload value loaded into TH1.
+
+#### Timer Mode 3 (Split Timer Mode)
+
+Mode 3 is a unique mode for Timer 0 and Timer 1 with specific behaviors:
+
+**Timer 0 in Mode 3**
+
+- **TL0 (8-bit Timer/Counter):** Behaves as a standard 8-bit timer or counter, controlled by the C/T̄ bit in TMOD and the TR0 bit in TCON.
+- **TH0 (8-bit Timer):** Acts as an independent timer, usually controlled by the system clock (machine cycles). It is not affected by TR0 in this mode.
+
+**Timer 1 in Mode 3**
+
+- **Stopped:** Timer 1 is essentially halted in Mode 3.
+- **Control Bits:** Timer 1's control bits (TR1 and TF1) are used instead by Timer 0. This allows Timer 0 to be gated (controlled by an external signal).
+
+**Why is Mode 3 Useful?**
+
+1.  **Extra Timer:** Mode 3 gives you an additional 8-bit timer (TH0) if you need more than the standard two timers that the 8051 provides.
+2.  **Gating Timer 0:** It allows you to control the Start/Stop of Timer 0 with an external signal on the INT0 pin, providing more flexible control for timing operations.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9d69089b6ba947bf.png)
 
-Mode 3 is also known as a split timer mode. Timer 0 and 1 may be programmed to be in mode 0, 1 and 2 independently of similar mode for other timer. This is not true for mode 3; timers do not operate independently if mode 3 is chosen for timer 0. Placing timer 1 in mode 3 causes it to stop counting; the control bit TR1 and the timer 1 flag TF1 are then used by timer0.
+**Example: Using Timer 0 in Mode 3 as a Gated Timer**
+
+Let's assume you want Timer 0 to count external events on pin INT0 and TH0 to generate a time base.
+
+1. **Mode Setup:**
+
+   ```assembly
+   MOV TMOD, #09H ; Set Timer 0 in Mode 3, Timer 1 is not important in this case
+   ```
+
+2. **Gating Setup:**
+
+   ```assembly
+   SETB GATE  ; Enable gating for Timer 0 in TCON. This means TR0 alone won't start the timer
+   ```
+
+3. **Using the Functionality**
+   - **TL0:** Will now count pulses received on the INT0 pin.
+   - **TH0:** Will count machine cycles and can be used for independent timing operations.
+   - **To start Timer 0:** Ensure TR0 is set to '1' AND a high-to-low transition occurs on the INT0 pin.
+
+**Key Points**
+
+- Mode 3 for Timer 1 is rarely used directly; its primary purpose is to give Timer 0 the extra control features.
+- Timer 0 needs both TR0 = '1' and the external gating signal for it to function when in Mode 3.
 
 ## Serial Communication
 
 **What is Serial Communication?**
 
-* Serial communication is a method of transmitting data between devices where the bits of data are sent sequentially over a single communication line or channel. This contrasts with parallel communication where multiple bits are sent at the same time over multiple lines.
+- Serial communication is a method of transmitting data between devices where the bits of data are sent sequentially over a single communication line or channel. This contrasts with parallel communication where multiple bits are sent at the same time over multiple lines.
 
 **Key Modes of Serial Communication**
 
 1. **Simplex Mode**
 
-   * **Unidirectional transmission:** Data flows in only one direction, from the transmitter to the receiver.
-   * **Example:**  A TV broadcasting station transmits signals to countless television sets (receivers). TVs can't transmit back to the station.
+   - **Unidirectional transmission:** Data flows in only one direction, from the transmitter to the receiver.
+   - **Example:** A TV broadcasting station transmits signals to countless television sets (receivers). TVs can't transmit back to the station.
 
 2. **Half-Duplex Mode**
 
-   * **Bidirectional, but not simultaneous:** Both devices can transmit and receive, but not at the same time. They must take turns.
-   * **Example:** Walkie-talkies. A user presses a button to talk (transmit) and releases the button to listen (receive).  Both users cannot talk at the same time.
+   - **Bidirectional, but not simultaneous:** Both devices can transmit and receive, but not at the same time. They must take turns.
+   - **Example:** Walkie-talkies. A user presses a button to talk (transmit) and releases the button to listen (receive). Both users cannot talk at the same time.
 
 3. **Full-Duplex Mode**
 
-   * **Simultaneous bidirectional transmission:** Both devices can transmit and receive data at the same time.
-   * **Example:** Modern phone calls. Both parties can talk and listen simultaneously.
+   - **Simultaneous bidirectional transmission:** Both devices can transmit and receive data at the same time.
+   - **Example:** Modern phone calls. Both parties can talk and listen simultaneously.
 
 **Asynchronous vs. Synchronous Communication**
 
 Within serial communication, there's an important distinction between asynchronous and synchronous modes:
 
-* **Asynchronous:**
-   * No shared clock signal between devices.
-   * Data is framed using start and stop bits to signal the beginning and end of a data packet.
-   * Good for irregular data transmission with potential gaps between bytes.
+- **Asynchronous:**
 
-* **Synchronous:**
-   * Devices share a clock signal that synchronizes the timing of data transmission. 
-   * Data bytes flow in a continuous stream without the need for start and stop bits.
-   * Ideal for high-speed, continuous data transmission. 
+  - No shared clock signal between devices.
+  - Data is framed using start and stop bits to signal the beginning and end of a data packet.
+  - Good for irregular data transmission with potential gaps between bytes.
+
+- **Synchronous:**
+  - Devices share a clock signal that synchronizes the timing of data transmission.
+  - Data bytes flow in a continuous stream without the need for start and stop bits.
+  - Ideal for high-speed, continuous data transmission.
 
 **Example: UART Communication (Typically Asynchronous)**
 
-* **Hardware:**  A Universal Asynchronous Receiver/Transmitter (UART) is a common hardware component for serial communication.
-* **Protocol:**  Data is framed with a start bit, 5-9 data bits, an optional parity bit (for error checking), and one or more stop bits.
-* **Transmission:**
-    *  The transmitter sends out the start bit (logic low)
-    *  Data bits are sent one by one (least significant bit first)
-    *  Parity bit (if used) is sent
-    * Stop bit (logic high) signals packet's end
-* **Example Use Case:**  Computer sending commands to a microcontroller over a serial connection.
+- **Hardware:** A Universal Asynchronous Receiver/Transmitter (UART) is a common hardware component for serial communication.
+- **Protocol:** Data is framed with a start bit, 5-9 data bits, an optional parity bit (for error checking), and one or more stop bits.
+- **Transmission:**
+  - The transmitter sends out the start bit (logic low)
+  - Data bits are sent one by one (least significant bit first)
+  - Parity bit (if used) is sent
+  - Stop bit (logic high) signals packet's end
+- **Example Use Case:** Computer sending commands to a microcontroller over a serial connection.
 
-**Note:**  Other serial protocols exist, such as SPI (Serial Peripheral Interface) and I2C (Inter-Integrated Circuit), each with specific features and applications.
+**Note:** Other serial protocols exist, such as SPI (Serial Peripheral Interface) and I2C (Inter-Integrated Circuit), each with specific features and applications.
 
 ### Modes
 
@@ -1945,8 +2153,8 @@ Within serial communication, there's an important distinction between asynchrono
 
 The SCON (Serial Control) register holds bits that determine the operating mode, baud rate, and other serial communication settings for the 8051's integrated UART. The pertinent bits are:
 
-* **SM0, SM1:** Serial Mode selection bits.
-* **REN:** Receive enable bit.
+- **SM0, SM1:** Serial Mode selection bits.
+- **REN:** Receive enable bit.
 
 **Serial Modes in 8051**
 
@@ -1954,154 +2162,306 @@ The 8051 supports four primary serial communication modes, as outlined below:
 
 **1. Mode 0 (Shift Register Mode)**
 
-* **Synchronous:** Data is transmitted and received with clock pulses generated on the TxD pin (transmit data pin) of the 8051.  RxD (receive data pin) is used for receiving data.
-* **Framing:**  Data transmission occurs in bytes (8-bit frames) without the overhead of start and stop bits.
-* **Baud Rate:** Fixed at 1/12th of the microcontroller's oscillator frequency.
+- **Synchronous:** Data is transmitted and received with clock pulses generated on the TxD pin (transmit data pin) of the 8051. RxD (receive data pin) is used for receiving data.
+- **Framing:** Data transmission occurs in bytes (8-bit frames) without the overhead of start and stop bits.
+- **Baud Rate:** Fixed at 1/12th of the microcontroller's oscillator frequency.
 
 **2. Mode 1 (10-bit UART)**
 
-* **Asynchronous:** No shared clock signal between devices. Start and stop bits frame each byte for synchronization.
-* **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
-* **Baud Rate:**  Variable, usually determined by using Timer 1 to generate the baud-rate ticks.
-* **Common Use:** General-purpose serial communication with external devices.
+- **Asynchronous:** No shared clock signal between devices. Start and stop bits frame each byte for synchronization.
+- **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
+- **Baud Rate:** Variable, usually determined by using Timer 1 to generate the baud-rate ticks.
+- **Common Use:** General-purpose serial communication with external devices.
 
 **3. Mode 2 (11-bit UART)**
 
-* **Asynchronous:**  Same principle as Mode 1.
-* **Framing:** 1 start bit, 8 data bits, a programmable 9th bit, and 1 stop bit.
-* **9th Bit:**  Can be used as an extra data bit, a parity bit (for error checking), or for multiprocessor communication.
-* **Baud Rate:** Variable, often calculated using Timer 1. 
+- **Asynchronous:** Same principle as Mode 1.
+- **Framing:** 1 start bit, 8 data bits, a programmable 9th bit, and 1 stop bit.
+- **9th Bit:** Can be used as an extra data bit, a parity bit (for error checking), or for multiprocessor communication.
+- **Baud Rate:** Variable, often calculated using Timer 1.
 
 **4. Mode 3 (9-bit UART)**
 
-* **Similar to Mode 2:**  Asynchronous with a programmable 9th bit.
-* **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
-* **Key Difference:** The 9th bit is always transmitted as '1'.
-* **Baud Rate:** Variable, based on calculations with Timer 1. 
+- **Similar to Mode 2:** Asynchronous with a programmable 9th bit.
+- **Framing:** 1 start bit, 8 data bits, and 1 stop bit.
+- **Key Difference:** The 9th bit is always transmitted as '1'.
+- **Baud Rate:** Variable, based on calculations with Timer 1.
 
 **Mode Selection & Configuration Example**
 
 Let's configure the 8051 for serial communication in Mode 1, a classic UART setup:
 
 1. **Mode Setting:**
-    ```c
-    SCON = 0x50; // SM0 = 0, SM1 = 1 (Mode 1), REN = 1 (enable reception) 
-    ```
+
+   ```c
+   SCON = 0x50; // SM0 = 0, SM1 = 1 (Mode 1), REN = 1 (enable reception)
+   ```
 
 2. **Baud Rate Calculation:** Determine the desired baud rate and calculate the appropriate reload value to load into the TH1 register used as the baud rate generator. (Consult your microcontroller datasheet for the calculation formula).
 
-**Remember:** 
+**Remember:**
 
-* To transmit data, load the byte to be sent into the SBUF (Serial Buffer) register. Hardware handles the rest.
-* Reception often involves setting up interrupts to detect when the RI flag in SCON is set, indicating received data.
+- To transmit data, load the byte to be sent into the SBUF (Serial Buffer) register. Hardware handles the rest.
+- Reception often involves setting up interrupts to detect when the RI flag in SCON is set, indicating received data.
 
-### Explain Serial Communication in various modes.
+#### Mode 0 Serial Communication (Synchronous Shift Register Mode)
 
-The serial port of 8051 is full duplex, i.e., it can transmit and receive simultaneously. The register SBUF is used to hold the data. The special function register SBUF is physically two registers. One is, write-only and is used to hold data to be transmitted out of the 8051 via TXD. The other is, read-only and holds the received data from external sources via RXD. Both mutually exclusive registers have the same address 099H.
+- **Clocking:** In Mode 0, the 8051 generates clock pulses on its TxD (transmit data) pin. These clock pulses synchronize data transmission and reception. The RxD (receive data) pin is used to receive incoming data.
+- **No Start/Stop Bits:** Data is transmitted as a continuous stream of bytes (8 bits) without framing overhead like start and stop bits.
+- **Half-Duplex:** Data can flow in either direction, but not simultaneously. Devices need to take turns transmitting and receiving.
+- **Fixed Baud Rate:** The baud rate is fixed at 1/12th of the microcontroller's oscillator frequency.
 
-**Data Transmission:**
+**Example: Transmitting Data to a Shift Register**
 
-Transmission of serial data begins at any time when data is written to SBUF.
+A common use case for Mode 0 is communicating with external shift registers to control displays or expand I/O (input/output) capability. Let's assume:
 
-Pin P3.1 (Alternate function bit TXD) is used to transmit data to the serial data network.
+- 12 MHz crystal oscillator (1 machine cycle = 1 microsecond)
+- Sending a byte of data to a shift register
 
-TI is set to 1 when data has been transmitted. This signifies that SBUF is empty so that another byte can be sent.
+1. **Mode Setup:**
 
-**Data Reception :**
+   ```assembly
+   MOV SCON, #00H ; Set Mode 0 (SM0 = 0, SM1 =0), don't enable reception yet
+   ```
 
-Reception of serial data begins if the receive enable bit is set to 1 for all modes.
+2. **Load Data to Send:**
 
-Pin P3.0 (Alternate function bit RXD) is used to receive data from the serial data network.
+   ```assembly
+   MOV SBUF, #55H ; Load the byte value (example) into the Serial Buffer register
+   ```
 
-Receive interrupt flag, RI, is set after the data has been received in all modes. The data gets stored in SBUF register from where it can be read.
+3. **Transmit Byte (Hardware Handles the Bit Shifting):**
 
-**Serial Data Modes:**
+   - The hardware will automatically shift out the 8 bits of data on the TxD pin, synchronized with clock pulses. The shift register will receive one bit on each clock pulse.
 
-8051 micro controller communicate with another peripheral device through RXD and TXD pin of port3.controller have four mode of serial communication.this four mode of serial communication are below.
+4. **Enable Reception (If Needed):**
+   ```assembly
+   SETB REN ; Enable reception in SCON if you need to receive data back from the shift register
+   ```
 
-1. Serial data mode 0-fixed buad Rate.
-2. Serial data mode 1-variable baud rate.
-3. Serial data mode 2 -fixed baud Rate.
-4. Serial Data mode 3 -variable baud rate.
+**Key Points**
 
-**Serial Data Mode-0 (Baud Rate Fixed):**
+- **Synchronization:** The external device must be designed to shift data in sync with the clock signal provided by the 8051.
+- **Baud Rate Limitation:** The fixed baud rate (oscillator frequency / 12) may be a constraint for applications requiring high-speed communication.
 
-In this mode, the serial port works like a shift register and the data transmission works synchronously with a clock frequency of fosc /12.
+**Additional Considerations**
 
-Serial data is received and transmitted through RXD. 8 bits are transmitted/ received aty a time.
+- For bidirectional communication, you'll need to manage transitions between transmitting and receiving data.
+- Mode 0 is less common in modern applications where UART-based asynchronous communication (Modes 1, 2, and 3) is often preferred for its flexibility.
 
-Pin TXD outputs the shift clock pulses of frequency fosc /12, which is connected to the external circuitry for synchronization.
+#### Mode 1 Serial Communication (10-bit UART Mode)
 
-The shift frequency or baud rate is always 1/12 of the oscillator frequency.
+- **Asynchronous:** No shared clock signal between devices. Start and stop bits frame each byte for synchronization.
+- **Framing:**
+  - 1 start bit (always '0')
+  - 8 data bits (least significant bit sent first)
+  - 1 stop bit (always '1')
+- **Variable Baud Rate:** The baud rate is often calculated using Timer 1.
+- **Common Use:** General-purpose serial communication with external devices (sensors, Bluetooth modules, GPS modules, other microcontrollers, etc.).
 
-**Serial Data Mode-1 (standard UART mode) (baud rate is variable):**
+**Example: Transmitting and Receiving Data to/from a Computer**
 
-In mode-1, the serial port functions as a standard Universal Asynchronous Receiver Transmitter (UART) mode. 10 bits are transmitted through TXD or received through RXD.
+Let's imagine you want to send the character 'A' to your computer and then receive a character back.
 
-The 10 bits consist of one start bit (which is usually '0'), 8 data bits (LSB is sent first/received first), and a stop bit (which is usually '1'). Once received, the stop bit goes into RB8 in the special function register SCON. The baud rate is variable.
+Assumptions:
 
-**Serial Data Mode-2 Multiprocessor (baud rate is fixed):**
+- 11.0592 MHz oscillator
+- Desired baud rate: 9600
 
-In this mode 11 bits are transmitted through TXD or received through RXD.
+1. **Mode Setup:**
 
-The various bits are as follows: a start bit (usually '0'), 8 data bits (LSB first), a programmable 9 th (TB8 or RB8)bit and a stop bit (usually '1').
+   ```assembly
+   MOV SCON, #50H ; Set serial mode 1 (SM0 = 0, SM1 = 1) and enable reception (REN = 1)
+   ```
 
-While transmitting, the 9 th data bit (TB8 in SCON) can be assigned the value '0' or '1'. For example, if the information of parity is to be transmitted, the parity bit (P) in PSW could be moved into TB8.
+2. **Baud Rate Setup (Using Timer 1):**
 
-On reception of the data, the 9 th bit goes into RB8 in 'SCON', while the stop bit is ignored.
+   - Use your microcontroller datasheet's calculations to determine the reload value for the TH1 register to achieve a 9600 baud rate.
+   - Let's say the calculated reload value is FD (hex). Load TH1 with this value.
+   - Set the appropriate bits in TMOD to run Timer 1 as the baud rate generator.
+   - Start Timer 1 by setting TR1 = 1 in the TCON register.
 
-The baud rate is programmable to either 1/32 or 1/64 of the oscillator frequency.
+3. **Transmitting the Character 'A' (ASCII 41H):**
 
-fbaud = (2^SMOD/64)\*fosc
+   ```assembly
+   MOV SBUF, #41H   ; Load 'A' into the Serial Buffer register
+   JNB TI, $        ; Wait for the Transmit Interrupt flag (TI in SCON) to be set, indicating transmission is complete
+   CLR TI           ; Clear the flag for the next transmission
+   ```
 
-**Serial Data Mode-3 - Multi processor mode (Variable baud rate):**
+4. **Receiving a Character:**
+   ```assembly
+   JNB RI, $        ; Wait for the Receive Interrupt flag (RI in SCON) to be set, indicating data is received
+   MOV A, SBUF      ; Move the received data from SBUF into the accumulator
+   CLR RI           ; Clear the flag
+   ```
 
-In this mode 11 bits are transmitted through TXD or received through RXD.
+**Explanation**
 
-The various bits are: a start bit (usually '0'), 8 data bits (LSB first), a programmable 9 th bit and a stop bit (usually '1').
+- **Sending:** The 8051 UART hardware frames the 'A' with start/stop bits and handles the bit shifting. The TI flag is set when the byte is completely sent.
+- **Receiving:** The hardware detects the start bit of an incoming byte, assembles it, and puts it in the SBUF register. The RI flag is set. Your code then reads the byte from SBUF.
 
-Mode-3 is same as mode-2, except the fact that the baud rate in mode-3 is variable (i.e., just as in mode-1).
+**Important Points**
+
+- Mode 1 is the most common UART mode used in 8051 systems due to its flexibility and asynchronous nature.
+- You'll often handle serial communication using interrupts (signaled by TI and RI) to make your code more responsive.
+
+#### Mode 2 Serial Communication (11-bit UART Mode)
+
+- **Asynchronous:** Similar to Mode 1, there's no shared clock signal between devices, and start and stop bits frame each data transmission.
+- **Framing:**
+  - 1 start bit (always '0')
+  - 8 data bits (least significant bit sent first)
+  - A programmable 9th bit (set by the TB8 bit in the SCON register)
+  - 1 stop bit (always '1')
+- **Variable Baud Rate:** Typically calculated using Timer 1.
+
+**Key Uses of Mode 2**
+
+1. **Extra Data or Parity Bit:** The 9th bit can be:
+
+   - An extra data bit for sending 9-bit values.
+   - A configurable parity bit for error checking.
+
+2. **Multiprocessor Communication:** In multiprocessor systems, the 9th bit is used by the SM2 bit in SCON to distinguish between data from other processors and address information.
+
+**Example: Transmitting Data with a Parity Bit**
+
+Let's assume you want to send the byte 'B' (ASCII 42H) with even parity.
+
+Assumptions:
+
+- 11.0592 MHz oscillator
+- Desired baud rate: 9600
+
+1. **Mode Setup**
+
+   ```assembly
+   MOV SCON, #90H ; Set serial mode 2 (SM0 = 1, SM1 = 0), enable reception (REN = 1)
+   ```
+
+2. **Baud Rate Setup (Similar to Mode 1):**
+
+   - Calculate the reload value for TH1 to achieve a 9600 baud rate (consult your datasheet).
+   - Load TH1 with the calculated value.
+   - Set up Timer 1 as the baud rate generator in TMOD.
+   - Start Timer 1 (TR1 = 1 in TCON).
+
+3. **Calculate Even Parity and Set TB8:**
+
+   ```assembly
+   MOV A, #42H  ; Load the character 'B'
+   ; ... (Code to calculate even parity and store the value in a bit, let's say 'parity_bit')
+   MOV TB8, parity_bit ; Set the 9th bit
+   ```
+
+4. **Transmitting**
+   ```assembly
+   MOV SBUF, A  ; Load the byte into the Serial Buffer register
+   JNB TI, $    ; Wait for the Transmit Interrupt flag (TI)
+   CLR TI       ; Clear the flag
+   ```
+
+**Explanation**
+
+- **Parity:** Your code would calculate the even parity bit before transmission and set the TB8 bit accordingly.
+- **Hardware:** The hardware handles framing the byte with start, stop, and parity bits.
+
+**Important Notes**
+
+- Mode 2 offers flexibility for either parity checking or transmitting 9-bit data.
+- The multiprocessor communication feature is specialized and may not be relevant to most applications.
+
+#### Mode 3 Serial Communication (9-bit UART Mode)
+
+- **Asynchronous:** Similar to Modes 1 and 2: no shared clock signal, start and stop bits for framing.
+- **Framing:**
+  - 1 start bit (always '0')
+  - 8 data bits (least significant bit sent first)
+  - A programmable 9th bit (set by the TB8 bit in the SCON register) – **however, this 9th bit is always transmitted as '1' in Mode 3.**
+- **Variable Baud Rate:** Often calculated using Timer 1.
+
+**Primary Use of Mode 3**
+
+Mode 3 is very similar to Mode 2, with one key difference: the transmitted 9th bit is always a '1'. The primary purposes of this mode include:
+
+- **Compatibility:** Sometimes used for compatibility with older devices that may specifically expect a '1' as the 9th bit.
+- **Potential for Addressing:** In multiprocessor systems, the 9th bit can sometimes be used (alongside SM2 in SCON) for basic addressing, although this method is less common in modern applications.
+
+**Example: Transmitting Data Similar to Mode 2**
+
+The transmission process in Mode 3 is very similar to that in Mode 2. Let's modify the previous example slightly to use Mode 3, assuming you still want to send the byte 'B' (ASCII 42H) with even parity.
+
+1. **Mode Setup**
+
+   ```assembly
+   MOV SCON, #D0H ; Set serial mode 3 (SM0 = 1, SM1 = 1), enable reception (REN = 1)
+   ```
+
+2. **Baud Rate Setup (Same as Mode 1 and Mode 2)**
+
+3. **Calculate Even Parity (Same as Mode 2)**
+
+4. **Transmitting (Slight Modification)**
+   ```assembly
+   MOV A, #42H  ; Load the character 'B'
+   ; ... (Code to calculate even parity and store the value in a bit, let's say 'parity_bit')
+   CLR TB8      ; Ensure TB8 is cleared in Mode 3 to force the 9th bit to '1'
+   MOV SBUF, A  ; Load the byte into the Serial Buffer register
+   JNB TI, $    ; Wait for the Transmit Interrupt flag (TI)
+   CLR TI       ; Clear the flag
+   ```
+
+**Key Points**
+
+- The primary difference from Mode 2 is ensuring TB8 is cleared; the hardware will automatically force the transmitted 9th bit to '1'.
+- Mode 3 is less commonly used in modern applications compared to the more flexible Mode 1 and Mode 2.
 
 ### SCON Register
 
 **What is the SCON Register?**
 
-* The SCON (Serial Control) register is an 8-bit, bit-addressable Special Function Register (SFR) responsible for managing serial communication in 8051 microcontrollers.
-* It holds settings and status flags that control how the microcontroller sends and receives data serially.
+- The SCON (Serial Control) register is an 8-bit, bit-addressable Special Function Register (SFR) responsible for managing serial communication in 8051 microcontrollers.
+- It holds settings and status flags that control how the microcontroller sends and receives data serially.
 
 **SCON Register Structure**
 
 Here's how the SCON register's bits function:
 
-* **SM0, SM1 (Serial Mode Selection Bits):** These bits define the serial communication mode for the 8051. There are four primary modes:
-    * **Mode 0:** 8-bit shift register for serial port output, clock for serial port input is generated internally.
-    * **Mode 1:** 10-bit UART mode (8 data bits, 1 start bit, 1 stop bit).
-    * **Mode 2:** 11-bit UART mode (8 data bits, 1 start bit, 1 programmable stop bit, 1 additional bit for addressing or other purposes) 
-    * **Mode 3:** Similar to mode 2, but with 9 data bits.
+- **SM0, SM1 (Serial Mode Selection Bits):** These bits define the serial communication mode for the 8051. There are four primary modes:
 
-* **SM2 (Enable Multiprocessor Communication):** Specifically designed for multiprocessor systems to distinguish between data from other processors and address information.
+  - **Mode 0:** 8-bit shift register for serial port output, clock for serial port input is generated internally.
+  - **Mode 1:** 10-bit UART mode (8 data bits, 1 start bit, 1 stop bit).
+  - **Mode 2:** 11-bit UART mode (8 data bits, 1 start bit, 1 programmable stop bit, 1 additional bit for addressing or other purposes)
+  - **Mode 3:** Similar to mode 2, but with 9 data bits.
 
-* **REN (Receive Enable):**
-    * '1' =  Enables serial reception
-    * '0' = Disables serial reception.
+- **SM2 (Enable Multiprocessor Communication):** Specifically designed for multiprocessor systems to distinguish between data from other processors and address information.
 
-* **TB8 (Transmit Bit 8):** In Modes 2 and 3, this is the 9th data bit that is transmitted.
+- **REN (Receive Enable):**
 
-* **RB8 (Receive Bit 8):**  There are two interpretations:
-   * Modes 1, 2, and 3: This is the 9th data bit received.
-   * Mode 0: RB8 becomes the stop bit when received.
+  - '1' = Enables serial reception
+  - '0' = Disables serial reception.
 
-* **TI (Transmit Interrupt Flag):** 
-    * '1' = Signals that the transmit buffer is empty, ready for new data (set by hardware).
-    * '0'  = Transmission is in progress (cleared by software). 
+- **TB8 (Transmit Bit 8):** In Modes 2 and 3, this is the 9th data bit that is transmitted.
 
-* **RI (Receive Interrupt Flag):**
-    * '1' = Signals that the receive buffer is full (set by hardware).
-    * '0' =  No data in the buffer to be read (cleared by software).
+- **RB8 (Receive Bit 8):** There are two interpretations:
+
+  - Modes 1, 2, and 3: This is the 9th data bit received.
+  - Mode 0: RB8 becomes the stop bit when received.
+
+- **TI (Transmit Interrupt Flag):**
+
+  - '1' = Signals that the transmit buffer is empty, ready for new data (set by hardware).
+  - '0' = Transmission is in progress (cleared by software).
+
+- **RI (Receive Interrupt Flag):**
+  - '1' = Signals that the receive buffer is full (set by hardware).
+  - '0' = No data in the buffer to be read (cleared by software).
 
 **Example: Setting up Serial Communication in Mode 1 (10-bit UART)**
 
 1. **Mode Selection:** Set the SM0 and SM1 bits in the SCON register:
+
    ```
    SCON = 0x50; // Mode 1: 10-bit UART, Receiver Enabled
    ```
@@ -2111,11 +2471,10 @@ Here's how the SCON register's bits function:
 3. **Enabling Reception (if needed):** Set the REN bit in SCON to '1' to enable incoming serial data reception.
 
 4. **Transmitting Data:**
-   * Wait for the TI flag in SCON to become '1' (meaning the transmit buffer is empty).
-   * Load the data byte to be transmitted into the SBUF register. The hardware handles the rest for you.
+   - Wait for the TI flag in SCON to become '1' (meaning the transmit buffer is empty).
+   - Load the data byte to be transmitted into the SBUF register. The hardware handles the rest for you.
 
-**Note:** To receive data, you'll usually create an interrupt service routine (ISR) that triggers when the RI flag in SCON is set. 
-
+**Note:** To receive data, you'll usually create an interrupt service routine (ISR) that triggers when the RI flag in SCON is set.
 
 Serial Port Control Register (SCON): Register SCON controls serial data communication. The serial port control and status register is the Special Function Register SCON. This register contains not only the mode selection bits, but also the 9th data bit for transmit and receive (TB8 and RB8), and the serial ports interrupt bits (TI and RI).
 
@@ -2146,45 +2505,48 @@ Description of All the Bits of SCON:
 | 1   | 0   | Mode 2 | Fixed Baud Rate (fosc/64) or (fosc/32)     | 9-bit Multiprocessor Comm. mode       |
 | 1   | 1   | Mode 3 | Variable Baud Rate (Can be set by Timer 1) | 9-bit Multiprocessor Comm. mode       |
 
-## PCON Register
+### PCON Register
 
 **What is the PCON Register?**
 
-* The PCON (Power Control) register is an 8-bit Special Function Register (SFR) primarily used to manage power-saving modes within the 8051 microcontroller.
-* It also includes a few additional control bits for baud rate adjustment and general-purpose usage.
+- The PCON (Power Control) register is an 8-bit Special Function Register (SFR) primarily used to manage power-saving modes within the 8051 microcontroller.
+- It also includes a few additional control bits for baud rate adjustment and general-purpose usage.
 
 **PCON Register Structure**
 
 Here's a breakdown of the bits within the PCON register:
 
-* **SMOD (Serial Mode Doubler):**
-   * '1' = Doubles the baud rate for serial communication (UART) when Timer 1 is used for baud rate generation.  Useful for increasing communication speeds.
-   * '0'  =  Normal baud rate.
+- **SMOD (Serial Mode Doubler):**
 
-* **GF1 (General Purpose Flag 1), GF0 (General Purpose Flag 0):**
-   * These bits can be set and cleared by software for various purposes chosen by the programmer.  They have no predefined function assigned to them.
+  - '1' = Doubles the baud rate for serial communication (UART) when Timer 1 is used for baud rate generation. Useful for increasing communication speeds.
+  - '0' = Normal baud rate.
 
-* **PD (Power-Down Mode):**
-    * '1' = Enables Power-Down Mode. In this state, the oscillator is stopped to reduce power consumption dramatically.
-    * '0' =  Disables Power-Down Mode, the microcontroller runs normally.
+- **GF1 (General Purpose Flag 1), GF0 (General Purpose Flag 0):**
+  - These bits can be set and cleared by software for various purposes chosen by the programmer. They have no predefined function assigned to them.
+- **PD (Power-Down Mode):**
 
-* **IDL (Idle Mode):**
-    * '1' = Enables Idle Mode. The CPU stops functioning, but peripherals like timers, serial ports, and interrupts remain active. This mode reduces power consumption while maintaining some functionality.
-    * '0' = Disables Idle Mode.
+  - '1' = Enables Power-Down Mode. In this state, the oscillator is stopped to reduce power consumption dramatically.
+  - '0' = Disables Power-Down Mode, the microcontroller runs normally.
+
+- **IDL (Idle Mode):**
+  - '1' = Enables Idle Mode. The CPU stops functioning, but peripherals like timers, serial ports, and interrupts remain active. This mode reduces power consumption while maintaining some functionality.
+  - '0' = Disables Idle Mode.
 
 **Key Points about Power Modes**
 
-* **Exiting Power-Down Mode:** The microcontroller can only exit Power-Down mode with a hardware reset.
-* **Exiting Idle Mode:** The microcontroller exits Idle mode upon an interrupt or a hardware reset.
+- **Exiting Power-Down Mode:** The microcontroller can only exit Power-Down mode with a hardware reset.
+- **Exiting Idle Mode:** The microcontroller exits Idle mode upon an interrupt or a hardware reset.
 
 **Examples**
 
 1. **Enabling Power-Down Mode**
+
    ```
-   PCON |= 0x01; // Set the PD bit (bit 0) of PCON to '1' 
+   PCON |= 0x01; // Set the PD bit (bit 0) of PCON to '1'
    ```
 
 2. **Enabling Idle Mode**
+
    ```
    PCON |= 0x02; // Set the IDL bit (bit 1) of PCON to '1'
    ```
@@ -2195,7 +2557,6 @@ Here's a breakdown of the bits within the PCON register:
    ```
 
 **Important Note:** It is crucial to check your specific microcontroller datasheet, as certain manufacturers might have slightly different or additional assignments for the remaining unused bits in the PCON register.
-
 
 Power Mode control Register (PCON): Register PCON controls processor powerdown, sleep modes and serial data bandrate. Only one bit of PCON is used with respect to serial communication. The seventh bit (b7)(SMOD) is used to generate the baud rate of serial communication.
 
@@ -2229,27 +2590,44 @@ Description of All the Bits of PCON:
 
 ## Interrupts
 
-### Q3c: Explain interrupts of 8051 microcontroller.
-
 **What is an Interrupt?**
 
 - An interrupt is an event that temporarily suspends the normal execution of a program and forces the 8051 to execute a special routine called an Interrupt Service Routine (ISR).
 - Interrupts allow the microcontroller to respond quickly to important events (e.g., button presses, timer overflow, data received) without needing to constantly poll for them in the main code.
 
+**Example**
+
+Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger periodically to read the sensor value, while an external interrupt could signal a critical threshold being exceeded, requiring immediate action.
+
+**Interrupts in Microcontrollers**
+
+- **Unplanned Events:** Interrupts are signals that temporarily disrupt the normal execution of a microcontroller, allowing it to respond to important events, often occurring at unpredictable times.
+- **Prioritization:** Different interrupts have assigned priorities. When multiple interrupts occur, the microcontroller attends to the highest-priority one first.
+- **Interrupt Service Routines (ISRs):** These are specialized code sections that the microcontroller executes in response to specific interrupts.
+
 **Types of Interrupts in the 8051**
 
-1. **External Interrupts:**
+1. **Reset (Highest Priority):** Forces the microcontroller to restart execution from address 0000H.
+2. **External Interrupts:**
 
    - **INT0 (Pin P3.2):** Triggered by a low-to-high transition on the INT0 pin.
    - **INT1 (Pin P3.3):** Triggered by a low-to-high transition on the INT1 pin.
 
-2. **Timer Interrupts:**
+3. **Timer Interrupts:**
 
    - **TF0 (Timer 0 Overflow):** Triggered when Timer 0 overflows.
    - **TF1 (Timer 1 Overflow):** Triggered when Timer 1 overflows.
 
-3. **Serial Interrupt:**
+4. **Serial Interrupt:**
    - **RI/TI (Receive Interrupt/Transmit Interrupt):** Triggered when the serial port finishes receiving a byte (RI) or transmitting a byte (TI).
+
+**External Interrupts (INT0 & INT1)**
+
+- **Triggering Modes:**
+  - **Edge-Triggered (IT0/IT1 = 1):** Interrupt occurs on a falling edge (high-to-low transition) of the input signal.
+  - **Level-Triggered (IT0/IT1 = 0):** Interrupt occurs and persists as long as the input signal is held low.
+
+![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
 
 **Interrupt Process**
 
@@ -2265,81 +2643,67 @@ Description of All the Bits of PCON:
 - **IE (Interrupt Enable):** Enables or disables specific interrupts globally and individually within the system.
 - **IP (Interrupt Priority):** Assigns priority levels to each interrupt source. If multiple interrupts occur simultaneously, the one with higher priority is serviced first.
 
+**Interrupt Vector Table**
+
+| Interrupt | Flag  | Interrupt Vector Address |
+| --------- | ----- | ------------------------ |
+| Reset     | -     | 0000H                    |
+| INT0      | IE0   | 0003H                    |
+| Timer 0   | TF0   | 000BH                    |
+| INT1      | IE1   | 0013H                    |
+| Timer 1   | TF1   | 001BH                    |
+| Serial    | TI/RI | 0023H                    |
+
 **Key Points**
 
 - **Priority:** The 8051 has a fixed interrupt priority structure (e.g., INT0 has the highest priority).
 - **Masking:** Interrupts can be turned on or off selectively using the IE register.
 - **Nesting:** Interrupts can potentially interrupt other interrupts, depending on their priority.
+- **Enabling Interrupts:** Interrupts must be enabled individually (e.g., IE0, ET0) and globally (EA = 1 in the IE register).
 
-**Example**
-
-Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger periodically to read the sensor value, while an external interrupt could signal a critical threshold being exceeded, requiring immediate action.
-
-### Interrupt Vector Addresses
-
-### Interrupt structure, vector address, priority and operation.
-
-An interrupt is an event that occurs randomly in the flow of continuity. It is just like a call you have when you are busy with some work and depending upon call priority you decide whether to attend or neglect it.
-
-Same thing happens in microcontrollers. 8051 architecture handles 5 interrupt sources, out of which two are internal (Timer Interrupts), two are external and one is a serial interrupt. Each of these interrupts has their interrupt vector address. Highest priority interrupt is the Reset, with vector address 0x0000.
-
-Now, it is necessary to explain a few details referring to external interrupts- INT0 and INT1. If the IT0 and IT1 bits of the TCON register are set, an interrupt will be generated on high to low transition, i.e. on the falling pulse edge (only in that moment). If these bits are cleared, an interrupt will be continuously executed as far as the pins are held low.
-
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
-
-Vector Address: This is the address where controller jumps after the interrupt to serve the ISR (interrupt service routine).
-
-| **Interrupt**      | **Flag** | **Interrupt vector address** |
-| ------------------ | -------- | ---------------------------- |
-| Reset              | -        | 0000H                        |
-| INT0 (Ext. int. 0) | IE0      | 0003H                        |
-| Timer 0            | TF0      | 000BH                        |
-| INT1 (Ext. int. 1) | IE1      | 0013H                        |
-| Timer 1            | TF1      | 001BH                        |
-| Serial             | TI/RI    | 0023H                        |
-
-Reset: Reset is the highest priority interrupt, upon reset 8051 microcontroller start executing code from 0x0000 address.
-
-Internal interrupt (Timer Interrupt): 8051 has two internal interrupts namely timer0 and timer1. Whenever timer overflows, timer overflow flags (TF0/TF1) are set. Then the microcontroller jumps to their vector address to serve the interrupt. For this, global and timer interrupt should be enabled.
-
-Serial interrupt: 8051 has serial communication port and have related serial interrupt flags (TI/RI). When the last bit (stop bit) of a byte is transmitted, TI serial interrupt flag is set and when last bit (stop bit) of receiving data byte is received, RI flag get set.
+* **Interrupt Service Routines (ISRs):** ISRs contain the code to handle specific interrupt events. The microcontroller automatically jumps to the corresponding ISR's address in the vector table when an enabled interrupt occurs.
 
 ### IE Register
 
 **What is the IE Register?**
 
-* The IE (Interrupt Enable) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
-* Each bit in this register controls the enabling or disabling of specific interrupts within the system.
+- The IE (Interrupt Enable) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
+- Each bit in this register controls the enabling or disabling of specific interrupts within the system.
 
 **IE Register Structure**
 
 Here's the breakdown of the IE Register's bit functionality:
 
-* **EA (Enable All):**
-    * '1' = Enables all interrupt sources (if their individual bits are also set to '1').
-    * '0' = Disables all interrupts, regardless of other bit settings.
+- **EA (Enable All):**
 
-* **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
+  - '1' = Enables all interrupt sources (if their individual bits are also set to '1').
+  - '0' = Disables all interrupts, regardless of other bit settings.
 
-* **ES (Enable Serial Interrupt):**
-    * '1' = Enables serial port interrupt.
-    * '0' = Disables serial port interrupt.
+- **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
 
-* **ET1 (Enable Timer 1 Interrupt):**
-    * '1' = Enables the interrupt generated by Timer 1 overflow.
-    * '0'  = Disables the Timer 1 interrupt.
+- **ES (Enable Serial Interrupt):**
 
-* **EX1 (Enable External Interrupt 1):**
-    * '1' = Enables the external interrupt 1.
-    * '0' =  Disables the external interrupt 1.
+  - '1' = Enables serial port interrupt.
+  - '0' = Disables serial port interrupt.
 
-* **ET0 (Enable Timer 0 Interrupt):**
-    * '1' = Enables the interrupt generated by Timer  0 overflow.
-    * '0' = Disables the Timer 0 interrupt.
+- **ET1 (Enable Timer 1 Interrupt):**
 
-* **EX0 (Enable External Interrupt 0):**
-    * '1' = Enables the external interrupt 0.
-    * '0' = Disables the external interrupt 0.
+  - '1' = Enables the interrupt generated by Timer 1 overflow.
+  - '0' = Disables the Timer 1 interrupt.
+
+- **EX1 (Enable External Interrupt 1):**
+
+  - '1' = Enables the external interrupt 1.
+  - '0' = Disables the external interrupt 1.
+
+- **ET0 (Enable Timer 0 Interrupt):**
+
+  - '1' = Enables the interrupt generated by Timer 0 overflow.
+  - '0' = Disables the Timer 0 interrupt.
+
+- **EX0 (Enable External Interrupt 0):**
+  - '1' = Enables the external interrupt 0.
+  - '0' = Disables the external interrupt 0.
 
 **How Interrupts Work with IE**
 
@@ -2349,8 +2713,9 @@ Here's the breakdown of the IE Register's bit functionality:
 **Examples**
 
 1. **Enabling All Interrupts**
+
    ```
-   IE = 0xFF;  // Set all bits in IE to '1' 
+   IE = 0xFF;  // Set all bits in IE to '1'
    ```
 
 2. **Enabling Only Timer 0 and External Interrupt 1**
@@ -2360,11 +2725,10 @@ Here's the breakdown of the IE Register's bit functionality:
 
 **Important Note:**
 
-* Interrupts must also be configured in other registers for them to be active. For example:
-   * Timer interrupts require the timers to be started (TRx = '1' in TCON).
-   * External interrupts may need edge or level triggering configured (ITx bits in TCON).
-* The 8051 has a priority system for multiple simultaneous interrupts. You can control the priority using the IP (Interrupt Priority) register.
-
+- Interrupts must also be configured in other registers for them to be active. For example:
+  - Timer interrupts require the timers to be started (TRx = '1' in TCON).
+  - External interrupts may need edge or level triggering configured (ITx bits in TCON).
+- The 8051 has a priority system for multiple simultaneous interrupts. You can control the priority using the IP (Interrupt Priority) register.
 
 IE Register:
 
@@ -2384,67 +2748,69 @@ Description of All the Bits of IE:
 | ET0 | Enable Timer0 Interrupt Bit         |
 | EX0 | Enable External Interrupt 1 Bit     |
 
-## Priorities
-
 ### IP Register
 
 **What is the IP Register?**
 
-* The IP (Interrupt Priority) register is an 8-bit, bit-addressable Special Function Register (SFR) used to manage the priority of interrupt sources in 8051 microcontrollers. 
-* When multiple interrupts occur simultaneously, the IP register helps the system determine which interrupt to handle first.
+- The IP (Interrupt Priority) register is an 8-bit, bit-addressable Special Function Register (SFR) used to manage the priority of interrupt sources in 8051 microcontrollers.
+- When multiple interrupts occur simultaneously, the IP register helps the system determine which interrupt to handle first.
 
 **IP Register Structure**
 
 Each bit in the IP register is assigned a specific interrupt source, providing two levels of priority (high or low):
 
-* **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
+- **Unused (3 bits):** These bits are typically reserved and have no assigned functionality.
 
-* **PS (Serial Interrupt Priority):**
-    * '1' = High priority.
-    * '0' = Low priority.
+- **PS (Serial Interrupt Priority):**
 
-* **PT1 (Timer 1 Interrupt Priority):**
-    * '1' = High priority.
-    * '0'  = Low priority.
+  - '1' = High priority.
+  - '0' = Low priority.
 
-* **PX1 (External Interrupt 1 Priority):**
-    * '1' = High priority.
-    * '0' =  Low priority.
+- **PT1 (Timer 1 Interrupt Priority):**
 
-* **PT0 (Timer 0 Interrupt Priority):**
-    * '1' = High priority.
-    * '0' = Low priority.
+  - '1' = High priority.
+  - '0' = Low priority.
 
-* **PX0 (External Interrupt 0 Priority):**
-    * '1' = High priority.
-    * '0' = Low priority.
+- **PX1 (External Interrupt 1 Priority):**
+
+  - '1' = High priority.
+  - '0' = Low priority.
+
+- **PT0 (Timer 0 Interrupt Priority):**
+
+  - '1' = High priority.
+  - '0' = Low priority.
+
+- **PX0 (External Interrupt 0 Priority):**
+  - '1' = High priority.
+  - '0' = Low priority.
 
 **How Interrupt Priorities Work with IP**
 
 1. **Interrupt Occurrence:** When one or more interrupts occur, the 8051 checks the corresponding bits in the IP register.
 
 2. **Priority Handling**
-   * Higher priority interrupts always take precedence over lower priority interrupts.
-   * If multiple interrupts of the same priority level occur, then the 8051 uses a predefined internal polling sequence to determine the order for servicing the interrupts.
+   - Higher priority interrupts always take precedence over lower priority interrupts.
+   - If multiple interrupts of the same priority level occur, then the 8051 uses a predefined internal polling sequence to determine the order for servicing the interrupts.
 
 **Examples**
 
 1. **Configuring Timer 0 as Highest Priority, External Interrupt 1 as Lowest**
+
    ```
    IP = 0x12; // Sets PT0 to '1' (high), PX1 to '0' (low), others remain '0'
    ```
 
 2. **Setting All Interrupts to Low Priority**
    ```
-   IP = 0x00; // All bits set to '0' for low priority  
+   IP = 0x00; // All bits set to '0' for low priority
    ```
 
 **Important Notes:**
 
-* The IP register only determines the priority among simultaneously occurring interrupts.  The interrupt itself still needs to be enabled globally (EA bit in the IE register) and individually (Ex and ETx bits in the IE register). 
+- The IP register only determines the priority among simultaneously occurring interrupts. The interrupt itself still needs to be enabled globally (EA bit in the IE register) and individually (Ex and ETx bits in the IE register).
 
-* The priority structure and internal polling sequence for the 8051 microcontroller  can be found in your specific microcontroller's datasheet.
-
+- The priority structure and internal polling sequence for the 8051 microcontroller can be found in your specific microcontroller's datasheet.
 
 Priority to the interrupt can be assigned by using interrupt priority register (IP)
 
