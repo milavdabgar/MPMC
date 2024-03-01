@@ -968,6 +968,30 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Important 8051 SFRs**
 
+| Address (hex) | Register Name | Description                          |
+| ------------- | ------------- | ------------------------------------ |
+| 80            | P0            | Port 0 (Input/Output)                |
+| 90            | P1            | Port 1 (Input/Output)                |
+| A0            | P2            | Port 2 (Input/Output)                |
+| B0            | P3            | Port 3 (Input/Output)                |
+| 81            | SP            | Stack Pointer                        |
+| 82            | DPL           | Data Pointer Low Byte                |
+| 83            | DPH           | Data Pointer High Byte               |
+| 87            | PCON          | Power Control Register               |
+| 88            | TCON          | Timer/Counter 0 Control Register     |
+| 89            | TMOD          | Timer/Counter 0/1 Mode Register      |
+| 8A            | TL0           | Timer/Counter 0 Low Byte             |
+| 8B            | TL1           | Timer/Counter 1 Low Byte             |
+| 8C            | TH0           | Timer/Counter 0 High Byte            |
+| 8D            | TH1           | Timer/Counter 1 High Byte            |
+| 98            | SCON          | Serial Control Register              |
+| 99            | SBUF          | Serial Data Buffer                   |
+| A8            | IE            | Interrupt Enable Register            |
+| B8            | IP            | Interrupt Priority Register          |
+| D0            | PSW           | Program Status Word (contains flags) |
+| E0            | ACC           | Accumulator                          |
+| F0            | B             | B Register (auxiliary)               |
+
 Here's a breakdown of the most common 8051 SFRs, along with their roles:
 
 **1. Accumulator (A)**
@@ -1157,17 +1181,12 @@ P1_0 = 1;
 unsigned char input_value = P1_5;
 ```
 
-## I/O Ports structure: Port 0, Port 1, Port2, Port 3.
-
-Each port of 8051 has bidirectional capability. Port 0 is called 'true bidirectional port' as it floats (tristated) when configured as input. Port-1, 2, 3 are called 'quasi bidirectional port'.
-
-### Port-0 Pin Structure:
+#### Port-0 Pin Structure
 
 - **Dual Purpose:**
-
   - **General Purpose I/O:** Can be configured as a standard 8-bit bidirectional input/output port.
   - **Address/Data Bus:** Serves as the lower 8-bits of the address bus (AD0-AD7) and the data bus (D0-D7) when interfacing with external memory.
-
+  
 - **Open-Drain Outputs:** Port 0 pins use an open-drain configuration for outputs. This means they can actively drive a pin low (logic '0'), but require an external pull-up resistor to achieve a high output (logic '1').
 
 - **Latch:** Each Port 0 pin is connected to a latch. Data written to the P0 SFR (Special Function Register) is held in this latch.
@@ -1202,7 +1221,7 @@ Each port of 8051 has bidirectional capability. Port 0 is called 'true bidirecti
 - **Pull-up Resistors:** Port 0 absolutely requires external pull-up resistors when used as general-purpose I/O in situations where you need to output a logic '1'.
 - **Versatility with Tradeoffs:** The dual-functionality of Port 0 offers flexibility, but adds a layer of complexity when interfacing external memory.
 
-### Port 1 Pin Structure
+#### Port 1 Pin Structure
 
 - **Dedicated I/O:** Port 1 is a simple 8-bit bidirectional I/O port. Its pins do not have any additional alternate functionality like serving as address lines or special control signals.
 
@@ -1239,7 +1258,7 @@ Each port of 8051 has bidirectional capability. Port 0 is called 'true bidirecti
   - Using a different port without built-in pull-ups.
 - **Output Considerations:** Port 1 can drive outputs effectively, but keep in mind that writing a '1' relies on the internal pull-up or an external pull-up to achieve the high state.
 
-### Port 2 Pin Structure
+#### Port 2 Pin Structure
 
 - **Dual Roles:**
 
@@ -1280,7 +1299,7 @@ Each port of 8051 has bidirectional capability. Port 0 is called 'true bidirecti
 - **Input Considerations:** The same recommendations for Port 1 apply to Port 2. Consider external pull-down resistors or disabling the internal pull-ups if reliable '0' inputs are crucial and your external devices are weak drivers.
 - **External Memory Considerations:** If using external memory, avoid relying on Port 2 for general-purpose inputs.
 
-### Port 3 Pin Structure
+#### Port 3 Pin Structure
 
 - **Multifunctional:** Port 3, unlike Ports 1 and 2, is the most versatile port on the 8051. Each of its 8 pins (P3.0-P3.7) can serve either as a general-purpose I/O pin or take on a specialized alternate function.
 
@@ -1368,97 +1387,9 @@ A simplified visual representation of program memory might look like this:
 
 **Structure of Internal Data Memory**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_a65de6d19f0e8367.jpg)
-
-The internal RAM is divided into several important areas:
-
-1. **Register Banks (00H - 1FH):**
-
-   - Four banks of 8 general-purpose registers (R0-R7).
-   - Only one bank is active at a time.
-   - Used for frequently accessed data and arithmetic operations.
-
-2. **Bit-Addressable Area (20H - 2FH):**
-
-   - 128 single bits that can be addressed individually.
-   - Efficient for storing flags, status bits, or control signals.
-
-3. **Scratch Pad Area (30H-7FH):**
-   - General-purpose area for variables and temporary data.
-   - Also includes the stack (used for storing return addresses during function calls and interrupts).
-
-**Diagram (Data Memory)**
-
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b02f962a91927fcb.jpg)
-
-```
-+--------------------+
-|  Data Memory (RAM) |
-+--------------------+
-| Register Banks 0-3 | (00H - 1FH)
-+--------------------+
-| Bit-Addressable    | (20H - 2FH)
-+--------------------+
-| Scratch Pad        | (30H - 7FH)
-+--------------------+
-```
-
-**Key Points**
-
-- **Memory Access:** The 8051 uses specific instructions and addressing modes to interact with both its program and data memory.
-- **Limited Internal Resources:** The internal RAM and ROM of the 8051 are relatively small, highlighting the potential need for external memory in more complex applications.
-- **Memory Trade-offs:** Program and data memory share the same external memory address space, often necessitating careful planning of how memory is used by a program.
-
-### Internal RAM Architecture
-
-**Internal RAM Organization**
-
-The 8051 family of microcontrollers typically includes 128 bytes of internal RAM, although some derivatives like the 8052 offer an extended 256 bytes. This internal RAM is organized into several distinct sections:
-
-1. **Register Banks (00H - 1FH):**
-
-   - Four banks of eight general-purpose registers (R0-R7).
-   - Each bank can be selected using two bits in the Program Status Word (PSW) register.
-   - Used for storing temporary data and intermediate results during calculations.
-
-2. **Bit-Addressable Area (20H to 2FH):**
-
-   - 16 bytes of RAM where each bit can be individually addressed (128 individual bits in total).
-   - Useful for storing single-bit variables (like flags or control signals).
-
-3. **General Purpose RAM (30H - 7FH):**
-   - The remaining 80 bytes of general-purpose RAM.
-   - Used for variable storage, temporary data, and even as a small stack if needed.
-
-**Key Points**
-
-- **Speed:** Internal RAM is extremely fast to access compared to external RAM, as it's located directly on the microcontroller chip.
-- **Limited Size:** The internal RAM in 8051 is limited. Programs with larger data requirements often need external RAM.
-- **Flexibility:** The bit-addressable area provides fine-grained control over individual bits, ideal for control and status flags.
-
-**How Internal RAM Is Used**
-
-- **Arithmetic and Logical Operations**: The register banks are heavily used by the ALU for arithmetic and logical operations.
-- **Temporary Storage:** All sections of the internal RAM can be used for temporarily storing data during calculation or program execution.
-- **Stack:** Although the 8051 has a dedicated hardware stack, the general-purpose RAM can also be used as a stack area in constrained situations.
-- **Flags and Control:** The bit-addressable area often houses individual control flags and status bits for the 8051 or its peripherals.
-
-**Example**
-
-```assembly
-MOV R1, #50H  ; Move the value 50H into register R1
-ADD A, R1     ; Add the value in R1 to the accumulator
-MOV 35H, A    ; Store the result in general-purpose RAM location 35H
-SETB PSW.2    ; Set bit 2 (Carry flag) in the Program Status Word
-```
-
-Absolutely! Here's a heavily refined and improved version of the information on the 8051's data memory structure, incorporating insights to make it clearer and more accurate:
-
-**Data Memory (RAM) in the 8051 Microcontroller**
-
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
 
-The 8051's data memory (RAM) serves as a workspace for storing temporary data, variables, and intermediate results during program execution. Most modern 8051 variants provide 256 bytes of internal RAM, which is organized into the following distinct areas:
+Most modern 8051 variants provide 256 bytes of internal RAM, which is organized into the following distinct areas:
 
 **1. Working Registers (00H - 1FH)**
 
@@ -1478,7 +1409,29 @@ The 8051's data memory (RAM) serves as a workspace for storing temporary data, v
 
 **4. Special Function Registers (SFRs) (80H - FFH)**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb20f39704d09ff3.png)
+| Address (hex) | Register Name | Description |
+|---|---|---|
+| 80 | P0 | Port 0 (Input/Output) |
+| 90 | P1 | Port 1 (Input/Output) |
+| A0 | P2 | Port 2 (Input/Output) |
+| B0 | P3 | Port 3 (Input/Output) |
+| 81 | SP | Stack Pointer |
+| 82 | DPL | Data Pointer Low Byte |
+| 83 | DPH | Data Pointer High Byte |
+| 87 | PCON | Power Control Register |
+| 88 | TCON | Timer/Counter 0 Control Register |
+| 89 | TMOD | Timer/Counter 0/1 Mode Register |
+| 8A | TL0 | Timer/Counter 0 Low Byte |
+| 8B | TL1 | Timer/Counter 1 Low Byte |
+| 8C | TH0 | Timer/Counter 0 High Byte |
+| 8D | TH1 | Timer/Counter 1 High Byte |
+| 98 | SCON | Serial Control Register |
+| 99 | SBUF | Serial Data Buffer |
+| A8 | IE | Interrupt Enable Register |
+| B8 | IP | Interrupt Priority Register |
+| D0 | PSW | Program Status Word (contains flags) |
+| E0 | ACC | Accumulator |
+| F0 | B | B Register (auxiliary) |
 
 - **Hardware Control:** SFRs occupy the upper 128 bytes of RAM and directly control various hardware functions of the 8051, such as:
   - I/O Ports (P0, P1, P2, P3)
@@ -1488,11 +1441,29 @@ The 8051's data memory (RAM) serves as a workspace for storing temporary data, v
   - Power Management (PCON)
 - **Direct Addressing Only:** SFRs can only be accessed using their specific addresses. Unused addresses within this range are reserved and cannot be used for general-purpose data storage.
 
-**Additional Notes**
+**Key Points**
 
 - **Indirect Addressing:** The lower 128 bytes of RAM (working registers, bit-addressable area, and scratchpad) can be addressed both directly (by their address) and indirectly (using a register to hold the address).
 - **Limited RAM Capacity:** The 8051's internal RAM is relatively small. Many applications require interfacing external RAM to support larger datasets.
 - **Variant Differences:** Some 8051 variants may have an additional 128 bytes of RAM sharing the same address space as SFRs. This extra RAM is usually only accessible via indirect addressing.
+- **Speed:** Internal RAM is extremely fast to access compared to external RAM, as it's located directly on the microcontroller chip.
+- **Flexibility:** The bit-addressable area provides fine-grained control over individual bits, ideal for control and status flags.
+
+**How Internal RAM Is Used**
+
+- **Arithmetic and Logical Operations**: The register banks are heavily used by the ALU for arithmetic and logical operations.
+- **Temporary Storage:** All sections of the internal RAM can be used for temporarily storing data during calculation or program execution.
+- **Stack:** Although the 8051 has a dedicated hardware stack, the general-purpose RAM can also be used as a stack area in constrained situations.
+- **Flags and Control:** The bit-addressable area often houses individual control flags and status bits for the 8051 or its peripherals.
+
+**Example**
+
+```assembly
+MOV R1, #50H  ; Move the value 50H into register R1
+ADD A, R1     ; Add the value in R1 to the accumulator
+MOV 35H, A    ; Store the result in general-purpose RAM location 35H
+SETB PSW.2    ; Set bit 2 (Carry flag) in the Program Status Word
+```
 
 ### External Memory Interfacing and Decoding Logic
 
@@ -1536,18 +1507,6 @@ The below image shows a simplified block diagram of interfacing 64KB ROM and 64K
 - **Address Decoding Logic:** Not explicitly shown but implied by the connections between the address bus and chip select signals.
 - **Control Signals:** PSEN, RD, and WR signals are shown from the microcontroller.
 - **Data Bus:** Represented by the bidirectional "Data (0-7)" lines.
-
-We know that a typical 8051 Microcontroller has 4KB of ROM and 128B of RAM
-
-The designer of an 8051 Microcontroller based system is not limited to the internal RAM and ROM present in the 8051 Microcontroller. There is a provision of connecting both external RAM and ROM i.e. Data Memory and Program.
-
-The reason for interfacing external Program Memory or ROM is that complex programs written in high – level languages often tend to be larger and occupy more memory.
-
-Another important reason is that chips like 8031 or 8032, which doesn’t have any internal ROM, have to be interfaced with external ROM.
-
-A maximum of 64KB of Program Memory (ROM) and Data Memory (RAM) each can be interface with the 8051 Microcontroller.
-
-The following image shows the block diagram of interfacing 64KB of External RAM and 64KB of External ROM with the 8051 Microcontroller.
 
 ## Stack, Stack Pointer, and Stack Operations
 
@@ -1675,7 +1634,11 @@ POP A          ; Pop the original (first) number into the accumulator
 - The TCON (Timer Control) register is an 8-bit, bit-addressable register present in 8051 microcontrollers.
 - It's primarily responsible for controlling the operation of the microcontroller's internal timers and counters.
 
-**TCON Register Structure**
+**TCON Register Structure (Address: 088H, Bit addressable)**
+
+| TCON.7 | TCON.6 | TCON.5 | TCON.4 | TCON.3 | TCON.2 | TCON.1 | TCON.0 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| TF1    | TR1    | TF0    | TR0    | IE1    | IT1    | IE0    | IT0    |
 
 The 8 bits of the TCON register are assigned specific functions:
 
@@ -1696,6 +1659,17 @@ The 8 bits of the TCON register are assigned specific functions:
   - '1' = Falling edge triggered
   - '0' = Low-level triggered
 
+| Flag | Function                                                     |
+| ---- | ------------------------------------------------------------ |
+| TF1  | Timer 1 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 001Bh. |
+| TR1  | Timer 1 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer. |
+| TF0  | Timer 0 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 000Bh. |
+| TR0  | Timer 0 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer. |
+| IE1  | External interrupt 1 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.3 (INT1). Cleared when processor vectors to interrupt service routine at program address 0013h. Not related to timer operations. |
+| IT1  | External interrupt 1 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 1 to generate an interrupt. |
+| IE0  | External interrupt 0 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.2 (INT0). Cleared when processor vectors to interrupt service routine at program address 0003h. Not related to timer operations. |
+| IT0  | External interrupt 0 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 0 to generate an interrupt. |
+
 **Key Functions of TCON Register**
 
 1. **Timer/Counter Start/Stop:** The TR1 and TR0 bits enable you to start and stop Timer 1 and Timer 0, respectively.
@@ -1714,29 +1688,6 @@ The 8 bits of the TCON register are assigned specific functions:
 
 4. **Interrupt Handling (Optional):** If you want an interrupt to be generated when the timer overflows, set the interrupt enable bits in relevant registers and create an interrupt service routine (ISR). The TF0 flag in TCON will be set when an overflow occurs.
 
-TCON register is also one of the registers whose bits are directly in control of timer operation. Only 4 bits of this register are used for this purpose, while rest of them is used for interrupt control.
-
-TCON Register:
-
-| Address: 088H (Bit addressable) |        |        |        |        |        |        |        |
-| ------------------------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| TCON.7                          | TCON.6 | TCON.5 | TCON.4 | TCON.3 | TCON.2 | TCON.1 | TCON.0 |
-| Bit 7                           | Bit 6  | Bit 5  | Bit 4  | Bit 3  | Bit 2  | Bit 1  | Bit 0  |
-| TF1                             | TR1    | TF0    | TR0    | IE1    | IT1    | IE0    | IT0    |
-
-Description of All the Bits of TCON:
-
-| Flag | Function                                                                                                                                                                                                                                      |
-| ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| TF1  | Timer 1 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 001Bh.                                                                          |
-| TR1  | Timer 1 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer.                                                                                                                                 |
-| TF0  | Timer 0 Overflow flag. Set when timer rolls from all 1's to 0. Cleared when processor vectors to execute interrupt service routine located at program address 000Bh.                                                                          |
-| TR0  | Timer 0 run control bit. Set to 1 by program to enable timer to count; cleared to 0 by program to halt timer.                                                                                                                                 |
-| IE1  | External interrupt 1 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.3 (INT1). Cleared when processor vectors to interrupt service routine at program address 0013h. Not related to timer operations.                |
-| IT1  | External interrupt 1 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 1 to generate an interrupt. |
-| IE0  | External interrupt 0 Edge flag. Set to 1 when a high-to-low edge signal is received on port 3.2 (INT0). Cleared when processor vectors to interrupt service routine at program address 0003h. Not related to timer operations.                |
-| IT0  | External interrupt 0 signal type control bit. Set to 1 by program to enable external interrupt 1 to be triggered by a falling edge signal. Set to 0 by program to enable a low-level signal on external interrupt 0 to generate an interrupt. |
-
 ### TMOD Register
 
 **What is the TMOD Register?**
@@ -1744,7 +1695,11 @@ Description of All the Bits of TCON:
 - The TMOD (Timer Mode) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
 - Its primary role is to select and configure the operating modes of the two built-in timers: Timer 0 and Timer 1.
 
-**TMOD Register Structure**
+**TMOD Register Structure (Address: 089H, Bit addressable):**
+
+| TMOD.7      | TMOD.6     | TMOD.5    | TMOD.4    | TMOD.3      | TMOD.2     | TMOD.1    | TMOD.0    |
+| ----------- | ---------- | --------- | --------- | ----------- | ---------- | --------- | --------- |
+| Timer1 GATE | Timer1 C/T | Timer1 M1 | Timer1 M0 | Timer0 GATE | Timer0 C/T | Timer0 M1 | Timer0 M0 |
 
 The TMOD register has a specific function assigned to each of its 8 bits:
 
@@ -1756,7 +1711,25 @@ The TMOD register has a specific function assigned to each of its 8 bits:
   - **M1 M0:** Selects the operating mode of Timer 1 (Modes 0, 1, 2, or 3)
 - **Bits 3-0 (Timer 0 Configuration)**: Same structure as Timer 1 configuration bits above, but control the settings for Timer 0.
 
+| Bit         | Function                                                     |
+| ----------- | ------------------------------------------------------------ |
+| Timer1 GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin: 1 – Timer operates only if the INTx bit is set. 0 – Timer operates regardless of the logic state of the INTx bit. |
+| Timer1 C/T  | C/T selects pulses to be counted up by the timer/counter: 1 – Timer counts pulses brought to the Tx(Timer) pin. 0 – Timer counts pulses from the internal oscillator. |
+| Timer1 M1   | M1, M0 These two bits select the operational mode Timer.     |
+| Timer1 M0   | M1, M0 These two bits select the operational mode Timer.     |
+| Timer0 GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin: 1 – Timer operates only if the INTx bit is set. 0 – Timer operates regardless of the logic state of the INTx bit. |
+| Timer0 C/T  | C/T selects pulses to be counted up by the timer/counter: 1 – Timer counts pulses brought to the Tx(Timer) pin. 0 – Timer counts pulses from the internal oscillator. |
+| Timer0 M1   | M1, M0 These two bits select the operational mode Timer.     |
+| Timer0 M0   | M1, M0 These two bits select the operational mode Timer.     |
+
 **Operating Modes**
+
+| M1   | M0   | Mode | Operating Mode          |
+| ---- | ---- | ---- | ----------------------- |
+| 0    | 0    | 0    | 13-bit Mode             |
+| 0    | 1    | 1    | 16-bit Mode             |
+| 1    | 0    | 2    | 8-bit Auto Reaload Mode |
+| 1    | 1    | 3    | Split Timer Mode        |
 
 The TMOD register allows you to configure each timer into one of four operating modes:
 
@@ -1789,43 +1762,6 @@ The Gate bit for each timer provides additional control:
    ```
    TMOD |= 0x08; // Set the Gate bit for Timer 0
    ```
-
-This register contains bits controlling the operation of timer 0 & 1. To select the operating mode and the timer/counter operation of the timers we use TMOD register. Timer 0 and timer 1 are two timer registers in 8051. Both of these registers use the same register called TMOD to set various timer operation modes.
-
-TMOD is an 8-bit register. The lower 4 bits are for Timer 0. The upper 4 bits are for Timer 1.
-
-In each case, The lower 2 bits are used to set the timer mode. The upper 2 bits to specify the operation.
-
-TMOD Register:
-
-| Address: 089H (Bit addressable) |        |        |        |        |        |        |        |
-| ------------------------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| TMOD.7                          | TMOD.6 | TMOD.5 | TMOD.4 | TMOD.3 | TMOD.2 | TMOD.1 | TMOD.0 |
-| Bit 7                           | Bit 6  | Bit 5  | Bit 4  | Bit 3  | Bit 2  | Bit 1  | Bit 0  |
-| Timer1                          | Timer0 |        |        |        |        |        |        |
-| GATE                            | C/T    | M1     | M0     | GATE   | C/T    | M1     | M0     |
-
-Description of All the Bits of TMOD:
-
-| Timer  | Bit  | Function                                                                                                                                                                                                  |
-| ------ | ---- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Timer1 | GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin:<br />1 – Timer operates only if the INTx bit is set.<br />0 – Timer operates regardless of the logic state of the INTx bit. |
-|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator.                           |
-|        | M1   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
-|        | M0   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
-| Timer0 | GATE | GATE enables and disables Timer by means of a signal brought to the INTx pin:<br />1 – Timer operates only if the INTx bit is set.<br />0 – Timer operates regardless of the logic state of the INTx bit. |
-|        | C/T  | C/T selects pulses to be counted up by the timer/counter:<br />1 – Timer counts pulses brought to the Tx(Timer) pin.<br />0 – Timer counts pulses from the internal oscillator.                           |
-|        | M1   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
-|        | M0   | M1, M0 These two bits select the operational mode Timer.                                                                                                                                                  |
-
-Timer Mode Control Bits:
-
-| M1  | M0  | Mode | Operating Mode          |
-| --- | --- | ---- | ----------------------- |
-| 0   | 0   | 0    | 13-bit Mode             |
-| 0   | 1   | 1    | 16-bit Mode             |
-| 1   | 0   | 2    | 8-bit Auto Reaload Mode |
-| 1   | 1   | 3    | Split Timer Mode        |
 
 ### Modes of Operation
 
@@ -2424,7 +2360,11 @@ The transmission process in Mode 3 is very similar to that in Mode 2. Let's modi
 - The SCON (Serial Control) register is an 8-bit, bit-addressable Special Function Register (SFR) responsible for managing serial communication in 8051 microcontrollers.
 - It holds settings and status flags that control how the microcontroller sends and receives data serially.
 
-**SCON Register Structure**
+**SCON Register Structure (Address: 098H, Bit addressable):**
+
+| SCON.7 | SCON.6 | SCON.5 | SCON.4 | SCON.3 | SCON.2 | SCON.1 | SCON.0 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| SM0    | SM1    | SM2    | REN    | TB8    | RB8    | TI     | RI     |
 
 Here's how the SCON register's bits function:
 
@@ -2434,6 +2374,13 @@ Here's how the SCON register's bits function:
   - **Mode 1:** 10-bit UART mode (8 data bits, 1 start bit, 1 stop bit).
   - **Mode 2:** 11-bit UART mode (8 data bits, 1 start bit, 1 programmable stop bit, 1 additional bit for addressing or other purposes)
   - **Mode 3:** Similar to mode 2, but with 9 data bits.
+
+  | SMO | SM1 | Mode   | Baud Rate                                  | Description                           |
+  | --- | --- | ------ | ------------------------------------------ | ------------------------------------- |
+  | 0   | 0   | Mode 0 | Fixed Baud Rate (fosc/12)                  | 8-Bit Synchronous Shift Register Mode |
+  | 0   | 1   | Mode 1 | Variable Baud Rate (Can be set by Timer 1) | 8-bit Standard UART mode              |
+  | 1   | 0   | Mode 2 | Fixed Baud Rate (fosc/64) or (fosc/32)     | 9-bit Multiprocessor Comm. mode       |
+  | 1   | 1   | Mode 3 | Variable Baud Rate (Can be set by Timer 1) | 9-bit Multiprocessor Comm. mode       |
 
 - **SM2 (Enable Multiprocessor Communication):** Specifically designed for multiprocessor systems to distinguish between data from other processors and address information.
 
@@ -2458,6 +2405,17 @@ Here's how the SCON register's bits function:
   - '1' = Signals that the receive buffer is full (set by hardware).
   - '0' = No data in the buffer to be read (cleared by software).
 
+| Bit | Function                                                                                                                                                                                                                                              |
+| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| SM0 | These 2 bits determine the framing of data by specifying number of bits per                                                                                                                                                                           |
+| SM1 | character and start and stop bits. they take following combo.SM0                                                                                                                                                                                      |
+| SM2 | This enables multiprocessing capabilities of 8051. Usually set to 0                                                                                                                                                                                   |
+| REN | Also referred to as SCON.4 as SCON is a bit addressable register. This is receive enable. When high or 1 it allows 8051 to receive data from RxD pin. Used or access as SET SCON.4 and CLR SCON.4. very useful in blocking external serial reception. |
+| TB8 | Transfer bit 8. Used for serial mode 2 and 3 not generally used so set it always to 0                                                                                                                                                                 |
+| RB8 | Receive bit 8. Again used for serial mode 2 and 3 not used so set it to 0                                                                                                                                                                             |
+| TI  | Transmit interrupt. Important flag bit in SCON register. When 8051 finishes transfer of 8 bit character, it raises the T1 flag to indicate that it is ready to transfer another byte. Is used at beginning of stop bit.                               |
+| RI  | Receive interrupt. Another important flag bit in SCON register. When 8051 finishes receiving data i.e when data is successfully stored in SBUF it raises R1 flag to indicate byte is received and to be picked before it gets lost.                   |
+
 **Example: Setting up Serial Communication in Mode 1 (10-bit UART)**
 
 1. **Mode Selection:** Set the SM0 and SM1 bits in the SCON register:
@@ -2476,35 +2434,6 @@ Here's how the SCON register's bits function:
 
 **Note:** To receive data, you'll usually create an interrupt service routine (ISR) that triggers when the RI flag in SCON is set.
 
-Serial Port Control Register (SCON): Register SCON controls serial data communication. The serial port control and status register is the Special Function Register SCON. This register contains not only the mode selection bits, but also the 9th data bit for transmit and receive (TB8 and RB8), and the serial ports interrupt bits (TI and RI).
-
-SCON Register:
-
-| Address: 098H (Bit addressable) |        |        |        |        |        |        |        |
-| ------------------------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| SCON.7                          | SCON.6 | SCON.5 | SCON.4 | SCON.3 | SCON.2 | SCON.1 | SCON.0 |
-| Bit 7                           | Bit 6  | Bit 5  | Bit 4  | Bit 3  | Bit 2  | Bit 1  | Bit 0  |
-| SM0                             | SM1    | SM2    | REN    | TB8    | RB8    | TI     | RI     |
-
-Description of All the Bits of SCON:
-
-| SM0 | These 2 bits determine the framing of data by specifying number of bits per                                                                                                                                                                           |
-| --- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| SM1 | character and start and stop bits. they take following combo.SM0                                                                                                                                                                                      |
-| SM2 | This enables multiprocessing capabilities of 8051. Usually set to 0                                                                                                                                                                                   |
-| REN | Also referred to as SCON.4 as SCON is a bit addressable register. This is receive enable. When high or 1 it allows 8051 to receive data from RxD pin. Used or access as SET SCON.4 and CLR SCON.4. very useful in blocking external serial reception. |
-| TB8 | Transfer bit 8. Used for serial mode 2 and 3 not generally used so set it always to 0                                                                                                                                                                 |
-| RB8 | Receive bit 8. Again used for serial mode 2 and 3 not used so set it to 0                                                                                                                                                                             |
-| TI  | Transmit interrupt. Important flag bit in SCON register. When 8051 finishes transfer of 8 bit character, it raises the T1 flag to indicate that it is ready to transfer another byte. Is used at beginning of stop bit.                               |
-| RI  | Receive interrupt. Another important flag bit in SCON register. When 8051 finishes receiving data i.e when data is successfully stored in SBUF it raises R1 flag to indicate byte is received and to be picked before it gets lost.                   |
-
-| SMO | SM1 | Mode   | Baud Rate                                  | Description                           |
-| --- | --- | ------ | ------------------------------------------ | ------------------------------------- |
-| 0   | 0   | Mode 0 | Fixed Baud Rate (fosc/12)                  | 8-Bit Synchronous Shift Register Mode |
-| 0   | 1   | Mode 1 | Variable Baud Rate (Can be set by Timer 1) | 8-bit Standard UART mode              |
-| 1   | 0   | Mode 2 | Fixed Baud Rate (fosc/64) or (fosc/32)     | 9-bit Multiprocessor Comm. mode       |
-| 1   | 1   | Mode 3 | Variable Baud Rate (Can be set by Timer 1) | 9-bit Multiprocessor Comm. mode       |
-
 ### PCON Register
 
 **What is the PCON Register?**
@@ -2512,15 +2441,17 @@ Description of All the Bits of SCON:
 - The PCON (Power Control) register is an 8-bit Special Function Register (SFR) primarily used to manage power-saving modes within the 8051 microcontroller.
 - It also includes a few additional control bits for baud rate adjustment and general-purpose usage.
 
-**PCON Register Structure**
+**PCON Register Structure (Address: 087H, Byte addressable)**
+
+| PCON.7 | PCON.6 | PCON.5 | PCON.4 | PCON.3 | PCON.2 | PCON.1 | PCON.0 |
+| ------ | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
+| SMOD   | -      | -      | -      | GF1    | GF0    | PD     | IDL    |
 
 Here's a breakdown of the bits within the PCON register:
 
 - **SMOD (Serial Mode Doubler):**
-
   - '1' = Doubles the baud rate for serial communication (UART) when Timer 1 is used for baud rate generation. Useful for increasing communication speeds.
   - '0' = Normal baud rate.
-
 - **GF1 (General Purpose Flag 1), GF0 (General Purpose Flag 0):**
   - These bits can be set and cleared by software for various purposes chosen by the programmer. They have no predefined function assigned to them.
 - **PD (Power-Down Mode):**
@@ -2531,6 +2462,14 @@ Here's a breakdown of the bits within the PCON register:
 - **IDL (Idle Mode):**
   - '1' = Enables Idle Mode. The CPU stops functioning, but peripherals like timers, serial ports, and interrupts remain active. This mode reduces power consumption while maintaining some functionality.
   - '0' = Disables Idle Mode.
+
+| Bit  | Function                                                                                                           |
+| ---- | ------------------------------------------------------------------------------------------------------------------ |
+| SMOD | Serial baud rate MODify bit – If SMOD = 1, the Baud rate is doubled when the serial port is used in mode 1,2 and 3 |
+| GF1  | General Purpose Flag Bit 1                                                                                         |
+| GF0  | General Purpose Flag Bit 0                                                                                         |
+| PD   | Power Down Mode. If set, the oscillator is stopped. A reset or an interrupt can cancel this mode.                  |
+| IDL  | Idle Mode. If set, the CPU is stopped. A reset or an interrupt can cancel this mode.                               |
 
 **Key Points about Power Modes**
 
@@ -2557,36 +2496,6 @@ Here's a breakdown of the bits within the PCON register:
    ```
 
 **Important Note:** It is crucial to check your specific microcontroller datasheet, as certain manufacturers might have slightly different or additional assignments for the remaining unused bits in the PCON register.
-
-Power Mode control Register (PCON): Register PCON controls processor powerdown, sleep modes and serial data bandrate. Only one bit of PCON is used with respect to serial communication. The seventh bit (b7)(SMOD) is used to generate the baud rate of serial communication.
-
-The PCON or Power Control register, as the name suggests is used to control the 8051 Microcontroller’s Power Modes and is located at 87H of the SFR Memory Space. Using two bits in the PCON Register, the microcontroller can be set to Idle Mode and Power Down Mode.
-
-During Idle Mode, the Microcontroller will stop the Clock Signal to the ALU (CPU) but it is given to other peripherals like Timer, Serial, Interrupts, etc. In order to terminate the Idle Mode, you have to use an Interrupt or Hardware Reset.
-
-In the Power Down Mode, the oscillator will be stopped and the power will be reduced to 2V. To terminate the Power Down Mode, you have to use the Hardware Reset.
-
-Apart from these two, the PCON Register can also be used for few additional purposes. The SMOD Bit in the PCON Register is used to control the Baud Rate of the Serial Port.
-
-There are two general purpose Flag Bits in the PCON Register, which can be used by the programmer during execution.
-
-PCON Register:
-
-| Address: 087H (Byte addressable) |        |        |        |        |        |        |        |
-| -------------------------------- | ------ | ------ | ------ | ------ | ------ | ------ | ------ |
-| PCON.7                           | PCON.6 | PCON.5 | PCON.4 | PCON.3 | PCON.2 | PCON.1 | PCON.0 |
-| Bit 7                            | Bit 6  | Bit 5  | Bit 4  | Bit 3  | Bit 2  | Bit 1  | Bit 0  |
-| SMOD                             | -      | -      | -      | GF1    | GF0    | PD     | IDL    |
-
-Description of All the Bits of PCON:
-
-| Bit  | Function                                                                                                           |
-| ---- | ------------------------------------------------------------------------------------------------------------------ |
-| SMOD | Serial baud rate MODify bit – If SMOD = 1, the Baud rate is doubled when the serial port is used in mode 1,2 and 3 |
-| GF1  | General Purpose Flag Bit 1                                                                                         |
-| GF0  | General Purpose Flag Bit 0                                                                                         |
-| PD   | Power Down Mode. If set, the oscillator is stopped. A reset or an interrupt can cancel this mode.                  |
-| IDL  | Idle Mode. If set, the CPU is stopped. A reset or an interrupt can cancel this mode.                               |
 
 ## Interrupts
 
@@ -2670,7 +2579,11 @@ Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger peri
 - The IE (Interrupt Enable) register is an 8-bit, bit-addressable Special Function Register (SFR) within 8051 microcontrollers.
 - Each bit in this register controls the enabling or disabling of specific interrupts within the system.
 
-**IE Register Structure**
+**IE Register Structure (Address: 0A8H, Byte addressable):**
+
+| IE.7 | IE.6 | IE.5 | IE.4 | IE.3 | IE.2 | IE.1 | IE.0 |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| EA   | -    | -    | ES   | ET1  | EX1  | ET0  | EX0  |
 
 Here's the breakdown of the IE Register's bit functionality:
 
@@ -2705,6 +2618,15 @@ Here's the breakdown of the IE Register's bit functionality:
   - '1' = Enables the external interrupt 0.
   - '0' = Disables the external interrupt 0.
 
+| Bit | Function                            |
+| --- | ----------------------------------- |
+| EA  | Global interrupt enable/disable Bit |
+| ES  | Enable Serial Interrupt Bit         |
+| ET1 | Enable Timer1 Interrupt Bit         |
+| EX1 | Enable External Interrupt 1 Bit     |
+| ET0 | Enable Timer0 Interrupt Bit         |
+| EX0 | Enable External Interrupt 1 Bit     |
+
 **How Interrupts Work with IE**
 
 1. **Global Enable:** The EA bit in the IE register must be set to '1' for any interrupt to function.
@@ -2730,24 +2652,6 @@ Here's the breakdown of the IE Register's bit functionality:
   - External interrupts may need edge or level triggering configured (ITx bits in TCON).
 - The 8051 has a priority system for multiple simultaneous interrupts. You can control the priority using the IP (Interrupt Priority) register.
 
-IE Register:
-
-| Address: 0A8H (Byte addressable) |       |       |       |       |       |       |       |
-| -------------------------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| IE.7                             | IE.6  | IE.5  | IE.4  | IE.3  | IE.2  | IE.1  | IE.0  |
-| Bit 7                            | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
-| EA                               | -     | -     | ES    | ET1   | EX1   | ET0   | EX0   |
-
-Description of All the Bits of IE:
-
-| EA  | Global interrupt enable/disable Bit |
-| --- | ----------------------------------- |
-| ES  | Enable Serial Interrupt Bit         |
-| ET1 | Enable Timer1 Interrupt Bit         |
-| EX1 | Enable External Interrupt 1 Bit     |
-| ET0 | Enable Timer0 Interrupt Bit         |
-| EX0 | Enable External Interrupt 1 Bit     |
-
 ### IP Register
 
 **What is the IP Register?**
@@ -2755,7 +2659,11 @@ Description of All the Bits of IE:
 - The IP (Interrupt Priority) register is an 8-bit, bit-addressable Special Function Register (SFR) used to manage the priority of interrupt sources in 8051 microcontrollers.
 - When multiple interrupts occur simultaneously, the IP register helps the system determine which interrupt to handle first.
 
-**IP Register Structure**
+**IP Register Structure (Address: 0B8H, Byte addressable)**
+
+| IP.7 | IP.6 | IP.5 | IP.4 | IP.3 | IP.2 | IP.1 | IP.0 |
+| ---- | ---- | ---- | ---- | ---- | ---- | ---- | ---- |
+| -    | -    | -    | PS   | PT1  | PX1  | PT0  | PX0  |
 
 Each bit in the IP register is assigned a specific interrupt source, providing two levels of priority (high or low):
 
@@ -2785,6 +2693,24 @@ Each bit in the IP register is assigned a specific interrupt source, providing t
   - '1' = High priority.
   - '0' = Low priority.
 
+| Bit | Function                          |
+| --- | --------------------------------- |
+| PS  | Serial Interrupt Priority Bit     |
+| PT1 | Timer1 Interrupt Priority Bit     |
+| PX1 | External Interrupt 1 Priority Bit |
+| PT0 | Timer0 Interrupt Priority Bit     |
+| PX0 | External Interrupt 0 Priority Bit |
+
+**Default Interrupt Priority**
+
+| **Priority** | **Interrupt source** | **Intr. bit / flag** |
+| ------------ | -------------------- | -------------------- |
+| 1            | External Interrupt 0 | INT0                 |
+| 2            | Timer Interrupt 0    | TF0                  |
+| 3            | External Interrupt 1 | INT1                 |
+| 4            | Timer Interrupt 1    | TF1                  |
+| 5            | Serial interrupt     | (TI/RI)              |
+
 **How Interrupt Priorities Work with IP**
 
 1. **Interrupt Occurrence:** When one or more interrupts occur, the 8051 checks the corresponding bits in the IP register.
@@ -2812,9 +2738,7 @@ Each bit in the IP register is assigned a specific interrupt source, providing t
 
 - The priority structure and internal polling sequence for the 8051 microcontroller can be found in your specific microcontroller's datasheet.
 
-Priority to the interrupt can be assigned by using interrupt priority register (IP)
-
-Interrupt priority after Reset:
+**Default Interrupt Priority**
 
 | **Priority** | **Interrupt source** | **Intr. bit / flag** |
 | ------------ | -------------------- | -------------------- |
@@ -2823,43 +2747,6 @@ Interrupt priority after Reset:
 | 3            | External Interrupt 1 | INT1                 |
 | 4            | Timer Interrupt 1    | TF1                  |
 | 5            | Serial interrupt     | (TI/RI)              |
-
-In the table, interrupts priorities upon reset are shown. As per 8051 interrupt priorities, lowest priority interrupts are not served until microcontroller is finished with higher priority ones. In a case when two or more interrupts arrives microcontroller queues them according to priority.
-
-It is not possible to forseen when an interrupt request will arrive. If several interrupts are enabled, it may happen that while one of them is in progress, another one is requested. In order that the microcontroller knows whether to continue operation or meet a new interrupt request, there is a priority list instructing it what to do. The priority list offers 3 levels of interrupt priority:
-
-- Reset! The apsolute master. When a reset request arrives, everything is stopped and the microcontroller restarts.
-- Interrupt priority 1 can be disabled by Reset only.
-- Interrupt priority 0 can be disabled by both Reset and interrupt priority 1.
-
-The IP Register (Interrupt Priority Register) specifies which one of existing interrupt sources have higher and which one has lower priority. Interrupt priority is usually specified at the beginning of the program. According to that, there are several possibilities:
-
-- If an interrupt of higher priority arrives while an interrupt is in progress, it will be immediately stopped and the higher priority interrupt will be executed first.
-- If two interrupt requests, at different priority levels, arrive at the same time then the higher priority interrupt is serviced first.
-- If the both interrupt requests, at the same priority level, occur one after another, the one which came later has to wait until routine being in progress ends.
-- If two interrupt requests of equal priority arrive at the same time then the interrupt to be serviced is selected according to the following priority list:
-  - External interrupt INT0
-  - Timer 0 interrupt
-  - External Interrupt INT1
-  - Timer 1 interrupt
-  - Serial Communication Interrupt
-
-IP Register:
-
-| Address: 0B8H (Byte addressable) |       |       |       |       |       |       |       |
-| -------------------------------- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
-| IP.7                             | IP.6  | IP.5  | IP.4  | IP.3  | IP.2  | IP.1  | IP.0  |
-| Bit 7                            | Bit 6 | Bit 5 | Bit 4 | Bit 3 | Bit 2 | Bit 1 | Bit 0 |
-| -                                | -     | -     | PS    | PT1   | PX1   | PT0   | PX0   |
-
-Description of All the Bits of IP:
-
-| PS  | Serial Interrupt Priority Bit     |
-| --- | --------------------------------- |
-| PT1 | Timer1 Interrupt Priority Bit     |
-| PX1 | External Interrupt 1 Priority Bit |
-| PT0 | Timer0 Interrupt Priority Bit     |
-| PX0 | External Interrupt 0 Priority Bit |
 
 # Unit IV: 8051 Programming
 
