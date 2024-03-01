@@ -1,4 +1,4 @@
-Unit – I Introductio n to Microprocessor
+Unit – I Introduction to Microprocessor
 1 a Introduce Microprocessor
 1 b Describe Microprocessor & Microcomputer Architecture
 1 c Microprocessor Architectures.
