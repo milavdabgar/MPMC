@@ -868,6 +868,8 @@ A bus, in a microprocessor system, is a collection of signal lines used to trans
   - **RAM (Random Access Memory):** Used for storing variables, temporary data, and the stack, which often starts at the higher end of the address space.
 - **I/O Mapped I/O:** Some address space can be reserved for interfacing with input/output devices.
 
+![Image 8085 Memory Interfacing](../assets/imgs/8085_Memory_Interfacing.png)
+
 **Memory Read Cycle**
 
 1. **Address Output:** The 8085 places the 16-bit address of the memory location it wants to read on the address bus.
