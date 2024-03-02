@@ -1,62 +1,62 @@
-- [Mazidi Book C Codes](#mazidi-book-c-codes)
-  - [Write an 8051 C program to send values 00 – FF to port P1.](#write-an-8051-c-program-to-send-values-00--ff-to-port-p1)
-  - [Write an 8051 C program to send hex values for ASCII characters of 0, 1, 2, 3, 4, 5, A, B, C, and D to port P1.](#write-an-8051-c-program-to-send-hex-values-for-ascii-characters-of-0-1-2-3-4-5-a-b-c-and-d-to-port-p1)
-  - [Write an 8051 C program to toggle all the bits of P1 continuously.](#write-an-8051-c-program-to-toggle-all-the-bits-of-p1-continuously)
-  - [Write an 8051 C program to send values of –4 to +4 to port P1.](#write-an-8051-c-program-to-send-values-of-4-to-4-to-port-p1)
-  - [Write an 8051 C program to toggle bit D0 of the port P1 (P1.0) 50,000 times.](#write-an-8051-c-program-to-toggle-bit-d0-of-the-port-p1-p10-50000-times)
-  - [Write an 8051 C program to toggle bits of P1 continuously forever with some delay.](#write-an-8051-c-program-to-toggle-bits-of-p1-continuously-forever-with-some-delay)
-  - [Write an 8051 C program to toggle bits of P1 ports continuously with a 250 ms.](#write-an-8051-c-program-to-toggle-bits-of-p1-ports-continuously-with-a-250-ms)
-  - [LEDs are connected to bits P1 and P2. ### Write an 8051 C program that shows the count from 0 to FFH (0000 0000 to 1111 1111 in binary) on the LEDs.](#leds-are-connected-to-bits-p1-and-p2--write-an-8051-c-program-that-shows-the-count-from-0-to-ffh-0000-0000-to-1111-1111-in-binary-on-the-leds)
-  - [Write an 8051 C program to get a byte of data form P1, wait 1/2 second, and then send it to P2.](#write-an-8051-c-program-to-get-a-byte-of-data-form-p1-wait-12-second-and-then-send-it-to-p2)
-  - [Write an 8051 C program to get a byte of data form P0. If it is less than 100, send it to P1; otherwise, send it to P2.](#write-an-8051-c-program-to-get-a-byte-of-data-form-p0-if-it-is-less-than-100-send-it-to-p1-otherwise-send-it-to-p2)
-  - [Write an 8051 C program to toggle only bit P2.4 continuously without disturbing the rest of the bits of P2.](#write-an-8051-c-program-to-toggle-only-bit-p24-continuously-without-disturbing-the-rest-of-the-bits-of-p2)
-  - [Write an 8051 C program to monitor bit P1.5. If it is high, send 55H to P0; otherwise, send AAH to P2.](#write-an-8051-c-program-to-monitor-bit-p15-if-it-is-high-send-55h-to-p0-otherwise-send-aah-to-p2)
-  - [A door sensor is connected to the P1.1 pin, and a buzzer is connected to P1.7. ### Write an 8051 C program to monitor the door sensor, and when it opens, sound the buzzer. You can sound the buzzer by sending a square wave of a few hundred Hz.](#a-door-sensor-is-connected-to-the-p11-pin-and-a-buzzer-is-connected-to-p17--write-an-8051-c-program-to-monitor-the-door-sensor-and-when-it-opens-sound-the-buzzer-you-can-sound-the-buzzer-by-sending-a-square-wave-of-a-few-hundred-hz)
-  - [The data pins of an LCD are connected to P1. The information is latched into the LCD whenever its Enable pin goes from high to low. Write an 8051 C program to send “The Earth is but One Country” to this LCD.](#the-data-pins-of-an-lcd-are-connected-to-p1-the-information-is-latched-into-the-lcd-whenever-its-enable-pin-goes-from-high-to-low-write-an-8051-c-program-to-send-the-earth-is-but-one-country-to-this-lcd)
-  - [Write an 8051 C program to toggle all the bits of P0, P1, and P2 continuously with a 250 ms delay. Use the sfr keyword to declare the port addresses.](#write-an-8051-c-program-to-toggle-all-the-bits-of-p0-p1-and-p2-continuously-with-a-250-ms-delay-use-the-sfr-keyword-to-declare-the-port-addresses)
-  - [Write an 8051 C program to turn bit P1.5 on and off 50,000 times.](#write-an-8051-c-program-to-turn-bit-p15-on-and-off-50000-times)
-  - [Write an 8051 C program to get the status of bit P1.0, save it, and send it to P2.7 continuously.](#write-an-8051-c-program-to-get-the-status-of-bit-p10-save-it-and-send-it-to-p27-continuously)
-  - [Run the following program on your simulator and examine the results.](#run-the-following-program-on-your-simulator-and-examine-the-results)
-  - [Write an 8051 C program to toggle all the bits of P0 and P2 continuously with a 250 ms delay. Using the inverting and Ex-OR operators, respectively.](#write-an-8051-c-program-to-toggle-all-the-bits-of-p0-and-p2-continuously-with-a-250-ms-delay-using-the-inverting-and-ex-or-operators-respectively)
-  - [Write an 8051 C program to get bit P1.0 and send it to P2.7 after inverting it.](#write-an-8051-c-program-to-get-bit-p10-and-send-it-to-p27-after-inverting-it)
-  - [Write an 8051 C program to read the P1.0 and P1.1 bits and issue an ASCII character to P0 according to the following table.](#write-an-8051-c-program-to-read-the-p10-and-p11-bits-and-issue-an-ascii-character-to-p0-according-to-the-following-table)
-  - [Write an 8051 C program to convert packed BCD 0x29 to ASCII and display the bytes on P1 and P2.](#write-an-8051-c-program-to-convert-packed-bcd-0x29-to-ascii-and-display-the-bytes-on-p1-and-p2)
-  - [Write an 8051 C program to convert ASCII digits of ‘4’ and ‘7’ to packed BCD and display them on P1.](#write-an-8051-c-program-to-convert-ascii-digits-of-4-and-7-to-packed-bcd-and-display-them-on-p1)
-  - [Write an 8051 C program to calculate the checksum byte for the data 25H, 62H, 3FH, and 52H.](#write-an-8051-c-program-to-calculate-the-checksum-byte-for-the-data-25h-62h-3fh-and-52h)
-  - [Write an 8051 C program to perform the checksum operation to ensure data integrity. If data is good, send ASCII character ‘G’ to P0.Otherwise send ‘B’ to P0.](#write-an-8051-c-program-to-perform-the-checksum-operation-to-ensure-data-integrity-if-data-is-good-send-ascii-character-g-to-p0otherwise-send-b-to-p0)
-  - [Write an 8051 C program to convert 11111101 (FD hex) to decimal and display the digits on P0, P1 and P2.](#write-an-8051-c-program-to-convert-11111101-fd-hex-to-decimal-and-display-the-digits-on-p0-p1-and-p2)
-  - [Compile and single-step the following program on your 8051 simulator. Examine the contents of the 128-byte RAM space to locate the ASCII values.](#compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-128-byte-ram-space-to-locate-the-ascii-values)
-  - [Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.](#write-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-values)
-  - [Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.](#compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-ascii-values)
-  - [Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.](#write-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-values-1)
-  - [Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.](#compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-ascii-values-1)
-  - [Write a C program to send out the value 44H serially one bit at a time via P1.0. The LSB should go out first.](#write-a-c-program-to-send-out-the-value-44h-serially-one-bit-at-a-time-via-p10-the-lsb-should-go-out-first)
-  - [Write a C program to send out the value 44H serially one bit at a time via P1.0. The MSB should go out first.](#write-a-c-program-to-send-out-the-value-44h-serially-one-bit-at-a-time-via-p10-the-msb-should-go-out-first)
-  - [Write a C program to bring in a byte of data serially one bit at a time via P1.0. The LSB should come in first.](#write-a-c-program-to-bring-in-a-byte-of-data-serially-one-bit-at-a-time-via-p10-the-lsb-should-come-in-first)
-  - [Write a C program to bring in a byte of data serially one bit at a time via P1.0. The MSB should come in first.](#write-a-c-program-to-bring-in-a-byte-of-data-serially-one-bit-at-a-time-via-p10-the-msb-should-come-in-first)
-  - [Example 9-20 Write an 8051 C program to toggle all the bits of port P1 continuously with some delay in between. Use Timer 0, 16-bit mode to generate the delay.](#example-9-20-write-an-8051-c-program-to-toggle-all-the-bits-of-port-p1-continuously-with-some-delay-in-between-use-timer-0-16-bit-mode-to-generate-the-delay)
-  - [Example 9-21 Write an 8051 C program to toggle only bit P1.5 continuously every 50 ms. Use Timer 0, mode 1 (16-bit) to create the delay. Test the program on the (a) AT89C51 and (b) DS89C420.](#example-9-21-write-an-8051-c-program-to-toggle-only-bit-p15-continuously-every-50-ms-use-timer-0-mode-1-16-bit-to-create-the-delay-test-the-program-on-the-a-at89c51-and-b-ds89c420)
-  - [Example 9-22 Write an 8051 C program to toggle all bits of P2 continuously every 500 ms. Use Timer 1, mode 1 to create the delay.](#example-9-22-write-an-8051-c-program-to-toggle-all-bits-of-p2-continuously-every-500-ms-use-timer-1-mode-1-to-create-the-delay)
-  - [Example 9-25 A switch is connected to pin P1.2. Write an 8051 C program to monitor SW and create the following frequencies on pin P1.7: SW=0: 00Hz SW=1: 750Hz, use Timer 0, mode 1 for both of them.](#example-9-25-a-switch-is-connected-to-pin-p12-write-an-8051-c-program-to-monitor-sw-and-create-the-following-frequencies-on-pin-p17-sw0-00hz-sw1-750hz-use-timer-0-mode-1-for-both-of-them)
-  - [Example 9-23 Write an 8051 C program to toggle only pin P1.5 continuously every 250 ms. Use Timer 0, mode 2 (8-bit auto-reload) to create the delay.](#example-9-23-write-an-8051-c-program-to-toggle-only-pin-p15-continuously-every-250-ms-use-timer-0-mode-2-8-bit-auto-reload-to-create-the-delay)
-  - [Example 9-24 Write an 8051 C program to create a frequency of 2500 Hz on pin P2.7. Use Timer 1, mode 2 to create delay.](#example-9-24-write-an-8051-c-program-to-create-a-frequency-of-2500-hz-on-pin-p27-use-timer-1-mode-2-to-create-delay)
-  - [Example 9-26 Assume that a 1-Hz external clock is being fed into pin T1 (P3.5). Write a C program for counter 1 in mode 2 (8-bit auto reload) to count up and display the state of the TL1 count on P1. Start the count at 0H.](#example-9-26-assume-that-a-1-hz-external-clock-is-being-fed-into-pin-t1-p35-write-a-c-program-for-counter-1-in-mode-2-8-bit-auto-reload-to-count-up-and-display-the-state-of-the-tl1-count-on-p1-start-the-count-at-0h)
-  - [Example 9-27 Assume that a 1-Hz external clock is being fed into pin T0 (P3.4). Write a C program for counter 0 in mode 1 (16-bit) to count the pulses and display the state of the TH0 and TL0 registers on P2 and P1, respectively.](#example-9-27-assume-that-a-1-hz-external-clock-is-being-fed-into-pin-t0-p34-write-a-c-program-for-counter-0-in-mode-1-16-bit-to-count-the-pulses-and-display-the-state-of-the-th0-and-tl0-registers-on-p2-and-p1-respectively)
-  - [Example 10-15 Write a C program for 8051 to transfer the letter “A” serially at 4800 baud continuously. Use 8-bit data and 1 stop bit.](#example-10-15-write-a-c-program-for-8051-to-transfer-the-letter-a-serially-at-4800-baud-continuously-use-8-bit-data-and-1-stop-bit)
-  - [Example 10-16 Write an 8051 C program to transfer the message “YES” serially at 9600 baud, 8-bit data, 1 stop bit. Do this continuously.](#example-10-16-write-an-8051-c-program-to-transfer-the-message-yes-serially-at-9600-baud-8-bit-data-1-stop-bit-do-this-continuously)
-  - [Example 10-17 Program the 8051 in C to receive bytes of data serially and put them in P1. Set the baud rate at 4800, 8-bit data, and 1 stop bit.](#example-10-17-program-the-8051-in-c-to-receive-bytes-of-data-serially-and-put-them-in-p1-set-the-baud-rate-at-4800-8-bit-data-and-1-stop-bit)
-  - [Example 10-19 Write an 8051 C Program to send the two messages “Normal Speed” and “High Speed” to the serial port. Assuming that SW is connected to pin P2.0, monitor its status and set the baud rate as follows: SW = 0, 28,800 baud rate SW = 1, 56K baud rate Assume that XTAL = 11.0592 MHz for both cases.](#example-10-19-write-an-8051-c-program-to-send-the-two-messages-normal-speed-and-high-speed-to-the-serial-port-assuming-that-sw-is-connected-to-pin-p20-monitor-its-status-and-set-the-baud-rate-as-follows-sw--0-28800-baud-rate-sw--1-56k-baud-rate-assume-that-xtal--110592-mhz-for-both-cases)
-  - [Example 10-20 Write a C program for the DS89C4x0 to transfer the letter “A” serially at 4800 baud continuously. Use the second serial port with 8-bit data and 1 stop bit. We can only use Timer 1 to set the baud rate.](#example-10-20-write-a-c-program-for-the-ds89c4x0-to-transfer-the-letter-a-serially-at-4800-baud-continuously-use-the-second-serial-port-with-8-bit-data-and-1-stop-bit-we-can-only-use-timer-1-to-set-the-baud-rate)
-  - [Example 10-21 Program the DS89C4x0 in C to receive bytes of data serially via the second serial port and put them in P1. Set the baud rate at 9600, 8-bit data and 1 stop bit. Use Timer 1 for baud rate generation.](#example-10-21-program-the-ds89c4x0-in-c-to-receive-bytes-of-data-serially-via-the-second-serial-port-and-put-them-in-p1-set-the-baud-rate-at-9600-8-bit-data-and-1-stop-bit-use-timer-1-for-baud-rate-generation)
-  - [Example 11-14 Write a C program that continuously gets a single bit of data from P1.7 and sends it to P1.0, while simultaneously creating a square wave of 200 μs period on pin P2.5. Use Timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.](#example-11-14-write-a-c-program-that-continuously-gets-a-single-bit-of-data-from-p17-and-sends-it-to-p10-while-simultaneously-creating-a-square-wave-of-200-μs-period-on-pin-p25-use-timer-0-to-create-the-square-wave-assume-that-xtal--110592-mhz)
-  - [Example 11-16 Write a C program using interrupts to do the following: (a) Receive data serially and send it to P0 (b) Read port P1, transmit data serially, and give a copy to P2 (c) Make timer 0 generate a square wave of 5 kHz frequency on P0.1 Assume that XTAL = 11.0592 MHz. Set the baud rate at 4800.](#example-11-16-write-a-c-program-using-interrupts-to-do-the-following-a-receive-data-serially-and-send-it-to-p0-b-read-port-p1-transmit-data-serially-and-give-a-copy-to-p2-c-make-timer-0-generate-a-square-wave-of-5-khz-frequency-on-p01-assume-that-xtal--110592-mhz-set-the-baud-rate-at-4800)
-  - [Example 11-17 Write a C program using interrupts to do the following: (a) Generate a 10 KHz frequency on P2.1 using T0 8-bit auto-reload (b) Use timer 1 as an event counter to count up a 1-Hz pulse and display it on P0. The pulse is connected to EX1. Assume that XTAL = 11.0592 MHz. Set the baud rate at 9600.](#example-11-17-write-a-c-program-using-interrupts-to-do-the-following-a-generate-a-10-khz-frequency-on-p21-using-t0-8-bit-auto-reload-b-use-timer-1-as-an-event-counter-to-count-up-a-1-hz-pulse-and-display-it-on-p0-the-pulse-is-connected-to-ex1-assume-that-xtal--110592-mhz-set-the-baud-rate-at-9600)
-  - [Example 12-2 Write an 8051 C program to send letters ‘M’, ‘D’, and ‘E’ to the LCD using the busy flag method.](#example-12-2-write-an-8051-c-program-to-send-letters-m-d-and-e-to-the-lcd-using-the-busy-flag-method)
+- [1. Mazidi Book C Codes](#1-mazidi-book-c-codes)
+  - [1.1. Write an 8051 C program to send values 00 – FF to port P1.](#11-write-an-8051-c-program-to-send-values-00--ff-to-port-p1)
+  - [1.2. Write an 8051 C program to send hex values for ASCII characters of 0, 1, 2, 3, 4, 5, A, B, C, and D to port P1.](#12-write-an-8051-c-program-to-send-hex-values-for-ascii-characters-of-0-1-2-3-4-5-a-b-c-and-d-to-port-p1)
+  - [1.3. Write an 8051 C program to toggle all the bits of P1 continuously.](#13-write-an-8051-c-program-to-toggle-all-the-bits-of-p1-continuously)
+  - [1.4. Write an 8051 C program to send values of –4 to +4 to port P1.](#14-write-an-8051-c-program-to-send-values-of-4-to-4-to-port-p1)
+  - [1.5. Write an 8051 C program to toggle bit D0 of the port P1 (P1.0) 50,000 times.](#15-write-an-8051-c-program-to-toggle-bit-d0-of-the-port-p1-p10-50000-times)
+  - [1.6. Write an 8051 C program to toggle bits of P1 continuously forever with some delay.](#16-write-an-8051-c-program-to-toggle-bits-of-p1-continuously-forever-with-some-delay)
+  - [1.7. Write an 8051 C program to toggle bits of P1 ports continuously with a 250 ms.](#17-write-an-8051-c-program-to-toggle-bits-of-p1-ports-continuously-with-a-250-ms)
+  - [1.8. LEDs are connected to bits P1 and P2. ### Write an 8051 C program that shows the count from 0 to FFH (0000 0000 to 1111 1111 in binary) on the LEDs.](#18-leds-are-connected-to-bits-p1-and-p2--write-an-8051-c-program-that-shows-the-count-from-0-to-ffh-0000-0000-to-1111-1111-in-binary-on-the-leds)
+  - [1.9. Write an 8051 C program to get a byte of data form P1, wait 1/2 second, and then send it to P2.](#19-write-an-8051-c-program-to-get-a-byte-of-data-form-p1-wait-12-second-and-then-send-it-to-p2)
+  - [1.10. Write an 8051 C program to get a byte of data form P0. If it is less than 100, send it to P1; otherwise, send it to P2.](#110-write-an-8051-c-program-to-get-a-byte-of-data-form-p0-if-it-is-less-than-100-send-it-to-p1-otherwise-send-it-to-p2)
+  - [1.11. Write an 8051 C program to toggle only bit P2.4 continuously without disturbing the rest of the bits of P2.](#111-write-an-8051-c-program-to-toggle-only-bit-p24-continuously-without-disturbing-the-rest-of-the-bits-of-p2)
+  - [1.12. Write an 8051 C program to monitor bit P1.5. If it is high, send 55H to P0; otherwise, send AAH to P2.](#112-write-an-8051-c-program-to-monitor-bit-p15-if-it-is-high-send-55h-to-p0-otherwise-send-aah-to-p2)
+  - [1.13. A door sensor is connected to the P1.1 pin, and a buzzer is connected to P1.7. ### Write an 8051 C program to monitor the door sensor, and when it opens, sound the buzzer. You can sound the buzzer by sending a square wave of a few hundred Hz.](#113-a-door-sensor-is-connected-to-the-p11-pin-and-a-buzzer-is-connected-to-p17--write-an-8051-c-program-to-monitor-the-door-sensor-and-when-it-opens-sound-the-buzzer-you-can-sound-the-buzzer-by-sending-a-square-wave-of-a-few-hundred-hz)
+  - [1.14. The data pins of an LCD are connected to P1. The information is latched into the LCD whenever its Enable pin goes from high to low. Write an 8051 C program to send “The Earth is but One Country” to this LCD.](#114-the-data-pins-of-an-lcd-are-connected-to-p1-the-information-is-latched-into-the-lcd-whenever-its-enable-pin-goes-from-high-to-low-write-an-8051-c-program-to-send-the-earth-is-but-one-country-to-this-lcd)
+  - [1.15. Write an 8051 C program to toggle all the bits of P0, P1, and P2 continuously with a 250 ms delay. Use the sfr keyword to declare the port addresses.](#115-write-an-8051-c-program-to-toggle-all-the-bits-of-p0-p1-and-p2-continuously-with-a-250-ms-delay-use-the-sfr-keyword-to-declare-the-port-addresses)
+  - [1.16. Write an 8051 C program to turn bit P1.5 on and off 50,000 times.](#116-write-an-8051-c-program-to-turn-bit-p15-on-and-off-50000-times)
+  - [1.17. Write an 8051 C program to get the status of bit P1.0, save it, and send it to P2.7 continuously.](#117-write-an-8051-c-program-to-get-the-status-of-bit-p10-save-it-and-send-it-to-p27-continuously)
+  - [1.18. Run the following program on your simulator and examine the results.](#118-run-the-following-program-on-your-simulator-and-examine-the-results)
+  - [1.19. Write an 8051 C program to toggle all the bits of P0 and P2 continuously with a 250 ms delay. Using the inverting and Ex-OR operators, respectively.](#119-write-an-8051-c-program-to-toggle-all-the-bits-of-p0-and-p2-continuously-with-a-250-ms-delay-using-the-inverting-and-ex-or-operators-respectively)
+  - [1.20. Write an 8051 C program to get bit P1.0 and send it to P2.7 after inverting it.](#120-write-an-8051-c-program-to-get-bit-p10-and-send-it-to-p27-after-inverting-it)
+  - [1.21. Write an 8051 C program to read the P1.0 and P1.1 bits and issue an ASCII character to P0 according to the following table.](#121-write-an-8051-c-program-to-read-the-p10-and-p11-bits-and-issue-an-ascii-character-to-p0-according-to-the-following-table)
+  - [1.22. Write an 8051 C program to convert packed BCD 0x29 to ASCII and display the bytes on P1 and P2.](#122-write-an-8051-c-program-to-convert-packed-bcd-0x29-to-ascii-and-display-the-bytes-on-p1-and-p2)
+  - [1.23. Write an 8051 C program to convert ASCII digits of ‘4’ and ‘7’ to packed BCD and display them on P1.](#123-write-an-8051-c-program-to-convert-ascii-digits-of-4-and-7-to-packed-bcd-and-display-them-on-p1)
+  - [1.24. Write an 8051 C program to calculate the checksum byte for the data 25H, 62H, 3FH, and 52H.](#124-write-an-8051-c-program-to-calculate-the-checksum-byte-for-the-data-25h-62h-3fh-and-52h)
+  - [1.25. Write an 8051 C program to perform the checksum operation to ensure data integrity. If data is good, send ASCII character ‘G’ to P0.Otherwise send ‘B’ to P0.](#125-write-an-8051-c-program-to-perform-the-checksum-operation-to-ensure-data-integrity-if-data-is-good-send-ascii-character-g-to-p0otherwise-send-b-to-p0)
+  - [1.26. Write an 8051 C program to convert 11111101 (FD hex) to decimal and display the digits on P0, P1 and P2.](#126-write-an-8051-c-program-to-convert-11111101-fd-hex-to-decimal-and-display-the-digits-on-p0-p1-and-p2)
+  - [1.27. Compile and single-step the following program on your 8051 simulator. Examine the contents of the 128-byte RAM space to locate the ASCII values.](#127-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-128-byte-ram-space-to-locate-the-ascii-values)
+  - [1.28. Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.](#128-write-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-values)
+  - [1.29. Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.](#129-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-ascii-values)
+  - [1.30. Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.](#130-write-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-values)
+  - [1.31. Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.](#131-compile-and-single-step-the-following-program-on-your-8051-simulator-examine-the-contents-of-the-code-space-to-locate-the-ascii-values)
+  - [1.32. Write a C program to send out the value 44H serially one bit at a time via P1.0. The LSB should go out first.](#132-write-a-c-program-to-send-out-the-value-44h-serially-one-bit-at-a-time-via-p10-the-lsb-should-go-out-first)
+  - [1.33. Write a C program to send out the value 44H serially one bit at a time via P1.0. The MSB should go out first.](#133-write-a-c-program-to-send-out-the-value-44h-serially-one-bit-at-a-time-via-p10-the-msb-should-go-out-first)
+  - [1.34. Write a C program to bring in a byte of data serially one bit at a time via P1.0. The LSB should come in first.](#134-write-a-c-program-to-bring-in-a-byte-of-data-serially-one-bit-at-a-time-via-p10-the-lsb-should-come-in-first)
+  - [1.35. Write a C program to bring in a byte of data serially one bit at a time via P1.0. The MSB should come in first.](#135-write-a-c-program-to-bring-in-a-byte-of-data-serially-one-bit-at-a-time-via-p10-the-msb-should-come-in-first)
+  - [1.36. Example 9-20 Write an 8051 C program to toggle all the bits of port P1 continuously with some delay in between. Use Timer 0, 16-bit mode to generate the delay.](#136-example-9-20-write-an-8051-c-program-to-toggle-all-the-bits-of-port-p1-continuously-with-some-delay-in-between-use-timer-0-16-bit-mode-to-generate-the-delay)
+  - [1.37. Example 9-21 Write an 8051 C program to toggle only bit P1.5 continuously every 50 ms. Use Timer 0, mode 1 (16-bit) to create the delay. Test the program on the (a) AT89C51 and (b) DS89C420.](#137-example-9-21-write-an-8051-c-program-to-toggle-only-bit-p15-continuously-every-50-ms-use-timer-0-mode-1-16-bit-to-create-the-delay-test-the-program-on-the-a-at89c51-and-b-ds89c420)
+  - [1.38. Example 9-22 Write an 8051 C program to toggle all bits of P2 continuously every 500 ms. Use Timer 1, mode 1 to create the delay.](#138-example-9-22-write-an-8051-c-program-to-toggle-all-bits-of-p2-continuously-every-500-ms-use-timer-1-mode-1-to-create-the-delay)
+  - [1.39. Example 9-25 A switch is connected to pin P1.2. Write an 8051 C program to monitor SW and create the following frequencies on pin P1.7: SW=0: 00Hz SW=1: 750Hz, use Timer 0, mode 1 for both of them.](#139-example-9-25-a-switch-is-connected-to-pin-p12-write-an-8051-c-program-to-monitor-sw-and-create-the-following-frequencies-on-pin-p17-sw0-00hz-sw1-750hz-use-timer-0-mode-1-for-both-of-them)
+  - [1.40. Example 9-23 Write an 8051 C program to toggle only pin P1.5 continuously every 250 ms. Use Timer 0, mode 2 (8-bit auto-reload) to create the delay.](#140-example-9-23-write-an-8051-c-program-to-toggle-only-pin-p15-continuously-every-250-ms-use-timer-0-mode-2-8-bit-auto-reload-to-create-the-delay)
+  - [1.41. Example 9-24 Write an 8051 C program to create a frequency of 2500 Hz on pin P2.7. Use Timer 1, mode 2 to create delay.](#141-example-9-24-write-an-8051-c-program-to-create-a-frequency-of-2500-hz-on-pin-p27-use-timer-1-mode-2-to-create-delay)
+  - [1.42. Example 9-26 Assume that a 1-Hz external clock is being fed into pin T1 (P3.5). Write a C program for counter 1 in mode 2 (8-bit auto reload) to count up and display the state of the TL1 count on P1. Start the count at 0H.](#142-example-9-26-assume-that-a-1-hz-external-clock-is-being-fed-into-pin-t1-p35-write-a-c-program-for-counter-1-in-mode-2-8-bit-auto-reload-to-count-up-and-display-the-state-of-the-tl1-count-on-p1-start-the-count-at-0h)
+  - [1.43. Example 9-27 Assume that a 1-Hz external clock is being fed into pin T0 (P3.4). Write a C program for counter 0 in mode 1 (16-bit) to count the pulses and display the state of the TH0 and TL0 registers on P2 and P1, respectively.](#143-example-9-27-assume-that-a-1-hz-external-clock-is-being-fed-into-pin-t0-p34-write-a-c-program-for-counter-0-in-mode-1-16-bit-to-count-the-pulses-and-display-the-state-of-the-th0-and-tl0-registers-on-p2-and-p1-respectively)
+  - [1.44. Example 10-15 Write a C program for 8051 to transfer the letter “A” serially at 4800 baud continuously. Use 8-bit data and 1 stop bit.](#144-example-10-15-write-a-c-program-for-8051-to-transfer-the-letter-a-serially-at-4800-baud-continuously-use-8-bit-data-and-1-stop-bit)
+  - [1.45. Example 10-16 Write an 8051 C program to transfer the message “YES” serially at 9600 baud, 8-bit data, 1 stop bit. Do this continuously.](#145-example-10-16-write-an-8051-c-program-to-transfer-the-message-yes-serially-at-9600-baud-8-bit-data-1-stop-bit-do-this-continuously)
+  - [1.46. Example 10-17 Program the 8051 in C to receive bytes of data serially and put them in P1. Set the baud rate at 4800, 8-bit data, and 1 stop bit.](#146-example-10-17-program-the-8051-in-c-to-receive-bytes-of-data-serially-and-put-them-in-p1-set-the-baud-rate-at-4800-8-bit-data-and-1-stop-bit)
+  - [1.47. Example 10-19 Write an 8051 C Program to send the two messages “Normal Speed” and “High Speed” to the serial port. Assuming that SW is connected to pin P2.0, monitor its status and set the baud rate as follows: SW = 0, 28,800 baud rate SW = 1, 56K baud rate Assume that XTAL = 11.0592 MHz for both cases.](#147-example-10-19-write-an-8051-c-program-to-send-the-two-messages-normal-speed-and-high-speed-to-the-serial-port-assuming-that-sw-is-connected-to-pin-p20-monitor-its-status-and-set-the-baud-rate-as-follows-sw--0-28800-baud-rate-sw--1-56k-baud-rate-assume-that-xtal--110592-mhz-for-both-cases)
+  - [1.48. Example 10-20 Write a C program for the DS89C4x0 to transfer the letter “A” serially at 4800 baud continuously. Use the second serial port with 8-bit data and 1 stop bit. We can only use Timer 1 to set the baud rate.](#148-example-10-20-write-a-c-program-for-the-ds89c4x0-to-transfer-the-letter-a-serially-at-4800-baud-continuously-use-the-second-serial-port-with-8-bit-data-and-1-stop-bit-we-can-only-use-timer-1-to-set-the-baud-rate)
+  - [1.49. Example 10-21 Program the DS89C4x0 in C to receive bytes of data serially via the second serial port and put them in P1. Set the baud rate at 9600, 8-bit data and 1 stop bit. Use Timer 1 for baud rate generation.](#149-example-10-21-program-the-ds89c4x0-in-c-to-receive-bytes-of-data-serially-via-the-second-serial-port-and-put-them-in-p1-set-the-baud-rate-at-9600-8-bit-data-and-1-stop-bit-use-timer-1-for-baud-rate-generation)
+  - [1.50. Example 11-14 Write a C program that continuously gets a single bit of data from P1.7 and sends it to P1.0, while simultaneously creating a square wave of 200 μs period on pin P2.5. Use Timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.](#150-example-11-14-write-a-c-program-that-continuously-gets-a-single-bit-of-data-from-p17-and-sends-it-to-p10-while-simultaneously-creating-a-square-wave-of-200-μs-period-on-pin-p25-use-timer-0-to-create-the-square-wave-assume-that-xtal--110592-mhz)
+  - [1.51. Example 11-16 Write a C program using interrupts to do the following: (a) Receive data serially and send it to P0 (b) Read port P1, transmit data serially, and give a copy to P2 (c) Make timer 0 generate a square wave of 5 kHz frequency on P0.1 Assume that XTAL = 11.0592 MHz. Set the baud rate at 4800.](#151-example-11-16-write-a-c-program-using-interrupts-to-do-the-following-a-receive-data-serially-and-send-it-to-p0-b-read-port-p1-transmit-data-serially-and-give-a-copy-to-p2-c-make-timer-0-generate-a-square-wave-of-5-khz-frequency-on-p01-assume-that-xtal--110592-mhz-set-the-baud-rate-at-4800)
+  - [1.52. Example 11-17 Write a C program using interrupts to do the following: (a) Generate a 10 KHz frequency on P2.1 using T0 8-bit auto-reload (b) Use timer 1 as an event counter to count up a 1-Hz pulse and display it on P0. The pulse is connected to EX1. Assume that XTAL = 11.0592 MHz. Set the baud rate at 9600.](#152-example-11-17-write-a-c-program-using-interrupts-to-do-the-following-a-generate-a-10-khz-frequency-on-p21-using-t0-8-bit-auto-reload-b-use-timer-1-as-an-event-counter-to-count-up-a-1-hz-pulse-and-display-it-on-p0-the-pulse-is-connected-to-ex1-assume-that-xtal--110592-mhz-set-the-baud-rate-at-9600)
+  - [1.53. Example 12-2 Write an 8051 C program to send letters ‘M’, ‘D’, and ‘E’ to the LCD using the busy flag method.](#153-example-12-2-write-an-8051-c-program-to-send-letters-m-d-and-e-to-the-lcd-using-the-busy-flag-method)
 
 
-## Mazidi Book C Codes
+## 1. Mazidi Book C Codes
 
-### Write an 8051 C program to send values 00 – FF to port P1.
+### 1.1. Write an 8051 C program to send values 00 – FF to port P1.
 
 ```c
 #include <reg51.h>
@@ -68,7 +68,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to send hex values for ASCII characters of 0, 1, 2, 3, 4, 5, A, B, C, and D to port P1.
+### 1.2. Write an 8051 C program to send hex values for ASCII characters of 0, 1, 2, 3, 4, 5, A, B, C, and D to port P1.
 
 ```c
 #include <reg51.h>
@@ -81,7 +81,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle all the bits of P1 continuously.
+### 1.3. Write an 8051 C program to toggle all the bits of P1 continuously.
 
 ```c
 // Toggle P1 forever
@@ -96,7 +96,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to send values of –4 to +4 to port P1.
+### 1.4. Write an 8051 C program to send values of –4 to +4 to port P1.
 
 ```c
 //Singed numbers
@@ -110,7 +110,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle bit D0 of the port P1 (P1.0) 50,000 times.
+### 1.5. Write an 8051 C program to toggle bit D0 of the port P1 (P1.0) 50,000 times.
 
 ```c
 #include <reg51.h>
@@ -126,7 +126,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle bits of P1 continuously forever with some delay.
+### 1.6. Write an 8051 C program to toggle bits of P1 continuously forever with some delay.
 
 ```c
 //Toggle P1 forever with some delay in between
@@ -148,7 +148,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle bits of P1 ports continuously with a 250 ms.
+### 1.7. Write an 8051 C program to toggle bits of P1 ports continuously with a 250 ms.
 
 ```c
 #include <reg51.h>
@@ -173,7 +173,7 @@ void MSDelay(unsigned int itime)
 }
 ```
 
-### LEDs are connected to bits P1 and P2. ### Write an 8051 C program that shows the count from 0 to FFH (0000 0000 to 1111 1111 in binary) on the LEDs.
+### 1.8. LEDs are connected to bits P1 and P2. ### Write an 8051 C program that shows the count from 0 to FFH (0000 0000 to 1111 1111 in binary) on the LEDs.
 
 ```c
 #include <reg51.h>
@@ -190,7 +190,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to get a byte of data form P1, wait 1/2 second, and then send it to P2.
+### 1.9. Write an 8051 C program to get a byte of data form P1, wait 1/2 second, and then send it to P2.
 
 ```c
 #include <reg51.h>
@@ -217,7 +217,7 @@ void MSDelay(unsigned int itime)
 }
 ```
 
-### Write an 8051 C program to get a byte of data form P0. If it is less than 100, send it to P1; otherwise, send it to P2.
+### 1.10. Write an 8051 C program to get a byte of data form P0. If it is less than 100, send it to P1; otherwise, send it to P2.
 
 ```c
 #include <reg51.h>
@@ -236,7 +236,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle only bit P2.4 continuously without disturbing the rest of the bits of P2.
+### 1.11. Write an 8051 C program to toggle only bit P2.4 continuously without disturbing the rest of the bits of P2.
 
 ```c
 //Toggling an individual bit
@@ -252,7 +252,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to monitor bit P1.5. If it is high, send 55H to P0; otherwise, send AAH to P2.
+### 1.12. Write an 8051 C program to monitor bit P1.5. If it is high, send 55H to P0; otherwise, send AAH to P2.
 
 ```c
 #include <reg51.h>
@@ -270,7 +270,7 @@ void main(void)
 }
 ```
 
-### A door sensor is connected to the P1.1 pin, and a buzzer is connected to P1.7. ### Write an 8051 C program to monitor the door sensor, and when it opens, sound the buzzer. You can sound the buzzer by sending a square wave of a few hundred Hz.
+### 1.13. A door sensor is connected to the P1.1 pin, and a buzzer is connected to P1.7. ### Write an 8051 C program to monitor the door sensor, and when it opens, sound the buzzer. You can sound the buzzer by sending a square wave of a few hundred Hz.
 
 ```c
 #include <reg51.h>
@@ -301,7 +301,7 @@ void MSDelay(unsigned int itime)
 }
 ```
 
-### The data pins of an LCD are connected to P1. The information is latched into the LCD whenever its Enable pin goes from high to low. Write an 8051 C program to send “The Earth is but One Country” to this LCD.
+### 1.14. The data pins of an LCD are connected to P1. The information is latched into the LCD whenever its Enable pin goes from high to low. Write an 8051 C program to send “The Earth is but One Country” to this LCD.
 
 ```c
 #include <reg51.h>
@@ -320,7 +320,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle all the bits of P0, P1, and P2 continuously with a 250 ms delay. Use the sfr keyword to declare the port addresses.
+### 1.15. Write an 8051 C program to toggle all the bits of P0, P1, and P2 continuously with a 250 ms delay. Use the sfr keyword to declare the port addresses.
 
 ```c
 // Accessing Ports as SFRs using sfr data type
@@ -353,7 +353,7 @@ void MSDelay(unsigned int itime)
 }
 ```
 
-### Write an 8051 C program to turn bit P1.5 on and off 50,000 times.
+### 1.16. Write an 8051 C program to turn bit P1.5 on and off 50,000 times.
 
 ```c
 #include <reg51.h>
@@ -369,7 +369,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to get the status of bit P1.0, save it, and send it to P2.7 continuously.
+### 1.17. Write an 8051 C program to get the status of bit P1.0, save it, and send it to P2.7 continuously.
 
 ```c
 #include <reg51.h>
@@ -387,7 +387,7 @@ void main(void)
 }
 ```
 
-### Run the following program on your simulator and examine the results.
+### 1.18. Run the following program on your simulator and examine the results.
 
 ```c
 #include <reg51.h>
@@ -403,7 +403,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to toggle all the bits of P0 and P2 continuously with a 250 ms delay. Using the inverting and Ex-OR operators, respectively.
+### 1.19. Write an 8051 C program to toggle all the bits of P0 and P2 continuously with a 250 ms delay. Using the inverting and Ex-OR operators, respectively.
 
 ```c
 #include <reg51.h>
@@ -429,7 +429,7 @@ void MSDelay(unsigned int itime)
 }
 ```
 
-### Write an 8051 C program to get bit P1.0 and send it to P2.7 after inverting it.
+### 1.20. Write an 8051 C program to get bit P1.0 and send it to P2.7 after inverting it.
 
 ```c
 #include <reg51.h>
@@ -447,7 +447,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to read the P1.0 and P1.1 bits and issue an ASCII character to P0 according to the following table.
+### 1.21. Write an 8051 C program to read the P1.0 and P1.1 bits and issue an ASCII character to P0 according to the following table.
 
 P1.1 P1.0
 0 0 send ‘0’ to P0
@@ -488,7 +488,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to convert packed BCD 0x29 to ASCII and display the bytes on P1 and P2.
+### 1.22. Write an 8051 C program to convert packed BCD 0x29 to ASCII and display the bytes on P1 and P2.
 
 ```c
 #include <reg51.h>
@@ -504,7 +504,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to convert ASCII digits of ‘4’ and ‘7’ to packed BCD and display them on P1.
+### 1.23. Write an 8051 C program to convert ASCII digits of ‘4’ and ‘7’ to packed BCD and display them on P1.
 
 ```c
 #include <reg51.h>
@@ -521,7 +521,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to calculate the checksum byte for the data 25H, 62H, 3FH, and 52H.
+### 1.24. Write an 8051 C program to calculate the checksum byte for the data 25H, 62H, 3FH, and 52H.
 
 ```c
 #include <reg51.h>
@@ -542,7 +542,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to perform the checksum operation to ensure data integrity. If data is good, send ASCII character ‘G’ to P0.Otherwise send ‘B’ to P0.
+### 1.25. Write an 8051 C program to perform the checksum operation to ensure data integrity. If data is good, send ASCII character ‘G’ to P0.Otherwise send ‘B’ to P0.
 
 ```c
 #include <reg51.h>
@@ -560,7 +560,7 @@ void main(void)
 }
 ```
 
-### Write an 8051 C program to convert 11111101 (FD hex) to decimal and display the digits on P0, P1 and P2.
+### 1.26. Write an 8051 C program to convert 11111101 (FD hex) to decimal and display the digits on P0, P1 and P2.
 
 ```c
 #include <reg51.h>
@@ -578,7 +578,7 @@ void main(void)
 }
 ```
 
-### Compile and single-step the following program on your 8051 simulator. Examine the contents of the 128-byte RAM space to locate the ASCII values.
+### 1.27. Compile and single-step the following program on your 8051 simulator. Examine the contents of the 128-byte RAM space to locate the ASCII values.
 
 ```c
 #include <reg51.h>
@@ -591,7 +591,7 @@ void main(void)
 }
 ```
 
-### Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.
+### 1.28. Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.
 
 ```c
 #include <reg51.h>
@@ -608,7 +608,7 @@ void main(void)
 }
 ```
 
-### Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.
+### 1.29. Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.
 
 ```c
 #include <reg51.h>
@@ -621,7 +621,7 @@ void main(void)
 }
 ```
 
-### Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.
+### 1.30. Write, compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the values.
 
 ```c
 #include <reg51.h>
@@ -638,7 +638,7 @@ void main(void)
 }
 ```
 
-### Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.
+### 1.31. Compile and single-step the following program on your 8051 simulator. Examine the contents of the code space to locate the ASCII values.
 
 ```c
 #include <reg51.h>
@@ -651,7 +651,7 @@ void main(void)
 }
 ```
 
-### Write a C program to send out the value 44H serially one bit at a time via P1.0. The LSB should go out first.
+### 1.32. Write a C program to send out the value 44H serially one bit at a time via P1.0. The LSB should go out first.
 
 ```c
 #include <reg51.h>
@@ -670,7 +670,7 @@ void main(void)
 }
 ```
 
-### Write a C program to send out the value 44H serially one bit at a time via P1.0. The MSB should go out first.
+### 1.33. Write a C program to send out the value 44H serially one bit at a time via P1.0. The MSB should go out first.
 
 ```c
 #include <reg51.h>
@@ -689,7 +689,7 @@ void main(void)
 }
 ```
 
-### Write a C program to bring in a byte of data serially one bit at a time via P1.0. The LSB should come in first.
+### 1.34. Write a C program to bring in a byte of data serially one bit at a time via P1.0. The LSB should come in first.
 
 ```c
 #include <reg51.h>
@@ -709,7 +709,7 @@ void main(void)
 }
 ```
 
-### Write a C program to bring in a byte of data serially one bit at a time via P1.0. The MSB should come in first.
+### 1.35. Write a C program to bring in a byte of data serially one bit at a time via P1.0. The MSB should come in first.
 
 ```c
 #include <reg51.h>
@@ -730,7 +730,7 @@ void main(void)
 }
 ```
 
-### Example 9-20 Write an 8051 C program to toggle all the bits of port P1 continuously with some delay in between. Use Timer 0, 16-bit mode to generate the delay.
+### 1.36. Example 9-20 Write an 8051 C program to toggle all the bits of port P1 continuously with some delay in between. Use Timer 0, 16-bit mode to generate the delay.
 
 ```c
 #include <reg51.h>
@@ -759,7 +759,7 @@ void T0Delay()
 }
 ```
 
-### Example 9-21 Write an 8051 C program to toggle only bit P1.5 continuously every 50 ms. Use Timer 0, mode 1 (16-bit) to create the delay. Test the program on the (a) AT89C51 and (b) DS89C420.
+### 1.37. Example 9-21 Write an 8051 C program to toggle only bit P1.5 continuously every 50 ms. Use Timer 0, mode 1 (16-bit) to create the delay. Test the program on the (a) AT89C51 and (b) DS89C420.
 
 ```c
 #include <reg51.h>
@@ -788,7 +788,7 @@ void T0M1Delay(void)
 }
 ```
 
-### Example 9-22 Write an 8051 C program to toggle all bits of P2 continuously every 500 ms. Use Timer 1, mode 1 to create the delay.
+### 1.38. Example 9-22 Write an 8051 C program to toggle all bits of P2 continuously every 500 ms. Use Timer 1, mode 1 to create the delay.
 
 ```c
 #include <reg51.h>
@@ -818,7 +818,7 @@ void T1M1Delay(void)
 }
 ```
 
-### Example 9-25 A switch is connected to pin P1.2. Write an 8051 C program to monitor SW and create the following frequencies on pin P1.7: SW=0: 00Hz SW=1: 750Hz, use Timer 0, mode 1 for both of them.
+### 1.39. Example 9-25 A switch is connected to pin P1.2. Write an 8051 C program to monitor SW and create the following frequencies on pin P1.7: SW=0: 00Hz SW=1: 750Hz, use Timer 0, mode 1 for both of them.
 
 ```c
 #include <reg51.h>
@@ -860,7 +860,7 @@ void T0M1Delay(unsigned char c)
 }
 ```
 
-### Example 9-23 Write an 8051 C program to toggle only pin P1.5 continuously every 250 ms. Use Timer 0, mode 2 (8-bit auto-reload) to create the delay.
+### 1.40. Example 9-23 Write an 8051 C program to toggle only pin P1.5 continuously every 250 ms. Use Timer 0, mode 2 (8-bit auto-reload) to create the delay.
 
 ```c
 #include <reg51.h>
@@ -891,7 +891,7 @@ void T0M2Delay(void)
 }
 ```
 
-### Example 9-24 Write an 8051 C program to create a frequency of 2500 Hz on pin P2.7. Use Timer 1, mode 2 to create delay.
+### 1.41. Example 9-24 Write an 8051 C program to create a frequency of 2500 Hz on pin P2.7. Use Timer 1, mode 2 to create delay.
 
 ```c
 #include <reg51.h>
@@ -919,7 +919,7 @@ void T1M2Delay(void)
 }
 ```
 
-### Example 9-26 Assume that a 1-Hz external clock is being fed into pin T1 (P3.5). Write a C program for counter 1 in mode 2 (8-bit auto reload) to count up and display the state of the TL1 count on P1. Start the count at 0H.
+### 1.42. Example 9-26 Assume that a 1-Hz external clock is being fed into pin T1 (P3.5). Write a C program for counter 1 in mode 2 (8-bit auto reload) to count up and display the state of the TL1 count on P1. Start the count at 0H.
 
 ```c
 #include <reg51.h>
@@ -941,7 +941,7 @@ void main(void)
 }
 ```
 
-### Example 9-27 Assume that a 1-Hz external clock is being fed into pin T0 (P3.4). Write a C program for counter 0 in mode 1 (16-bit) to count the pulses and display the state of the TH0 and TL0 registers on P2 and P1, respectively.
+### 1.43. Example 9-27 Assume that a 1-Hz external clock is being fed into pin T0 (P3.4). Write a C program for counter 0 in mode 1 (16-bit) to count the pulses and display the state of the TH0 and TL0 registers on P2 and P1, respectively.
 
 ```c
 #include <reg51.h>
@@ -965,7 +965,7 @@ void main(void)
 }
 ```
 
-### Example 10-15 Write a C program for 8051 to transfer the letter “A” serially at 4800 baud continuously. Use 8-bit data and 1 stop bit.
+### 1.44. Example 10-15 Write a C program for 8051 to transfer the letter “A” serially at 4800 baud continuously. Use 8-bit data and 1 stop bit.
 
 ```c
 #include <reg51.h>
@@ -985,7 +985,7 @@ void main(void)
 }
 ```
 
-### Example 10-16 Write an 8051 C program to transfer the message “YES” serially at 9600 baud, 8-bit data, 1 stop bit. Do this continuously.
+### 1.45. Example 10-16 Write an 8051 C program to transfer the message “YES” serially at 9600 baud, 8-bit data, 1 stop bit. Do this continuously.
 
 ```c
 #include <reg51.h>
@@ -1013,7 +1013,7 @@ void SerTx(unsigned char x)
 }
 ```
 
-### Example 10-17 Program the 8051 in C to receive bytes of data serially and put them in P1. Set the baud rate at 4800, 8-bit data, and 1 stop bit.
+### 1.46. Example 10-17 Program the 8051 in C to receive bytes of data serially and put them in P1. Set the baud rate at 4800, 8-bit data, and 1 stop bit.
 
 ```c
 #include <reg51.h>
@@ -1035,7 +1035,7 @@ void main(void)
 }
 ```
 
-### Example 10-19 Write an 8051 C Program to send the two messages “Normal Speed” and “High Speed” to the serial port. Assuming that SW is connected to pin P2.0, monitor its status and set the baud rate as follows: SW = 0, 28,800 baud rate SW = 1, 56K baud rate Assume that XTAL = 11.0592 MHz for both cases.
+### 1.47. Example 10-19 Write an 8051 C Program to send the two messages “Normal Speed” and “High Speed” to the serial port. Assuming that SW is connected to pin P2.0, monitor its status and set the baud rate as follows: SW = 0, 28,800 baud rate SW = 1, 56K baud rate Assume that XTAL = 11.0592 MHz for both cases.
 
 ```c
 #include <reg51.h>
@@ -1073,7 +1073,7 @@ void main(void)
 }
 ```
 
-### Example 10-20 Write a C program for the DS89C4x0 to transfer the letter “A” serially at 4800 baud continuously. Use the second serial port with 8-bit data and 1 stop bit. We can only use Timer 1 to set the baud rate.
+### 1.48. Example 10-20 Write a C program for the DS89C4x0 to transfer the letter “A” serially at 4800 baud continuously. Use the second serial port with 8-bit data and 1 stop bit. We can only use Timer 1 to set the baud rate.
 
 ```c
 #include <reg51.h>
@@ -1097,7 +1097,7 @@ void main(void)
 }
 ```
 
-### Example 10-21 Program the DS89C4x0 in C to receive bytes of data serially via the second serial port and put them in P1. Set the baud rate at 9600, 8-bit data and 1 stop bit. Use Timer 1 for baud rate generation.
+### 1.49. Example 10-21 Program the DS89C4x0 in C to receive bytes of data serially via the second serial port and put them in P1. Set the baud rate at 9600, 8-bit data and 1 stop bit. Use Timer 1 for baud rate generation.
 
 ```c
 #include <reg51.h>
@@ -1122,7 +1122,7 @@ void main(void)
 }
 ```
 
-### Example 11-14 Write a C program that continuously gets a single bit of data from P1.7 and sends it to P1.0, while simultaneously creating a square wave of 200 μs period on pin P2.5. Use Timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.
+### 1.50. Example 11-14 Write a C program that continuously gets a single bit of data from P1.7 and sends it to P1.0, while simultaneously creating a square wave of 200 μs period on pin P2.5. Use Timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.
 
 ```c
 // We will use timer 0 mode 2 (auto-reload). One half of the period is 100 μs. 100/1.085 μs = 92, and TH0 = 256 - 92 = 164 or A4H
@@ -1149,7 +1149,7 @@ void main()
 }
 ```
 
-### Example 11-16 Write a C program using interrupts to do the following: (a) Receive data serially and send it to P0 (b) Read port P1, transmit data serially, and give a copy to P2 (c) Make timer 0 generate a square wave of 5 kHz frequency on P0.1 Assume that XTAL = 11.0592 MHz. Set the baud rate at 4800.
+### 1.51. Example 11-16 Write a C program using interrupts to do the following: (a) Receive data serially and send it to P0 (b) Read port P1, transmit data serially, and give a copy to P2 (c) Make timer 0 generate a square wave of 5 kHz frequency on P0.1 Assume that XTAL = 11.0592 MHz. Set the baud rate at 4800.
 
 ```c
 #include <reg51.h>
@@ -1193,7 +1193,7 @@ void main()
 }
 ```
 
-### Example 11-17 Write a C program using interrupts to do the following: (a) Generate a 10 KHz frequency on P2.1 using T0 8-bit auto-reload (b) Use timer 1 as an event counter to count up a 1-Hz pulse and display it on P0. The pulse is connected to EX1. Assume that XTAL = 11.0592 MHz. Set the baud rate at 9600.
+### 1.52. Example 11-17 Write a C program using interrupts to do the following: (a) Generate a 10 KHz frequency on P2.1 using T0 8-bit auto-reload (b) Use timer 1 as an event counter to count up a 1-Hz pulse and display it on P0. The pulse is connected to EX1. Assume that XTAL = 11.0592 MHz. Set the baud rate at 9600.
 
 ```c
 #include <reg51.h>
@@ -1221,7 +1221,7 @@ void main()
 }
 ```
 
-### Example 12-2 Write an 8051 C program to send letters ‘M’, ‘D’, and ‘E’ to the LCD using the busy flag method.
+### 1.53. Example 12-2 Write an 8051 C program to send letters ‘M’, ‘D’, and ‘E’ to the LCD using the busy flag method.
 
 ```c
 #include <reg51.h>

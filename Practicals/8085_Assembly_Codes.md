@@ -1,22 +1,22 @@
-- [8085 Assembly Language Codes](#8085-assembly-language-codes)
-    - [Addition of two 8-bit numbers](#addition-of-two-8-bit-numbers)
-    - [Addition of two 16-bit numbers](#addition-of-two-16-bit-numbers)
-    - [Subtraction of two 8-bit numbers](#subtraction-of-two-8-bit-numbers)
-    - [Subtraction of two 16-bit numbers](#subtraction-of-two-16-bit-numbers)
-    - [Multiplication of two 8- bit nos. using repeated Addition](#multiplication-of-two-8--bit-nos-using-repeated-addition)
-    - [Division of two 8- bit nos. using repeated Subtraction](#division-of-two-8--bit-nos-using-repeated-subtraction)
-    - [1’s complement of 8 bit number](#1s-complement-of-8-bit-number)
-    - [2’s complement of a no](#2s-complement-of-a-no)
-    - [Find smallest Number From an array](#find-smallest-number-from-an-array)
-    - [Find smallest Number From an array](#find-smallest-number-from-an-array-1)
-    - [Transfer Block of data bytes from one memory location to another](#transfer-block-of-data-bytes-from-one-memory-location-to-another)
-    - [Arrange data bytes in ascending order](#arrange-data-bytes-in-ascending-order)
-    - [Arrange data bytes in ascending order](#arrange-data-bytes-in-ascending-order-1)
+- [1. 8085 Assembly Language Codes](#1-8085-assembly-language-codes)
+    - [1.0.1. Addition of two 8-bit numbers](#101-addition-of-two-8-bit-numbers)
+    - [1.0.2. Addition of two 16-bit numbers](#102-addition-of-two-16-bit-numbers)
+    - [1.0.3. Subtraction of two 8-bit numbers](#103-subtraction-of-two-8-bit-numbers)
+    - [1.0.4. Subtraction of two 16-bit numbers](#104-subtraction-of-two-16-bit-numbers)
+    - [1.0.5. Multiplication of two 8- bit nos. using repeated Addition](#105-multiplication-of-two-8--bit-nos-using-repeated-addition)
+    - [1.0.6. Division of two 8- bit nos. using repeated Subtraction](#106-division-of-two-8--bit-nos-using-repeated-subtraction)
+    - [1.0.7. 1’s complement of 8 bit number](#107-1s-complement-of-8-bit-number)
+    - [1.0.8. 2’s complement of a no](#108-2s-complement-of-a-no)
+    - [1.0.9. Find smallest Number From an array](#109-find-smallest-number-from-an-array)
+    - [1.0.10. Find smallest Number From an array](#1010-find-smallest-number-from-an-array)
+    - [1.0.11. Transfer Block of data bytes from one memory location to another](#1011-transfer-block-of-data-bytes-from-one-memory-location-to-another)
+    - [1.0.12. Arrange data bytes in ascending order](#1012-arrange-data-bytes-in-ascending-order)
+    - [1.0.13. Arrange data bytes in ascending order](#1013-arrange-data-bytes-in-ascending-order)
 
 
-## 8085 Assembly Language Codes
+## 1. 8085 Assembly Language Codes
 
-#### Addition of two 8-bit numbers
+#### 1.0.1. Addition of two 8-bit numbers
 
 ```assembly
 MVI C,00 ;Initialize C register to 00
@@ -32,7 +32,7 @@ STA 4153h ;Store the value of Accumulator
 HLT
 ```
 
-#### Addition of two 16-bit numbers
+#### 1.0.2. Addition of two 16-bit numbers
 
 ```assembly
 LHLD 2000H ;Get first 16-bit number
@@ -43,7 +43,7 @@ SHLD 2004H ;Store 16-bit result in memory locations 2004H and 2005H.
 HLT ;Terminate program execution
 ```
 
-#### Subtraction of two 8-bit numbers
+#### 1.0.3. Subtraction of two 8-bit numbers
 
 ```assembly
 MVI C,00h ;Initialize C register to 00
@@ -61,7 +61,7 @@ STA 4153h ;Store the value of Accumulator
 HLT
 ```
 
-#### Subtraction of two 16-bit numbers
+#### 1.0.4. Subtraction of two 16-bit numbers
 
 ```assembly
 LXI H,9876H ;load HL with 9876H data
@@ -75,7 +75,7 @@ STA 2001H ;Store the LSB into 2000H
 HLT ;Stop
 ```
 
-#### Multiplication of two 8- bit nos. using repeated Addition
+#### 1.0.5. Multiplication of two 8- bit nos. using repeated Addition
 
 ```assembly
 MVI D,00h ;Initialize D register to 00
@@ -95,7 +95,7 @@ STA 4153h ;Store the MSB of result in memory
 HLT
 ```
 
-#### Division of two 8- bit nos. using repeated Subtraction
+#### 1.0.6. Division of two 8- bit nos. using repeated Subtraction
 
 ```assembly
 LXI H,4150h ;Load HL with 4150H
@@ -114,7 +114,7 @@ STA 4153h ;Store the MSB of result in memory
 HLT 
 ```
 
-#### 1’s complement of 8 bit number
+#### 1.0.7. 1’s complement of 8 bit number
 
 ```assembly
 LDA 2200H ;Get the number
@@ -123,7 +123,7 @@ STA 2300H  ;Store the result
 HLT ;Terminate program execution
 ```
 
-#### 2’s complement of a no
+#### 1.0.8. 2’s complement of a no
 
 ```assembly
 LDA 2200H ;Get the number
@@ -133,7 +133,7 @@ STA 2300H ;Store the result
 HLT ;Terminate program execution
 ```
 
-#### Find smallest Number From an array
+#### 1.0.9. Find smallest Number From an array
 
 ```assembly
 LXI H,3000h ;Load H-L pair with address 3000H
@@ -153,7 +153,7 @@ MOV M,A ;Move the result from reg. A to memory.
 HLT
 ```
 
-#### Find smallest Number From an array
+#### 1.0.10. Find smallest Number From an array
 
 ```assembly
 LXI H,3000h ;Load H-L pair with address 3000H
@@ -173,7 +173,7 @@ MOV M,A ;Move the result from reg. A to memory.
 HLT
 ```
 
-#### Transfer Block of data bytes from one memory location to another
+#### 1.0.11. Transfer Block of data bytes from one memory location to another
 
 ```assembly
 MVI C,0AH ;Initialize counter
@@ -188,7 +188,7 @@ JNZ BACK ;If counter 0 repeat
 HLT ;Terminate program execution
 ```
 
-#### Arrange data bytes in ascending order
+#### 1.0.12. Arrange data bytes in ascending order
 
 ```assembly
 LXI H,4200H
@@ -212,7 +212,7 @@ JNZ REPEAT
 HLT
 ```
 
-#### Arrange data bytes in ascending order
+#### 1.0.13. Arrange data bytes in ascending order
 
 ```assembly
 LXI H,4200H

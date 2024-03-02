@@ -1,66 +1,66 @@
-- [Mazidi Book Assembly Language Codes](#mazidi-book-assembly-language-codes)
-	- [This program adds value 3 to the ACC ten times](#this-program-adds-value-3-to-the-acc-ten-times)
-	- [Write a program to (a) load the accumulator with the value 55H, and (b) complement the ACC 700 times](#write-a-program-to-a-load-the-accumulator-with-the-value-55h-and-b-complement-the-acc-700-times)
-	- [Find the sum of the values 79H, F5H, E2H. Put the sum in registers R0 (low byte) and R5 (high byte).](#find-the-sum-of-the-values-79h-f5h-e2h-put-the-sum-in-registers-r0-low-byte-and-r5-high-byte)
-	- [LCALL Example](#lcall-example)
-	- [Use PUSH/POP in Subroutine](#use-pushpop-in-subroutine)
-	- [The following code will continuously send out to port 0 the alternating value 55H and AAH](#the-following-code-will-continuously-send-out-to-port-0-the-alternating-value-55h-and-aah)
-	- [Port 0 is configured first as an input port by writing 1s to it, and then data is received from that port and sent to P1](#port-0-is-configured-first-as-an-input-port-by-writing-1s-to-it-and-then-data-is-received-from-that-port-and-sent-to-p1)
-	- [The following code will continuously send out to port 0 the alternating value 55H and AAH](#the-following-code-will-continuously-send-out-to-port-0-the-alternating-value-55h-and-aah-1)
-	- [Port 1 is configured first as an input port by writing 1s to it, then data is received from that port and saved in R7 and R5](#port-1-is-configured-first-as-an-input-port-by-writing-1s-to-it-then-data-is-received-from-that-port-and-saved-in-r7-and-r5)
-	- [Write the following programs. Create a square wave of 50% duty cycle on bit 0 of port 1.](#write-the-following-programs-create-a-square-wave-of-50-duty-cycle-on-bit-0-of-port-1)
-	- [Write a program to perform the following:](#write-a-program-to-perform-the-following)
-	- [Assume that bit P2.3 is an input and represents the condition of an oven. If it goes high, it means that the oven is hot. Monitor the bit continuously. Whenever it goes high, send a high-to-low pulse to port P1.5 to turn on a buzzer.](#assume-that-bit-p23-is-an-input-and-represents-the-condition-of-an-oven-if-it-goes-high-it-means-that-the-oven-is-hot-monitor-the-bit-continuously-whenever-it-goes-high-send-a-high-to-low-pulse-to-port-p15-to-turn-on-a-buzzer)
-	- [A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following(a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2](#a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-sw-and-perform-the-followinga-if-sw0-send-letter-n-to-p2-b-if-sw1-send-letter-y-to-p2)
-	- [A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following: (a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2 Use the carry flag to check the switch status.](#a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-sw-and-perform-the-following-a-if-sw0-send-letter-n-to-p2-b-if-sw1-send-letter-y-to-p2-use-the-carry-flag-to-check-the-switch-status)
-	- [Example 4-7 A switch is connected to pin P1.0 and an LED to pin P2.7. Write a program to get the status of the switch and send it to the LED](#example-4-7-a-switch-is-connected-to-pin-p10-and-an-led-to-pin-p27-write-a-program-to-get-the-status-of-the-switch-and-send-it-to-the-led)
-	- [Example 5-1 Write code to send 55H to ports P1 and P2, using (a) their names (b) their addresses](#example-5-1-write-code-to-send-55h-to-ports-p1-and-p2-using-a-their-names-b-their-addresses)
-	- [Example 5-2 Show the code to push R5 and A onto the stack and then pop them back them into R2 and B, where B = A and R2 = R5](#example-5-2-show-the-code-to-push-r5-and-a-onto-the-stack-and-then-pop-them-back-them-into-r2-and-b-where-b--a-and-r2--r5)
-	- [Example 5-3 Write a program to copy the value 55H into RAM memory locations 40H to 41H using (a) direct addressing mode, (b) register indirect addressing mode without a loop, and (c) with a loop](#example-5-3-write-a-program-to-copy-the-value-55h-into-ram-memory-locations-40h-to-41h-using-a-direct-addressing-mode-b-register-indirect-addressing-mode-without-a-loop-and-c-with-a-loop)
-	- [Example 5-4 Write a program to clear 16 RAM locations starting at RAM address 60H](#example-5-4-write-a-program-to-clear-16-ram-locations-starting-at-ram-address-60h)
-	- [Example 5-5 Write a program to copy a block of 10 bytes of data from 35H to 60H](#example-5-5-write-a-program-to-copy-a-block-of-10-bytes-of-data-from-35h-to-60h)
-	- [Example 5-6 In this program, assume that the word "USA" is burned into ROM locations starting at 200H. And that the program is burned into ROM locations starting at 0. Analyze how the program works and state where "USA" is stored after this program is run.](#example-5-6-in-this-program-assume-that-the-word-usa-is-burned-into-rom-locations-starting-at-200h-and-that-the-program-is-burned-into-rom-locations-starting-at-0-analyze-how-the-program-works-and-state-where-usa-is-stored-after-this-program-is-run)
-	- [Example 5-8 Write a program to get the x value from P1 and send x2 to P2, continuously](#example-5-8-write-a-program-to-get-the-x-value-from-p1-and-send-x2-to-p2-continuously)
-	- [Example 5-10 Write a program to toggle P1 a total of 200 times. Use RAM location 32H to hold your counter value instead of registers R0 - R7](#example-5-10-write-a-program-to-toggle-p1-a-total-of-200-times-use-ram-location-32h-to-hold-your-counter-value-instead-of-registers-r0---r7)
-	- [Example 5-24 A switch is connected to pin P1.7. Write a program to check the status of the switch and make the following decision. (a) If SW = 0, send '0' to P2 (b) If SW = 1, send '1' to P2](#example-5-24-a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-the-switch-and-make-the-following-decision-a-if-sw--0-send-0-to-p2-b-if-sw--1-send-1-to-p2)
-	- [Example 5-27 Assume that the on-chip ROM has a message. Write a program to copy it from code space into the upper memory space starting at address 80H. Also, as you place a byte in upper RAM, give a copy to P0.](#example-5-27-assume-that-the-on-chip-rom-has-a-message-write-a-program-to-copy-it-from-code-space-into-the-upper-memory-space-starting-at-address-80h-also-as-you-place-a-byte-in-upper-ram-give-a-copy-to-p0)
-	- [Assume that RAM locations 40 - 44H have the following values. Write a program to find the sum of the values. At the end of the program, register A should contain the low byte and R7 the high byte.](#assume-that-ram-locations-40---44h-have-the-following-values-write-a-program-to-find-the-sum-of-the-values-at-the-end-of-the-program-register-a-should-contain-the-low-byte-and-r7-the-high-byte)
-	- [Write a program to add two 16-bit numbers. Place the sum in R7 and R6; R6 should have the lower byte.](#write-a-program-to-add-two-16-bit-numbers-place-the-sum-in-r7-and-r6-r6-should-have-the-lower-byte)
-	- [Assume that 5 BCD data items are stored in RAM locations starting at 40H, as shown below. Write a program to find the sum of all the numbers. The result must be in BCD.](#assume-that-5-bcd-data-items-are-stored-in-ram-locations-starting-at-40h-as-shown-below-write-a-program-to-find-the-sum-of-all-the-numbers-the-result-must-be-in-bcd)
-	- [Assume that register A has packed BCD, write a program to convert packed BCD to two ASCII numbers and place them in R2 and R6.](#assume-that-register-a-has-packed-bcd-write-a-program-to-convert-packed-bcd-to-two-ascii-numbers-and-place-them-in-r2-and-r6)
-	- [Example 9-7 Find the delay generated by timer 0 in the following code, using both of the Methods of Figure 9-4. Do not include the overhead due to instruction.](#example-9-7-find-the-delay-generated-by-timer-0-in-the-following-code-using-both-of-the-methods-of-figure-9-4-do-not-include-the-overhead-due-to-instruction)
-	- [Example 9-8 Modify TL and TH in Example 9-7 to get the largest time delay possible. Find the delay in ms. In your calculation, exclude the overhead due to the instructions in the loop.](#example-9-8-modify-tl-and-th-in-example-9-7-to-get-the-largest-time-delay-possible-find-the-delay-in-ms-in-your-calculation-exclude-the-overhead-due-to-the-instructions-in-the-loop)
-	- [Example 9-9 The following program generates a square wave on P1.5 continuously using timer 1 for a time delay. Find the frequency of the square wave if XTAL = 11.0592 MHz. In your calculation do not include the overhead due to Instructions in the loop.](#example-9-9-the-following-program-generates-a-square-wave-on-p15-continuously-using-timer-1-for-a-time-delay-find-the-frequency-of-the-square-wave-if-xtal--110592-mhz-in-your-calculation-do-not-include-the-overhead-due-to-instructions-in-the-loop)
-	- [Example 9-10 Assume that XTAL = 11.0592 MHz. What value do we need to load the timer's register if we want to have a time delay of 5 ms (milliseconds)? Show the program for timer 0 to create a pulse width of 5 ms on P2.3.](#example-9-10-assume-that-xtal--110592-mhz-what-value-do-we-need-to-load-the-timers-register-if-we-want-to-have-a-time-delay-of-5-ms-milliseconds-show-the-program-for-timer-0-to-create-a-pulse-width-of-5-ms-on-p23)
-	- [Example 9-11 Assume that XTAL = 11.0592 MHz, write a program to generate a square wave of 2 kHz frequency on pin P1.5.](#example-9-11-assume-that-xtal--110592-mhz-write-a-program-to-generate-a-square-wave-of-2-khz-frequency-on-pin-p15)
-	- [Example 9-12 Assume XTAL = 11.0592 MHz, write a program to generate a square wave of 50 kHz frequency on pin P2.3.](#example-9-12-assume-xtal--110592-mhz-write-a-program-to-generate-a-square-wave-of-50-khz-frequency-on-pin-p23)
-	- [Example 9-14 Assume XTAL = 11.0592 MHz, find the frequency of the square wave generated on pin P1.0 in the following program](#example-9-14-assume-xtal--110592-mhz-find-the-frequency-of-the-square-wave-generated-on-pin-p10-in-the-following-program)
-	- [Example 9-15 Find the frequency of a square wave generated on pin P1.0.](#example-9-15-find-the-frequency-of-a-square-wave-generated-on-pin-p10)
-	- [Example 9-18 Assuming that clock pulses are fed into pin T1, write a program for counter 1 in mode 2 to count the pulses and display the state of the TL1 count on P2, which connects to 8 LEDs.](#example-9-18-assuming-that-clock-pulses-are-fed-into-pin-t1-write-a-program-for-counter-1-in-mode-2-to-count-the-pulses-and-display-the-state-of-the-tl1-count-on-p2-which-connects-to-8-leds)
-	- [Write a program for the 8051 to transfer letter 'A' serially at 4800 baud, continuously.](#write-a-program-for-the-8051-to-transfer-letter-a-serially-at-4800-baud-continuously)
-	- [Write a program for the 8051 to transfer 'YES' serially at 9600 baud, 8-bit data, 1 stop bit, do this continuously](#write-a-program-for-the-8051-to-transfer-yes-serially-at-9600-baud-8-bit-data-1-stop-bit-do-this-continuously)
-	- [Write a program for the 8051 to receive bytes of data serially, and put them in P1, set the baud rate at 4800, 8-bit data, and 1 stop bit](#write-a-program-for-the-8051-to-receive-bytes-of-data-serially-and-put-them-in-p1-set-the-baud-rate-at-4800-8-bit-data-and-1-stop-bit)
-	- [Example 10-5 Assume that the 8051 serial port is connected to the COM port of IBM PC, and on the PC, we are using the terminal.exe program to send and receive data serially. P1 and P2 of the 8051 are connected to LEDs and switches, respectively. Write an 8051 program to](#example-10-5-assume-that-the-8051-serial-port-is-connected-to-the-com-port-of-ibm-pc-and-on-the-pc-we-are-using-the-terminalexe-program-to-send-and-receive-data-serially-p1-and-p2-of-the-8051-are-connected-to-leds-and-switches-respectively-write-an-8051-program-to)
-	- [Example 10-6 Assume that XTAL = 11.0592 MHz for the following program, state (a) what this program does, (b) compute the frequency used by timer 1 to set the baud rate, and (c) find the baud rate of the data transfer.](#example-10-6-assume-that-xtal--110592-mhz-for-the-following-program-state-a-what-this-program-does-b-compute-the-frequency-used-by-timer-1-to-set-the-baud-rate-and-c-find-the-baud-rate-of-the-data-transfer)
-	- [Example 10-10 Write a program to send the message "The Earth is but One Country" to serial port. Assume a SW is connected to pin P1.2. Monitor its status and set the baud rate as follows: SW = 0, 4800 baud rate, SW = 1, 9600 baud rate Assume XTAL = 11.0592 MHz, 8-bit data, and 1 stop bit.](#example-10-10-write-a-program-to-send-the-message-the-earth-is-but-one-country-to-serial-port-assume-a-sw-is-connected-to-pin-p12-monitor-its-status-and-set-the-baud-rate-as-follows-sw--0-4800-baud-rate-sw--1-9600-baud-rate-assume-xtal--110592-mhz-8-bit-data-and-1-stop-bit)
-	- [Example 11-2 Write a program that continuously get 8-bit data from P0 and sends it to P1 while simultaneously creating a square wave of 200 us period on pin P2.1. Use timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.](#example-11-2-write-a-program-that-continuously-get-8-bit-data-from-p0-and-sends-it-to-p1-while-simultaneously-creating-a-square-wave-of-200-us-period-on-pin-p21-use-timer-0-to-create-the-square-wave-assume-that-xtal--110592-mhz)
-	- [Example 11-3 Rewrite Example 11-2 to create a square wave that has a high portion of 1085 us and a low portion of 15 us. Assume XTAL=11.0592MHz. Use timer 1.](#example-11-3-rewrite-example-11-2-to-create-a-square-wave-that-has-a-high-portion-of-1085-us-and-a-low-portion-of-15-us-assume-xtal110592mhz-use-timer-1)
-	- [Example 11-5 Assume that the INT1 pin is connected to a switch that is normally high. Whenever it goes low, it should turn on an LED. The LED is connected to P1.3 and is normally off. When it is turned on it should stay on for a fraction of a second. As long as the switch is pressed low, the LED should stay on.](#example-11-5-assume-that-the-int1-pin-is-connected-to-a-switch-that-is-normally-high-whenever-it-goes-low-it-should-turn-on-an-led-the-led-is-connected-to-p13-and-is-normally-off-when-it-is-turned-on-it-should-stay-on-for-a-fraction-of-a-second-as-long-as-the-switch-is-pressed-low-the-led-should-stay-on)
-	- [Assume that pin 3.3 (INT1) is connected to a pulse generator, write a program in which the falling edge of the pulse will send a high to P1.3, which is connected to an LED (or buzzer). In other words, the LED is turned on and off at the same rate as the pulses are applied to the INT1 pin.](#assume-that-pin-33-int1-is-connected-to-a-pulse-generator-write-a-program-in-which-the-falling-edge-of-the-pulse-will-send-a-high-to-p13-which-is-connected-to-an-led-or-buzzer-in-other-words-the-led-is-turned-on-and-off-at-the-same-rate-as-the-pulses-are-applied-to-the-int1-pin)
-	- [Example 11-8 Write a program in which the 8051 reads data from P1 and writes it to P2 continuously while giving a copy of it to the serial COM port to be transferred serially. Assume that XTAL=11.0592. Set the baud rate at 9600.](#example-11-8-write-a-program-in-which-the-8051-reads-data-from-p1-and-writes-it-to-p2-continuously-while-giving-a-copy-of-it-to-the-serial-com-port-to-be-transferred-serially-assume-that-xtal110592-set-the-baud-rate-at-9600)
-	- [Example 11-9 Write a program in which the 8051 gets data from P1 and sends it to P2 continuously while incoming data from the serial port is sent to P0. Assume that XTAL=11.0592. Set the baud rata at 9600.](#example-11-9-write-a-program-in-which-the-8051-gets-data-from-p1-and-sends-it-to-p2-continuously-while-incoming-data-from-the-serial-port-is-sent-to-p0-assume-that-xtal110592-set-the-baud-rata-at-9600)
-	- [Example 11-10 Write a program using interrupts to do the following: (a) Receive data serially and sent it to P0, (b) Have P1 port read and transmitted serially, and a copy given to P2, (c) Make timer 0 generate a square wave of 5kHz frequency on P0.1. Assume that XTAL-11,0592. Set the baud rate at 4800.](#example-11-10-write-a-program-using-interrupts-to-do-the-following-a-receive-data-serially-and-sent-it-to-p0-b-have-p1-port-read-and-transmitted-serially-and-a-copy-given-to-p2-c-make-timer-0-generate-a-square-wave-of-5khz-frequency-on-p01-assume-that-xtal-110592-set-the-baud-rate-at-4800)
-	- [To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command](#to-send-any-of-the-commands-to-the-lcd-make-pin-rs0-for-data-make-rs1-then-send-a-high-to-low-pulse-to-the-e-pin-to-enable-the-internal-latch-of-the-lcd-this-is-shown-in-the-code-below-calls-a-time-delay-before-sending-next-datacommand)
-	- [Check busy flag before sending data, command to LCD](#check-busy-flag-before-sending-data-command-to-lcd)
-	- [To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command](#to-send-any-of-the-commands-to-the-lcd-make-pin-rs0-for-data-make-rs1-then-send-a-high-to-low-pulse-to-the-e-pin-to-enable-the-internal-latch-of-the-lcd-this-is-shown-in-the-code-below-calls-a-time-delay-before-sending-next-datacommand-1)
-	- [Check busy flag before sending data, command to LCD](#check-busy-flag-before-sending-data-command-to-lcd-1)
-	- [Call a time delay before sending next data/command: P1.0-P1.7=D0-D7, P2.0=RS, P2.1=R/W, P2.2=E](#call-a-time-delay-before-sending-next-datacommand-p10-p17d0-d7-p20rs-p21rw-p22e)
-	- [Program 12-4: Keyboard Program keyboard subroutine. This program sends the ASCII code for pressed key to P0.1 P1.0-P1.3 connected to rows, P2.0-P2.3 to column](#program-12-4-keyboard-program-keyboard-subroutine-this-program-sends-the-ascii-code-for-pressed-key-to-p01-p10-p13-connected-to-rows-p20-p23-to-column)
+- [1. Mazidi Book Assembly Language Codes](#1-mazidi-book-assembly-language-codes)
+	- [1.1. This program adds value 3 to the ACC ten times](#11-this-program-adds-value-3-to-the-acc-ten-times)
+	- [1.2. Write a program to (a) load the accumulator with the value 55H, and (b) complement the ACC 700 times](#12-write-a-program-to-a-load-the-accumulator-with-the-value-55h-and-b-complement-the-acc-700-times)
+	- [1.3. Find the sum of the values 79H, F5H, E2H. Put the sum in registers R0 (low byte) and R5 (high byte).](#13-find-the-sum-of-the-values-79h-f5h-e2h-put-the-sum-in-registers-r0-low-byte-and-r5-high-byte)
+	- [1.4. LCALL Example](#14-lcall-example)
+	- [1.5. Use PUSH/POP in Subroutine](#15-use-pushpop-in-subroutine)
+	- [1.6. The following code will continuously send out to port 0 the alternating value 55H and AAH](#16-the-following-code-will-continuously-send-out-to-port-0-the-alternating-value-55h-and-aah)
+	- [1.7. Port 0 is configured first as an input port by writing 1s to it, and then data is received from that port and sent to P1](#17-port-0-is-configured-first-as-an-input-port-by-writing-1s-to-it-and-then-data-is-received-from-that-port-and-sent-to-p1)
+	- [1.8. The following code will continuously send out to port 0 the alternating value 55H and AAH](#18-the-following-code-will-continuously-send-out-to-port-0-the-alternating-value-55h-and-aah)
+	- [1.9. Port 1 is configured first as an input port by writing 1s to it, then data is received from that port and saved in R7 and R5](#19-port-1-is-configured-first-as-an-input-port-by-writing-1s-to-it-then-data-is-received-from-that-port-and-saved-in-r7-and-r5)
+	- [1.10. Write the following programs. Create a square wave of 50% duty cycle on bit 0 of port 1.](#110-write-the-following-programs-create-a-square-wave-of-50-duty-cycle-on-bit-0-of-port-1)
+	- [1.11. Write a program to perform the following:](#111-write-a-program-to-perform-the-following)
+	- [1.12. Assume that bit P2.3 is an input and represents the condition of an oven. If it goes high, it means that the oven is hot. Monitor the bit continuously. Whenever it goes high, send a high-to-low pulse to port P1.5 to turn on a buzzer.](#112-assume-that-bit-p23-is-an-input-and-represents-the-condition-of-an-oven-if-it-goes-high-it-means-that-the-oven-is-hot-monitor-the-bit-continuously-whenever-it-goes-high-send-a-high-to-low-pulse-to-port-p15-to-turn-on-a-buzzer)
+	- [1.13. A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following(a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2](#113-a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-sw-and-perform-the-followinga-if-sw0-send-letter-n-to-p2-b-if-sw1-send-letter-y-to-p2)
+	- [1.14. A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following: (a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2 Use the carry flag to check the switch status.](#114-a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-sw-and-perform-the-following-a-if-sw0-send-letter-n-to-p2-b-if-sw1-send-letter-y-to-p2-use-the-carry-flag-to-check-the-switch-status)
+	- [1.15. Example 4-7 A switch is connected to pin P1.0 and an LED to pin P2.7. Write a program to get the status of the switch and send it to the LED](#115-example-4-7-a-switch-is-connected-to-pin-p10-and-an-led-to-pin-p27-write-a-program-to-get-the-status-of-the-switch-and-send-it-to-the-led)
+	- [1.16. Example 5-1 Write code to send 55H to ports P1 and P2, using (a) their names (b) their addresses](#116-example-5-1-write-code-to-send-55h-to-ports-p1-and-p2-using-a-their-names-b-their-addresses)
+	- [1.17. Example 5-2 Show the code to push R5 and A onto the stack and then pop them back them into R2 and B, where B = A and R2 = R5](#117-example-5-2-show-the-code-to-push-r5-and-a-onto-the-stack-and-then-pop-them-back-them-into-r2-and-b-where-b--a-and-r2--r5)
+	- [1.18. Example 5-3 Write a program to copy the value 55H into RAM memory locations 40H to 41H using (a) direct addressing mode, (b) register indirect addressing mode without a loop, and (c) with a loop](#118-example-5-3-write-a-program-to-copy-the-value-55h-into-ram-memory-locations-40h-to-41h-using-a-direct-addressing-mode-b-register-indirect-addressing-mode-without-a-loop-and-c-with-a-loop)
+	- [1.19. Example 5-4 Write a program to clear 16 RAM locations starting at RAM address 60H](#119-example-5-4-write-a-program-to-clear-16-ram-locations-starting-at-ram-address-60h)
+	- [1.20. Example 5-5 Write a program to copy a block of 10 bytes of data from 35H to 60H](#120-example-5-5-write-a-program-to-copy-a-block-of-10-bytes-of-data-from-35h-to-60h)
+	- [1.21. Example 5-6 In this program, assume that the word "USA" is burned into ROM locations starting at 200H. And that the program is burned into ROM locations starting at 0. Analyze how the program works and state where "USA" is stored after this program is run.](#121-example-5-6-in-this-program-assume-that-the-word-usa-is-burned-into-rom-locations-starting-at-200h-and-that-the-program-is-burned-into-rom-locations-starting-at-0-analyze-how-the-program-works-and-state-where-usa-is-stored-after-this-program-is-run)
+	- [1.22. Example 5-8 Write a program to get the x value from P1 and send x2 to P2, continuously](#122-example-5-8-write-a-program-to-get-the-x-value-from-p1-and-send-x2-to-p2-continuously)
+	- [1.23. Example 5-10 Write a program to toggle P1 a total of 200 times. Use RAM location 32H to hold your counter value instead of registers R0 - R7](#123-example-5-10-write-a-program-to-toggle-p1-a-total-of-200-times-use-ram-location-32h-to-hold-your-counter-value-instead-of-registers-r0---r7)
+	- [1.24. Example 5-24 A switch is connected to pin P1.7. Write a program to check the status of the switch and make the following decision. (a) If SW = 0, send '0' to P2 (b) If SW = 1, send '1' to P2](#124-example-5-24-a-switch-is-connected-to-pin-p17-write-a-program-to-check-the-status-of-the-switch-and-make-the-following-decision-a-if-sw--0-send-0-to-p2-b-if-sw--1-send-1-to-p2)
+	- [1.25. Example 5-27 Assume that the on-chip ROM has a message. Write a program to copy it from code space into the upper memory space starting at address 80H. Also, as you place a byte in upper RAM, give a copy to P0.](#125-example-5-27-assume-that-the-on-chip-rom-has-a-message-write-a-program-to-copy-it-from-code-space-into-the-upper-memory-space-starting-at-address-80h-also-as-you-place-a-byte-in-upper-ram-give-a-copy-to-p0)
+	- [1.26. Assume that RAM locations 40 - 44H have the following values. Write a program to find the sum of the values. At the end of the program, register A should contain the low byte and R7 the high byte.](#126-assume-that-ram-locations-40---44h-have-the-following-values-write-a-program-to-find-the-sum-of-the-values-at-the-end-of-the-program-register-a-should-contain-the-low-byte-and-r7-the-high-byte)
+	- [1.27. Write a program to add two 16-bit numbers. Place the sum in R7 and R6; R6 should have the lower byte.](#127-write-a-program-to-add-two-16-bit-numbers-place-the-sum-in-r7-and-r6-r6-should-have-the-lower-byte)
+	- [1.28. Assume that 5 BCD data items are stored in RAM locations starting at 40H, as shown below. Write a program to find the sum of all the numbers. The result must be in BCD.](#128-assume-that-5-bcd-data-items-are-stored-in-ram-locations-starting-at-40h-as-shown-below-write-a-program-to-find-the-sum-of-all-the-numbers-the-result-must-be-in-bcd)
+	- [1.29. Assume that register A has packed BCD, write a program to convert packed BCD to two ASCII numbers and place them in R2 and R6.](#129-assume-that-register-a-has-packed-bcd-write-a-program-to-convert-packed-bcd-to-two-ascii-numbers-and-place-them-in-r2-and-r6)
+	- [1.30. Example 9-7 Find the delay generated by timer 0 in the following code, using both of the Methods of Figure 9-4. Do not include the overhead due to instruction.](#130-example-9-7-find-the-delay-generated-by-timer-0-in-the-following-code-using-both-of-the-methods-of-figure-9-4-do-not-include-the-overhead-due-to-instruction)
+	- [1.31. Example 9-8 Modify TL and TH in Example 9-7 to get the largest time delay possible. Find the delay in ms. In your calculation, exclude the overhead due to the instructions in the loop.](#131-example-9-8-modify-tl-and-th-in-example-9-7-to-get-the-largest-time-delay-possible-find-the-delay-in-ms-in-your-calculation-exclude-the-overhead-due-to-the-instructions-in-the-loop)
+	- [1.32. Example 9-9 The following program generates a square wave on P1.5 continuously using timer 1 for a time delay. Find the frequency of the square wave if XTAL = 11.0592 MHz. In your calculation do not include the overhead due to Instructions in the loop.](#132-example-9-9-the-following-program-generates-a-square-wave-on-p15-continuously-using-timer-1-for-a-time-delay-find-the-frequency-of-the-square-wave-if-xtal--110592-mhz-in-your-calculation-do-not-include-the-overhead-due-to-instructions-in-the-loop)
+	- [1.33. Example 9-10 Assume that XTAL = 11.0592 MHz. What value do we need to load the timer's register if we want to have a time delay of 5 ms (milliseconds)? Show the program for timer 0 to create a pulse width of 5 ms on P2.3.](#133-example-9-10-assume-that-xtal--110592-mhz-what-value-do-we-need-to-load-the-timers-register-if-we-want-to-have-a-time-delay-of-5-ms-milliseconds-show-the-program-for-timer-0-to-create-a-pulse-width-of-5-ms-on-p23)
+	- [1.34. Example 9-11 Assume that XTAL = 11.0592 MHz, write a program to generate a square wave of 2 kHz frequency on pin P1.5.](#134-example-9-11-assume-that-xtal--110592-mhz-write-a-program-to-generate-a-square-wave-of-2-khz-frequency-on-pin-p15)
+	- [1.35. Example 9-12 Assume XTAL = 11.0592 MHz, write a program to generate a square wave of 50 kHz frequency on pin P2.3.](#135-example-9-12-assume-xtal--110592-mhz-write-a-program-to-generate-a-square-wave-of-50-khz-frequency-on-pin-p23)
+	- [1.36. Example 9-14 Assume XTAL = 11.0592 MHz, find the frequency of the square wave generated on pin P1.0 in the following program](#136-example-9-14-assume-xtal--110592-mhz-find-the-frequency-of-the-square-wave-generated-on-pin-p10-in-the-following-program)
+	- [1.37. Example 9-15 Find the frequency of a square wave generated on pin P1.0.](#137-example-9-15-find-the-frequency-of-a-square-wave-generated-on-pin-p10)
+	- [1.38. Example 9-18 Assuming that clock pulses are fed into pin T1, write a program for counter 1 in mode 2 to count the pulses and display the state of the TL1 count on P2, which connects to 8 LEDs.](#138-example-9-18-assuming-that-clock-pulses-are-fed-into-pin-t1-write-a-program-for-counter-1-in-mode-2-to-count-the-pulses-and-display-the-state-of-the-tl1-count-on-p2-which-connects-to-8-leds)
+	- [1.39. Write a program for the 8051 to transfer letter 'A' serially at 4800 baud, continuously.](#139-write-a-program-for-the-8051-to-transfer-letter-a-serially-at-4800-baud-continuously)
+	- [1.40. Write a program for the 8051 to transfer 'YES' serially at 9600 baud, 8-bit data, 1 stop bit, do this continuously](#140-write-a-program-for-the-8051-to-transfer-yes-serially-at-9600-baud-8-bit-data-1-stop-bit-do-this-continuously)
+	- [1.41. Write a program for the 8051 to receive bytes of data serially, and put them in P1, set the baud rate at 4800, 8-bit data, and 1 stop bit](#141-write-a-program-for-the-8051-to-receive-bytes-of-data-serially-and-put-them-in-p1-set-the-baud-rate-at-4800-8-bit-data-and-1-stop-bit)
+	- [1.42. Example 10-5 Assume that the 8051 serial port is connected to the COM port of IBM PC, and on the PC, we are using the terminal.exe program to send and receive data serially. P1 and P2 of the 8051 are connected to LEDs and switches, respectively. Write an 8051 program to](#142-example-10-5-assume-that-the-8051-serial-port-is-connected-to-the-com-port-of-ibm-pc-and-on-the-pc-we-are-using-the-terminalexe-program-to-send-and-receive-data-serially-p1-and-p2-of-the-8051-are-connected-to-leds-and-switches-respectively-write-an-8051-program-to)
+	- [1.43. Example 10-6 Assume that XTAL = 11.0592 MHz for the following program, state (a) what this program does, (b) compute the frequency used by timer 1 to set the baud rate, and (c) find the baud rate of the data transfer.](#143-example-10-6-assume-that-xtal--110592-mhz-for-the-following-program-state-a-what-this-program-does-b-compute-the-frequency-used-by-timer-1-to-set-the-baud-rate-and-c-find-the-baud-rate-of-the-data-transfer)
+	- [1.44. Example 10-10 Write a program to send the message "The Earth is but One Country" to serial port. Assume a SW is connected to pin P1.2. Monitor its status and set the baud rate as follows: SW = 0, 4800 baud rate, SW = 1, 9600 baud rate Assume XTAL = 11.0592 MHz, 8-bit data, and 1 stop bit.](#144-example-10-10-write-a-program-to-send-the-message-the-earth-is-but-one-country-to-serial-port-assume-a-sw-is-connected-to-pin-p12-monitor-its-status-and-set-the-baud-rate-as-follows-sw--0-4800-baud-rate-sw--1-9600-baud-rate-assume-xtal--110592-mhz-8-bit-data-and-1-stop-bit)
+	- [1.45. Example 11-2 Write a program that continuously get 8-bit data from P0 and sends it to P1 while simultaneously creating a square wave of 200 us period on pin P2.1. Use timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.](#145-example-11-2-write-a-program-that-continuously-get-8-bit-data-from-p0-and-sends-it-to-p1-while-simultaneously-creating-a-square-wave-of-200-us-period-on-pin-p21-use-timer-0-to-create-the-square-wave-assume-that-xtal--110592-mhz)
+	- [1.46. Example 11-3 Rewrite Example 11-2 to create a square wave that has a high portion of 1085 us and a low portion of 15 us. Assume XTAL=11.0592MHz. Use timer 1.](#146-example-11-3-rewrite-example-11-2-to-create-a-square-wave-that-has-a-high-portion-of-1085-us-and-a-low-portion-of-15-us-assume-xtal110592mhz-use-timer-1)
+	- [1.47. Example 11-5 Assume that the INT1 pin is connected to a switch that is normally high. Whenever it goes low, it should turn on an LED. The LED is connected to P1.3 and is normally off. When it is turned on it should stay on for a fraction of a second. As long as the switch is pressed low, the LED should stay on.](#147-example-11-5-assume-that-the-int1-pin-is-connected-to-a-switch-that-is-normally-high-whenever-it-goes-low-it-should-turn-on-an-led-the-led-is-connected-to-p13-and-is-normally-off-when-it-is-turned-on-it-should-stay-on-for-a-fraction-of-a-second-as-long-as-the-switch-is-pressed-low-the-led-should-stay-on)
+	- [1.48. Assume that pin 3.3 (INT1) is connected to a pulse generator, write a program in which the falling edge of the pulse will send a high to P1.3, which is connected to an LED (or buzzer). In other words, the LED is turned on and off at the same rate as the pulses are applied to the INT1 pin.](#148-assume-that-pin-33-int1-is-connected-to-a-pulse-generator-write-a-program-in-which-the-falling-edge-of-the-pulse-will-send-a-high-to-p13-which-is-connected-to-an-led-or-buzzer-in-other-words-the-led-is-turned-on-and-off-at-the-same-rate-as-the-pulses-are-applied-to-the-int1-pin)
+	- [1.49. Example 11-8 Write a program in which the 8051 reads data from P1 and writes it to P2 continuously while giving a copy of it to the serial COM port to be transferred serially. Assume that XTAL=11.0592. Set the baud rate at 9600.](#149-example-11-8-write-a-program-in-which-the-8051-reads-data-from-p1-and-writes-it-to-p2-continuously-while-giving-a-copy-of-it-to-the-serial-com-port-to-be-transferred-serially-assume-that-xtal110592-set-the-baud-rate-at-9600)
+	- [1.50. Example 11-9 Write a program in which the 8051 gets data from P1 and sends it to P2 continuously while incoming data from the serial port is sent to P0. Assume that XTAL=11.0592. Set the baud rata at 9600.](#150-example-11-9-write-a-program-in-which-the-8051-gets-data-from-p1-and-sends-it-to-p2-continuously-while-incoming-data-from-the-serial-port-is-sent-to-p0-assume-that-xtal110592-set-the-baud-rata-at-9600)
+	- [1.51. Example 11-10 Write a program using interrupts to do the following: (a) Receive data serially and sent it to P0, (b) Have P1 port read and transmitted serially, and a copy given to P2, (c) Make timer 0 generate a square wave of 5kHz frequency on P0.1. Assume that XTAL-11,0592. Set the baud rate at 4800.](#151-example-11-10-write-a-program-using-interrupts-to-do-the-following-a-receive-data-serially-and-sent-it-to-p0-b-have-p1-port-read-and-transmitted-serially-and-a-copy-given-to-p2-c-make-timer-0-generate-a-square-wave-of-5khz-frequency-on-p01-assume-that-xtal-110592-set-the-baud-rate-at-4800)
+	- [1.52. To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command](#152-to-send-any-of-the-commands-to-the-lcd-make-pin-rs0-for-data-make-rs1-then-send-a-high-to-low-pulse-to-the-e-pin-to-enable-the-internal-latch-of-the-lcd-this-is-shown-in-the-code-below-calls-a-time-delay-before-sending-next-datacommand)
+	- [1.53. Check busy flag before sending data, command to LCD](#153-check-busy-flag-before-sending-data-command-to-lcd)
+	- [1.54. To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command](#154-to-send-any-of-the-commands-to-the-lcd-make-pin-rs0-for-data-make-rs1-then-send-a-high-to-low-pulse-to-the-e-pin-to-enable-the-internal-latch-of-the-lcd-this-is-shown-in-the-code-below-calls-a-time-delay-before-sending-next-datacommand)
+	- [1.55. Check busy flag before sending data, command to LCD](#155-check-busy-flag-before-sending-data-command-to-lcd)
+	- [1.56. Call a time delay before sending next data/command: P1.0-P1.7=D0-D7, P2.0=RS, P2.1=R/W, P2.2=E](#156-call-a-time-delay-before-sending-next-datacommand-p10-p17d0-d7-p20rs-p21rw-p22e)
+	- [1.57. Program 12-4: Keyboard Program keyboard subroutine. This program sends the ASCII code for pressed key to P0.1 P1.0-P1.3 connected to rows, P2.0-P2.3 to column](#157-program-12-4-keyboard-program-keyboard-subroutine-this-program-sends-the-ascii-code-for-pressed-key-to-p01-p10-p13-connected-to-rows-p20-p23-to-column)
 
 
-## Mazidi Book Assembly Language Codes
+## 1. Mazidi Book Assembly Language Codes
 
-### This program adds value 3 to the ACC ten times
+### 1.1. This program adds value 3 to the ACC ten times
 
 ```assembly
 MOV A,#0 ;A=0, clear ACC
@@ -70,7 +70,7 @@ DJNZ R2,AGAIN ;repeat until R2=0,10 times
 MOV R5,A ;save A in R5
 ```
 
-### Write a program to (a) load the accumulator with the value 55H, and (b) complement the ACC 700 times
+### 1.2. Write a program to (a) load the accumulator with the value 55H, and (b) complement the ACC 700 times
 
 ```assembly
 MOV A,#55H ;A=55H
@@ -81,7 +81,7 @@ DJNZ R2,AGAIN ;repeat it 70 times
 DJNZ R3,NEXT
 ```
 
-### Find the sum of the values 79H, F5H, E2H. Put the sum in registers R0 (low byte) and R5 (high byte).
+### 1.3. Find the sum of the values 79H, F5H, E2H. Put the sum in registers R0 (low byte) and R5 (high byte).
 
 ```assembly
 MOV A,#0 ;A=0
@@ -98,7 +98,7 @@ INC R5 ;if CY=1, increment 5
 OVER: MOV R0,A ;now R0=50H, and R5=02
 ```
 
-### LCALL Example
+### 1.4. LCALL Example
 
 ```assembly
 ORG 0
@@ -118,7 +118,7 @@ RET ;return to caller (when R5 =0)
 END
 ```
 
-### Use PUSH/POP in Subroutine
+### 1.5. Use PUSH/POP in Subroutine
 
 ```assembly
 ORG 0
@@ -146,7 +146,7 @@ RET ;return to caller
 END
 ```
 
-### The following code will continuously send out to port 0 the alternating value 55H and AAH
+### 1.6. The following code will continuously send out to port 0 the alternating value 55H and AAH
 
 ```assembly
 BACK: MOV A,#55H
@@ -163,7 +163,7 @@ AGAIN: DJNZ R5,AGAIN ;stay here until R5 become 0
 RET ;return to caller (when R5 =0)
 ```
 
-### Port 0 is configured first as an input port by writing 1s to it, and then data is received from that port and sent to P1
+### 1.7. Port 0 is configured first as an input port by writing 1s to it, and then data is received from that port and sent to P1
 
 ```assembly
 MOV A,#0FFH ;A=FF hex
@@ -174,7 +174,7 @@ MOV P1,A ;send it to port 1
 SJMP BACK ;keep doing it
 ```
 
-### The following code will continuously send out to port 0 the alternating value 55H and AAH
+### 1.8. The following code will continuously send out to port 0 the alternating value 55H and AAH
 
 ```assembly
 MOV A,#55H
@@ -189,7 +189,7 @@ AGAIN: DJNZ R5,AGAIN ;stay here until R5 become 0
 RET ;return to caller (when R5 =0)
 ```
 
-### Port 1 is configured first as an input port by writing 1s to it, then data is received from that port and saved in R7 and R5
+### 1.9. Port 1 is configured first as an input port by writing 1s to it, then data is received from that port and saved in R7 and R5
 
 ```assembly
 MOV A,#0FFH ;A=FF hex
@@ -207,7 +207,7 @@ AGAIN: DJNZ R5,AGAIN ;stay here until R5 become 0
 RET ;return to caller (when R5 =0)
 ```
 
-### Write the following programs. Create a square wave of 50% duty cycle on bit 0 of port 1.
+### 1.10. Write the following programs. Create a square wave of 50% duty cycle on bit 0 of port 1.
 
 ```assembly
 HERE: SETB P1.0 ;set to high bit 0 of port 1
@@ -227,7 +227,7 @@ AGAIN: DJNZ R5,AGAIN ;stay here until R5 become 0
 RET ;return to caller (when R5 =0)
 ```
 
-### Write a program to perform the following:
+### 1.11. Write a program to perform the following:
 
 - ### (a) Keep monitoring the P1.2 bit until it becomes high
 - ### (b) When P1.2 becomes high, write value 45H to port 0
@@ -242,7 +242,7 @@ SETB P2.3 ;make P2.3 high
 CLR P2.3 ;make P2.3 low for H-to-L
 ```
 
-### Assume that bit P2.3 is an input and represents the condition of an oven. If it goes high, it means that the oven is hot. Monitor the bit continuously. Whenever it goes high, send a high-to-low pulse to port P1.5 to turn on a buzzer.
+### 1.12. Assume that bit P2.3 is an input and represents the condition of an oven. If it goes high, it means that the oven is hot. Monitor the bit continuously. Whenever it goes high, send a high-to-low pulse to port P1.5 to turn on a buzzer.
 
 ```assembly
 HERE: JNB P2.3,HERE ;keep monitoring for high
@@ -251,7 +251,7 @@ CLR P1.5 ;make high-to-low
 SJMP HERE ;keep repeating
 ```
 
-### A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following(a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2
+### 1.13. A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following(a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2
 
 ```assembly
 SETB P1.7 ;make P1.7 an input
@@ -262,7 +262,7 @@ OVER: MOV P2,#'Y' ;SW=1, issue 'Y' to P2
 SJMP AGAIN ;keep monitoring
 ```
 
-### A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following: (a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2 Use the carry flag to check the switch status.
+### 1.14. A switch is connected to pin P1.7. Write a program to check the status of SW and perform the following: (a) If SW=0, send letter 'N' to P2 (b) If SW=1, send letter 'Y' to P2 Use the carry flag to check the switch status.
 
 ```assembly
 SETB P1.7 ;make P1.7 an input
@@ -274,7 +274,7 @@ OVER: MOV P2,#'Y' ;SW=1, issue 'Y' to P2
 SJMP AGAIN ;keep monitoring
 ```
 
-### Example 4-7 A switch is connected to pin P1.0 and an LED to pin P2.7. Write a program to get the status of the switch and send it to the LED
+### 1.15. Example 4-7 A switch is connected to pin P1.0 and an LED to pin P2.7. Write a program to get the status of the switch and send it to the LED
 
 ```assembly
 SETB P1.7 ;make P1.7 an input
@@ -283,7 +283,7 @@ MOV P2.7,C ;send SW status to LED
 SJMP AGAIN ;keep repeating
 ```
 
-### Example 5-1 Write code to send 55H to ports P1 and P2, using (a) their names (b) their addresses
+### 1.16. Example 5-1 Write code to send 55H to ports P1 and P2, using (a) their names (b) their addresses
 
 Solution :
 
@@ -301,7 +301,7 @@ MOV 80H,A ;P1=55H
 MOV 0A0H,A ;P2=55H
 ```
 
-### Example 5-2 Show the code to push R5 and A onto the stack and then pop them back them into R2 and B, where B = A and R2 = R5
+### 1.17. Example 5-2 Show the code to push R5 and A onto the stack and then pop them back them into R2 and B, where B = A and R2 = R5
 
 Solution:
 
@@ -314,7 +314,7 @@ POP 02 ;pop top of stack into R2
 ;now R2=R6
 ```
 
-### Example 5-3 Write a program to copy the value 55H into RAM memory locations 40H to 41H using (a) direct addressing mode, (b) register indirect addressing mode without a loop, and (c) with a loop
+### 1.18. Example 5-3 Write a program to copy the value 55H into RAM memory locations 40H to 41H using (a) direct addressing mode, (b) register indirect addressing mode without a loop, and (c) with a loop
 
 Solution:
 
@@ -338,7 +338,7 @@ INC R0 ;increment R0 pointer
 DJNZ R2,AGAIN ;loop until counter = zero
 ```
 
-### Example 5-4 Write a program to clear 16 RAM locations starting at RAM address 60H
+### 1.19. Example 5-4 Write a program to clear 16 RAM locations starting at RAM address 60H
 
 Solution:
 
@@ -351,7 +351,7 @@ INC R1 ;increment R1 pointer
 DJNZ R7,AGAIN ;loop until counter=zero
 ```
 
-### Example 5-5 Write a program to copy a block of 10 bytes of data from 35H to 60H
+### 1.20. Example 5-5 Write a program to copy a block of 10 bytes of data from 35H to 60H
 
 Solution:
 
@@ -366,7 +366,7 @@ INC R1 ;increment destination pointer
 DJNZ R3,BACK ;keep doing for ten bytes
 ```
 
-### Example 5-6 In this program, assume that the word "USA" is burned into ROM locations starting at 200H. And that the program is burned into ROM locations starting at 0. Analyze how the program works and state where "USA" is stored after this program is run.
+### 1.21. Example 5-6 In this program, assume that the word "USA" is burned into ROM locations starting at 200H. And that the program is burned into ROM locations starting at 0. Analyze how the program works and state where "USA" is stored after this program is run.
 
 Solution:
 
@@ -392,7 +392,7 @@ MYDATA:DB "USA"
 END ;end of program
 ```
 
-### Example 5-8 Write a program to get the x value from P1 and send x2 to P2, continuously
+### 1.22. Example 5-8 Write a program to get the x value from P1 and send x2 to P2, continuously
 
 Solution:
 
@@ -411,7 +411,7 @@ XSQR_TABLE: DB 0,1,4,9,16,25,36,49,64,81
 END
 ```
 
-### Example 5-10 Write a program to toggle P1 a total of 200 times. Use RAM location 32H to hold your counter value instead of registers R0 - R7
+### 1.23. Example 5-10 Write a program to toggle P1 a total of 200 times. Use RAM location 32H to hold your counter value instead of registers R0 - R7
 
 Solution:
 
@@ -430,7 +430,7 @@ AGAIN: DJNZ R5,AGAIN ;stay here until R5 become 0
 RET ;return to caller (when R5 =0)
 ```
 
-### Example 5-24 A switch is connected to pin P1.7. Write a program to check the status of the switch and make the following decision. (a) If SW = 0, send '0' to P2 (b) If SW = 1, send '1' to P2
+### 1.24. Example 5-24 A switch is connected to pin P1.7. Write a program to check the status of the switch and make the following decision. (a) If SW = 0, send '0' to P2 (b) If SW = 1, send '1' to P2
 
 Solution:
 
@@ -446,7 +446,7 @@ SJMP HERE
 END
 ```
 
-### Example 5-27 Assume that the on-chip ROM has a message. Write a program to copy it from code space into the upper memory space starting at address 80H. Also, as you place a byte in upper RAM, give a copy to P0.
+### 1.25. Example 5-27 Assume that the on-chip ROM has a message. Write a program to copy it from code space into the upper memory space starting at address 80H. Also, as you place a byte in upper RAM, give a copy to P0.
 
 Solution:
 
@@ -471,7 +471,7 @@ MYDATA: DB "The Promise of World Peace",0
 END
 ```
 
-### Assume that RAM locations 40 - 44H have the following values. Write a program to find the sum of the values. At the end of the program, register A should contain the low byte and R7 the high byte.
+### 1.26. Assume that RAM locations 40 - 44H have the following values. Write a program to find the sum of the values. At the end of the program, register A should contain the low byte and R7 the high byte.
 
 - ### 40 = (7D)
 
@@ -497,7 +497,7 @@ NEXT: INC R0 ;increment pointer
 DJNZ R2,AGAIN ;repeat until R2 is zero
 ```
 
-### Write a program to add two 16-bit numbers. Place the sum in R7 and R6; R6 should have the lower byte.
+### 1.27. Write a program to add two 16-bit numbers. Place the sum in R7 and R6; R6 should have the lower byte.
 
 Solution:
 
@@ -511,7 +511,7 @@ ADDC A, #3BH ;add with the carry
 MOV R7, A ;save the high byte sum
 ```
 
-### Assume that 5 BCD data items are stored in RAM locations starting at 40H, as shown below. Write a program to find the sum of all the numbers. The result must be in BCD.
+### 1.28. Assume that 5 BCD data items are stored in RAM locations starting at 40H, as shown below. Write a program to find the sum of all the numbers. The result must be in BCD.
 
 - 40=(71)
 - 41=(11)
@@ -534,7 +534,7 @@ NEXT: INC R0 ;increment pointer
 DJNZ R2,AGAIN ;repeat until R2 is 0
 ```
 
-### Assume that register A has packed BCD, write a program to convert packed BCD to two ASCII numbers and place them in R2 and R6.
+### 1.29. Assume that register A has packed BCD, write a program to convert packed BCD to two ASCII numbers and place them in R2 and R6.
 
 ```assembly
 MOV A,#29H ;A=29H, packed BCD
@@ -552,7 +552,7 @@ ORL A,#30H ;A=32H, ASCII char. '2'
 MOV R2,A ;save ASCII char in R2
 ```
 
-### Example 9-7 Find the delay generated by timer 0 in the following code, using both of the Methods of Figure 9-4. Do not include the overhead due to instruction.
+### 1.30. Example 9-7 Find the delay generated by timer 0 in the following code, using both of the Methods of Figure 9-4. Do not include the overhead due to instruction.
 
 ```assembly
 CLR P2.3 ;Clear P2.3
@@ -571,7 +571,7 @@ Solution:
 (a) (FFFFH - B83E + 1) = 47C2H = 18370 in decimal and 18370 _ 1.085 us = 19.93145 ms
 (b) Since TH - TL = B83EH = 47166 (in decimal) we have 65536 - 47166 = 18370. This means that the timer counts from B38EH to FFFF. This plus Rolling over to 0 goes through a total of 18370 clock cycles, where each clock is 1.085 us in duration. Therefore, we have 18370 _ 1.085 us = 19.93145 ms as the width of the pulse.
 
-### Example 9-8 Modify TL and TH in Example 9-7 to get the largest time delay possible. Find the delay in ms. In your calculation, exclude the overhead due to the instructions in the loop.
+### 1.31. Example 9-8 Modify TL and TH in Example 9-7 to get the largest time delay possible. Find the delay in ms. In your calculation, exclude the overhead due to the instructions in the loop.
 
 Solution: To get the largest delay we make TL and TH both 0. This will count up from 0000 to FFFFH and then roll over to zero.
 
@@ -590,7 +590,7 @@ CLR P2.3
 
 Making TH and TL both zero means that the timer will count from 0000 to FFFF, and then roll over to raise the TF flag. As a result, it goes through a total Of 65536 states. Therefore, we have delay = (65536 - 0) \* 1.085 us = 71.1065ms.
 
-### Example 9-9 The following program generates a square wave on P1.5 continuously using timer 1 for a time delay. Find the frequency of the square wave if XTAL = 11.0592 MHz. In your calculation do not include the overhead due to Instructions in the loop.
+### 1.32. Example 9-9 The following program generates a square wave on P1.5 continuously using timer 1 for a time delay. Find the frequency of the square wave if XTAL = 11.0592 MHz. In your calculation do not include the overhead due to Instructions in the loop.
 
 ```assembly
 MOV TMOD,#10;Timer 1, mod 1 (16-bitmode)
@@ -607,7 +607,7 @@ SJMP AGAIN ;is not auto-reload
 Solution:
 Since FFFFH - 7634H = 89CBH + 1 = 89CCH and 89CCH = 35276 clock count and 35276 \* 1.085 us = 38.274 ms for half of the square wave. The frequency = 13.064Hz. Also notice that the high portion and low portion of the square wave pulse are equal. In the above calculation, the overhead due to all the instruction in the loop is not included.
 
-### Example 9-10 Assume that XTAL = 11.0592 MHz. What value do we need to load the timer's register if we want to have a time delay of 5 ms (milliseconds)? Show the program for timer 0 to create a pulse width of 5 ms on P2.3.
+### 1.33. Example 9-10 Assume that XTAL = 11.0592 MHz. What value do we need to load the timer's register if we want to have a time delay of 5 ms (milliseconds)? Show the program for timer 0 to create a pulse width of 5 ms on P2.3.
 
 Solution: Since XTAL = 11.0592 MHz, the counter counts up every 1.085 us. This means that out of many 1.085 us intervals we must make a 5 ms pulse. To get that, we divide one by the other. We need 5 ms / 1.085 us = 4608 clocks. To Achieve that we need to load into TL and TH the value 65536 - 4608 = EE00H. Therefore, we have TH = EE and TL = 00.
 
@@ -623,7 +623,7 @@ CLR TR0 ;Stop the timer 0
 CLR TF0 ;Clear timer 0 flag
 ```
 
-### Example 9-11 Assume that XTAL = 11.0592 MHz, write a program to generate a square wave of 2 kHz frequency on pin P1.5.
+### 1.34. Example 9-11 Assume that XTAL = 11.0592 MHz, write a program to generate a square wave of 2 kHz frequency on pin P1.5.
 
 Solution:
 This is similar to Example 9-10, except that we must toggle the bit to generate the square wave. Look at the following steps.
@@ -645,7 +645,7 @@ CLR TF1 ;Clear timer 1 flag
 SJMP AGAIN ;Reload timer
 ```
 
-### Example 9-12 Assume XTAL = 11.0592 MHz, write a program to generate a square wave of 50 kHz frequency on pin P2.3.
+### 1.35. Example 9-12 Assume XTAL = 11.0592 MHz, write a program to generate a square wave of 50 kHz frequency on pin P2.3.
 
 Solution: Look at the following steps.
 
@@ -665,7 +665,7 @@ CLR P2.3 ;Comp. p2.3 to get hi, lo
 SJMP AGAIN ;Reload timer, mode 1 isn't auto-reload
 ```
 
-### Example 9-14 Assume XTAL = 11.0592 MHz, find the frequency of the square wave generated on pin P1.0 in the following program
+### 1.36. Example 9-14 Assume XTAL = 11.0592 MHz, find the frequency of the square wave generated on pin P1.0 in the following program
 
 ```assembly
 MOV TMOD,#20H ;T1/8-bit/auto reload
@@ -679,7 +679,7 @@ SJMP BACK ;mode 2 is auto-reload
 
 Solution: First notice the target address of SJMP. In mode 2 we do not need to reload TH since it is auto-reload. Now (256 - 05) _ 1.085 us = 251 _ 1.085 us = 272.33 us is the high portion of the pulse. Since it is a 50% duty cycle square wave, the period T is twice that; as a result T = 2 \* 272.33 us = 544.67 us and the frequency = 1.83597 kHz
 
-### Example 9-15 Find the frequency of a square wave generated on pin P1.0.
+### 1.37. Example 9-15 Find the frequency of a square wave generated on pin P1.0.
 
 Solution:
 
@@ -698,7 +698,7 @@ DJNZ R5,DELAY
 RET ;T = 2 ( 250 * 256 * 1.085 us ) = 138.88ms, and frequency = 72 Hz
 ```
 
-### Example 9-18 Assuming that clock pulses are fed into pin T1, write a program for counter 1 in mode 2 to count the pulses and display the state of the TL1 count on P2, which connects to 8 LEDs.
+### 1.38. Example 9-18 Assuming that clock pulses are fed into pin T1, write a program for counter 1 in mode 2 to count the pulses and display the state of the TL1 count on P2, which connects to 8 LEDs.
 
 Solution:
 
@@ -715,7 +715,7 @@ CLR TF1 ;make TF=0
 SJMP AGAIN ;keep doing it
 ```
 
-### Write a program for the 8051 to transfer letter 'A' serially at 4800 baud, continuously.
+### 1.39. Write a program for the 8051 to transfer letter 'A' serially at 4800 baud, continuously.
 
 Solution:
 
@@ -730,7 +730,7 @@ CLR TI ;clear TI for next char
 SJMP AGAIN ;keep sending A
 ```
 
-### Write a program for the 8051 to transfer 'YES' serially at 9600 baud, 8-bit data, 1 stop bit, do this continuously
+### 1.40. Write a program for the 8051 to transfer 'YES' serially at 9600 baud, 8-bit data, 1 stop bit, do this continuously
 
 Solution:
 
@@ -753,7 +753,7 @@ CLR TI ;get ready for next byte
 RET
 ```
 
-### Write a program for the 8051 to receive bytes of data serially, and put them in P1, set the baud rate at 4800, 8-bit data, and 1 stop bit
+### 1.41. Write a program for the 8051 to receive bytes of data serially, and put them in P1, set the baud rate at 4800, 8-bit data, and 1 stop bit
 
 Solution:
 
@@ -769,7 +769,7 @@ CLR RI ;get ready to receive next byte
 SJMP HERE ;keep getting data
 ```
 
-### Example 10-5 Assume that the 8051 serial port is connected to the COM port of IBM PC, and on the PC, we are using the terminal.exe program to send and receive data serially. P1 and P2 of the 8051 are connected to LEDs and switches, respectively. Write an 8051 program to
+### 1.42. Example 10-5 Assume that the 8051 serial port is connected to the COM port of IBM PC, and on the PC, we are using the terminal.exe program to send and receive data serially. P1 and P2 of the 8051 are connected to LEDs and switches, respectively. Write an 8051 program to
 
 - ### (a) send to PC the message "We Are Ready"
 - ### (b) receive any data send by PC and put it on LEDs connected to P1, and
@@ -815,7 +815,7 @@ MYDATA: DB "We Are Ready",0
 END
 ```
 
-### Example 10-6 Assume that XTAL = 11.0592 MHz for the following program, state (a) what this program does, (b) compute the frequency used by timer 1 to set the baud rate, and (c) find the baud rate of the data transfer.
+### 1.43. Example 10-6 Assume that XTAL = 11.0592 MHz for the following program, state (a) what this program does, (b) compute the frequency used by timer 1 to set the baud rate, and (c) find the baud rate of the data transfer.
 
 Solution:
 
@@ -840,7 +840,7 @@ H_1: JNB TI,H_1 ;stay here until the last bit is gone
 SJMP A_1 ;keep sending 'B' again
 ```
 
-### Example 10-10 Write a program to send the message "The Earth is but One Country" to serial port. Assume a SW is connected to pin P1.2. Monitor its status and set the baud rate as follows: SW = 0, 4800 baud rate, SW = 1, 9600 baud rate Assume XTAL = 11.0592 MHz, 8-bit data, and 1 stop bit.
+### 1.44. Example 10-10 Write a program to send the message "The Earth is but One Country" to serial port. Assume a SW is connected to pin P1.2. Monitor its status and set the baud rate as follows: SW = 0, 4800 baud rate, SW = 1, 9600 baud rate Assume XTAL = 11.0592 MHz, 8-bit data, and 1 stop bit.
 
 Solution:
 
@@ -881,7 +881,7 @@ MESS1: DB "The Earth is but One Country",0
 END
 ```
 
-### Example 11-2 Write a program that continuously get 8-bit data from P0 and sends it to P1 while simultaneously creating a square wave of 200 us period on pin P2.1. Use timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.
+### 1.45. Example 11-2 Write a program that continuously get 8-bit data from P0 and sends it to P1 while simultaneously creating a square wave of 200 us period on pin P2.1. Use timer 0 to create the square wave. Assume that XTAL = 11.0592 MHz.
 
 Solution:
 
@@ -911,7 +911,7 @@ SJMP BACK ;keep doing it loop unless interrupted by TF0
 END
 ```
 
-### Example 11-3 Rewrite Example 11-2 to create a square wave that has a high portion of 1085 us and a low portion of 15 us. Assume XTAL=11.0592MHz. Use timer 1.
+### 1.46. Example 11-3 Rewrite Example 11-2 to create a square wave that has a high portion of 1085 us and a low portion of 15 us. Assume XTAL=11.0592MHz. Use timer 1.
 
 Solution:
 Since 1085 us is 1000 \* 1.085 we need to use mode 1 of timer 1. upon wake-up go to main, avoid using memory allocated to Interrupt Vector Table
@@ -947,7 +947,7 @@ RETI ;return to main
 END
 ```
 
-### Example 11-5 Assume that the INT1 pin is connected to a switch that is normally high. Whenever it goes low, it should turn on an LED. The LED is connected to P1.3 and is normally off. When it is turned on it should stay on for a fraction of a second. As long as the switch is pressed low, the LED should stay on.
+### 1.47. Example 11-5 Assume that the INT1 pin is connected to a switch that is normally high. Whenever it goes low, it should turn on an LED. The LED is connected to P1.3 and is normally off. When it is turned on it should stay on for a fraction of a second. As long as the switch is pressed low, the LED should stay on.
 
 Solution:
 
@@ -968,7 +968,7 @@ HERE: SJMP HERE ;stay here until get interrupted
 END
 ```
 
-### Assume that pin 3.3 (INT1) is connected to a pulse generator, write a program in which the falling edge of the pulse will send a high to P1.3, which is connected to an LED (or buzzer). In other words, the LED is turned on and off at the same rate as the pulses are applied to the INT1 pin.
+### 1.48. Assume that pin 3.3 (INT1) is connected to a pulse generator, write a program in which the falling edge of the pulse will send a high to P1.3, which is connected to an LED (or buzzer). In other words, the LED is turned on and off at the same rate as the pulses are applied to the INT1 pin.
 
 Solution:
 
@@ -990,7 +990,7 @@ HERE: SJMP HERE ;stay here until get interrupted
 END
 ```
 
-### Example 11-8 Write a program in which the 8051 reads data from P1 and writes it to P2 continuously while giving a copy of it to the serial COM port to be transferred serially. Assume that XTAL=11.0592. Set the baud rate at 9600.
+### 1.49. Example 11-8 Write a program in which the 8051 reads data from P1 and writes it to P2 continuously while giving a copy of it to the serial COM port to be transferred serially. Assume that XTAL=11.0592. Set the baud rate at 9600.
 
 Solution:
 
@@ -1022,7 +1022,7 @@ RETI ;return from ISR
 END
 ```
 
-### Example 11-9 Write a program in which the 8051 gets data from P1 and sends it to P2 continuously while incoming data from the serial port is sent to P0. Assume that XTAL=11.0592. Set the baud rata at 9600.
+### 1.50. Example 11-9 Write a program in which the 8051 gets data from P1 and sends it to P2 continuously while incoming data from the serial port is sent to P0. Assume that XTAL=11.0592. Set the baud rata at 9600.
 
 Solution:
 
@@ -1054,7 +1054,7 @@ RETI ;return from ISR
 END
 ```
 
-### Example 11-10 Write a program using interrupts to do the following: (a) Receive data serially and sent it to P0, (b) Have P1 port read and transmitted serially, and a copy given to P2, (c) Make timer 0 generate a square wave of 5kHz frequency on P0.1. Assume that XTAL-11,0592. Set the baud rate at 4800.
+### 1.51. Example 11-10 Write a program using interrupts to do the following: (a) Receive data serially and sent it to P0, (b) Have P1 port read and transmitted serially, and a copy given to P2, (c) Make timer 0 generate a square wave of 5kHz frequency on P0.1. Assume that XTAL-11,0592. Set the baud rate at 4800.
 
 Solution:
 
@@ -1091,7 +1091,7 @@ RETI ;return from ISR
 END
 ```
 
-### To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command
+### 1.52. To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command
 
 - ### P1.0-P1.7 are connected to LCD data pins D0-D7
 - ### P2.0 is connected to RS pin of LCD
@@ -1152,7 +1152,7 @@ HERE: DJNZ R4,HERE ;stay until R4 becomes 0
 
 ```
 
-### Check busy flag before sending data, command to LCD
+### 1.53. Check busy flag before sending data, command to LCD
 
 - ### p1=data pin
 - ### P2.0 connected to RS pin
@@ -1206,7 +1206,7 @@ BACK:SETB P2.2 ;E=1 for H-to-L pulse
 	END
 ```
 
-### To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command
+### 1.54. To send any of the commands to the LCD, make pin RS=0. For data, make RS=1. Then send a high-to-low pulse to the E pin to enable the internal latch of the LCD. This is shown in the code below. calls a time delay before sending next data/command
 
 - ### P1.0-P1.7 are connected to LCD data pins D0-D7
 - ### P2.0 is connected to RS pin of LCD
@@ -1268,7 +1268,7 @@ RET
 END
 ```
 
-### Check busy flag before sending data, command to LCD
+### 1.55. Check busy flag before sending data, command to LCD
 
 - ### p1=data pin
 - ### P2.0 connected to RS pin
@@ -1328,7 +1328,7 @@ RET
 END
 ```
 
-### Call a time delay before sending next data/command: P1.0-P1.7=D0-D7, P2.0=RS, P2.1=R/W, P2.2=E
+### 1.56. Call a time delay before sending next data/command: P1.0-P1.7=D0-D7, P2.0=RS, P2.1=R/W, P2.2=E
 
 ```assembly
 ORG 0
@@ -1379,7 +1379,7 @@ RET
 ;END
 ```
 
-### Program 12-4: Keyboard Program keyboard subroutine. This program sends the ASCII code for pressed key to P0.1 P1.0-P1.3 connected to rows, P2.0-P2.3 to column
+### 1.57. Program 12-4: Keyboard Program keyboard subroutine. This program sends the ASCII code for pressed key to P0.1 P1.0-P1.3 connected to rows, P2.0-P2.3 to column
 
 ```assembly
 MOV P2,#0FFH ;make P2 an input port

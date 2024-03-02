@@ -5,7 +5,7 @@ This Repository contains Study Materials of MPMC Subject being offered in Diplom
 **Most Important Materials**
 
 - [MPMC Notes](Notes/MPMC_Notes.md)
-- [MPMC 8051 GTU Program Solutions](Practicals/Mazidi_Book_Assembly_Codes.md)
+- [MPMC 8051 GTU Program Solutions](Notes/MPMC_GTU_Program_Solutions.md)
 - [Mazidi Book Assembly Codes](Practicals/Mazidi_Book_Assembly_Codes.md)
 - [Mazidi Book C Codes](Practicals/Mazidi_Book_C_Codes.md)
 - [8085 Assembly Codes](Practicals/8085_Assembly_Codes.md)
