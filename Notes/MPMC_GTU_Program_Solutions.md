@@ -1,4 +1,3 @@
----
 ​---
 title: "Your Document Title"
 author: "Your Name"
@@ -7,7 +6,6 @@ header-includes:
   - \usepackage{geometry}
   - \geometry{left=1in,right=0.5in,top=1in,bottom=1.5in}
 ​---
----
 
 - [1. MPMC 8051 GTU Program Solutions](#1-mpmc-8051-gtu-program-solutions)
   - [1.1. Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)](#11-write-a-program-using-mul-instruction-to-multiply-two-bytes-05h-and-03h-3)
