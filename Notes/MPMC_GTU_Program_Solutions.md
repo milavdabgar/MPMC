@@ -1,14 +1,40 @@
 [TOC]
 
-# MPMC 8051 GTU Program Solutions
+- [MPMC 8051 GTU Program Solutions](#mpmc-8051-gtu-program-solutions)
+    - [Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)](#write-a-program-using-mul-instruction-to-multiply-two-bytes-05h-and-03h-3)
+    - [Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)](#write-an-alp-to-multiply-two-numbers-stored-at-30h-and-31h-in-ram-store-answer-at-hsb-51h-and-lsb-52h-4)
+    - [Write a program using DIV instruction to divide two bytes 09h and 02h. (3)](#write-a-program-using-div-instruction-to-divide-two-bytes-09h-and-02h-3)
+    - [Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)](#write-a-program-to-divide-two-numbers-stored-at-20h-and-21h-store-quotient-on-40h-and-reminder-at-41h-4)
+    - [Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)](#write-a-program-to-create-square-wave-of-50--duty-cycle-on-p13-pin-using-timer-4)
+    - [Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)](#write-an-alp-to-generate-square-wave-on-p11-using-timer0-and-mode-1-4)
+    - [Write software delay loop using two registers and explain in brief. (4)](#write-software-delay-loop-using-two-registers-and-explain-in-brief-4)
+    - [Write sequence of instructions for masking 4 lower bits of content of R2. (3)](#write-sequence-of-instructions-for-masking-4-lower-bits-of-content-of-r2-3)
+    - [Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)](#write-sequence-of-instructions-to-fill-internal-memory-location-20h-to-2fh-by-data-ffh-3)
+    - [Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)](#write-an-alp-to-add-two-8-bit-numbers-stored-at-external-memory-location-2030h-and-2031h-store-result-in-external-memory-location-2032h-4)
+    - [Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)](#draw-circuit-diagram-for-interfacing-8-leds-on-port-1-write-a-program-to-flash-leds-in-sequence--on-1-led-at-a-time-with-suitable-time-delay-7)
+    - [Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)](#write-a-program-to-separate-data-71h-stored-in-accumulator--in-two-registers-r307h-and-r401h-4)
+    - [Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)](#write-a-program-to-add-first-9-numbers--1-to-9-store-answer-at-memory-location-77h-of-ram-4)
+    - [Write assembly code to exchange data of R1 and R2 using PUSH \& POP. (3)](#write-assembly-code-to-exchange-data-of-r1-and-r2-using-push--pop-3)
+    - [Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)](#write-assembly-code-for-copying-data-99h-to-ram-memory-locations-30h-to-50h-using-counter-3)
+    - [Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)](#draw-a-diagram-to-connect-8-switches-with-port-p1-and-8-leds-with-port-p2-and-write-a-program-to-show-status-of-switch-on-led-if-switch-is-on-then-led-is-on-and-if-switch-is-off-led-is-off-7)
+    - [Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)](#write-a-program-to-find-largest-number-from-10-numbers-starting-at-external-ram-location-2000h-store-the-largest-number-in-internal-ram-location-20h-4)
+    - [Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)](#add-two-nos-given-in-r0-and-r1-put-the-result-in-external-ram-location-1030h-lsb-and-1031h-msb-3)
+    - [Write an ALP to exchange the content of A and B (3)](#write-an-alp-to-exchange-the-content-of-a-and-b-3)
+    - [Write an ALP to multiply the content of A and B. (3)](#write-an-alp-to-multiply-the-content-of-a-and-b-3)
+    - [Write an ALP to divide the content of A and B. (3)](#write-an-alp-to-divide-the-content-of-a-and-b-3)
+    - [Write a program to copy block of 8 data starting from location 100h to 200h.](#write-a-program-to-copy-block-of-8-data-starting-from-location-100h-to-200h)
+    - [Write a program to add two bytes of data and store result in R0 register.](#write-a-program-to-add-two-bytes-of-data-and-store-result-in-r0-register)
 
-## Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
+
+## MPMC 8051 GTU Program Solutions
+
+#### Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
 
 ```assembly
 ORG 0000H ; Set the starting address of the program to 0000H 
 
-MOV A, #05H   ; Load the first byte (multiplicand) into the accumulator
-MOV B, #03H   ; Load the second byte (multiplier) into register B
+MOV A, ##05H   ; Load the first byte (multiplicand) into the accumulator
+MOV B, ##03H   ; Load the second byte (multiplier) into register B
 
 MUL AB        ; Multiply the contents of A and B (result stored in A and B)
 
@@ -25,8 +51,8 @@ END           ; End of program
 **Explanation:**
 
 1. **ORG 0000H:** This directive tells the assembler that the code should be placed starting from memory address 0000H.
-2. **MOV A, #05H:** This instruction loads the immediate value 05H (the first number) into the accumulator register (A).
-3. **MOV B, #03H:** This instruction loads the immediate value 03H (the second number) into register B.
+2. **MOV A, ##05H:** This instruction loads the immediate value 05H (the first number) into the accumulator register (A).
+3. **MOV B, ##03H:** This instruction loads the immediate value 03H (the second number) into register B.
 4. **MUL AB:** This is the core multiplication instruction. It multiplies the contents of the accumulator (A) with the contents of register B. The 16-bit result is stored across the accumulator (lower byte) and register B (higher byte).
 5. **MOV 40H, A / MOV 41H, B:**  These instructions are an example of how you would store the result in memory. Here, the lower byte of the result is stored at address 40H and the higher byte at 41H.
 
@@ -36,7 +62,7 @@ END           ; End of program
 * If the result was larger than 255 (FFh), the overflow flag (OV) in the program status word (PSW) would be set.
 
 
-## Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)
+#### Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
@@ -67,13 +93,13 @@ END        ; End of program
 8. **MOV 51H, B:** Stores the higher byte (MSB) of the result in memory location 51H.
 
 
-## Write a program using DIV instruction to divide two bytes 09h and 02h. (3)
+#### Write a program using DIV instruction to divide two bytes 09h and 02h. (3)
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
 
-MOV A, #09H  ; Load the dividend (09h) into the accumulator
-MOV B, #02H  ; Load the divisor (02h) into register B
+MOV A, ##09H  ; Load the dividend (09h) into the accumulator
+MOV B, ##02H  ; Load the divisor (02h) into register B
 
 DIV AB       ; Divide the accumulator (A) by register B 
              ; Quotient will be in A, remainder in B
@@ -88,8 +114,8 @@ END          ; End of program
 **Explanation:**
 
 1. **ORG 0000H:** Sets the starting address of the program.
-2. **MOV A, #09H:** Loads the dividend (the number to be divided) into the accumulator.
-3. **MOV B, #02H:** Loads the divisor into register B.
+2. **MOV A, ##09H:** Loads the dividend (the number to be divided) into the accumulator.
+3. **MOV B, ##02H:** Loads the divisor into register B.
 4. **DIV AB:** Performs the division. The result (quotient) is stored in the accumulator (A), and the remainder is stored in register B.
 5. **MOV 60H, A / MOV 61H, B:**  These are example instructions to store the quotient and remainder in memory locations 60H and 61H, respectively.
 
@@ -103,7 +129,7 @@ END          ; End of program
 In this case, 09h / 02h = 4 (quotient) with a remainder of 1. 
 
 
-## Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
+#### Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
 
 ```assembly
 ORG 0000H ; Set the program's starting address
@@ -134,14 +160,14 @@ END           ; End of program
 8. **MOV 41H, B:** Stores the remainder (from B) into memory location 41H.
 
 
-## Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
+#### Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
 
 **Code (Assuming Timer 0, Mode 1):**
 
 ```assembly
 ORG 0000H 
 
-MOV TMOD, #01H ; Set Timer 0 in Mode 1 (16-bit timer)
+MOV TMOD, ##01H ; Set Timer 0 in Mode 1 (16-bit timer)
 
 ; Calculate Timer Reload Value (adjust for your crystal frequency)
 ; Example: Assuming 12 MHz crystal frequency
@@ -151,8 +177,8 @@ MOV TMOD, #01H ; Set Timer 0 in Mode 1 (16-bit timer)
 ;             = (12000000 /12) * 0.001 = 1000
 ; Reload Value = 65536 - Timer Count = 65536 - 1000 = 64536
 ; Split into higher and lower bytes:
-MOV TH0, #0xFC   ; Higher byte of reload value
-MOV TL0, #0x18   ; Lower byte of reload value
+MOV TH0, ##0xFC   ; Higher byte of reload value
+MOV TL0, ##0x18   ; Lower byte of reload value
 
 SETB P1.3   ; Initially set the pin HIGH 
 SETB TR0    ; Start Timer 0
@@ -168,12 +194,12 @@ SJMP HERE      ; Repeat indefinitely
 
 1. **ORG 0000H:** Sets the program starting address.
 
-2. **MOV TMOD, #01H:** Configures Timer 0 to operate in Mode 1 (16-bit mode).
+2. **MOV TMOD, ##01H:** Configures Timer 0 to operate in Mode 1 (16-bit mode).
 
 3. **Timer Reload Value Calculation:**
    - You'll need to adjust the calculation based on your crystal frequency and desired square wave period. The example assumes a 12 MHz crystal and aims for a 1 ms HIGH time (and 1 ms LOW time).
 
-4. **MOV TH0, #0xFC / MOV TL0, #0x18:** Load the calculated reload value into Timer 0's high and low registers.
+4. **MOV TH0, ##0xFC / MOV TL0, ##0x18:** Load the calculated reload value into Timer 0's high and low registers.
 
 5. **SETB P1.3:**  Initially set the output pin P1.3 to HIGH.
 
@@ -195,12 +221,12 @@ SJMP HERE      ; Repeat indefinitely
 * **Desired Period/Frequency:** Adjust the calculation to achieve your specific square wave timing requirements.
 
 
-## Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
+#### Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
 
 ```assembly
 ORG 0000H  ; Set program origin
 
-MOV TMOD, #01H  ; Configure Timer 0 in Mode 1 (16-bit mode)
+MOV TMOD, ##01H  ; Configure Timer 0 in Mode 1 (16-bit mode)
 
 ; Calculate Timer Reload Value (adjust for your desired frequency)
 ; Example: Assuming 11.0592 MHz crystal frequency for a 1 kHz square wave
@@ -211,8 +237,8 @@ MOV TMOD, #01H  ; Configure Timer 0 in Mode 1 (16-bit mode)
 ;             = 460.8 
 ; Reload Value = 65536 - Timer Count = 65536 - 460 = 65076
 ; Split into higher and lower bytes:
-MOV TH0, #0xFC   ; Higher byte of reload value (65076)
-MOV TL0, #0x18   ; Lower byte of reload value (65076)
+MOV TH0, ##0xFC   ; Higher byte of reload value (65076)
+MOV TL0, ##0x18   ; Lower byte of reload value (65076)
 
 SETB P1.1   ; Initially set P1.1 HIGH
 SETB TR0    ; Start Timer 0
@@ -227,11 +253,11 @@ SJMP HERE      ; Loop back to create the square wave
 **Explanation:**
 
 1. **ORG 0000H:** Sets the starting address of your program.
-2. **MOV TMOD, #01H:** Configures Timer 0 to operate in Mode 1, which is a 16-bit timer mode.
+2. **MOV TMOD, ##01H:** Configures Timer 0 to operate in Mode 1, which is a 16-bit timer mode.
 3. **Timer Reload Calculation:**
    - **You need to adjust this calculation based on your crystal frequency and the desired frequency of the square wave.** 
    - The example aims for a 1 kHz square wave with a 11.0592 MHz crystal.
-4. **MOV TH0, #0xFC / MOV TL0, #0x18:** Loads the calculated reload value into Timer 0's registers.
+4. **MOV TH0, ##0xFC / MOV TL0, ##0x18:** Loads the calculated reload value into Timer 0's registers.
 5. **SETB P1.1:** Sets the P1.1 pin HIGH initially.
 6. **SETB TR0:** Starts Timer 0.
 7. **HERE / JNB TF0, HERE:** Creates a loop that waits for the Timer 0 overflow flag (TF0).
@@ -246,14 +272,14 @@ SJMP HERE      ; Loop back to create the square wave
 * **Pin Configuration:**  Ensure that P1.1 is configured as an output pin. 
 
 
-## Write software delay loop using two registers and explain in brief. (4)
+#### Write software delay loop using two registers and explain in brief. (4)
 
 ```assembly
 ORG 0000H 
 
 DELAY: 
-MOV R0, #50D   ; Load a value into register R0 (adjust for delay)
-MOV R1, #250D  ; Load a value into register R1 (adjust for delay)
+MOV R0, ##50D   ; Load a value into register R0 (adjust for delay)
+MOV R1, ##250D  ; Load a value into register R1 (adjust for delay)
 
 DJNZ_R1:       ; Decrement R1 and jump if not zero 
 DJNZ R1, DJNZ_R1 
@@ -268,7 +294,7 @@ RET            ; Return from the subroutine
 
 1. **DELAY:** This label marks the beginning of your delay subroutine.
 
-2. **MOV R0, #50D / MOV R1, #250D:** These instructions load initial values into two registers, R0 and R1. The larger the values, the longer the delay. You'll need to adjust these based on your crystal frequency and the desired delay length.
+2. **MOV R0, ##50D / MOV R1, ##250D:** These instructions load initial values into two registers, R0 and R1. The larger the values, the longer the delay. You'll need to adjust these based on your crystal frequency and the desired delay length.
 
 3. **DJNZ_R1 / DJNZ_R0:**  These are "Decrement and Jump if Not Zero" instructions. They form two nested loops:
    *  **Outer Loop (R0):**  The outer loop decrements R0 and repeats until R0 reaches zero.
@@ -285,11 +311,11 @@ The nested loops create a series of decrement operations.  The combination of in
 * **Timer Alternatives:** For very precise delays, consider using the 8051's built-in timers instead of software delay loops.
 
 
-## Write sequence of instructions for masking 4 lower bits of content of R2. (3)
+#### Write sequence of instructions for masking 4 lower bits of content of R2. (3)
 
 ```assembly
 MOV A, R2      ; Copy the contents of R2 into the accumulator
-ANL A, #0F0H   ; Perform a logical AND with 0F0H to mask the lower 4 bits
+ANL A, ##0F0H   ; Perform a logical AND with 0F0H to mask the lower 4 bits
 MOV R2, A      ; Move the result back into R2
 ```
 
@@ -297,7 +323,7 @@ MOV R2, A      ; Move the result back into R2
 
 1. **MOV A, R2:** This instruction copies the current value stored in register R2 into the accumulator (A).
 
-2. **ANL A, #0F0H:** This performs a logical AND operation between the value in the accumulator (which now contains the original value of R2) and the hexadecimal value 0F0H. The result will be that:
+2. **ANL A, ##0F0H:** This performs a logical AND operation between the value in the accumulator (which now contains the original value of R2) and the hexadecimal value 0F0H. The result will be that:
    * Bits 4-7 of the accumulator will remain unchanged.
    * Bits 0-3 of the accumulator will become 0 (masked).
 
@@ -309,23 +335,23 @@ MOV R2, A      ; Move the result back into R2
 * **Masking:** Masking is a technique used to isolate or clear specific  bits within a byte.
 
 
-## Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
+#### Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
 
 ```assembly
-MOV R0, #20H  ; Load starting address into a register (R0 in this case)
-MOV A, #0FFH  ; Load the data to be filled into the accumulator 
+MOV R0, ##20H  ; Load starting address into a register (R0 in this case)
+MOV A, ##0FFH  ; Load the data to be filled into the accumulator 
 
 FILL_LOOP: 
 MOV @R0, A    ; Store the content of the accumulator into the memory location pointed to by R0
 INC R0        ; Increment R0 to point to the next memory location
-CJNE R0, #30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump to FILL_LOOP if not equal
+CJNE R0, ##30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump to FILL_LOOP if not equal
 ```
 
 **Explanation:**
 
-1. **MOV R0, #20H:** Load the starting memory address (20H) into a register (we're using R0).
+1. **MOV R0, ##20H:** Load the starting memory address (20H) into a register (we're using R0).
 
-2. **MOV A, #0FFH:** Load the value you want to fill (FFH) into the accumulator.
+2. **MOV A, ##0FFH:** Load the value you want to fill (FFH) into the accumulator.
 
 3. **FILL_LOOP:** This label marks the beginning of the loop.
 
@@ -333,7 +359,7 @@ CJNE R0, #30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump t
 
 5. **INC R0:** Increment the register R0 to point to the next memory location.
 
-6. **CJNE R0, #30H, FILL_LOOP:** This instruction means "Compare and Jump if Not Equal." It compares the contents of R0 with the value 30H (which is the ending address + 1). If they are not equal, the program jumps back to the `FILL_LOOP` label, continuing the filling process.
+6. **CJNE R0, ##30H, FILL_LOOP:** This instruction means "Compare and Jump if Not Equal." It compares the contents of R0 with the value 30H (which is the ending address + 1). If they are not equal, the program jumps back to the `FILL_LOOP` label, continuing the filling process.
 
 **Key Points:**
 
@@ -341,22 +367,22 @@ CJNE R0, #30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump t
 * **Loop Termination:** The CJNE instruction ensures the loop runs until memory location 2FH is filled. 
 
 
-## Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
+#### Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
 
 ```assembly
 ORG 0000H  ; Set origin of the program
 
 ; Load data from external memory
-MOV A, #30H    ; Load lower byte of the first number's address into A
+MOV A, ##30H    ; Load lower byte of the first number's address into A
 MOVC A, @A+DPTR  ; Fetch the first number from external memory using DPTR
 MOV B, A          ; Store the first number in register B
 
-MOV A, #31H    ; Load lower byte of the second number's address into A
+MOV A, ##31H    ; Load lower byte of the second number's address into A
 MOVC A, @A+DPTR  ; Fetch the second number from external memory
 
 ADD A, B          ; Add the two numbers (result now in A)
 
-MOV A, #32H    ;  Load lower byte of the result address into A
+MOV A, ##32H    ;  Load lower byte of the result address into A
 MOVX @DPTR, A  ; Store the result in external memory using DPTR
 
 END            ; End of program
@@ -366,17 +392,17 @@ END            ; End of program
 
 1. **ORG 0000H:**  Sets the starting memory address for the program.
 
-2. **MOV A, #30H / MOVC A, @A+DPTR:** 
+2. **MOV A, ##30H / MOVC A, @A+DPTR:** 
    - Loads the lower byte of the first number's address (2030H) into the accumulator (A).
    - Uses the DPTR (Data Pointer) register to access external memory. The `MOVC` instruction fetches the byte at the address calculated by adding the contents of A to the value in DPTR.
 
 3. **MOV B, A:** Stores the fetched first number in register B.
 
-4. **MOV A, #31H / MOVC A, @A+DPTR** Repeats the process to fetch the second number from address 2031H.
+4. **MOV A, ##31H / MOVC A, @A+DPTR** Repeats the process to fetch the second number from address 2031H.
 
 5. **ADD A, B:** Adds the two numbers together, storing the result in the accumulator (A).
 
-6. **MOV A, #32H / MOVX @DPTR, A:** 
+6. **MOV A, ##32H / MOVX @DPTR, A:** 
    - Loads the lower byte of the result's address (2032H) into A.
    - Uses `MOVX` for external memory access, storing the result from A at the address pointed to by DPTR.
 
@@ -386,7 +412,7 @@ END            ; End of program
 * **MOVC vs. MOVX:** `MOVC` is used to read from code memory (usually within the 8051), while `MOVX` is used for external data memory.
 
 
-## Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
+#### Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
 
 **Circuit Diagram**
 
@@ -417,22 +443,22 @@ END            ; End of program
 ORG 0000H
 
 START:
-MOV R0, #00H  ; Initialize a counter
-MOV A, #01H   ; Initial LED pattern (0000 0001)
+MOV R0, ##00H  ; Initialize a counter
+MOV A, ##01H   ; Initial LED pattern (0000 0001)
 
 LOOP: 
 MOV P1, A     ; Output the pattern to Port 1
 CALL DELAY    ; Call a delay subroutine 
 ROR A         ; Rotate the pattern one bit to the right
 INC R0        ; Increment counter
-CJNE R0, #08, LOOP ; Repeat until 8 LEDs have been lit
+CJNE R0, ##08, LOOP ; Repeat until 8 LEDs have been lit
 
 SJMP START    ; Restart the sequence
 
 ; Simple Delay Subroutine
 DELAY: 
-MOV R1, #200D  ; Adjust these values for 
-MOV R2, #00D   ; desired delay time
+MOV R1, ##200D  ; Adjust these values for 
+MOV R2, ##00D   ; desired delay time
 DJNZ R2, $
 DJNZ R1, $
 RET 
@@ -452,16 +478,16 @@ RET
 * **Delay Adjustment:** Modify values in the DELAY subroutine for your desired LED flashing speed.
 
 
-## Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
+#### Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
 
 We'll use a combination of bit-shifting and masking operations:
 
 ```assembly
-MOV A, #71H   ; Load 71h into the accumulator
+MOV A, ##71H   ; Load 71h into the accumulator
 
 ; Extract lower 4 bits (R3)
 MOV R3, A     ; Store the value of A in R3
-AND A, #0FH   ; Mask off the upper 4 bits (keep only the lower nibble) 
+AND A, ##0FH   ; Mask off the upper 4 bits (keep only the lower nibble) 
 
 ; Extract upper 4 bits (R4)
 MOV R4, A     ; The accumulator now holds only the upper nibble 
@@ -470,11 +496,11 @@ SHR A         ; Shift right by 4 positions (move upper nibble to lower)
 
 **Explanation:**
 
-1. **MOV A, #71H:** Load the value 71h into the accumulator (A).
+1. **MOV A, ##71H:** Load the value 71h into the accumulator (A).
 
 2. **Extract lower 4 bits:**
    - **MOV R3, A:** Store the original value from the accumulator into R3. Now both the accumulator and R3 have the value 71h.
-   - **AND A, #0FH:**  Perform a logical AND operation with 0Fh (00001111 in binary) to mask off the upper 4 bits in the accumulator. Now, the accumulator only holds 00000111 (which is 7).
+   - **AND A, ##0FH:**  Perform a logical AND operation with 0Fh (00001111 in binary) to mask off the upper 4 bits in the accumulator. Now, the accumulator only holds 00000111 (which is 7).
 
 3. **Extract upper 4 bits**
     - **MOV R4, A:** Store the masked value (the upper nibble, now in the lower 4 bits) into R4.
@@ -486,13 +512,13 @@ SHR A         ; Shift right by 4 positions (move upper nibble to lower)
 * **R4:**  Contains 00000001 (1)
 
 
-## Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
+#### Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
 
 ```assembly
 ORG 0000H       ; Set the program's starting address
 
-MOV R0, #00H     ; Initialize a register (R0) as the accumulator 
-MOV R1, #09H     ; Initialize a counter (R1) to keep track of numbers
+MOV R0, ##00H     ; Initialize a register (R0) as the accumulator 
+MOV R1, ##09H     ; Initialize a counter (R1) to keep track of numbers
 
 LOOP:
 ADD A, R1        ; Add the current number (from R1) to the accumulator
@@ -505,8 +531,8 @@ END              ; End of program
 **Explanation:**
 
 1. **ORG 0000H:**  Sets the starting address of your code.
-2. **MOV R0, #00H:** Initializes register R0 to 0. R0 will store the running sum.
-3. **MOV R1, #09H:** Initializes register R1 to 9, which will be our counter.
+2. **MOV R0, ##00H:** Initializes register R0 to 0. R0 will store the running sum.
+3. **MOV R1, ##09H:** Initializes register R1 to 9, which will be our counter.
 4. **LOOP:** This label marks the beginning of the loop.
 5. **ADD A, R1:** Adds the value in R1 to the accumulator (where the running sum is stored).
 6. **DJNZ R1, LOOP:** Decrements R1 and jumps back to the `LOOP` label if R1 is not zero. This loop continues for 9 iterations.
@@ -519,7 +545,7 @@ END              ; End of program
 * **DJNZ Instruction:** The 'Decrement and Jump if Not Zero' instruction creates the loop.
 
 
-## Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
+#### Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
 
 ```assembly
 PUSH R1  ; Push the contents of R1 onto the stack
@@ -544,14 +570,14 @@ After executing this code, the values in R1 and R2 will have been effectively sw
 The stack in the 8051 microcontroller operates in a LIFO (Last In, First Out) manner. This means the last value pushed onto the stack will be the first value popped off. 
 
 
-## Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
+#### Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
 
-MOV R0, #30H   ; Load the starting memory address into R0
-MOV R1, #21    ; Initialize counter (21 locations from 30H to 50H inclusive)
-MOV A, #99H    ; Load the data to be copied into the accumulator 
+MOV R0, ##30H   ; Load the starting memory address into R0
+MOV R1, ##21    ; Initialize counter (21 locations from 30H to 50H inclusive)
+MOV A, ##99H    ; Load the data to be copied into the accumulator 
 
 COPY_LOOP:
 MOV @R0, A     ; Store the data from the accumulator into the memory location pointed to by R0
@@ -565,11 +591,11 @@ END            ; End of program
 
 1. **ORG 0000H:** Sets the program's starting memory address in the code space.
 
-2. **MOV R0, #30H:** Loads the starting RAM address (30H) into register R0.
+2. **MOV R0, ##30H:** Loads the starting RAM address (30H) into register R0.
 
-3. **MOV R1, #21:** Loads the counter value into register R1. Since there are 21 memory locations from 30H to 50H (inclusive), we initialize our counter with 21.
+3. **MOV R1, ##21:** Loads the counter value into register R1. Since there are 21 memory locations from 30H to 50H (inclusive), we initialize our counter with 21.
 
-4. **MOV A, #99H:** Loads the data (99H) to be copied into the accumulator.
+4. **MOV A, ##99H:** Loads the data (99H) to be copied into the accumulator.
 
 5. **COPY_LOOP:** This label marks the beginning of the loop.
 
@@ -580,7 +606,7 @@ END            ; End of program
 8. **DJNZ R1, COPY_LOOP:** Decrements the counter in R1 and jumps back to the `COPY_LOOP` label if the counter is not zero. The loop continues until the counter reaches zero.
 
 
-## Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
+#### Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
 
 **Circuit Diagram**
 
@@ -633,13 +659,13 @@ END           ; End of program
 * **LED Considerations:** Ensure Port P2 can handle the current requirements of your LEDs.
 
 
-## Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
+#### Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
 
-MOV DPTR, #2000H  ; Initialize DPTR to point to the start of external RAM 
-MOV R0, #10       ; Initialize a counter to track 10 numbers
+MOV DPTR, ##2000H  ; Initialize DPTR to point to the start of external RAM 
+MOV R0, ##10       ; Initialize a counter to track 10 numbers
 MOV A, @DPTR      ; Load the first number into the accumulator
 MOV 20H, A        ; Initialize internal RAM location 20H with the first number (assume it's the largest initially)
 
@@ -658,8 +684,8 @@ END               ; End of program
 **Explanation:**
 
 1. **ORG 0000H:** Sets the starting address of the program.
-2. **MOV DPTR, #2000H:** Initializes the data pointer (DPTR) to point to the start of the numbers in external RAM (2000h).
-3. **MOV R0, #10:** Initializes a counter (R0) to keep track of the 10 numbers.
+2. **MOV DPTR, ##2000H:** Initializes the data pointer (DPTR) to point to the start of the numbers in external RAM (2000h).
+3. **MOV R0, ##10:** Initializes a counter (R0) to keep track of the 10 numbers.
 4. **MOV A, @DPTR / MOV 20H, A:**  Loads the first number into the accumulator and also stores it in internal RAM location 20H as our initial assumption for the largest number.
 5. **LOOP:** Labels the beginning of the loop.
 6. **INC DPTR:** Increments DPTR to point to the next number.
@@ -671,7 +697,7 @@ END               ; End of program
 
 **At the end of this program, the largest number will be stored in internal RAM location 20H.**
 
-## Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
+#### Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
 
 ```assembly
 ORG 0000H ; Set the starting address of the program
@@ -681,7 +707,7 @@ ADD A, R0  ; Add the contents of R0 to the accumulator
 MOV R1, A  ; Store the result in R1 (in case of overflow) 
 
 ; Store the result in external RAM
-MOV DPTR, #1030H   ; Load DPTR with the starting external RAM address 
+MOV DPTR, ##1030H   ; Load DPTR with the starting external RAM address 
 MOV A, R1          ; Move the lower byte of the result into A
 MOVX @DPTR, A      ; Store the lower byte at 1030h
 INC DPTR           ; Increment DPTR to point to 1031h
@@ -696,7 +722,7 @@ END                ; End of program
 1. **ORG 0000H:** Sets the starting address of the program.
 2. **ADD A, R1:** Adds the contents of registers R0 and R1, storing the result in the accumulator (A).
 3. **MOV R1, A:** Stores the result in R1 as well. This handles the case where the addition results in a carry (overflow), ensuring the MSB is stored correctly.
-4. **MOV DPTR, #1030H:** Initializes the DPTR (Data Pointer) with the starting address (1030h) in external RAM.
+4. **MOV DPTR, ##1030H:** Initializes the DPTR (Data Pointer) with the starting address (1030h) in external RAM.
 5. **MOV A, R1 / MOVX @DPTR, A:** Moves the lower byte of the result to the accumulator and then stores it at the location pointed to by DPTR (1030h) using the `MOVX` instruction (for external memory access).
 6. **INC DPTR / MOV A, R2 / MOVX @DPTR, A:** Increments DPTR to address 1031h, moves the higher byte (if any) of the result into the accumulator, and stores it using `MOVX`.
 
@@ -706,7 +732,7 @@ END                ; End of program
 * **Overflow Handling:**  This code correctly handles the potential overflow when adding 8-bit numbers.
 
 
-## Write an ALP to exchange the content of A and B (3)
+#### Write an ALP to exchange the content of A and B (3)
 
 **Method 1: Using a Temporary Register (e.g., R0)**
 
@@ -737,7 +763,7 @@ XOR A, B    ; XOR A and B again (result in original value of A, now in B)
 * **Method 3:**  This method uses the XOR (Exclusive OR) operation, which has the interesting property that when you XOR a value with itself, the result is zero. This allows for a clever exchange mechanism.
 
 
-## Write an ALP to multiply the content of A and B. (3)
+#### Write an ALP to multiply the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -764,7 +790,7 @@ If A = 5 (00000101) and B = 3 (00000011), then after `MUL AB`:
 * A (Accumulator) would contain 15 (00001111) - the lower byte 
 * B would contain 0 (00000000) - the higher byte (in this case, it's zero)
 
-## Write an ALP to divide the content of A and B. (3)
+#### Write an ALP to divide the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -793,7 +819,7 @@ If A = 10 (00001010) and B = 3 (00000011), then after `DIV AB`:
 * A (Accumulator) would contain 3 (00000011) – the quotient
 * B would contain 1 (00000001) – the remainder 
 
-## Write a program to copy block of 8 data starting from location 100h to 200h.
+#### Write a program to copy block of 8 data starting from location 100h to 200h.
 
 Here's an assembly program for the 8051 microcontroller to copy a block of 8 bytes of data from starting location 100H to destination location 200H:
 
@@ -801,9 +827,9 @@ Here's an assembly program for the 8051 microcontroller to copy a block of 8 byt
 ORG 0000H  ; Program starts at memory location 0000H
 
 ; Initialization
-MOV DPTR, #100H   ; Set DPTR to point to the source block (100H) 
-MOV R0, #200H     ; Set R0 to point to the destination block (200H) 
-MOV R1, #08H      ; Set R1 as the loop counter (8 bytes to copy)
+MOV DPTR, ##100H   ; Set DPTR to point to the source block (100H) 
+MOV R0, ##200H     ; Set R0 to point to the destination block (200H) 
+MOV R1, ##08H      ; Set R1 as the loop counter (8 bytes to copy)
 
 COPY_LOOP:
 MOVX A, @DPTR   ; Read a byte from the source using DPTR
@@ -838,14 +864,14 @@ END
 * This assumes you have external RAM where you are storing the data.
 * You may need to adapt the addresses (100H and 200H) if your data is stored elsewhere.
 
-## Write a program to add two bytes of data and store result in R0 register.
+#### Write a program to add two bytes of data and store result in R0 register.
 
 Here's the 8051 assembly code to add two bytes of data and store the result in register R0:
 
 ```assembly
 ; Data initialization - you might load these from memory in a real program
-MOV A, #56H   ; Load the first byte of data into the accumulator
-MOV B, #23H   ; Load the second byte of data into register B 
+MOV A, ##56H   ; Load the first byte of data into the accumulator
+MOV B, ##23H   ; Load the second byte of data into register B 
 
 ; Addition
 ADD A, B       ; Add the value in register B to the accumulator
@@ -858,8 +884,8 @@ END
 **Explanation**
 
 1. **Data Initialization:**
-   * `MOV A, #56H`: Loads the immediate value 56H (hexadecimal) into the accumulator (A register).
-   * `MOV B, #23H`: Loads the immediate value 23H into register B.
+   * `MOV A, ##56H`: Loads the immediate value 56H (hexadecimal) into the accumulator (A register).
+   * `MOV B, ##23H`: Loads the immediate value 23H into register B.
 
 2. **Addition:**
    * `ADD A, B`: Adds the value in register B to the value in the accumulator. The result remains in the accumulator.
