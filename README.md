@@ -1,6 +1,6 @@
 # Microprocessor & Microcontroller (MPMC) Study Materials
 
-This Repository contains Study Materials of MPMC Subject being offered in Diploma in ECE/ICT.
+This Repository contains Study Materials of MPMC Subject being offered in Diploma in ECE/ICT under Gujarat Technological University (GTU).
 
 **Most Important Materials**
 
