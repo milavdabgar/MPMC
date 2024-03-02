@@ -1,34 +1,43 @@
-[TOC]
+---
+​---
+title: "Your Document Title"
+author: "Your Name"
+date: "Your Date"
+header-includes:
+  - \usepackage{geometry}
+  - \geometry{left=1in,right=0.5in,top=1in,bottom=1.5in}
+​---
+---
 
 - [1. MPMC 8051 GTU Program Solutions](#1-mpmc-8051-gtu-program-solutions)
-    - [1.0.1. Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)](#101-write-a-program-using-mul-instruction-to-multiply-two-bytes-05h-and-03h-3)
-    - [1.0.2. Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)](#102-write-an-alp-to-multiply-two-numbers-stored-at-30h-and-31h-in-ram-store-answer-at-hsb-51h-and-lsb-52h-4)
-    - [1.0.3. Write a program using DIV instruction to divide two bytes 09h and 02h. (3)](#103-write-a-program-using-div-instruction-to-divide-two-bytes-09h-and-02h-3)
-    - [1.0.4. Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)](#104-write-a-program-to-divide-two-numbers-stored-at-20h-and-21h-store-quotient-on-40h-and-reminder-at-41h-4)
-    - [1.0.5. Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)](#105-write-a-program-to-create-square-wave-of-50--duty-cycle-on-p13-pin-using-timer-4)
-    - [1.0.6. Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)](#106-write-an-alp-to-generate-square-wave-on-p11-using-timer0-and-mode-1-4)
-    - [1.0.7. Write software delay loop using two registers and explain in brief. (4)](#107-write-software-delay-loop-using-two-registers-and-explain-in-brief-4)
-    - [1.0.8. Write sequence of instructions for masking 4 lower bits of content of R2. (3)](#108-write-sequence-of-instructions-for-masking-4-lower-bits-of-content-of-r2-3)
-    - [1.0.9. Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)](#109-write-sequence-of-instructions-to-fill-internal-memory-location-20h-to-2fh-by-data-ffh-3)
-    - [1.0.10. Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)](#1010-write-an-alp-to-add-two-8-bit-numbers-stored-at-external-memory-location-2030h-and-2031h-store-result-in-external-memory-location-2032h-4)
-    - [1.0.11. Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)](#1011-draw-circuit-diagram-for-interfacing-8-leds-on-port-1-write-a-program-to-flash-leds-in-sequence--on-1-led-at-a-time-with-suitable-time-delay-7)
-    - [1.0.12. Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)](#1012-write-a-program-to-separate-data-71h-stored-in-accumulator--in-two-registers-r307h-and-r401h-4)
-    - [1.0.13. Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)](#1013-write-a-program-to-add-first-9-numbers--1-to-9-store-answer-at-memory-location-77h-of-ram-4)
-    - [1.0.14. Write assembly code to exchange data of R1 and R2 using PUSH \& POP. (3)](#1014-write-assembly-code-to-exchange-data-of-r1-and-r2-using-push--pop-3)
-    - [1.0.15. Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)](#1015-write-assembly-code-for-copying-data-99h-to-ram-memory-locations-30h-to-50h-using-counter-3)
-    - [1.0.16. Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)](#1016-draw-a-diagram-to-connect-8-switches-with-port-p1-and-8-leds-with-port-p2-and-write-a-program-to-show-status-of-switch-on-led-if-switch-is-on-then-led-is-on-and-if-switch-is-off-led-is-off-7)
-    - [1.0.17. Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)](#1017-write-a-program-to-find-largest-number-from-10-numbers-starting-at-external-ram-location-2000h-store-the-largest-number-in-internal-ram-location-20h-4)
-    - [1.0.18. Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)](#1018-add-two-nos-given-in-r0-and-r1-put-the-result-in-external-ram-location-1030h-lsb-and-1031h-msb-3)
-    - [1.0.19. Write an ALP to exchange the content of A and B (3)](#1019-write-an-alp-to-exchange-the-content-of-a-and-b-3)
-    - [1.0.20. Write an ALP to multiply the content of A and B. (3)](#1020-write-an-alp-to-multiply-the-content-of-a-and-b-3)
-    - [1.0.21. Write an ALP to divide the content of A and B. (3)](#1021-write-an-alp-to-divide-the-content-of-a-and-b-3)
-    - [1.0.22. Write a program to copy block of 8 data starting from location 100h to 200h.](#1022-write-a-program-to-copy-block-of-8-data-starting-from-location-100h-to-200h)
-    - [1.0.23. Write a program to add two bytes of data and store result in R0 register.](#1023-write-a-program-to-add-two-bytes-of-data-and-store-result-in-r0-register)
+  - [1.1. Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)](#11-write-a-program-using-mul-instruction-to-multiply-two-bytes-05h-and-03h-3)
+  - [1.2. Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)](#12-write-an-alp-to-multiply-two-numbers-stored-at-30h-and-31h-in-ram-store-answer-at-hsb-51h-and-lsb-52h-4)
+  - [1.3. Write a program using DIV instruction to divide two bytes 09h and 02h. (3)](#13-write-a-program-using-div-instruction-to-divide-two-bytes-09h-and-02h-3)
+  - [1.4. Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)](#14-write-a-program-to-divide-two-numbers-stored-at-20h-and-21h-store-quotient-on-40h-and-reminder-at-41h-4)
+  - [1.5. Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)](#15-write-a-program-to-create-square-wave-of-50--duty-cycle-on-p13-pin-using-timer-4)
+  - [1.6. Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)](#16-write-an-alp-to-generate-square-wave-on-p11-using-timer0-and-mode-1-4)
+  - [1.7. Write software delay loop using two registers and explain in brief. (4)](#17-write-software-delay-loop-using-two-registers-and-explain-in-brief-4)
+  - [1.8. Write sequence of instructions for masking 4 lower bits of content of R2. (3)](#18-write-sequence-of-instructions-for-masking-4-lower-bits-of-content-of-r2-3)
+  - [1.9. Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)](#19-write-sequence-of-instructions-to-fill-internal-memory-location-20h-to-2fh-by-data-ffh-3)
+  - [1.10. Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)](#110-write-an-alp-to-add-two-8-bit-numbers-stored-at-external-memory-location-2030h-and-2031h-store-result-in-external-memory-location-2032h-4)
+  - [1.11. Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)](#111-draw-circuit-diagram-for-interfacing-8-leds-on-port-1-write-a-program-to-flash-leds-in-sequence--on-1-led-at-a-time-with-suitable-time-delay-7)
+  - [1.12. Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)](#112-write-a-program-to-separate-data-71h-stored-in-accumulator--in-two-registers-r307h-and-r401h-4)
+  - [1.13. Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)](#113-write-a-program-to-add-first-9-numbers--1-to-9-store-answer-at-memory-location-77h-of-ram-4)
+  - [1.14. Write assembly code to exchange data of R1 and R2 using PUSH \& POP. (3)](#114-write-assembly-code-to-exchange-data-of-r1-and-r2-using-push--pop-3)
+  - [1.15. Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)](#115-write-assembly-code-for-copying-data-99h-to-ram-memory-locations-30h-to-50h-using-counter-3)
+  - [1.16. Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)](#116-draw-a-diagram-to-connect-8-switches-with-port-p1-and-8-leds-with-port-p2-and-write-a-program-to-show-status-of-switch-on-led-if-switch-is-on-then-led-is-on-and-if-switch-is-off-led-is-off-7)
+  - [1.17. Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)](#117-write-a-program-to-find-largest-number-from-10-numbers-starting-at-external-ram-location-2000h-store-the-largest-number-in-internal-ram-location-20h-4)
+  - [1.18. Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)](#118-add-two-nos-given-in-r0-and-r1-put-the-result-in-external-ram-location-1030h-lsb-and-1031h-msb-3)
+  - [1.19. Write an ALP to exchange the content of A and B (3)](#119-write-an-alp-to-exchange-the-content-of-a-and-b-3)
+  - [1.20. Write an ALP to multiply the content of A and B. (3)](#120-write-an-alp-to-multiply-the-content-of-a-and-b-3)
+  - [1.21. Write an ALP to divide the content of A and B. (3)](#121-write-an-alp-to-divide-the-content-of-a-and-b-3)
+  - [1.22. Write a program to copy block of 8 data starting from location 100h to 200h.](#122-write-a-program-to-copy-block-of-8-data-starting-from-location-100h-to-200h)
+  - [1.23. Write a program to add two bytes of data and store result in R0 register.](#123-write-a-program-to-add-two-bytes-of-data-and-store-result-in-r0-register)
 
 
 ## 1. MPMC 8051 GTU Program Solutions
 
-#### 1.0.1. Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
+### 1.1. Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
 
 ```assembly
 ORG 0000H ; Set the starting address of the program to 0000H 
@@ -62,7 +71,7 @@ END           ; End of program
 * If the result was larger than 255 (FFh), the overflow flag (OV) in the program status word (PSW) would be set.
 
 
-#### 1.0.2. Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)
+### 1.2. Write an ALP to multiply two numbers stored at 30h and 31h in RAM. Store answer at HSB 51H and LSB 52H. (4)
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
@@ -93,7 +102,7 @@ END        ; End of program
 8. **MOV 51H, B:** Stores the higher byte (MSB) of the result in memory location 51H.
 
 
-#### 1.0.3. Write a program using DIV instruction to divide two bytes 09h and 02h. (3)
+### 1.3. Write a program using DIV instruction to divide two bytes 09h and 02h. (3)
 
 ```assembly
 ORG 0000H  ; Start the program at memory address 0000H
@@ -129,7 +138,7 @@ END          ; End of program
 In this case, 09h / 02h = 4 (quotient) with a remainder of 1. 
 
 
-#### 1.0.4. Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
+### 1.4. Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
 
 ```assembly
 ORG 0000H ; Set the program's starting address
@@ -160,7 +169,7 @@ END           ; End of program
 8. **MOV 41H, B:** Stores the remainder (from B) into memory location 41H.
 
 
-#### 1.0.5. Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
+### 1.5. Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
 
 **Code (Assuming Timer 0, Mode 1):**
 
@@ -221,7 +230,7 @@ SJMP HERE      ; Repeat indefinitely
 * **Desired Period/Frequency:** Adjust the calculation to achieve your specific square wave timing requirements.
 
 
-#### 1.0.6. Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
+### 1.6. Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -272,7 +281,7 @@ SJMP HERE      ; Loop back to create the square wave
 * **Pin Configuration:**  Ensure that P1.1 is configured as an output pin. 
 
 
-#### 1.0.7. Write software delay loop using two registers and explain in brief. (4)
+### 1.7. Write software delay loop using two registers and explain in brief. (4)
 
 ```assembly
 ORG 0000H 
@@ -311,7 +320,7 @@ The nested loops create a series of decrement operations.  The combination of in
 * **Timer Alternatives:** For very precise delays, consider using the 8051's built-in timers instead of software delay loops.
 
 
-#### 1.0.8. Write sequence of instructions for masking 4 lower bits of content of R2. (3)
+### 1.8. Write sequence of instructions for masking 4 lower bits of content of R2. (3)
 
 ```assembly
 MOV A, R2      ; Copy the contents of R2 into the accumulator
@@ -335,7 +344,7 @@ MOV R2, A      ; Move the result back into R2
 * **Masking:** Masking is a technique used to isolate or clear specific  bits within a byte.
 
 
-#### 1.0.9. Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
+### 1.9. Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
 
 ```assembly
 MOV R0, ##20H  ; Load starting address into a register (R0 in this case)
@@ -367,7 +376,7 @@ CJNE R0, ##30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump 
 * **Loop Termination:** The CJNE instruction ensures the loop runs until memory location 2FH is filled. 
 
 
-#### 1.0.10. Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
+### 1.10. Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
 
 ```assembly
 ORG 0000H  ; Set origin of the program
@@ -412,7 +421,7 @@ END            ; End of program
 * **MOVC vs. MOVX:** `MOVC` is used to read from code memory (usually within the 8051), while `MOVX` is used for external data memory.
 
 
-#### 1.0.11. Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
+### 1.11. Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
 
 **Circuit Diagram**
 
@@ -478,7 +487,7 @@ RET
 * **Delay Adjustment:** Modify values in the DELAY subroutine for your desired LED flashing speed.
 
 
-#### 1.0.12. Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
+### 1.12. Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
 
 We'll use a combination of bit-shifting and masking operations:
 
@@ -512,7 +521,7 @@ SHR A         ; Shift right by 4 positions (move upper nibble to lower)
 * **R4:**  Contains 00000001 (1)
 
 
-#### 1.0.13. Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
+### 1.13. Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
 
 ```assembly
 ORG 0000H       ; Set the program's starting address
@@ -545,7 +554,7 @@ END              ; End of program
 * **DJNZ Instruction:** The 'Decrement and Jump if Not Zero' instruction creates the loop.
 
 
-#### 1.0.14. Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
+### 1.14. Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
 
 ```assembly
 PUSH R1  ; Push the contents of R1 onto the stack
@@ -570,7 +579,7 @@ After executing this code, the values in R1 and R2 will have been effectively sw
 The stack in the 8051 microcontroller operates in a LIFO (Last In, First Out) manner. This means the last value pushed onto the stack will be the first value popped off. 
 
 
-#### 1.0.15. Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
+### 1.15. Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -606,7 +615,7 @@ END            ; End of program
 8. **DJNZ R1, COPY_LOOP:** Decrements the counter in R1 and jumps back to the `COPY_LOOP` label if the counter is not zero. The loop continues until the counter reaches zero.
 
 
-#### 1.0.16. Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
+### 1.16. Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
 
 **Circuit Diagram**
 
@@ -659,7 +668,7 @@ END           ; End of program
 * **LED Considerations:** Ensure Port P2 can handle the current requirements of your LEDs.
 
 
-#### 1.0.17. Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
+### 1.17. Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -697,7 +706,7 @@ END               ; End of program
 
 **At the end of this program, the largest number will be stored in internal RAM location 20H.**
 
-#### 1.0.18. Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
+### 1.18. Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
 
 ```assembly
 ORG 0000H ; Set the starting address of the program
@@ -732,7 +741,7 @@ END                ; End of program
 * **Overflow Handling:**  This code correctly handles the potential overflow when adding 8-bit numbers.
 
 
-#### 1.0.19. Write an ALP to exchange the content of A and B (3)
+### 1.19. Write an ALP to exchange the content of A and B (3)
 
 **Method 1: Using a Temporary Register (e.g., R0)**
 
@@ -763,7 +772,7 @@ XOR A, B    ; XOR A and B again (result in original value of A, now in B)
 * **Method 3:**  This method uses the XOR (Exclusive OR) operation, which has the interesting property that when you XOR a value with itself, the result is zero. This allows for a clever exchange mechanism.
 
 
-#### 1.0.20. Write an ALP to multiply the content of A and B. (3)
+### 1.20. Write an ALP to multiply the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -790,7 +799,7 @@ If A = 5 (00000101) and B = 3 (00000011), then after `MUL AB`:
 * A (Accumulator) would contain 15 (00001111) - the lower byte 
 * B would contain 0 (00000000) - the higher byte (in this case, it's zero)
 
-#### 1.0.21. Write an ALP to divide the content of A and B. (3)
+### 1.21. Write an ALP to divide the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -819,7 +828,7 @@ If A = 10 (00001010) and B = 3 (00000011), then after `DIV AB`:
 * A (Accumulator) would contain 3 (00000011) – the quotient
 * B would contain 1 (00000001) – the remainder 
 
-#### 1.0.22. Write a program to copy block of 8 data starting from location 100h to 200h.
+### 1.22. Write a program to copy block of 8 data starting from location 100h to 200h.
 
 Here's an assembly program for the 8051 microcontroller to copy a block of 8 bytes of data from starting location 100H to destination location 200H:
 
@@ -864,7 +873,7 @@ END
 * This assumes you have external RAM where you are storing the data.
 * You may need to adapt the addresses (100H and 200H) if your data is stored elsewhere.
 
-#### 1.0.23. Write a program to add two bytes of data and store result in R0 register.
+### 1.23. Write a program to add two bytes of data and store result in R0 register.
 
 Here's the 8051 assembly code to add two bytes of data and store the result in register R0:
 

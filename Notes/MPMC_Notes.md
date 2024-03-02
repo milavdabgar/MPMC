@@ -1,5 +1,3 @@
-[TOC]
-
 - [1. Unit I: Introduction to Microprocessor](#1-unit-i-introduction-to-microprocessor)
   - [1.1. Definition and History of Microprocessors](#11-definition-and-history-of-microprocessors)
   - [1.2. Basic Components of a Digital Computer](#12-basic-components-of-a-digital-computer)
