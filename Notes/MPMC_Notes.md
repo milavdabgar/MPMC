@@ -1,138 +1,16 @@
-- [1. Unit I: Introduction to Microprocessor](#1-unit-i-introduction-to-microprocessor)
-  - [1.1. Definition and History of Microprocessors](#11-definition-and-history-of-microprocessors)
-  - [1.2. Basic Components of a Digital Computer](#12-basic-components-of-a-digital-computer)
-  - [1.3. Basic Components of a Microprocessor](#13-basic-components-of-a-microprocessor)
-  - [1.4. Architectures](#14-architectures)
-    - [1.4.1. Von Neumann Architecture](#141-von-neumann-architecture)
-    - [1.4.2. Harvard Architecture](#142-harvard-architecture)
-    - [1.4.3. Von Neumann vs Harvard Architecture](#143-von-neumann-vs-harvard-architecture)
-  - [1.5. Instruction Formats \& Related Terms](#15-instruction-formats--related-terms)
-    - [1.5.1. Instruction Format](#151-instruction-format)
-      - [1.5.1.1. Opcode (Operation Code)](#1511-opcode-operation-code)
-      - [1.5.1.2. Operand](#1512-operand)
-      - [1.5.1.3. Example](#1513-example)
-    - [1.5.2. Instruction Cycle](#152-instruction-cycle)
-    - [1.5.3. Machine Cycle](#153-machine-cycle)
-    - [1.5.4. T-State (Clock Cycle)](#154-t-state-clock-cycle)
-  - [1.6. RISC vs. CISC](#16-risc-vs-cisc)
-- [2. Unit II: Working of 8085 Microprocessor](#2-unit-ii-working-of-8085-microprocessor)
-  - [2.1. Pin Diagram of 8085](#21-pin-diagram-of-8085)
-    - [2.1.1. Power Supply, Clock \& Reset Pins](#211-power-supply-clock--reset-pins)
-    - [2.1.2. Control and Status Signal Pins](#212-control-and-status-signal-pins)
-      - [2.1.2.1. Role of ALE signal in Demultiplexing](#2121-role-of-ale-signal-in-demultiplexing)
-    - [2.1.3. Interrupt Pins](#213-interrupt-pins)
-    - [2.1.4. Serial Communication Pins](#214-serial-communication-pins)
-    - [2.1.5. DMA Pins](#215-dma-pins)
-  - [2.2. Block Diagram of 8085](#22-block-diagram-of-8085)
-    - [2.2.1. Arithmetic \& Logic Unit (ALU) and Timing \& Control Unit (CU)](#221-arithmetic--logic-unit-alu-and-timing--control-unit-cu)
-    - [2.2.2. Registers](#222-registers)
-    - [2.2.3. Instruction Register, Instruction Decoder, and Machine Cycle Encoder](#223-instruction-register-instruction-decoder-and-machine-cycle-encoder)
-    - [2.2.4. The Flag Register](#224-the-flag-register)
-    - [2.2.5. Bus Organization](#225-bus-organization)
-  - [2.3. Working of the 8085](#23-working-of-the-8085)
-    - [2.3.1. Memory Interfacing](#231-memory-interfacing)
-    - [2.3.2. Demultiplexing of Lower Order Address Bus \& Data Bus](#232-demultiplexing-of-lower-order-address-bus--data-bus)
-    - [2.3.3. Instruction Fetching, Decoding and Execution](#233-instruction-fetching-decoding-and-execution)
-      - [2.3.3.1. Instruction Fetching](#2331-instruction-fetching)
-      - [2.3.3.2. Instruction Decoding](#2332-instruction-decoding)
-      - [2.3.3.3. Instruction Execution](#2333-instruction-execution)
-      - [2.3.3.4. Example: ADD B Instruction](#2334-example-add-b-instruction)
-  - [2.4. Microprocessor vs. Microcontroller](#24-microprocessor-vs-microcontroller)
-- [3. Unit III: Microcontroller Architecture](#3-unit-iii-microcontroller-architecture)
-  - [3.1. General Block Diagram of a Microcontroller](#31-general-block-diagram-of-a-microcontroller)
-  - [3.2. Pin Diagram of 8051](#32-pin-diagram-of-8051)
-  - [3.3. 8051 Microcontroller Block Diagram](#33-8051-microcontroller-block-diagram)
-    - [3.3.1. ALU (Arithmetic Logic Unit) \& Timing and Control Unit](#331-alu-arithmetic-logic-unit--timing-and-control-unit)
-    - [3.3.2. Instruction Register and Instruction Decoder](#332-instruction-register-and-instruction-decoder)
-    - [3.3.3. Accumulator (A)](#333-accumulator-a)
-    - [3.3.4. Register B](#334-register-b)
-    - [3.3.5. PC (Program Counter)](#335-pc-program-counter)
-    - [3.3.6. SP (Stack Pointer)](#336-sp-stack-pointer)
-    - [3.3.7. DPTR (Data Pointer)](#337-dptr-data-pointer)
-    - [3.3.8. Special Function Registers (SFRs)](#338-special-function-registers-sfrs)
-    - [3.3.9. PSW: Program Status Word (Address: 0D0H, Bit addressable)](#339-psw-program-status-word-address-0d0h-bit-addressable)
-    - [3.3.10. Clock \& Reset Circuit](#3310-clock--reset-circuit)
-    - [3.3.11. I/O Ports](#3311-io-ports)
-      - [3.3.11.1. Port-0 Pin Structure](#33111-port-0-pin-structure)
-      - [3.3.11.2. Port 1 Pin Structure](#33112-port-1-pin-structure)
-      - [3.3.11.3. Port 2 Pin Structure](#33113-port-2-pin-structure)
-      - [3.3.11.4. Port 3 Pin Structure](#33114-port-3-pin-structure)
-  - [3.4. Memory Organization](#34-memory-organization)
-    - [3.4.1. Program Memory (ROM)](#341-program-memory-rom)
-    - [3.4.2. Data Memory (RAM)](#342-data-memory-ram)
-    - [3.4.3. External Memory Interfacing and Decoding Logic](#343-external-memory-interfacing-and-decoding-logic)
-  - [3.5. Stack, Stack Pointer, and Stack Operations](#35-stack-stack-pointer-and-stack-operations)
-  - [3.6. Timers/Counters](#36-timerscounters)
-    - [3.6.1. TCON Register](#361-tcon-register)
-    - [3.6.2. TMOD Register](#362-tmod-register)
-    - [3.6.3. Modes of Operation](#363-modes-of-operation)
-      - [3.6.3.1. Timer Mode 0 (13-bit Timer Mode)](#3631-timer-mode-0-13-bit-timer-mode)
-      - [3.6.3.2. Timer Mode 1 (16-bit Timer Mode)](#3632-timer-mode-1-16-bit-timer-mode)
-      - [3.6.3.3. Timer Mode 2 (8-bit Auto-Reload Timer Mode)](#3633-timer-mode-2-8-bit-auto-reload-timer-mode)
-      - [3.6.3.4. Timer Mode 3 (Split Timer Mode)](#3634-timer-mode-3-split-timer-mode)
-  - [3.7. Serial Communication](#37-serial-communication)
-    - [3.7.1. SCON Register](#371-scon-register)
-    - [3.7.2. Modes](#372-modes)
-      - [3.7.2.1. Mode 0 Serial Communication (Synchronous Shift Register Mode)](#3721-mode-0-serial-communication-synchronous-shift-register-mode)
-      - [3.7.2.2. Mode 1 Serial Communication (10-bit UART Mode)](#3722-mode-1-serial-communication-10-bit-uart-mode)
-      - [3.7.2.3. Mode 2 Serial Communication (11-bit UART Mode)](#3723-mode-2-serial-communication-11-bit-uart-mode)
-      - [3.7.2.4. Mode 3 Serial Communication (9-bit UART Mode)](#3724-mode-3-serial-communication-9-bit-uart-mode)
-    - [3.7.3. PCON Register](#373-pcon-register)
-  - [3.8. Interrupts](#38-interrupts)
-    - [3.8.1. IE Register](#381-ie-register)
-    - [3.8.2. IP Register](#382-ip-register)
-- [4. Unit IV: 8051 Programming](#4-unit-iv-8051-programming)
-  - [4.1. Addressing Modes](#41-addressing-modes)
-    - [4.1.1. Immediate addressing mode](#411-immediate-addressing-mode)
-    - [4.1.2. Register addressing mode](#412-register-addressing-mode)
-    - [4.1.3. Direct addressing mode](#413-direct-addressing-mode)
-    - [4.1.4. Indirect addressing mode](#414-indirect-addressing-mode)
-    - [4.1.5. Indexed addressing mode](#415-indexed-addressing-mode)
-    - [4.1.6. Relative addressing mode](#416-relative-addressing-mode)
-    - [4.1.7. Bit addressing mode](#417-bit-addressing-mode)
-  - [4.2. 8051 Instruction Set](#42-8051-instruction-set)
-    - [4.2.1. Data Transfer Instructions](#421-data-transfer-instructions)
-    - [4.2.2. Arithmetic Instructions](#422-arithmetic-instructions)
-    - [4.2.3. Logical Instructions](#423-logical-instructions)
-    - [4.2.4. Program Branching Instructions](#424-program-branching-instructions)
-    - [4.2.5. Boolean or Bit-manipulation Instructions](#425-boolean-or-bit-manipulation-instructions)
-    - [4.2.6. Machine Control](#426-machine-control)
-  - [4.3. Assembly Language Programming Examples](#43-assembly-language-programming-examples)
-    - [4.3.1. Refer Dedicated Notes for Programming Examples](#431-refer-dedicated-notes-for-programming-examples)
-- [5. Unit V: Interfacing \& Applications of Microcontroller](#5-unit-v-interfacing--applications-of-microcontroller)
-  - [5.1. Interfacing Input Devices or Sensors](#51-interfacing-input-devices-or-sensors)
-    - [5.1.1. Push Button Switches](#511-push-button-switches)
-    - [5.1.2. DIP Switch](#512-dip-switch)
-    - [5.1.3. Keypad Interfacing](#513-keypad-interfacing)
-    - [5.1.4. Potentiometer Interfacing](#514-potentiometer-interfacing)
-    - [5.1.5. LM35 Temperature Sensor](#515-lm35-temperature-sensor)
-  - [5.2. Interfacing Output Devices or Actuators](#52-interfacing-output-devices-or-actuators)
-    - [5.2.1. LEDs](#521-leds)
-      - [5.2.1.1. Blink 8 LEDs](#5211-blink-8-leds)
-      - [5.2.1.2. LED Fading using PWM](#5212-led-fading-using-pwm)
-    - [5.2.2. 7-Segment Displays](#522-7-segment-displays)
-    - [5.2.3. LCD Interfacing](#523-lcd-interfacing)
-    - [5.2.4. Relays](#524-relays)
-    - [5.2.5. DC Motors](#525-dc-motors)
-      - [5.2.5.1. L293D IC](#5251-l293d-ic)
-      - [5.2.5.2. DC Motor Interfacing with 8051](#5252-dc-motor-interfacing-with-8051)
-    - [5.2.6. Stepper Motors](#526-stepper-motors)
-      - [5.2.6.1. Basics of Stepper Motors](#5261-basics-of-stepper-motors)
-      - [5.2.6.2. Stepper Motor Interfacing with 8051](#5262-stepper-motor-interfacing-with-8051)
-  - [5.3. ADC (Analog-to-Digital Converter)](#53-adc-analog-to-digital-converter)
-    - [5.3.1. ADC0804 Interfacing](#531-adc0804-interfacing)
-  - [5.4. DAC (Digital-to-Analog Converter)](#54-dac-digital-to-analog-converter)
-    - [5.4.1. DAC0808 Interfacing](#541-dac0808-interfacing)
-    - [5.4.2. Generate Ramp Signal using DAC](#542-generate-ramp-signal-using-dac)
-    - [5.4.3. Generate Triangular wave using DAC](#543-generate-triangular-wave-using-dac)
-  - [5.5. Real-World Applications](#55-real-world-applications)
-    - [5.5.1. Temperature control system using an LM35 sensor](#551-temperature-control-system-using-an-lm35-sensor)
-    - [5.5.2. GSM based Security System](#552-gsm-based-security-system)
-    - [5.5.3. RPM meter](#553-rpm-meter)
+---
+title: "MPMC Notes"
+author: Milav Dabgar
+geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+header-includes:
+  - \usepackage[utf8]{inputenc}
+  - \usepackage{listings}
+  - \lstset{basicstyle=\ttfamily, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+---
 
-# 1. Unit I: Introduction to Microprocessor
+# Unit I: Introduction to Microprocessor
 
-## 1.1. Definition and History of Microprocessors
+## Definition and History of Microprocessors
 
 **Definition of a Microprocessor**
 
@@ -174,7 +52,7 @@ The evolution of microprocessors is a fascinating story of technological advance
 - **2000s:** Introduction of multi-core processors
 - **Present:** Continued focus on performance, power efficiency, and specialized microprocessors for tasks like AI and machine learning.
 
-## 1.2. Basic Components of a Digital Computer
+## Basic Components of a Digital Computer
 
 ![](../assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
 
@@ -221,7 +99,7 @@ A digital computer is a versatile device capable of performing calculations and 
    - Results might be stored back into memory (RAM or secondary storage).
 4. **Output:** The processed results are presented to the user through an output device, such as a monitor or printer.
 
-## 1.3. Basic Components of a Microprocessor
+## Basic Components of a Microprocessor
 
 **CPU (Central Processing Unit)**
 
@@ -276,9 +154,9 @@ A digital computer is a versatile device capable of performing calculations and 
    - Data may be moved between memory, the ALU, and internal registers (tiny, super-fast memory within the CPU).
 4. **Store:** Results might be written back to memory or sent to an output device.
 
-## 1.4. Architectures
+## Architectures
 
-### 1.4.1. Von Neumann Architecture
+### Von Neumann Architecture
 
 - **Key Features:**
   - **Single Unified Memory:** Both instructions and data reside in the same memory space.
@@ -296,7 +174,7 @@ A digital computer is a versatile device capable of performing calculations and 
   - **The von Neumann Bottleneck:** Limited bandwidth due to the shared data and instruction bus, potentially slowing down processing.
   - **Security Concerns:** Less separation between code and data can increase vulnerability to some types of cyber-attacks.
 
-### 1.4.2. Harvard Architecture
+### Harvard Architecture
 
 - **Key Features:**
   - **Separate Memories:** Distinct memory units for instructions and data.
@@ -315,7 +193,7 @@ A digital computer is a versatile device capable of performing calculations and 
   - **Increased Complexity:** More complex to design due to additional memory units and buses.
   - **Less Flexible for Self-Modifying Code:** Separating code and data makes it more difficult for programs to modify their instructions on the fly.
 
-### 1.4.3. Von Neumann vs Harvard Architecture
+### Von Neumann vs Harvard Architecture
 
 **Similarities**
 
@@ -336,17 +214,17 @@ A digital computer is a versatile device capable of performing calculations and 
 | Applications           | General-purpose computers, laptops, servers.                                                                                                                                           | Embedded systems, microcontrollers, digital signal processors (DSPs).                                                                                                                          |
 | Diagram                | [![Harvard architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Harvard-architecture.jpg) | [![Von Neumann architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Von-Neumann-architecture.jpg) |
 
-## 1.5. Instruction Formats & Related Terms
+## Instruction Formats & Related Terms
 
-### 1.5.1. Instruction Format
+### Instruction Format
 
 A microprocessor instruction is a fundamental command encoded in binary that tells the microprocessor to perform a specific operation. Instructions generally have two core parts:
 
-#### 1.5.1.1. Opcode (Operation Code)
+#### Opcode (Operation Code)
 
 Specifies the operation the microprocessor should perform (e.g., add, subtract, move data, compare). The opcode is a unique binary pattern assigned to a particular action.
 
-#### 1.5.1.2. Operand
+#### Operand
 
 Data the operation acts upon. An operand could be:
 
@@ -354,7 +232,7 @@ Data the operation acts upon. An operand could be:
 - **Register:** A small, fast memory location inside the processor.
 - **Memory Address:** A location in the main memory.
 
-#### 1.5.1.3. Example
+#### Example
 
 Consider a simple 'ADD' instruction in a hypothetical microprocessor:
 
@@ -367,7 +245,7 @@ ADD  R1,  #5
   - 'R1' is a register, indicating one value for the addition is stored in register R1.
   - '#5' is an immediate value, specifying the second value for the addition.
 
-### 1.5.2. Instruction Cycle
+### Instruction Cycle
 
 The instruction cycle is the complete sequence of steps a microprocessor takes to process a single instruction. It involves:
 
@@ -383,7 +261,7 @@ The instruction cycle is the complete sequence of steps a microprocessor takes t
    - Performing calculations or logical operations in the ALU.
    - Writing results back to memory or registers.
 
-### 1.5.3. Machine Cycle
+### Machine Cycle
 
 A machine cycle represents a single, indivisible action performed by the microprocessor necessary to carry out part of an instruction's operation. Some examples of machine cycles include:
 
@@ -394,7 +272,7 @@ A machine cycle represents a single, indivisible action performed by the micropr
 
 An instruction cycle often comprises multiple machine cycles.
 
-### 1.5.4. T-State (Clock Cycle)
+### T-State (Clock Cycle)
 
 A T-state is the fundamental unit of time in a microprocessor, measured by a single period of the processor's internal clock. Each machine cycle typically takes one or more T-states. Faster clocks mean more T-states per second, facilitating faster processing.
 
@@ -407,7 +285,7 @@ A T-state is the fundamental unit of time in a microprocessor, measured by a sin
 
 Instructions in the 8085 microprocessor can be 1, 2, or 3 bytes long. The structure varies depending on the specific instruction and the addressing modes used.
 
-## 1.6. RISC vs. CISC
+## RISC vs. CISC
 
 | Feature          | RISC (Reduced Instruction Set Computer)                                                                          | CISC (Complex Instruction Set Computer)                                                                            |
 | ---------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
@@ -425,11 +303,11 @@ Instructions in the 8085 microprocessor can be 1, 2, or 3 bytes long. The struct
 | Compiler         | Burden placed on the compiler to generate efficient code.                                                        | Can hide hardware complexity, simplifying software development.                                                    |
 | Applications     | High-performance computing, smartphones, embedded systems, devices where speed and power efficiency are crucial. | Legacy systems, applications prioritizing code density (smaller program size).                                     |
 
-# 2. Unit II: Working of 8085 Microprocessor
+# Unit II: Working of 8085 Microprocessor
 
-## 2.1. Pin Diagram of 8085
+## Pin Diagram of 8085
 
-![Image of a standard 8085 microprocessor pin diagram](https://usemynotes.com/wp-content/uploads/2022/10/8085-pin-diagram.jpg)
+![Image of a standard 8085 microprocessor pin diagram](../assets/imgs/8085-pin-diagram.png)
 
 **Explanation of Pin Groups**
 
@@ -476,7 +354,7 @@ Instructions in the 8085 microprocessor can be 1, 2, or 3 bytes long. The struct
    - **HOLD:** Input from a DMA device to request control of buses.
    - **HLDA:** Acknowledge signal, indicating the 8085 has relinquished control of buses.
 
-### 2.1.1. Power Supply, Clock & Reset Pins
+### Power Supply, Clock & Reset Pins
 
 Let's delve into the power supply, clock, and reset aspects of the 8085 microprocessor, along with a discussion on common 8085 modules:
 
@@ -500,7 +378,7 @@ Let's delve into the power supply, clock, and reset aspects of the 8085 micropro
   - Registers are cleared.
 - **RESET OUT:** This active-high output signal can be used to reset other devices in the system during a microprocessor reset.
 
-### 2.1.2. Control and Status Signal Pins
+### Control and Status Signal Pins
 
 **Control Signals**
 
@@ -554,7 +432,7 @@ A simplified interaction using these signals would look like this:
    - **Write:** The 8085 asserts the WR line (sets it low). Data on the data bus is written to the addressed location.
 4. **Status:** The 8085 updates S0 and S1 to indicate the type of operation that was just performed.
 
-#### 2.1.2.1. Role of ALE signal in Demultiplexing
+#### Role of ALE signal in Demultiplexing
 
 **What is the ALE Signal?**
 
@@ -597,7 +475,7 @@ AD0-AD7  |Addr |_______| Data |________
 - The ALE signal is crucial for the 8085 to correctly interface with memory and I/O devices.
 - The external latch holds the lower order address bits, freeing the 8085 to continue its fetch or write operation.
 
-### 2.1.3. Interrupt Pins
+### Interrupt Pins
 
 **What are Interrupts?**
 
@@ -641,7 +519,7 @@ Here's a general outline of how the 8085 handles interrupts:
 - **Interrupt Priority:** If multiple interrupts occur simultaneously, they are handled according to fixed priority (TRAP has the highest priority).
 - **ISR Placement:** You must carefully place the ISRs in memory, especially for vectored interrupts.
 
-### 2.1.4. Serial Communication Pins
+### Serial Communication Pins
 
 The 8085 microprocessor doesn't have a dedicated built-in UART for serial communication. However, its software can be used to implement serial communication through its regular input/output pins. Let's explore this in detail:
 
@@ -696,7 +574,7 @@ A common use case is to implement a simple serial communication program to send 
 - **Speed:** Software-based serial communication on the 8085 is relatively slow and limited by your timing precision.
 - **CPU Overhead:** Handling serial communication through software uses up a significant amount of the 8085's processing time.
 
-### 2.1.5. DMA Pins
+### DMA Pins
 
 The 8085 microprocessor has the HOLD and HLDA pins, and these signals are essential for facilitating a limited form of DMA-like behavior. Here's how it works:
 
@@ -732,9 +610,9 @@ Even with its limitations, this technique can be useful for devices that need to
 
 Imagine an external device that needs to quickly transfer a block of data into the 8085's memory. Using the HOLD/HLDA mechanism, this device can efficiently transfer the data without the CPU needing to actively read in each individual byte.
 
-## 2.2. Block Diagram of 8085
+## Block Diagram of 8085
 
-![Image of a standard 8085 microprocessor block diagram](https://www.electronicsengineering.nbcafe.in/wp-content/uploads/2017/02/8085_architeccher.png)
+![Image of a standard 8085 microprocessor block diagram](../assets/imgs/8085_architeccher.png)
 
 **Key Components and their Functions**
 
@@ -771,7 +649,7 @@ Imagine an external device that needs to quickly transfer a block of data into t
 3. **Execute:** The Control Unit generates signals to coordinate the ALU, registers, and other components as they perform the necessary operations.
 4. **Repeat:** The process continues, fetching and executing instructions sequentially.
 
-### 2.2.1. Arithmetic & Logic Unit (ALU) and Timing & Control Unit (CU)
+### Arithmetic & Logic Unit (ALU) and Timing & Control Unit (CU)
 
 **Arithmetic and Logic Unit (ALU)**
 
@@ -814,7 +692,7 @@ Imagine an external device that needs to quickly transfer a block of data into t
 
 The Timing and Control Unit is the mastermind behind the entire operation of the 8085. It issues control signals that direct the ALU to perform specific operations at the appropriate time during instruction execution. The ALU executes the operations, and its resulting flags provide information to the Timing and Control Unit, influencing the flow and decision-making during instruction processing.
 
-### 2.2.2. Registers
+### Registers
 
 **1. Accumulator (A)**
 
@@ -854,7 +732,7 @@ The Timing and Control Unit is the mastermind behind the entire operation of the
 - **Limited Registers:** The 8085 has a limited set of registers, so programmers need to manage register use efficiently.
 - **Special Roles:** Registers like the Accumulator, Stack Pointer, and Program Counter have very specific roles, while the other general-purpose registers provide more flexibility.
 
-### 2.2.3. Instruction Register, Instruction Decoder, and Machine Cycle Encoder
+### Instruction Register, Instruction Decoder, and Machine Cycle Encoder
 
 **1. Instruction Register (IR)**
 
@@ -886,7 +764,7 @@ The Timing and Control Unit is the mastermind behind the entire operation of the
 2. **Decode:** The Instruction Decoder analyzes the opcode, figuring out what operation needs to be performed and any data locations involved.
 3. **Execute:** The Machine Cycle Encoder generates the necessary sequence of control signals to carry out the instruction, potentially over multiple machine cycles. These signals direct the actions of the 8085's internal components.
 
-### 2.2.4. The Flag Register
+### The Flag Register
 
 The Flag register in the 8085 is an 8-bit register, with only 5 bits actively used as flags. These flags act as individual flip-flops that are set (1) or reset (0) to reflect specific conditions arising from arithmetic, logical, and other operations performed by the ALU (Arithmetic and Logic Unit).
 
@@ -929,7 +807,7 @@ SUB B  ; Subtract the value in register B from the accumulator
 JZ LABEL  ; If the result is zero, jump to the code section marked as LABEL
 ```
 
-### 2.2.5. Bus Organization
+### Bus Organization
 
 A bus, in a microprocessor system, is a collection of signal lines used to transfer data between the CPU and other components (memory, I/O devices). The 8085 microprocessor has a well-defined bus organization consisting of three main buses:
 
@@ -981,9 +859,9 @@ A bus, in a microprocessor system, is a collection of signal lines used to trans
 - **Multiplexing:** The 8085 multiplexes the lower 8-bits of the address bus (AD0-AD7) with the data bus (D0-D7) to reduce pin count. This means the same set of lines carries both address bits (at the beginning of a cycle) and data.
 - **Interfacing:** The bus organization dictates how you connect and control memory chips and I/O devices within an 8085-based system.
 
-## 2.3. Working of the 8085
+## Working of the 8085
 
-### 2.3.1. Memory Interfacing
+### Memory Interfacing
 
 **Key Concepts**
 
@@ -1024,7 +902,7 @@ A bus, in a microprocessor system, is a collection of signal lines used to trans
 
 - **Multiplexing:** The lower 8-bits of the address bus (A0-A7) are multiplexed with the data bus (D0-D7). The ALE signal is used to latch the address and demultiplex it.
 
-### 2.3.2. Demultiplexing of Lower Order Address Bus & Data Bus
+### Demultiplexing of Lower Order Address Bus & Data Bus
 
 **Why Demultiplexing is Needed**
 
@@ -1048,14 +926,14 @@ Demultiplexing is the process of separating the address and data information so 
 
 **Diagram**
 
-![Image of a diagram showing the 8085 demultiplexing circuit with an external latch and connections to higher address lines](https://care4you.in/wp-content/uploads/2022/02/de-multiplexing.png)
+![Image of a diagram showing the 8085 demultiplexing circuit with an external latch and connections to higher address lines](../assets/imgs/de-multiplexing.png)
 
 **Key Points**
 
 - Demultiplexing enables the 8085 to interface with memory and I/O devices correctly by separating the address and data functions of the same physical bus lines.
 - The ALE signal plays a crucial role in timing the latching of address information.
 
-### 2.3.3. Instruction Fetching, Decoding and Execution
+### Instruction Fetching, Decoding and Execution
 
 **Instruction Fetching**
 
@@ -1095,7 +973,7 @@ Let's assume the instruction "ADD B" (add the value in register B to the accumul
    - The ALU performs the addition between the accumulator's current value and the value from register B.
    - The result is stored back into the accumulator.
 
-#### 2.3.3.1. Instruction Fetching
+#### Instruction Fetching
 
 1. **Program Counter (PC):** The PC, a 16-bit register, holds the memory address of the next instruction to be fetched.
 2. **Memory Address Register (MAR):** The contents of the PC are copied into the MAR.
@@ -1103,12 +981,12 @@ Let's assume the instruction "ADD B" (add the value in register B to the accumul
 4. **Instruction Register (IR):** The instruction code is transferred from the data bus to the Instruction Register.
 5. **PC Increment:** The PC is incremented to point to the next instruction in memory.
 
-#### 2.3.3.2. Instruction Decoding
+#### Instruction Decoding
 
 1. **Instruction Decoder:** The instruction code in the IR is interpreted by the 8085's instruction decoder circuitry. It identifies the specific operation to be performed (opcode) and the operands involved.
 2. **Control Signals:** The instruction decoder generates appropriate control signals to coordinate the upcoming execution. These signals control the flow of data within the 8085, directing the ALU, registers, and the timing of operations.
 
-#### 2.3.3.3. Instruction Execution
+#### Instruction Execution
 
 The execution phase varies significantly depending on the specific instruction. Here's a general breakdown of the kinds of steps involved:
 
@@ -1122,7 +1000,7 @@ The execution phase varies significantly depending on the specific instruction. 
   - **Memory:** Another memory write operation might be needed.
 - **Update Status Flags:** The ALU sets flags (Zero, Carry, Sign, etc.) to reflect the results of its operations, which can be used for conditional branching later.
 
-#### 2.3.3.4. Example: ADD B Instruction
+#### Example: ADD B Instruction
 
 Let's assume the instruction "ADD B" (add the value in register B to the accumulator) is being executed:
 
@@ -1133,7 +1011,7 @@ Let's assume the instruction "ADD B" (add the value in register B to the accumul
    - The ALU performs the addition between the accumulator's current value and the value from register B.
    - The result is stored back into the accumulator.
 
-## 2.4. Microprocessor vs. Microcontroller
+## Microprocessor vs. Microcontroller
 
 **Core Distinction**
 
@@ -1173,9 +1051,9 @@ Imagine building a custom robot:
 - **Microprocessor:** Need high computational power, flexibility for a variety of tasks, or working with large amounts of data.
 - **Microcontroller:** Self-contained solution, low-power, real-time control, or cost-sensitive applications are priorities.
 
-# 3. Unit III: Microcontroller Architecture
+# Unit III: Microcontroller Architecture
 
-## 3.1. General Block Diagram of a Microcontroller
+## General Block Diagram of a Microcontroller
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_87f3259625e90fef.png)
 
@@ -1228,7 +1106,7 @@ Imagine building a custom robot:
 
 - **Special Function Registers (SFRs):** Registers dedicated to controlling the configuration and operation of the microcontroller's peripherals.
 
-## 3.2. Pin Diagram of 8051
+## Pin Diagram of 8051
 
 The following image shows the 8051 Microcontroller Pin Diagram with respect to a 40 – pin Dual In-line Package (DIP).
 
@@ -1272,7 +1150,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Pin 40 (VCC):** Pin 40 is the power supply pin to which the supply voltage is given (+5V).
 
-## 3.3. 8051 Microcontroller Block Diagram
+## 8051 Microcontroller Block Diagram
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
 
@@ -1330,7 +1208,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 - **Reset:** The RESET input initializes the 8051, setting registers and the Program Counter to their starting states.
 - **Oscillator:** The XTAL1 and XTAL2 inputs connect to the crystal and other components that generate the clock signal for the microcontroller.
 
-### 3.3.1. ALU (Arithmetic Logic Unit) & Timing and Control Unit
+### ALU (Arithmetic Logic Unit) & Timing and Control Unit
 
 **8051 ALU (Arithmetic Logic Unit)**
 
@@ -1374,7 +1252,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 - **Crystal Oscillator's Role:** The Timing and Control Unit relies on a crystal oscillator, generating a steady clock signal. This clock signal determines the fundamental speed at which the microcontroller operates.
 
-### 3.3.2. Instruction Register and Instruction Decoder
+### Instruction Register and Instruction Decoder
 
 **Instruction Register (IR)**
 
@@ -1416,7 +1294,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 4. **Execute:** The microcontroller, directed by the control signals, carries out the steps required by the instruction.
 
-### 3.3.3. Accumulator (A)
+### Accumulator (A)
 
 - **The Workhorse:** The Accumulator is the central hub for most arithmetic, logical, and data transfer operations within the microcontroller. If you think of the microcontroller as a tiny calculator, the Accumulator is where you see the numbers being entered and the results being displayed.
 
@@ -1426,7 +1304,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
   - **Data Movement:** Transfers data to and from internal RAM or external memory.
 - **Special Role in Instructions:** Many instructions in the microcontroller's instruction set implicitly use the Accumulator as either the source of data, the destination for the result, or both.
 
-### 3.3.4. Register B
+### Register B
 
 - **Versatile Assistant:** The B Register serves as a secondary register, often used to temporarily hold values to assist in calculations or data manipulation.
 
@@ -1439,7 +1317,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 - **Size:** Both the Accumulator and B Register are usually 8-bit registers. This means they can each store a single byte of data (a value from 0 to 255).
 - **Not General Purpose:** Unlike general-purpose registers (like R0, R1, etc. in the 8051), the Accumulator and B Register have more defined roles due to their connection to specific instructions.
 
-### 3.3.5. PC (Program Counter)
+### PC (Program Counter)
 
 - **The Program's Navigator:** The Program Counter holds the address of the next instruction to be executed by the microcontroller. It's like the microcontroller's bookmark within the program.
 
@@ -1451,7 +1329,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 - **Size:** The PC is 16 bits wide in the 8051, allowing it to address up to 64KB of program memory.
 
-### 3.3.6. SP (Stack Pointer)
+### SP (Stack Pointer)
 
 - **LIFO Storage:** The Stack Pointer points to the current 'top' of the stack. The stack is a last-in, first-out (LIFO) data structure within the 8051's internal RAM.
 
@@ -1467,7 +1345,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 - **Size:** The SP is 8 bits wide in the 8051.
 
-### 3.3.7. DPTR (Data Pointer)
+### DPTR (Data Pointer)
 
 - **Accessing External Data:** The DPTR is a special 16-bit register used for addressing external memory (data memory outside the 8051's internal space).
 
@@ -1475,7 +1353,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
   - **Indirect Addressing:** The value in DPTR acts as a pointer. Instructions like `MOVX` (move external data) use DPTR to specify the source or destination address in external memory.
   - **Lookup Tables:** DPTR is useful for storing the starting address of tables or data structures located in external memory.
 
-### 3.3.8. Special Function Registers (SFRs)
+### Special Function Registers (SFRs)
 
 **What is an SFR?**
 
@@ -1572,7 +1450,7 @@ Here's a breakdown of the most common 8051 SFRs, along with their roles:
 
 You can interact with SFRs in your programs just like regular memory locations, using assembly language instructions or C extensions (like `sfr`, `sfr16`, and `sbit`). By manipulating the values in SFRs, you effectively configure the operation of the 8051.
 
-### 3.3.9. PSW: Program Status Word (Address: 0D0H, Bit addressable)
+### PSW: Program Status Word (Address: 0D0H, Bit addressable)
 
 | PSW.7 | PSW.6 | PSW.5 | PSW.4 | PSW.3 | PSW.2 | PSW.1 | PSW.0 |
 | ----- | ----- | ----- | ----- | ----- | ----- | ----- | ----- |
@@ -1598,7 +1476,7 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 | 1           | 0          | RB2                    |
 | 1           | 1          | RB3                    |
 
-### 3.3.10. Clock & Reset Circuit
+### Clock & Reset Circuit
 
 **Clock Circuit**
 
@@ -1611,7 +1489,7 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 
 **Diagram**
 
-![clock-circuit](https://www.circuitstoday.com/wp-content/uploads/2011/12/8051-Clock-Circuit.jpg)
+![clock-circuit](../assets/imgs/8051-Clock-Circuit.png)
 
 **Reset Circuit**
 
@@ -1624,7 +1502,7 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 
 **Diagram**
 
-![reset-circuit](https://www.circuitstoday.com/wp-content/uploads/2011/12/8051-reset-circuit.jpg)
+![reset-circuit](../assets/imgs/8051-reset-circuit.png)
 
 **Explanation**
 
@@ -1640,7 +1518,7 @@ The PSW register is a vital SFR (Special Function Register) in the functioning o
 - Simple and inexpensive reset circuits can be designed using just a capacitor and resistor.
 - Supervisory circuits offer improved power monitoring and enhanced reset reliability.
 
-### 3.3.11. I/O Ports
+### I/O Ports
 
 **General I/O Port Features**
 
@@ -1696,7 +1574,7 @@ P1_0 = 1;
 unsigned char input_value = P1_5;
 ```
 
-#### 3.3.11.1. Port-0 Pin Structure
+#### Port-0 Pin Structure
 
 - **Dual Purpose:**
   - **General Purpose I/O:** Can be configured as a standard 8-bit bidirectional input/output port.
@@ -1735,7 +1613,7 @@ unsigned char input_value = P1_5;
 - **Pull-up Resistors:** Port 0 absolutely requires external pull-up resistors when used as general-purpose I/O in situations where you need to output a logic '1'.
 - **Versatility with Tradeoffs:** The dual-functionality of Port 0 offers flexibility, but adds a layer of complexity when interfacing external memory.
 
-#### 3.3.11.2. Port 1 Pin Structure
+#### Port 1 Pin Structure
 
 - **Dedicated I/O:** Port 1 is a simple 8-bit bidirectional I/O port. Its pins do not have any additional alternate functionality like serving as address lines or special control signals.
 
@@ -1772,7 +1650,7 @@ unsigned char input_value = P1_5;
   - Using a different port without built-in pull-ups.
 - **Output Considerations:** Port 1 can drive outputs effectively, but keep in mind that writing a '1' relies on the internal pull-up or an external pull-up to achieve the high state.
 
-#### 3.3.11.3. Port 2 Pin Structure
+#### Port 2 Pin Structure
 
 - **Dual Roles:**
 
@@ -1813,7 +1691,7 @@ unsigned char input_value = P1_5;
 - **Input Considerations:** The same recommendations for Port 1 apply to Port 2. Consider external pull-down resistors or disabling the internal pull-ups if reliable '0' inputs are crucial and your external devices are weak drivers.
 - **External Memory Considerations:** If using external memory, avoid relying on Port 2 for general-purpose inputs.
 
-#### 3.3.11.4. Port 3 Pin Structure
+#### Port 3 Pin Structure
 
 - **Multifunctional:** Port 3, unlike Ports 1 and 2, is the most versatile port on the 8051. Each of its 8 pins (P3.0-P3.7) can serve either as a general-purpose I/O pin or take on a specialized alternate function.
 
@@ -1863,9 +1741,9 @@ unsigned char input_value = P1_5;
 - **Flexibility and Tradeoffs:** Port 3's versatility comes at the cost of reduced I/O capability if many alternate functions are in use.
 - **Configuration:** Careful software configuration is essential to determine whether a Port 3 pin acts as general-purpose I/O or in its alternate function role.
 
-## 3.4. Memory Organization
+## Memory Organization
 
-### 3.4.1. Program Memory (ROM)
+### Program Memory (ROM)
 
 - **Purpose:** The program memory is where the 8051 stores the instructions that make up the program it's executing. Think of it as the microcontroller's 'recipe book' of code.
 - **Types:**
@@ -1891,7 +1769,7 @@ A simplified visual representation of program memory might look like this:
 +--------------------+
 ```
 
-### 3.4.2. Data Memory (RAM)
+### Data Memory (RAM)
 
 - **Purpose:** The data memory acts as the 8051's workspace. It holds temporary variables, intermediate calculations, and other data the program needs while running.
 - **Types**
@@ -1979,7 +1857,7 @@ MOV 35H, A    ; Store the result in general-purpose RAM location 35H
 SETB PSW.2    ; Set bit 2 (Carry flag) in the Program Status Word
 ```
 
-### 3.4.3. External Memory Interfacing and Decoding Logic
+### External Memory Interfacing and Decoding Logic
 
 **External Memory Interfacing in the 8051**
 
@@ -2022,7 +1900,7 @@ The below image shows a simplified block diagram of interfacing 64KB ROM and 64K
 - **Control Signals:** PSEN, RD, and WR signals are shown from the microcontroller.
 - **Data Bus:** Represented by the bidirectional "Data (0-7)" lines.
 
-## 3.5. Stack, Stack Pointer, and Stack Operations
+## Stack, Stack Pointer, and Stack Operations
 
 **What is the Stack?**
 
@@ -2109,7 +1987,7 @@ POP B         ; Pop the top (second) number into register B
 POP A          ; Pop the original (first) number into the accumulator
 ```
 
-## 3.6. Timers/Counters
+## Timers/Counters
 
 8051 Timers/Counters have two primary modes of operation:
 
@@ -2141,7 +2019,7 @@ POP A          ; Pop the original (first) number into the accumulator
 - **Resolution:** Limited by the 8051's clock speed and the timer/counter's 16-bit design. Fine-grained timings and very high-frequency counting may be difficult.
 - **Only Two Timers:** Some complex applications might require more than the two timers the 8051 provides.
 
-### 3.6.1. TCON Register
+### TCON Register
 
 **What is the TCON Register?**
 
@@ -2202,7 +2080,7 @@ The 8 bits of the TCON register are assigned specific functions:
 
 4. **Interrupt Handling (Optional):** If you want an interrupt to be generated when the timer overflows, set the interrupt enable bits in relevant registers and create an interrupt service routine (ISR). The TF0 flag in TCON will be set when an overflow occurs.
 
-### 3.6.2. TMOD Register
+### TMOD Register
 
 **What is the TMOD Register?**
 
@@ -2219,7 +2097,7 @@ The TMOD register has a specific function assigned to each of its 8 bits:
 
 - **Bits 7-4 (Timer 1 Configuration)**
   - **Gate:** Controls Timer 1 gating for external control (described later).
-  - **C/T̄:** Selects Timer vs. Counter mode for Timer 1.
+  - **C/T:** Selects Timer vs. Counter mode for Timer 1.
     - '1' = Counter mode (counts external pulses)
     - '0' = Timer mode (counts internal machine cycles)
   - **M1 M0:** Selects the operating mode of Timer 1 (Modes 0, 1, 2, or 3)
@@ -2277,7 +2155,7 @@ The Gate bit for each timer provides additional control:
    TMOD |= 0x08; // Set the Gate bit for Timer 0
    ```
 
-### 3.6.3. Modes of Operation
+### Modes of Operation
 
 **Mode 0: 13-Bit Timer**
 
@@ -2327,7 +2205,7 @@ Mode selection depends on:
 - **Recurring Intervals:** Auto-reload mode vs. manual restart.
 - **Number of Timers Needed:** Split timer mode provides two independent 8-bit timers if needed within Timer 0.
 
-#### 3.6.3.1. Timer Mode 0 (13-bit Timer Mode)
+#### Timer Mode 0 (13-bit Timer Mode)
 
 - **Split Registers:** In Mode 0, each timer's 16-bit register is effectively split into:
   - **THx (8 bits):** Holds the upper 8 bits of the timer count.
@@ -2337,7 +2215,7 @@ Mode selection depends on:
 
 **Key Points about Mode 0**
 
-- **Timer vs. Counter:** Mode 0 can be used as either a timer (counting internal machine cycles) or as a counter (counting external pulses). This is controlled by the C/T̄ bit in the TMOD register.
+- **Timer vs. Counter:** Mode 0 can be used as either a timer (counting internal machine cycles) or as a counter (counting external pulses). This is controlled by the C/T bit in the TMOD register.
 - **Limited Range:** Due to the 13-bit design, Mode 0 is primarily useful for relatively short delays or event counting where extremely long intervals are not required.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
@@ -2383,10 +2261,10 @@ Assuming you have a 12 MHz crystal oscillator for your 8051 (1 machine cycle = 1
 
 The timer will start counting up from 0x3CAF. After 41808 machine cycles, an overflow will occur, setting TF0 to '1'. Your code detects this and stops the timer. You have now generated your desired 50-millisecond delay.
 
-#### 3.6.3.2. Timer Mode 1 (16-bit Timer Mode)
+#### Timer Mode 1 (16-bit Timer Mode)
 
 - **Full 16-bit Register:** In Mode 1, both THx and TLx registers of a timer act as a single 16-bit register.
-- **Counting:** The 16-bit register is incremented on each timer pulse (either internal machine cycles or external pulses, depending on the C/T̄ bit in TMOD).
+- **Counting:** The 16-bit register is incremented on each timer pulse (either internal machine cycles or external pulses, depending on the C/T bit in TMOD).
 - **Maximum Count:** Timers in Mode 1 can count up to the full 16-bit range, which is 65,536.
 
 ![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
@@ -2436,10 +2314,10 @@ Let's assume a 12 MHz crystal oscillator (1 machine cycle = 1 microsecond):
 
 **Important Notes:**
 
-- The C/T̄ bit in the TMOD register determines whether the timer counts internal machine cycles (timer mode) or external pulses (counter mode).
+- The C/T bit in the TMOD register determines whether the timer counts internal machine cycles (timer mode) or external pulses (counter mode).
 - Mode 1 is the most common mode for timers in 8051 microcontrollers due to its flexibility and larger counting range.
 
-#### 3.6.3.3. Timer Mode 2 (8-bit Auto-Reload Timer Mode)
+#### Timer Mode 2 (8-bit Auto-Reload Timer Mode)
 
 - **Key Feature:** In Mode 2, the TLx register acts as the timer itself, while the THx register holds a reload value.
 - **Auto-Reload Behavior:**
@@ -2499,13 +2377,13 @@ Assumptions:
 - Mode 2 is exclusively a timer mode – it always counts internal machine cycles.
 - You can adjust the duty cycle of the square wave in the example by changing the reload value loaded into TH1.
 
-#### 3.6.3.4. Timer Mode 3 (Split Timer Mode)
+#### Timer Mode 3 (Split Timer Mode)
 
 Mode 3 is a unique mode for Timer 0 and Timer 1 with specific behaviors:
 
 **Timer 0 in Mode 3**
 
-- **TL0 (8-bit Timer/Counter):** Behaves as a standard 8-bit timer or counter, controlled by the C/T̄ bit in TMOD and the TR0 bit in TCON.
+- **TL0 (8-bit Timer/Counter):** Behaves as a standard 8-bit timer or counter, controlled by the C/T bit in TMOD and the TR0 bit in TCON.
 - **TH0 (8-bit Timer):** Acts as an independent timer, usually controlled by the system clock (machine cycles). It is not affected by TR0 in this mode.
 
 **Timer 1 in Mode 3**
@@ -2546,7 +2424,7 @@ Let's assume you want Timer 0 to count external events on pin INT0 and TH0 to ge
 - Mode 3 for Timer 1 is rarely used directly; its primary purpose is to give Timer 0 the extra control features.
 - Timer 0 needs both TR0 = '1' and the external gating signal for it to function when in Mode 3.
 
-## 3.7. Serial Communication
+## Serial Communication
 
 **What is Serial Communication?**
 
@@ -2597,7 +2475,7 @@ Within serial communication, there's an important distinction between asynchrono
 
 **Note:** Other serial protocols exist, such as SPI (Serial Peripheral Interface) and I2C (Inter-Integrated Circuit), each with specific features and applications.
 
-### 3.7.1. SCON Register
+### SCON Register
 
 **What is the SCON Register?**
 
@@ -2678,7 +2556,7 @@ Here's how the SCON register's bits function:
 
 **Note:** To receive data, you'll usually create an interrupt service routine (ISR) that triggers when the RI flag in SCON is set.
 
-### 3.7.2. Modes
+### Modes
 
 **The SCON Register's Role**
 
@@ -2735,7 +2613,7 @@ Let's configure the 8051 for serial communication in Mode 1, a classic UART setu
 - To transmit data, load the byte to be sent into the SBUF (Serial Buffer) register. Hardware handles the rest.
 - Reception often involves setting up interrupts to detect when the RI flag in SCON is set, indicating received data.
 
-#### 3.7.2.1. Mode 0 Serial Communication (Synchronous Shift Register Mode)
+#### Mode 0 Serial Communication (Synchronous Shift Register Mode)
 
 - **Clocking:** In Mode 0, the 8051 generates clock pulses on its TxD (transmit data) pin. These clock pulses synchronize data transmission and reception. The RxD (receive data) pin is used to receive incoming data.
 - **No Start/Stop Bits:** Data is transmitted as a continuous stream of bytes (8 bits) without framing overhead like start and stop bits.
@@ -2780,7 +2658,7 @@ A common use case for Mode 0 is communicating with external shift registers to c
 - For bidirectional communication, you'll need to manage transitions between transmitting and receiving data.
 - Mode 0 is less common in modern applications where UART-based asynchronous communication (Modes 1, 2, and 3) is often preferred for its flexibility.
 
-#### 3.7.2.2. Mode 1 Serial Communication (10-bit UART Mode)
+#### Mode 1 Serial Communication (10-bit UART Mode)
 
 - **Asynchronous:** No shared clock signal between devices. Start and stop bits frame each byte for synchronization.
 - **Framing:**
@@ -2837,7 +2715,7 @@ Assumptions:
 - Mode 1 is the most common UART mode used in 8051 systems due to its flexibility and asynchronous nature.
 - You'll often handle serial communication using interrupts (signaled by TI and RI) to make your code more responsive.
 
-#### 3.7.2.3. Mode 2 Serial Communication (11-bit UART Mode)
+#### Mode 2 Serial Communication (11-bit UART Mode)
 
 - **Asynchronous:** Similar to Mode 1, there's no shared clock signal between devices, and start and stop bits frame each data transmission.
 - **Framing:**
@@ -2903,7 +2781,7 @@ Assumptions:
 - Mode 2 offers flexibility for either parity checking or transmitting 9-bit data.
 - The multiprocessor communication feature is specialized and may not be relevant to most applications.
 
-#### 3.7.2.4. Mode 3 Serial Communication (9-bit UART Mode)
+#### Mode 3 Serial Communication (9-bit UART Mode)
 
 - **Asynchronous:** Similar to Modes 1 and 2: no shared clock signal, start and stop bits for framing.
 - **Framing:**
@@ -2948,7 +2826,7 @@ The transmission process in Mode 3 is very similar to that in Mode 2. Let's modi
 - The primary difference from Mode 2 is ensuring TB8 is cleared; the hardware will automatically force the transmitted 9th bit to '1'.
 - Mode 3 is less commonly used in modern applications compared to the more flexible Mode 1 and Mode 2.
 
-### 3.7.3. PCON Register
+### PCON Register
 
 **What is the PCON Register?**
 
@@ -3011,7 +2889,7 @@ Here's a breakdown of the bits within the PCON register:
 
 **Important Note:** It is crucial to check your specific microcontroller datasheet, as certain manufacturers might have slightly different or additional assignments for the remaining unused bits in the PCON register.
 
-## 3.8. Interrupts
+## Interrupts
 
 **What is an Interrupt?**
 
@@ -3086,7 +2964,7 @@ Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger peri
 
 * **Interrupt Service Routines (ISRs):** ISRs contain the code to handle specific interrupt events. The microcontroller automatically jumps to the corresponding ISR's address in the vector table when an enabled interrupt occurs.
 
-### 3.8.1. IE Register
+### IE Register
 
 **What is the IE Register?**
 
@@ -3166,7 +3044,7 @@ Here's the breakdown of the IE Register's bit functionality:
   - External interrupts may need edge or level triggering configured (ITx bits in TCON).
 - The 8051 has a priority system for multiple simultaneous interrupts. You can control the priority using the IP (Interrupt Priority) register.
 
-### 3.8.2. IP Register
+### IP Register
 
 **What is the IP Register?**
 
@@ -3262,9 +3140,9 @@ Each bit in the IP register is assigned a specific interrupt source, providing t
 | 4            | Timer Interrupt 1    | TF1                  |
 | 5            | Serial interrupt     | (TI/RI)              |
 
-# 4. Unit IV: 8051 Programming
+# Unit IV: 8051 Programming
 
-## 4.1. Addressing Modes
+## Addressing Modes
 
 **What is an Addressing Mode?**
 
@@ -3329,7 +3207,7 @@ An Addressing Mode is a way to locate a target Data, which is also called as Ope
      - **Fine-grained control:** Allows modification or checking of single bits within registers or memory locations.
      - **Efficient for flags and control bits:** Avoids the need to manipulate entire bytes when dealing with single-bit flags.
 
-### 4.1.1. Immediate addressing mode
+### Immediate addressing mode
 
 **Immediate Addressing Mode: What is it?**
 
@@ -3374,7 +3252,7 @@ Immediate addressing is ideal in the following situations:
 - **Initializing variables:** Setting initial values for variables at the start of your program.
 - **Performing simple calculations:** When you need to add or subtract small, fixed values.
 
-### 4.1.2. Register addressing mode
+### Register addressing mode
 
 **Register Addressing Mode: The Basics**
 
@@ -3413,7 +3291,7 @@ Let's see register addressing in action:
 - Register addressing mode is heavily used in 8051 programs because of its speed and efficiency.
 - You can't directly move data between two registers that aren't the Accumulator (A). You'll often see instructions temporarily using the accumulator to facilitate data transfers between registers.
 
-### 4.1.3. Direct addressing mode
+### Direct addressing mode
 
 **Direct Addressing Mode: Core Concept**
 
@@ -3455,7 +3333,7 @@ Let's see register addressing in action:
 - Direct addressing mode does **not** use the "#" symbol to differentiate between immediate data and addresses.
 - SFRs (Special Function Registers) control the 8051's hardware peripherals and are accessed using direct addressing.
 
-### 4.1.4. Indirect addressing mode
+### Indirect addressing mode
 
 **Indirect Addressing Mode: The Basics**
 
@@ -3501,7 +3379,7 @@ Let's see register addressing in action:
 - Indirect addressing gives you much more flexibility for accessing data in different memory locations.
 - Using 'MOVX' is necessary for accessing external memory with indirect addressing.
 
-### 4.1.5. Indexed addressing mode
+### Indexed addressing mode
 
 **Indexed Addressing Mode: Combining Base + Offset**
 
@@ -3545,7 +3423,7 @@ Let's see register addressing in action:
 - Indexed addressing is limited to accessing data within the program memory of the 8051 microcontroller.
 - It cannot be used to modify the program memory itself (ROM is read-only).
 
-### 4.1.6. Relative addressing mode
+### Relative addressing mode
 
 **Relative Addressing Mode: Jumping by Offset**
 
@@ -3578,7 +3456,7 @@ TARGET: INC R5      ; Target location if the jump was taken
 - Relative addressing makes your code more compact, as you don't need full target addresses within the jump instructions.
 - Watch out for jump range limits! It can only jump a limited distance forward or backward.
 
-### 4.1.7. Bit addressing mode
+### Bit addressing mode
 
 **Bit Addressing Mode: Manipulating Individual Bits**
 
@@ -3622,7 +3500,7 @@ TARGET: INC R5      ; Target location if the jump was taken
 - Not all SFRs are bit-addressable. You'll need to consult the 8051 datasheet for details.
 - Remember, bit addresses are different from regular byte addresses.
 
-## 4.2. 8051 Instruction Set
+## 8051 Instruction Set
 
 - The 8051 has a variable-length instruction set. Instructions range from 1 to 3 bytes long.
 - There are 111 core instructions in the 8051.
@@ -3685,7 +3563,7 @@ The following nomenclatures for register, data, address and variables are used w
 - Rel: 2's complement 8-bit offset (one - byte) used for short jump (SJMP) and all conditional jumps.
 - bit: Directly addressed bit in internal RAM or SFR
 
-### 4.2.1. Data Transfer Instructions
+### Data Transfer Instructions
 
 Data transfer instructions move the content of one register to another. The register the content of which is moved remains unchanged. If they have the suffix “X” (MOVX), the data is exchanged with external memory.
 
@@ -3774,7 +3652,7 @@ SWAP:    ; ... (Code to swap values)
 | XCH A,@Ri         | Exchanges the indirect RAM with the accumulator                              | 1        | 3         |
 | XCHD A,@Ri        | Exchanges the low-order nibble indirect RAM with the accumulator             | 1        | 3         |
 
-### 4.2.2. Arithmetic Instructions
+### Arithmetic Instructions
 
 Arithmetic instructions perform several basic operations such as addition, subtraction, division, multiplication etc. After execution, the result is stored in the first operand. For example: ADD A,R1 - The result of addition (A+R1) will be stored in the accumulator.
 
@@ -3839,7 +3717,7 @@ DEC R0        ; Decrement register R0
 | DIV AB        | Divides A by B                                                  | 1        | 5         |
 | DA A          | Decimal adjustment of the accumulator according to BCD code     | 1        | 1         |
 
-### 4.2.3. Logical Instructions
+### Logical Instructions
 
 **What are Logical Instructions?**
 
@@ -3936,7 +3814,7 @@ Each bit of the first operand is compared to the corresponding bit of the second
 | RR A              | Rotates bits in the accumulator right               | 1        | 1         |
 | RRC A             | Rotates bits in the accumulator right through carry | 1        | 1         |
 
-### 4.2.4. Program Branching Instructions
+### Program Branching Instructions
 
 Program Branching instructions, often also called jump instructions, allow you to alter the normal sequential flow of program execution. They cause the Program Counter (PC) to jump to a different memory location, breaking the usual 'execute the next instruction' pattern.
 
@@ -4007,7 +3885,7 @@ LOOP:
 | DJNZ Rx,rel        | Decrements direct byte and jump if not 0. Short jump.                            | 3        | 4         |
 | NOP                | No operation                                                                     | 1        | 1         |
 
-### 4.2.5. Boolean or Bit-manipulation Instructions
+### Boolean or Bit-manipulation Instructions
 
 Similar to logic instructions, bit-oriented instructions perform logic operations. The difference is that these are performed upon single bits.
 
@@ -4072,7 +3950,7 @@ CLR P1.5       ; Turn OFF the output connected to P1.5
 | MOV C,bit    | Moves the direct bit to the carry flag          | 2        | 2         |
 | MOV bit,C    | Moves the carry flag to the direct bit          | 2        | 3         |
 
-### 4.2.6. Machine Control
+### Machine Control
 
 These instructions don't primarily target data manipulation, but instead, they control the processor's behavior.
 
@@ -4139,15 +4017,15 @@ These instructions don't primarily target data manipulation, but instead, they c
 | RIM          | Read Interrupt Mask (specific interrupt status) | 1     | 1      |
 | HLT          | Halt (low-power mode)                           | 1     | 1      |
 
-## 4.3. Assembly Language Programming Examples
+## Assembly Language Programming Examples
 
-### 4.3.1. Refer Dedicated Notes for Programming Examples
+### Refer Dedicated Notes for Programming Examples
 
-# 5. Unit V: Interfacing & Applications of Microcontroller
+# Unit V: Interfacing & Applications of Microcontroller
 
-## 5.1. Interfacing Input Devices or Sensors
+## Interfacing Input Devices or Sensors
 
-### 5.1.1. Push Button Switches
+### Push Button Switches
 
 **Hardware Setup**
 
@@ -4212,7 +4090,7 @@ void main() {
 - **Replace placeholders:** Change '...' in the code blocks with the actual actions you want to perform when the button is pressed or not pressed (like turning an LED on/off, etc.).
 - **Debouncing:** In real-world scenarios, you'll likely need to add debouncing code (software or a small delay circuit) to prevent false readings due to mechanical bouncing of the button contacts.
 
-### 5.1.2. DIP Switch
+### DIP Switch
 
 **Hardware Setup**
 
@@ -4292,7 +4170,7 @@ if (DIP_value & 0x01) { // Check if bit 0 is set
 }
 ```
 
-### 5.1.3. Keypad Interfacing
+### Keypad Interfacing
 
 **Hardware Setup**
 
@@ -4357,7 +4235,7 @@ void main() {
 - **Debouncing:** Implement a delay-based or interrupt-based debouncing mechanism.
 - **Code Completion:** The provided snippets demonstrate scanning. You'll need to add logic to determine the pressed key based on the detected row/column and implement debouncing.
 
-### 5.1.4. Potentiometer Interfacing
+### Potentiometer Interfacing
 
 **Hardware Setup**
 
@@ -4429,7 +4307,7 @@ void main() {
 - **Speed Control:** Control the speed of a motor.
 - **Menu Navigation:** Use it as an analog input for menu selection.
 
-### 5.1.5. LM35 Temperature Sensor
+### LM35 Temperature Sensor
 
 **LM35 Basics**
 
@@ -4510,9 +4388,9 @@ void main() {
 - **Calculation:** In the C code, the calculation assumes a 10-bit ADC and a 5V reference voltage.
 - **Code is Simplified:** This omits error handling and some setup details.
 
-## 5.2. Interfacing Output Devices or Actuators
+## Interfacing Output Devices or Actuators
 
-### 5.2.1. LEDs
+### LEDs
 
 **Hardware Setup**
 
@@ -4591,7 +4469,7 @@ void main() {
 - **Delay:** Adjust delay values to control blink speed.
 - **I/O Configuration:** Ensure the pin connected to the LED is configured as output.
 
-#### 5.2.1.1. Blink 8 LEDs
+#### Blink 8 LEDs
 
 **Hardware Setup**
 
@@ -4651,7 +4529,7 @@ END
 - **LED Polarity:** If your LEDs light up in the opposite manner, reverse the logic (use 00H to turn them on and FFH to turn them off)
 - **Delay Adjustment:** Modify the values in the DELAY subroutine to change the on and off duration.
 
-#### 5.2.1.2. LED Fading using PWM
+#### LED Fading using PWM
 
 **Understanding PWM**
 
@@ -4743,7 +4621,7 @@ void main() {
 }
 ```
 
-### 5.2.2. 7-Segment Displays
+### 7-Segment Displays
 
 **Assumptions**
 
@@ -4810,7 +4688,7 @@ END
 - **Port Output:** Ensure the port you use is configured as output.
 - **Resistors:** Don't forget the current-limiting resistors!
 
-### 5.2.3. LCD Interfacing
+### LCD Interfacing
 
 **Hardware Setup**
 
@@ -4912,7 +4790,7 @@ END ; Add an infinite loop if needed for display to stay
 - **8051 Timing:** You might need short delays within the subroutines to ensure the LCD processes commands correctly.
 - **Subroutine Implementation:** The core logic of sending commands/data to the LCD involves setting the RS/RW lines, placing data on the data port, and pulsing the Enable pin.
 
-### 5.2.4. Relays
+### Relays
 
 **Relays Explained**
 
@@ -4996,9 +4874,9 @@ void main() {
 - **Assembly:** The `SETB` instruction is used to directly set the P1.0 pin high.
 - **C:** The `sbit` directive is used to define a bit-level controllable variable for the relay control pin.
 
-### 5.2.5. DC Motors
+### DC Motors
 
-#### 5.2.5.1. L293D IC
+#### L293D IC
 
 It is a versatile integrated circuit that can be used to drive various types of DC motors and steppers motors.
 
@@ -5034,7 +4912,7 @@ It is a versatile integrated circuit that can be used to drive various types of 
 
 By applying specific high or low logic signals to the IN1 and IN2 pins, you can control the direction and rotation of the connected DC motor. The L293D internally manages the power flow to the motor terminals (OUT1 and OUT2) based on the input signals.
 
-#### 5.2.5.2. DC Motor Interfacing with 8051
+#### DC Motor Interfacing with 8051
 
 **Hardware Connections:**
 
@@ -5115,9 +4993,9 @@ void main() {
    - A simple delay loop is included to control the duration of each direction (forward and reverse).
    - Adjust the delay value (`#100` in assembly, `100` in C) to change the motor speed.
 
-### 5.2.6. Stepper Motors
+### Stepper Motors
 
-#### 5.2.6.1. Basics of Stepper Motors
+#### Basics of Stepper Motors
 
 - **Type of Motor:** Stepper motors are brushless DC motors that convert electrical pulses into precise, discrete rotational movements.
 - **Steps:** Their unique feature is that the shafts rotate in fixed angular increments (steps) rather than continuously. This allows for highly accurate positioning without feedback sensors (open-loop control).
@@ -5202,7 +5080,7 @@ void main() {
 
 3.  **Step Sequencing:** The 8051 generates the correct pulse sequence (wave, full, or half-step) to control the stepping pattern and direction of the motor.
 
-#### 5.2.6.2. Stepper Motor Interfacing with 8051
+#### Stepper Motor Interfacing with 8051
 
 **Hardware Connections:**
 
@@ -5288,7 +5166,7 @@ void main() {
 - The assembly code uses bit manipulation (`RLC`) to rotate the step pattern for the next step.
 - The C code uses an array to store the step pattern and an index to keep track of the current step.
 
-## 5.3. ADC (Analog-to-Digital Converter)
+## ADC (Analog-to-Digital Converter)
 
 - **Purpose:** ADCs are electronic circuits that convert continuous analog voltage signals into discrete digital representations. This is essential for microcontrollers, which primarily work with digital data.
 
@@ -5340,7 +5218,7 @@ void main() {
 4.  **Clocking:** Provide an external clock signal (if no internal clock is used) to drive the conversion process.
 5.  **Read Result:** When the conversion completes, signaled by the INTR pin or by polling, read the 8-bit digital output.
 
-### 5.3.1. ADC0804 Interfacing
+### ADC0804 Interfacing
 
 **Assumptions**
 
@@ -5434,7 +5312,7 @@ void main() {
 - **Timing:** Consider the ADC0804's conversion time and adjust delays or polling accordingly.
 - **Calculation:** Scale the raw ADC value to a meaningful voltage based on your reference voltage.
 
-## 5.4. DAC (Digital-to-Analog Converter)
+## DAC (Digital-to-Analog Converter)
 
 - **Purpose:** DACs are electronic circuits that do the opposite of ADCs – they convert digital codes into corresponding analog voltage levels. This allows microcontrollers to generate smooth analog signals for various applications.
 
@@ -5479,7 +5357,7 @@ void main() {
 3.  **Send Digital Code:** Write the 8-bit digital code to the DAC's input pins.
 4.  **Output:** The DAC outputs a corresponding analog current at IOUT. Often, this current is converted to an analog voltage by using an external op-amp circuit.
 
-### 5.4.1. DAC0808 Interfacing
+### DAC0808 Interfacing
 
 **Assumptions**
 
@@ -5542,7 +5420,7 @@ void main() {
 - **Settling Time:** Your DAC0808 datasheet will specify the settling time. Consider adding delays if needed to ensure the analog output has stabilized before taking critical measurements.
 - **Op-amp:** If you require a voltage output, design a suitable op-amp circuit around the IOUT pin.
 
-### 5.4.2. Generate Ramp Signal using DAC
+### Generate Ramp Signal using DAC
 
 **Ramp Signal Basics**
 
@@ -5619,7 +5497,7 @@ void main() {
 
 - **DAC Settling Time:** If your DAC has a significant settling time, you might need more precise delays instead of the simple software delay shown here.
 
-### 5.4.3. Generate Triangular wave using DAC
+### Generate Triangular wave using DAC
 
 **Understanding Triangular Waves**
 
@@ -5698,7 +5576,7 @@ void main() {
 - **Delay:** Adjust the delay to change the frequency of the triangular wave.
 - **Oscilloscope:** It's best to visualize the output on an oscilloscope to verify the waveform shape.
 
-## 5.5. Real-World Applications
+## Real-World Applications
 
 Microcontrollers are incredibly versatile and find an astounding range of uses across industries.
 
@@ -5754,7 +5632,7 @@ Here's a breakdown of applications in various fields:
 - **Reliability:** Robust components with long lifespans.
 - **Low Power Consumption:** Ideal for battery-powered applications.
 
-### 5.5.1. Temperature control system using an LM35 sensor
+### Temperature control system using an LM35 sensor
 
 **Core Components**
 
@@ -5807,7 +5685,7 @@ Let's say you want to maintain a room's temperature around 25 °C:
 2.  If the temperature falls below 24 °C, the 8051 activates a heater.
 3.  If the temperature rises above 26 °C, the 8051 activates a fan.
 
-### 5.5.2. GSM based Security System
+### GSM based Security System
 
 **Components:**
 
@@ -5856,7 +5734,7 @@ Let's say you want to maintain a room's temperature around 25 °C:
 5. **Switches:**
    - Provide user input to the microcontroller for actions like arming/disarming the system or controlling lights manually.
 
-### 5.5.3. RPM meter
+### RPM meter
 
 **Core Components**
 
