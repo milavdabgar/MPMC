@@ -1,12 +1,28 @@
 ---
-title: "MPMC Notes"
+title: "MPMC Book"
 author: Milav Dabgar
-geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
 header-includes:
-  - \usepackage[utf8]{inputenc}
+  - \title{MPMC Book}
+  - \author{Milav Dabgar}
+  - \usepackage{fancyhdr}
+  - \pagestyle{fancy}
+  - \fancyhf{}
+  - \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+  - \renewcommand{\footrulewidth}{0.4pt}
+  - \lhead[L]{\small\textbf{\leftmark}}
+  - \rhead{\small\textbf{\thepage}}
+  - \lfoot{\small\textbf{\thetitle}}
+  - \rfoot{\small\textbf{\theauthor}}
+  - \makeatletter
+  - \let\thetitle\@title
+  - \let\theauthor\@author
+  - \makeatother
   - \usepackage{listings}
-  - \lstset{basicstyle=\ttfamily, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+  - \lstset{breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
 ---
+
+/newpage
 
 # Unit I: Introduction to Microprocessor
 
@@ -54,7 +70,7 @@ The evolution of microprocessors is a fascinating story of technological advance
 
 ## Basic Components of a Digital Computer
 
-![](../assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
+![Basic Components of a Digital Computer](../assets/imgs/181001_MCU_Question_Bank_Solved_html_871c3be60335b53b.jpg)
 
 A digital computer is a versatile device capable of performing calculations and logical operations at incredible speeds. To achieve this, a computer relies on several fundamental components working together:
 
@@ -202,17 +218,17 @@ A digital computer is a versatile device capable of performing calculations and 
 
 **Differences Summary Table**
 
-| Feature                | Von Neumann Architecture                                                                                                                                                               | Harvard Architecture                                                                                                                                                                           |
-| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Memory Structure       | Single unified memory for instructions and data                                                                                                                                        | Separate memory spaces for instructions and data                                                                                                                                               |
-| Buses                  | Single bus for instructions and data                                                                                                                                                   | Separate, dedicated buses for instructions and data                                                                                                                                            |
-| Instruction Processing | Sequential                                                                                                                                                                             | Potential for parallel instruction fetch and data access                                                                                                                                       |
-| Performance            | Potential bottleneck due to shared bus                                                                                                                                                 | Faster, eliminates the bottleneck                                                                                                                                                              |
-| Complexity             | Simpler to design and implement                                                                                                                                                        | Increased hardware complexity                                                                                                                                                                  |
-| Flexibility            | Programs can self-modify code                                                                                                                                                          | Less flexible for self-modifying code                                                                                                                                                          |
-| Security               | Less isolation between code and data                                                                                                                                                   | Improved isolation                                                                                                                                                                             |
-| Applications           | General-purpose computers, laptops, servers.                                                                                                                                           | Embedded systems, microcontrollers, digital signal processors (DSPs).                                                                                                                          |
-| Diagram                | [![Harvard architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Harvard-architecture.jpg) | [![Von Neumann architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg)](http://www.polytechnichub.com/wp-content/uploads/2017/04/Von-Neumann-architecture.jpg) |
+| Feature                | Von Neumann Architecture                                                                          | Harvard Architecture                                                                                  |
+| ---------------------- | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- |
+| Memory Structure       | Single unified memory for instructions and data                                                   | Separate memory spaces for instructions and data                                                      |
+| Buses                  | Single bus for instructions and data                                                              | Separate, dedicated buses for instructions and data                                                   |
+| Instruction Processing | Sequential                                                                                        | Potential for parallel instruction fetch and data access                                              |
+| Performance            | Potential bottleneck due to shared bus                                                            | Faster, eliminates the bottleneck                                                                     |
+| Complexity             | Simpler to design and implement                                                                   | Increased hardware complexity                                                                         |
+| Flexibility            | Programs can self-modify code                                                                     | Less flexible for self-modifying code                                                                 |
+| Security               | Less isolation between code and data                                                              | Improved isolation                                                                                    |
+| Applications           | General-purpose computers, laptops, servers.                                                      | Embedded systems, microcontrollers, digital signal processors (DSPs).                                 |
+| Diagram                | ![Harvard architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa3957193cea79df.jpg) | ![Von Neumann architecture](../assets/imgs/181001_MCU_Question_Bank_Solved_html_29b2dc6bc518dc80.jpg) |
 
 ## Instruction Formats & Related Terms
 
@@ -287,27 +303,29 @@ Instructions in the 8085 microprocessor can be 1, 2, or 3 bytes long. The struct
 
 ## RISC vs. CISC
 
-| Feature          | RISC (Reduced Instruction Set Computer)                      | CISC (Complex Instruction Set Computer)                      |
-| ---------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| Instruction Set  | Smaller, simpler instructions. Focus on individual operations. | Larger, more complex instructions capable of multiple operations within a single command. |
-| Addressing Modes | Limited addressing modes.                                    | Extensive addressing modes for flexible data access.         |
-| Execution        | Emphasizes hardware optimization. Instructions often execute in one clock cycle. | Utilizes microcode to implement complex instructions, potentially requiring multiple clock cycles per instruction. |
-| Compiler Design  | Relies on simpler instructions, shifting complexity to the compiler. | Simplifies compiler design by offloading complexity to processor hardware. |
-| Memory Access    | Load/Store architecture: Data must be explicitly moved between registers and memory for operations. | Instructions can operate directly on memory.                 |
-| Pipelining       | Highly efficient pipelining.                                 | Pipelining can be less efficient due to variable-length instructions. |
-| Register Usage   | Large number of general-purpose registers for fast operand access. | Fewer registers, often with specialized purposes.            |
-| Speed            | Simplicity enables faster instruction execution, higher overall throughput. | Compact code due to complex instructions can optimize memory usage. |
-| Power Efficiency | Efficient due to simpler design and execution.               | Reduced instruction count can lower power consumption in some cases. |
-| Design Cost      | Fewer transistors and simpler design can reduce development time and cost. | More transistors and complex design can increase development time and cost. |
-| Code Size        | Simpler instructions may require longer sequences to achieve the same task, increasing program size. | Complex instructions can increase complexity and potential for errors, impacting performance. |
-| Compiler         | Burden placed on the compiler to generate efficient code.    | Can hide hardware complexity, simplifying software development. |
-| Applications     | High-performance computing, smartphones, embedded systems, devices where speed and power efficiency are crucial. | Legacy systems, applications prioritizing code density (smaller program size). |
+| Feature          | RISC (Reduced Instruction Set Computer)                                                                          | CISC (Complex Instruction Set Computer)                                                                            |
+| ---------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Instruction Set  | Smaller, simpler instructions. Focus on individual operations.                                                   | Larger, more complex instructions capable of multiple operations within a single command.                          |
+| Addressing Modes | Limited addressing modes.                                                                                        | Extensive addressing modes for flexible data access.                                                               |
+| Execution        | Emphasizes hardware optimization. Instructions often execute in one clock cycle.                                 | Utilizes microcode to implement complex instructions, potentially requiring multiple clock cycles per instruction. |
+| Compiler Design  | Relies on simpler instructions, shifting complexity to the compiler.                                             | Simplifies compiler design by offloading complexity to processor hardware.                                         |
+| Memory Access    | Load/Store architecture: Data must be explicitly moved between registers and memory for operations.              | Instructions can operate directly on memory.                                                                       |
+| Pipelining       | Highly efficient pipelining.                                                                                     | Pipelining can be less efficient due to variable-length instructions.                                              |
+| Register Usage   | Large number of general-purpose registers for fast operand access.                                               | Fewer registers, often with specialized purposes.                                                                  |
+| Speed            | Simplicity enables faster instruction execution, higher overall throughput.                                      | Compact code due to complex instructions can optimize memory usage.                                                |
+| Power Efficiency | Efficient due to simpler design and execution.                                                                   | Reduced instruction count can lower power consumption in some cases.                                               |
+| Design Cost      | Fewer transistors and simpler design can reduce development time and cost.                                       | More transistors and complex design can increase development time and cost.                                        |
+| Code Size        | Simpler instructions may require longer sequences to achieve the same task, increasing program size.             | Complex instructions can increase complexity and potential for errors, impacting performance.                      |
+| Compiler         | Burden placed on the compiler to generate efficient code.                                                        | Can hide hardware complexity, simplifying software development.                                                    |
+| Applications     | High-performance computing, smartphones, embedded systems, devices where speed and power efficiency are crucial. | Legacy systems, applications prioritizing code density (smaller program size).                                     |
+
+/newpage
 
 # Unit II: Working of 8085 Microprocessor
 
 ## Pin Diagram of 8085
 
-![Image of a standard 8085 microprocessor pin diagram](../assets/imgs/8085-pin-diagram.png)
+![8085 microprocessor pin diagram](../assets/imgs/8085-pin-diagram.png)
 
 **Explanation of Pin Groups**
 
@@ -612,7 +630,7 @@ Imagine an external device that needs to quickly transfer a block of data into t
 
 ## Block Diagram of 8085
 
-![Image of a standard 8085 microprocessor block diagram](../assets/imgs/8085_architeccher.png)
+![Block Diagram of 8085](../assets/imgs/8085_architeccher.png)
 
 **Key Components and their Functions**
 
@@ -876,7 +894,7 @@ A bus, in a microprocessor system, is a collection of signal lines used to trans
   - **RAM (Random Access Memory):** Used for storing variables, temporary data, and the stack, which often starts at the higher end of the address space.
 - **I/O Mapped I/O:** Some address space can be reserved for interfacing with input/output devices.
 
-![Image 8085 Memory Interfacing](../assets/imgs/8085_Memory_Interfacing.png)
+![8085 Memory Interfacing](../assets/imgs/8085_Memory_Interfacing.png)
 
 **Memory Read Cycle**
 
@@ -926,7 +944,7 @@ Demultiplexing is the process of separating the address and data information so 
 
 **Diagram**
 
-![Image of a diagram showing the 8085 demultiplexing circuit with an external latch and connections to higher address lines](../assets/imgs/de-multiplexing.png)
+![Demultiplexing of Lower Order Address Bus & Data Bus](../assets/imgs/de-multiplexing.png)
 
 **Key Points**
 
@@ -1051,11 +1069,13 @@ Imagine building a custom robot:
 - **Microprocessor:** Need high computational power, flexibility for a variety of tasks, or working with large amounts of data.
 - **Microcontroller:** Self-contained solution, low-power, real-time control, or cost-sensitive applications are priorities.
 
+/newpage
+
 # Unit III: Microcontroller Architecture
 
 ## General Block Diagram of a Microcontroller
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_87f3259625e90fef.png)
+![General Block Diagram of a Microcontroller](../assets/imgs/181001_MCU_Question_Bank_Solved_html_87f3259625e90fef.png)
 
 **Understanding the Core Components and Their Interconnections**
 
@@ -1119,7 +1139,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 **Pin 9 (RST):** Pin 9 is the Reset Input Pin. It is an active HIGH Pin i.e. if the RST Pin is HIGH for a minimum of two machine cycles, the microcontroller will be reset. During this time, the oscillator must be running.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_f9cfed602ece3d54.png)
+![Pin Diagram of 8051](../assets/imgs/181001_MCU_Question_Bank_Solved_html_f9cfed602ece3d54.png)
 
 **Pins 10 – 17 (PORT 3):** Pins 10 to 17 form the PORT 3 pins of the 8051 Microcontroller. PORT 3 also acts as a bidirectional Input / Output PORT with internal pull-ups. Additionally, all the PORT 3 Pins have special functions. The following table gives the details of the additional functions of PORT 3 Pins.
 
@@ -1152,7 +1172,7 @@ The following image shows the 8051 Microcontroller Pin Diagram with respect to a
 
 ## 8051 Microcontroller Block Diagram
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
+![8051 Microcontroller Block Diagram](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9273ed43a6a941f5.jpg)
 
 **Central Processing Unit (CPU)**
 
@@ -1585,7 +1605,7 @@ unsigned char input_value = P1_5;
 
 - **Internal Diagram (Simplified):**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3411f9b9256cfcd0.png)
+![Port-0 Pin Structure](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3411f9b9256cfcd0.png)
 
 **Operation**
 
@@ -1621,7 +1641,7 @@ unsigned char input_value = P1_5;
 
 - **Internal Diagram (Simplified):**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1bbcd9539232851b.png)
+![Port 1 Pin Structure](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1bbcd9539232851b.png)
 
 **Operation**
 
@@ -1661,7 +1681,7 @@ unsigned char input_value = P1_5;
 
 - **Internal Diagram (Simplified):**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_ff86744d95f884c6.png)
+![Port 2 Pin Structure](../assets/imgs/181001_MCU_Question_Bank_Solved_html_ff86744d95f884c6.png)
 
 **Operation**
 
@@ -1704,7 +1724,7 @@ unsigned char input_value = P1_5;
 
 - **Internal Diagram (Simplified):**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1523265967e3e07f.png)
+![Port 3 Pin Structure](../assets/imgs/181001_MCU_Question_Bank_Solved_html_1523265967e3e07f.png)
 
 **Alternate Functions of Port 3**
 
@@ -1754,7 +1774,7 @@ unsigned char input_value = P1_5;
 
 **Diagram (Program Memory)**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9e16af640b46000c.jpg)
+![Diagram - Program Memory](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9e16af640b46000c.jpg)
 
 A simplified visual representation of program memory might look like this:
 
@@ -1779,7 +1799,7 @@ A simplified visual representation of program memory might look like this:
 
 **Structure of Internal Data Memory**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
+![Structure of Internal Data Memory](../assets/imgs/181001_MCU_Question_Bank_Solved_html_c061f3a98a4f76b6.png)
 
 Most modern 8051 variants provide 256 bytes of internal RAM, which is organized into the following distinct areas:
 
@@ -1892,7 +1912,7 @@ Imagine the microcontroller wants to read data from byte address 40000 (64KB ROM
 
 The below image shows a simplified block diagram of interfacing 64KB ROM and 64KB RAM with the 8051:
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
+![External Memory Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_80c7f2d8ec8c6f6f.png)
 
 - **Microcontroller:** Represented by the 8051 block.
 - **External Memory:** ROM and RAM blocks labeled as "64K ROM" and "64K RAM".
@@ -1916,7 +1936,7 @@ The below image shows a simplified block diagram of interfacing 64KB ROM and 64K
 - **Initialization:** Upon reset, the SP is usually initialized to 07H within the 8051's internal RAM.
 - **Dynamic:** The SP changes automatically during stack operations (push and pop).
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d922510a8750c6be.jpg)
+![Stack Pointer](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d922510a8750c6be.jpg)
 
 **Stack Operations**
 
@@ -1937,7 +1957,7 @@ PUSH R1
 PUSH R4
 ```
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_354d90835c983729.png)
+![PUSH Instruction](../assets/imgs/181001_MCU_Question_Bank_Solved_html_354d90835c983729.png)
 
 2. **POP Instruction:**
    - **Retrieves Data:** The POP instruction removes a byte of data from the top of the stack.
@@ -1953,7 +1973,7 @@ POP R5 ; POP stack into R5
 POP R2 ; POP stack into R2
 ```
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_94d65ad39a469b39.jpg)
+![POP Instruction](../assets/imgs/181001_MCU_Question_Bank_Solved_html_94d65ad39a469b39.jpg)
 
 **Common Uses of the Stack**
 
@@ -2218,7 +2238,7 @@ Mode selection depends on:
 - **Timer vs. Counter:** Mode 0 can be used as either a timer (counting internal machine cycles) or as a counter (counting external pulses). This is controlled by the C/T bit in the TMOD register.
 - **Limited Range:** Due to the 13-bit design, Mode 0 is primarily useful for relatively short delays or event counting where extremely long intervals are not required.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
+![Timer Mode 0 Logic Diagram](../assets/imgs/181001_MCU_Question_Bank_Solved_html_aa0c251bc1971fd3.png)
 
 **Example: Creating a Delay Using Timer 0 in Mode 0**
 
@@ -2267,7 +2287,7 @@ The timer will start counting up from 0x3CAF. After 41808 machine cycles, an ove
 - **Counting:** The 16-bit register is incremented on each timer pulse (either internal machine cycles or external pulses, depending on the C/T bit in TMOD).
 - **Maximum Count:** Timers in Mode 1 can count up to the full 16-bit range, which is 65,536.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
+![Timer Mode 1 Logic Diagram](../assets/imgs/181001_MCU_Question_Bank_Solved_html_d97c58ff97348292.png)
 
 **Example: Generating a 1-Second Delay with Timer 0 in Mode 1**
 
@@ -2330,7 +2350,7 @@ Let's assume a 12 MHz crystal oscillator (1 machine cycle = 1 microsecond):
 - **Fixed-Period Generation:** Mode 2 is ideal for generating fixed-period delays or timing events without requiring software intervention to reload the timer after each cycle.
 - **Baud Rate Generation:** Mode 2 is often used in serial communication to create a reliable clock for baud rate generation.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_a63407a2fb9d9df6.png)
+![Timer Mode 2 Logic Diagram](../assets/imgs/181001_MCU_Question_Bank_Solved_html_a63407a2fb9d9df6.png)
 
 **Example: Creating a Square Wave with 50% Duty Cycle on Timer 1**
 
@@ -2396,7 +2416,7 @@ Mode 3 is a unique mode for Timer 0 and Timer 1 with specific behaviors:
 1.  **Extra Timer:** Mode 3 gives you an additional 8-bit timer (TH0) if you need more than the standard two timers that the 8051 provides.
 2.  **Gating Timer 0:** It allows you to control the Start/Stop of Timer 0 with an external signal on the INT0 pin, providing more flexible control for timing operations.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9d69089b6ba947bf.png)
+![Timer Mode 3 Logic Diagram](../assets/imgs/181001_MCU_Question_Bank_Solved_html_9d69089b6ba947bf.png)
 
 **Example: Using Timer 0 in Mode 3 as a Gated Timer**
 
@@ -2928,7 +2948,7 @@ Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger peri
   - **Edge-Triggered (IT0/IT1 = 1):** Interrupt occurs on a falling edge (high-to-low transition) of the input signal.
   - **Level-Triggered (IT0/IT1 = 0):** Interrupt occurs and persists as long as the input signal is held low.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
+![Interrupts](../assets/imgs/181001_MCU_Question_Bank_Solved_html_969012cb171d85ed.png)
 
 **Interrupt Process**
 
@@ -3139,6 +3159,8 @@ Each bit in the IP register is assigned a specific interrupt source, providing t
 | 3            | External Interrupt 1 | INT1                 |
 | 4            | Timer Interrupt 1    | TF1                  |
 | 5            | Serial interrupt     | (TI/RI)              |
+
+/newpage
 
 # Unit IV: 8051 Programming
 
@@ -4021,6 +4043,8 @@ These instructions don't primarily target data manipulation, but instead, they c
 
 ### Refer Dedicated Notes for Programming Examples
 
+/newpage
+
 # Unit V: Interfacing & Applications of Microcontroller
 
 ## Interfacing Input Devices or Sensors
@@ -4029,7 +4053,7 @@ These instructions don't primarily target data manipulation, but instead, they c
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_de2ea01722e2ce88.png)
+![Push Button Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_de2ea01722e2ce88.png)
 
 1.  **Connect the Pushbutton:** One pin of the pushbutton is connected to an input port pin on the 8051 (let's say P1.0). The other pin is connected to ground (GND).
 
@@ -4094,7 +4118,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_e23e4e6ed8c25d45.png)
+![DIP Switch Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_e23e4e6ed8c25d45.png)
 
 1. **Connect the DIP Switch:** Connect one side of each switch in the DIP package to separate input pins on the 8051 microcontroller (for example, P1.0 through P1.7 for 8 switches).
 2. **Pull-up/Pull-down Resistors:** Depending on your DIP switch configuration, you'll need one of the following:
@@ -4174,7 +4198,7 @@ if (DIP_value & 0x01) { // Check if bit 0 is set
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_328066646485eb64.png)
+![Keypad Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_328066646485eb64.png)
 
 - **Keypad Connections:**
 
@@ -4317,7 +4341,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_8b3244abea729276.png)
+![LM35 Temperature Sensor Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_8b3244abea729276.png)
 
 1.  **Connect the LM35:**
 
@@ -4394,7 +4418,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_49368ac6f54d1722.png)
+![Interfacing LEDs](../assets/imgs/181001_MCU_Question_Bank_Solved_html_49368ac6f54d1722.png)
 
 1.  **Connect LED:** Connect the longer leg (anode) of the LED to an I/O pin of the 8051 (let's say P1.0) through a current-limiting resistor (around 220 ohms). Connect the shorter leg (cathode) to ground (GND).
 
@@ -4473,7 +4497,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_e163929df693a819.png)
+![Blink 8 LEDs](../assets/imgs/181001_MCU_Question_Bank_Solved_html_e163929df693a819.png)
 
 1. **8 LEDs:** Choose standard LEDs considering the current requirements of the 8051's I/O ports.
 2. **Current-Limiting Resistors:** Calculate the appropriate resistor values for your specific LEDs to prevent damage (search for an online "LED resistor calculator" if needed).
@@ -4625,7 +4649,7 @@ void main() {
 
 **Assumptions**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_10b11f2bcaf55e61.png)
+![7-Segment Displays](../assets/imgs/181001_MCU_Question_Bank_Solved_html_10b11f2bcaf55e61.png)
 
 - **Common Anode Display:** The segments have a common positive connection. We'll control them by sinking current (connecting to ground) through the 8051's pins.
   - Adapt the segment patterns if you have a Common Cathode display.
@@ -4634,7 +4658,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_32bf665d29e7e447.png)
+![7-Segment Displays Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_32bf665d29e7e447.png)
 
 1. **7-Segment Display:** Choose a common anode 7-segment LED display.
 2. **Current-Limiting Resistors:** Calculate and use resistors in series with each segment LED to prevent damage. Search for a "LED resistor calculator" to find the right values.
@@ -4692,7 +4716,7 @@ END
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb8b02fcff93f213.png)
+![LCD Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_cb8b02fcff93f213.png)
 
 - **LCD:** We'll assume a standard 16x2 character LCD module with a common HD44780 compatible controller.
 - **Connections:**
@@ -4798,7 +4822,7 @@ END ; Add an infinite loop if needed for display to stay
 - **Coil and Contacts:** They consist of a coil, an armature (lever), and a set of contacts.
 - **Activation:** When current flows through the coil, it generates a magnetic field that attracts the armature, causing the contacts to switch states (open or closed).
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_71f03f4ccf0de505.png)
+![Relay Pinout](../assets/imgs/181001_MCU_Question_Bank_Solved_html_71f03f4ccf0de505.png)
 
 **Interfacing with 8051**
 
@@ -4812,7 +4836,7 @@ END ; Add an infinite loop if needed for display to stay
    - Connect the relay coil to the collector and emitter of the transistor (or the corresponding pins on the driver IC).
    - Connect the relay's common contact to your desired circuit, and the normally open (NO) or normally closed (NC) contact based on your switching needs.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_62d8cd123ac4b469.png)
+![Relay Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_62d8cd123ac4b469.png)
 
 **Assembly Code Example**
 
@@ -4889,7 +4913,7 @@ It is a versatile integrated circuit that can be used to drive various types of 
 
 **Pin Configuration:**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_975eda0bdb235063.png)
+![L293D IC](../assets/imgs/181001_MCU_Question_Bank_Solved_html_975eda0bdb235063.png)
 
 - **Inputs (2 per channel):**
   - IN1 and IN2: Control the direction of the connected motor (forward/reverse).
@@ -4916,7 +4940,7 @@ By applying specific high or low logic signals to the IN1 and IN2 pins, you can 
 
 **Hardware Connections:**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_caf5d6f29475a454.png)
+![DC Motor Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_caf5d6f29475a454.png)
 
 1. **Connect the L293D motor driver:**
 
@@ -5015,7 +5039,7 @@ void main() {
   - No center taps on coils.
   - Require reversing coil currents to change direction.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3e590d621acc08fa.png)
+![Types of Stepper Motors](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3e590d621acc08fa.png)
 
 **Wiring Arrangements**
 
@@ -5049,7 +5073,7 @@ void main() {
 | 0   | 0   | 1   | 1   |
 | 1   | 0   | 0   | 1   |
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_ebfadda19e8e1674.png)
+![Stepper Motor Drive Modes](../assets/imgs/181001_MCU_Question_Bank_Solved_html_ebfadda19e8e1674.png)
 
 3.  **Half-Step Drive**
     - Alternates between wave drive and full-step drive.
@@ -5084,7 +5108,7 @@ void main() {
 
 **Hardware Connections:**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_2ba010187338c44e.png)
+![Stepper Motor Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_2ba010187338c44e.png)
 
 Here's a breakdown of the connections:
 
@@ -5194,7 +5218,7 @@ void main() {
 
 **Pinout (20-pin DIP package)**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3d8dc52f5e66fee0.png)
+![ADC0804 Pinout](../assets/imgs/181001_MCU_Question_Bank_Solved_html_3d8dc52f5e66fee0.png)
 
 - **Analog Input:**
   - VIN(+) : Positive analog input
@@ -5231,7 +5255,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b1e4e731f7178dfd.png)
+![ADC0804 Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b1e4e731f7178dfd.png)
 
 1.  **Connect ADC0804 and 8051:** Interface the ADC pins to your 8051 microcontroller as described above.
 2.  **Reference Voltage:** Apply an appropriate reference voltage to the ADC's Vref/2 pin. This determines the full-scale input range.
@@ -5371,7 +5395,7 @@ void main() {
 
 **Hardware Setup**
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_145f316714bc984f.png)
+![DAC0808 Interfacing](../assets/imgs/181001_MCU_Question_Bank_Solved_html_145f316714bc984f.png)
 
 1.  **Connect DAC0808 and 8051:** Interface the pins to your 8051 as described above.
 2.  **Reference Current:** Apply a suitable current to Iref. This determines the output voltage range for your application.
@@ -5658,7 +5682,7 @@ Here's a breakdown of applications in various fields:
 
 **Block Diagram**
 
-![Image of Block Diagram of 8051 based Temperature Control](../assets/imgs/181001_MCU_Question_Bank_Solved_html_75b4db4005f407f7.png)
+![Block Diagram of 8051 based Temperature Control](../assets/imgs/181001_MCU_Question_Bank_Solved_html_75b4db4005f407f7.png)
 
 - **LM35 Temperature Sensor** -> **ADC0804/0808** -> **8051 Microcontroller** -> **Output Device (Relay, Fan, Heater)**
 
@@ -5717,7 +5741,7 @@ Let's say you want to maintain a room's temperature around 25 °C:
 6. **Power Supply:**
    - Provides power to all the components of the system.
 
-![img](../assets/imgs/181001_MCU_Question_Bank_Solved_html_eec44dfa48ebc913.png)
+![GSM based Security System](../assets/imgs/181001_MCU_Question_Bank_Solved_html_eec44dfa48ebc913.png)
 
 **Data Flow:**
 
@@ -5763,7 +5787,7 @@ Let's say you want to maintain a room's temperature around 25 °C:
 
 **Block Diagram**
 
-![Image of simple Block Diagram for RPM Meter](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b8fc2fb4587e8a0f.png)
+![Block Diagram of RPM Meter](../assets/imgs/181001_MCU_Question_Bank_Solved_html_b8fc2fb4587e8a0f.png)
 
 **Data Flow**
 
