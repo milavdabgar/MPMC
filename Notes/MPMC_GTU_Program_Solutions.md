@@ -1,13 +1,48 @@
 ---
-title: "MPMC 8051 GTU Program Solutions"
+title: MPMC GTU Paper Programs Solutions
+subtitle: As per Competency-focused Outcome-based Green Curriculum-2021 (COGC-2021)
 author: Milav Dabgar
-geometry: "left=3cm,right=3cm,top=2cm,bottom=2cm"
+documentclass: article
+toc: True
+# toc-depth: 3
+lof: True
+lot: True
+papersize: a4
+geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
+# fontfamily: libertinus
+# fontfamilyoptions:
+#   - osf
+#   - p
 header-includes:
-  - \usepackage{listings}
-  - \lstset{basicstyle=\ttfamily, breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+  - |
+    ```{=latex}
+    % \let\oldsection\section
+    % \renewcommand{\section}[1]{\clearpage\oldsection{#1}}
+    \title{MPMC GTU Paper Programs Solutions}
+    \author{Milav Dabgar}
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+    \renewcommand{\footrulewidth}{0.4pt}
+    \lhead{\small\textbf{\leftmark}}
+    \rhead{\small\textbf{\thepage}}
+    \lfoot{\small\textbf{\thetitle}}
+    \rfoot{\small\textbf{\theauthor}}
+    \makeatletter
+    \let\thetitle\@title
+    \let\theauthor\@author
+    \makeatother
+    \usepackage{listings}
+    \lstset{breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+    ```
 ---
 
-# MPMC 8051 GTU Program Solutions
+# Programs
+
+# Assembly Language Programs
+
+# MPMC GTU Paper Programs Solutions
 
 ## Write a program using MUL instruction to multiply two bytes 05h and 03h. (3)
 
@@ -107,7 +142,7 @@ END          ; End of program
 
 In this case, 09h / 02h = 4 (quotient) with a remainder of 1.
 
-## Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
+# Write a program to divide two numbers stored at 20h and 21h. Store quotient on 40h and reminder at 41h. (4)
 
 ```assembly
 ORG 0000H ; Set the program's starting address
@@ -137,7 +172,7 @@ END           ; End of program
 7. **MOV 40H, A:** Stores the quotient (from A) into memory location 40H.
 8. **MOV 41H, B:** Stores the remainder (from B) into memory location 41H.
 
-## Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
+# Write a program to create square wave of 50 % duty cycle on P1.3 pin using timer. (4)
 
 **Code (Assuming Timer 0, Mode 1):**
 
@@ -198,7 +233,7 @@ SJMP HERE      ; Repeat indefinitely
 - **Output Pin:** Ensure that P1.3 is configured as an output pin.
 - **Desired Period/Frequency:** Adjust the calculation to achieve your specific square wave timing requirements.
 
-## Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
+# Write an ALP to generate square wave on P1.1 using timer0 and mode 1. (4)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -248,7 +283,7 @@ SJMP HERE      ; Loop back to create the square wave
 - **Desired Frequency:** Modify the calculation to get the square wave frequency you need.
 - **Pin Configuration:** Ensure that P1.1 is configured as an output pin.
 
-## Write software delay loop using two registers and explain in brief. (4)
+# Write software delay loop using two registers and explain in brief. (4)
 
 ```assembly
 ORG 0000H
@@ -286,7 +321,7 @@ The nested loops create a series of decrement operations. The combination of ins
 - **Crystal Frequency:** For more accurate delays, you'll need to calibrate the initial values (in R0 and R1) based on your crystal frequency.
 - **Timer Alternatives:** For very precise delays, consider using the 8051's built-in timers instead of software delay loops.
 
-## Write sequence of instructions for masking 4 lower bits of content of R2. (3)
+# Write sequence of instructions for masking 4 lower bits of content of R2. (3)
 
 ```assembly
 MOV A, R2      ; Copy the contents of R2 into the accumulator
@@ -310,7 +345,7 @@ MOV R2, A      ; Move the result back into R2
 - **Hexadecimal Mask:** The value 0F0H (binary: 1111 0000) is used as a mask because it has '1's in the bit positions you want to preserve and '0's in the bit positions you want to clear.
 - **Masking:** Masking is a technique used to isolate or clear specific bits within a byte.
 
-## Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
+# Write sequence of instructions to fill internal memory location 20H to 2FH by data FFH. (3)
 
 ```assembly
 MOV R0, #20H  ; Load starting address into a register (R0 in this case)
@@ -341,7 +376,7 @@ CJNE R0, #30H, FILL_LOOP  ; Compare R0 with the ending address + 1 (30H), jump t
 - **Indirect Addressing:** The `@R0` syntax means that the contents of R0 are used as the memory address.
 - **Loop Termination:** The CJNE instruction ensures the loop runs until memory location 2FH is filled.
 
-## Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
+# Write an ALP to add two 8 bit numbers stored at External memory location 2030h and 2031h. Store result in external memory location 2032h. (4)
 
 ```assembly
 ORG 0000H  ; Set origin of the program
@@ -386,7 +421,7 @@ END            ; End of program
 - **DPTR Setup:** Ensure that your DPTR register is correctly initialized to point to the start of external memory before executing this code.
 - **MOVC vs. MOVX:** `MOVC` is used to read from code memory (usually within the 8051), while `MOVX` is used for external data memory.
 
-## Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
+# Draw circuit diagram for interfacing 8 LEDS on port 1. Write a program to flash LEDS in sequence ( on 1 LED at a time) with suitable time delay. (7)
 
 **Circuit Diagram**
 
@@ -452,7 +487,7 @@ RET
 - **Resistor Calculation:** Calculate the correct resistor value for your LEDs and supply voltage.
 - **Delay Adjustment:** Modify values in the DELAY subroutine for your desired LED flashing speed.
 
-## Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
+# Write a program to separate data 71h stored in accumulator , in two registers R3=07h and R4=01h. (4)
 
 We'll use a combination of bit-shifting and masking operations:
 
@@ -486,7 +521,7 @@ SHR A         ; Shift right by 4 positions (move upper nibble to lower)
 - **R3:** Contains 00000111 (7)
 - **R4:** Contains 00000001 (1)
 
-## Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
+# Write a program to add first 9 numbers ( 1 to 9). Store answer at memory location 77h of RAM. (4)
 
 ```assembly
 ORG 0000H       ; Set the program's starting address
@@ -518,7 +553,7 @@ END              ; End of program
 - **Registers:** We use registers for calculations and as a loop counter.
 - **DJNZ Instruction:** The 'Decrement and Jump if Not Zero' instruction creates the loop.
 
-## Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
+# Write assembly code to exchange data of R1 and R2 using PUSH & POP. (3)
 
 ```assembly
 PUSH R1  ; Push the contents of R1 onto the stack
@@ -542,7 +577,7 @@ After executing this code, the values in R1 and R2 will have been effectively sw
 
 The stack in the 8051 microcontroller operates in a LIFO (Last In, First Out) manner. This means the last value pushed onto the stack will be the first value popped off.
 
-## Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
+# Write assembly code for copying data 99H to RAM memory locations 30H to 50H using counter. (3)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -577,7 +612,7 @@ END            ; End of program
 
 8. **DJNZ R1, COPY_LOOP:** Decrements the counter in R1 and jumps back to the `COPY_LOOP` label if the counter is not zero. The loop continues until the counter reaches zero.
 
-## Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
+# Draw a diagram to connect 8 switches with port P1 and 8 LEDs with port P2 and write a program to show status of switch on LED. (If switch is ON then LED is ON and if switch is OFF, LED is OFF). (7)
 
 **Circuit Diagram**
 
@@ -630,7 +665,7 @@ END           ; End of program
 - **Switch Logic:** Make sure your switch connections result in a logic HIGH when pressed and a logic LOW when released.
 - **LED Considerations:** Ensure Port P2 can handle the current requirements of your LEDs.
 
-## Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
+# Write a program to find largest number from 10 numbers starting at external RAM location 2000h. Store the largest number in internal RAM location 20h. (4)
 
 ```assembly
 ORG 0000H  ; Set the program's starting address
@@ -668,7 +703,7 @@ END               ; End of program
 
 **At the end of this program, the largest number will be stored in internal RAM location 20H.**
 
-## Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
+# Add two nos. given in R0 AND R1. Put the result in external RAM location 1030h (LSB) and 1031h (MSB). (3)
 
 ```assembly
 ORG 0000H ; Set the starting address of the program
@@ -702,7 +737,7 @@ END                ; End of program
 - **DPTR Setup:** Make sure your DPTR is correctly set up to point to the external memory region you want to use.
 - **Overflow Handling:** This code correctly handles the potential overflow when adding 8-bit numbers.
 
-## Write an ALP to exchange the content of A and B (3)
+# Write an ALP to exchange the content of A and B (3)
 
 **Method 1: Using a Temporary Register (e.g., R0)**
 
@@ -732,7 +767,7 @@ XOR A, B    ; XOR A and B again (result in original value of A, now in B)
 - **Method 2:** The `XCH` instruction is specifically designed for exchanging values between the accumulator and another register. It's the most efficient way if your 8051 microcontroller supports it.
 - **Method 3:** This method uses the XOR (Exclusive OR) operation, which has the interesting property that when you XOR a value with itself, the result is zero. This allows for a clever exchange mechanism.
 
-## Write an ALP to multiply the content of A and B. (3)
+# Write an ALP to multiply the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -759,7 +794,7 @@ If A = 5 (00000101) and B = 3 (00000011), then after `MUL AB`:
 - A (Accumulator) would contain 15 (00001111) - the lower byte
 - B would contain 0 (00000000) - the higher byte (in this case, it's zero)
 
-## Write an ALP to divide the content of A and B. (3)
+# Write an ALP to divide the content of A and B. (3)
 
 ```assembly
 ORG 0000H  ; Set program origin
@@ -788,7 +823,7 @@ If A = 10 (00001010) and B = 3 (00000011), then after `DIV AB`:
 - A (Accumulator) would contain 3 (00000011) – the quotient
 - B would contain 1 (00000001) – the remainder
 
-## Write a program to copy block of 8 data starting from location 100h to 200h.
+# Write a program to copy block of 8 data starting from location 100h to 200h.
 
 Here's an assembly program for the 8051 microcontroller to copy a block of 8 bytes of data from starting location 100H to destination location 200H:
 
@@ -835,7 +870,7 @@ END
 - This assumes you have external RAM where you are storing the data.
 - You may need to adapt the addresses (100H and 200H) if your data is stored elsewhere.
 
-## Write a program to add two bytes of data and store result in R0 register.
+# Write a program to add two bytes of data and store result in R0 register.
 
 Here's the 8051 assembly code to add two bytes of data and store the result in register R0:
 

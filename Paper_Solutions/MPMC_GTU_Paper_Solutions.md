@@ -1,37 +1,48 @@
-- [1. Winter 2023 GTU Paper Solution (MPMC)](#1-winter-2023-gtu-paper-solution-mpmc)
-  - [1.1. Q1a: Define Microprocessor.](#11-q1a-define-microprocessor)
-  - [1.2. Q1b: Explain Flag register of 8085 microprocessor.](#12-q1b-explain-flag-register-of-8085-microprocessor)
-  - [1.3. Q1c: Explain format of instruction of 8085 microprocessor with example.](#13-q1c-explain-format-of-instruction-of-8085-microprocessor-with-example)
-  - [1.4. Q1c: Explain function of ALU, Control Unit and CPU of 8085 microprocessor.](#14-q1c-explain-function-of-alu-control-unit-and-cpu-of-8085-microprocessor)
-  - [1.5. Q2a: Explain function of ALE signal with diagram.](#15-q2a-explain-function-of-ale-signal-with-diagram)
-  - [1.6. Q2b: Compare microprocessor and microcontroller](#16-q2b-compare-microprocessor-and-microcontroller)
-  - [1.7. Q2c: Draw \& explain block diagram of 8085 microprocessor.](#17-q2c-draw--explain-block-diagram-of-8085-microprocessor)
-  - [1.8. Q2a: Explain 16 bits registers of 8085 microprocessor.](#18-q2a-explain-16-bits-registers-of-8085-microprocessor)
-  - [1.9. Q2b: Explain de-multiplexing lower order address and data lines with diagram of 8085 microprocessor.](#19-q2b-explain-de-multiplexing-lower-order-address-and-data-lines-with-diagram-of-8085-microprocessor)
-  - [1.10. Q2c: Draw and explain pin diagram of 8085.](#110-q2c-draw-and-explain-pin-diagram-of-8085)
-  - [1.11. Q3a: Draw clock and reset circuit of 8051 microcontroller.](#111-q3a-draw-clock-and-reset-circuit-of-8051-microcontroller)
-  - [1.12. Q3b: Explain internal RAM of 8051.](#112-q3b-explain-internal-ram-of-8051)
-  - [1.13. Q3c: Explain block diagram of 8051.](#113-q3c-explain-block-diagram-of-8051)
-  - [1.14. Q3a: Explain different timer modes of 8051 microcontroller.](#114-q3a-explain-different-timer-modes-of-8051-microcontroller)
-  - [1.15. Q3b: Explain function of DPTR and PC.](#115-q3b-explain-function-of-dptr-and-pc)
-  - [1.16. Q3c: Explain interrupts of 8051 microcontroller.](#116-q3c-explain-interrupts-of-8051-microcontroller)
-  - [1.17. Q4a: Explain data transfer instruction with example for 8051.](#117-q4a-explain-data-transfer-instruction-with-example-for-8051)
-  - [1.18. Q4b: List and explain different addressing modes of 8051 microcontroller.](#118-q4b-list-and-explain-different-addressing-modes-of-8051-microcontroller)
-  - [1.19. Q4c: Write a program to copy block of 8 data starting from location 100h to 200h.](#119-q4c-write-a-program-to-copy-block-of-8-data-starting-from-location-100h-to-200h)
-  - [1.20. Q4a: Write a program to add two bytes of data and store result in R0 register.](#120-q4a-write-a-program-to-add-two-bytes-of-data-and-store-result-in-r0-register)
-  - [1.21. Q4b: Explain indexed addressing mode with example.](#121-q4b-explain-indexed-addressing-mode-with-example)
-  - [1.22. Q4c: Explain stack operation of 8051 microcontroller, PUSH and POP instruction.](#122-q4c-explain-stack-operation-of-8051-microcontroller-push-and-pop-instruction)
-  - [1.23. Q5a: Explain branching instruction with example.](#123-q5a-explain-branching-instruction-with-example)
-  - [1.24. Q5b: Interface 8 leds with 8051 microcontroller and write a program to turn on and off.](#124-q5b-interface-8-leds-with-8051-microcontroller-and-write-a-program-to-turn-on-and-off)
-  - [1.25. Q5c: Interface LCD with 8051 microcontroller and write a program to display “welcome”.](#125-q5c-interface-lcd-with-8051-microcontroller-and-write-a-program-to-display-welcome)
-  - [1.26. Q5a: Explain logical instruction with example.](#126-q5a-explain-logical-instruction-with-example)
-  - [1.27. Q5b: Interface 7 segment with 8051 microcontroller.](#127-q5b-interface-7-segment-with-8051-microcontroller)
-  - [1.28. Q5c: Interface LM 35 with 8051 microcontroller and explain block diagram of temperature controller.](#128-q5c-interface-lm-35-with-8051-microcontroller-and-explain-block-diagram-of-temperature-controller)
+---
+title: MPMC GTU Paper Solutions
+subtitle: As per Competency-focused Outcome-based Green Curriculum-2021 (COGC-2021)
+author: Milav Dabgar
+documentclass: article
+toc: True
+# toc-depth: 3
+lof: True
+lot: True
+papersize: a4
+geometry: "left=2.5cm,right=2.5cm,top=2cm,bottom=2cm"
+# fontfamily: libertinus
+# fontfamilyoptions:
+#   - osf
+#   - p
+header-includes:
+  - |
+    ```{=latex}
+    % \let\oldsection\section
+    % \renewcommand{\section}[1]{\clearpage\oldsection{#1}}
+    \title{MPMC GTU Paper Solutions}
+    \author{Milav Dabgar}
+    \usepackage{fancyhdr}
+    \pagestyle{fancy}
+    \fancyhf{}
+    \renewcommand{\sectionmark}[1]{\markboth{#1}{}}
+    \renewcommand{\footrulewidth}{0.4pt}
+    \lhead{\small\textbf{\leftmark}}
+    \rhead{\small\textbf{\thepage}}
+    \lfoot{\small\textbf{\thetitle}}
+    \rfoot{\small\textbf{\theauthor}}
+    \makeatletter
+    \let\thetitle\@title
+    \let\theauthor\@author
+    \makeatother
+    \usepackage{listings}
+    \lstset{breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}}
+    ```
+---
 
+# MPMC GTU Paper Solutions
 
-# 1. Winter 2023 GTU Paper Solution (MPMC)
+## Winter 2023 GTU Paper Solution (MPMC)
 
-## 1.1. Q1a: Define Microprocessor.
+### Q1a: Define Microprocessor.
 
 **Definition of a Microprocessor**
 
@@ -47,7 +58,7 @@ A microprocessor is a single integrated circuit (IC) that incorporates the core 
         * Control Unit (CU) - Decodes instructions and coordinates the operations of other units
         * Registers - Small, high-speed memory locations for temporary data storage 
 
-## 1.2. Q1b: Explain Flag register of 8085 microprocessor.
+### Q1b: Explain Flag register of 8085 microprocessor.
 
 **The Flag Register**
 
@@ -88,7 +99,7 @@ SUB B  ; Subtract the value in register B from the accumulator
 JZ LABEL  ; If the result is zero, jump to the code section marked as LABEL
 ```
 
-## 1.3. Q1c: Explain format of instruction of 8085 microprocessor with example.
+### Q1c: Explain format of instruction of 8085 microprocessor with example.
 
 **8085 Instruction Formats**
 
@@ -137,7 +148,7 @@ The way operands are specified determines the "addressing mode" of the instructi
 * Opcodes and addressing modes are how the 8085 interprets the bytes that make up an instruction. 
 
 
-## 1.4. Q1c: Explain function of ALU, Control Unit and CPU of 8085 microprocessor.
+### Q1c: Explain function of ALU, Control Unit and CPU of 8085 microprocessor.
 
 **1. ALU (Arithmetic Logic Unit)**
 
@@ -172,7 +183,7 @@ The way operands are specified determines the "addressing mode" of the instructi
 5. The Control Unit directs the processor to fetch the next instruction, continuing the cycle.
 
 
-## 1.5. Q2a: Explain function of ALE signal with diagram.
+### Q2a: Explain function of ALE signal with diagram.
 
 **What is the ALE Signal?**
 
@@ -215,7 +226,7 @@ AD0-AD7  |Addr |_______| Data |________
 * The external latch holds the lower order address bits, freeing the 8085 to continue its fetch or write operation.
 
 
-## 1.6. Q2b: Compare microprocessor and microcontroller
+### Q2b: Compare microprocessor and microcontroller
 
 | Feature | Microprocessor | Microcontroller |
 |---|---|---|
@@ -227,11 +238,11 @@ AD0-AD7  |Addr |_______| Data |________
 | **Applications** | General-purpose computing | Embedded systems, specific tasks |
 | **Examples** | Intel 8085, Intel x86 | Atmel AVR, PIC, ARM Cortex-M |
 
-## 1.7. Q2c: Draw & explain block diagram of 8085 microprocessor.
+### Q2c: Draw & explain block diagram of 8085 microprocessor.
 
 **Block Diagram**
 
-![Image of a standard 8085 microprocessor block diagram](https://www.electronicsengineering.nbcafe.in/wp-content/uploads/2017/02/8085_architeccher.png)
+![Block Diagram of 8085](../assets/imgs/8085_architeccher.png)
 
 **Key Components and their Functions**
 
@@ -268,7 +279,7 @@ AD0-AD7  |Addr |_______| Data |________
 3. **Execute:** The Control Unit generates signals to coordinate the ALU, registers, and other components as they perform the necessary operations.
 4. **Repeat:**  The process continues, fetching and executing instructions sequentially.
 
-## 1.8. Q2a: Explain 16 bits registers of 8085 microprocessor.
+### Q2a: Explain 16 bits registers of 8085 microprocessor.
 
 **16-Bit Registers in the 8085**
 
@@ -297,7 +308,7 @@ The 8085 microprocessor, while primarily an 8-bit processor, features several 16
 
 3. **Data Manipulation:**  Some instructions treat these register pairs as a single unit for performing 16-bit operations (e.g., addition, loading immediate 16-bit values).
 
-## 1.9. Q2b: Explain de-multiplexing lower order address and data lines with diagram of 8085 microprocessor.
+### Q2b: Explain de-multiplexing lower order address and data lines with diagram of 8085 microprocessor.
 
 **Why Demultiplexing is Needed**
 
@@ -321,7 +332,7 @@ Demultiplexing is the process of separating the address and data information so 
 
 **Diagram**
 
-![Image of a diagram showing the 8085 demultiplexing circuit with an external latch and connections to higher address lines](https://care4you.in/wp-content/uploads/2022/02/de-multiplexing.png)
+![Demultiplexing of Lower Order Address Bus & Data Bus](../assets/imgs/de-multiplexing.png)
 
 **Key Points**
 
@@ -329,11 +340,11 @@ Demultiplexing is the process of separating the address and data information so 
 * The ALE signal plays a crucial role in timing the latching of address information.
 
 
-## 1.10. Q2c: Draw and explain pin diagram of 8085.
+### Q2c: Draw and explain pin diagram of 8085.
 
 **Pin Diagram**
 
-![Image of a standard 8085 microprocessor pin diagram](https://usemynotes.com/wp-content/uploads/2022/10/8085-pin-diagram.jpg)
+![8085 microprocessor pin diagram](../assets/imgs/8085-pin-diagram.png)
 
 **Explanation of Pin Groups**
 
@@ -375,7 +386,7 @@ Demultiplexing is the process of separating the address and data information so 
      * **HLDA:** Acknowledge signal, indicating the 8085 has relinquished control of buses.
 
 
-## 1.11. Q3a: Draw clock and reset circuit of 8051 microcontroller.
+### Q3a: Draw clock and reset circuit of 8051 microcontroller.
 
 Absolutely! Let's break down the clock and reset circuit of a typical 8051 microcontroller.
 
@@ -389,7 +400,7 @@ Absolutely! Let's break down the clock and reset circuit of a typical 8051 micro
 
 **Diagram**
 
-![clock-circuit](https://www.circuitstoday.com/wp-content/uploads/2011/12/8051-Clock-Circuit.jpg)
+![clock-circuit](../assets/imgs/8051-Clock-Circuit.png)
 
 **Reset Circuit**
 
@@ -401,7 +412,7 @@ Absolutely! Let's break down the clock and reset circuit of a typical 8051 micro
 
 **Diagram**
 
-![reset-circuit](https://www.circuitstoday.com/wp-content/uploads/2011/12/8051-reset-circuit.jpg)
+![reset-circuit](../assets/imgs/8051-reset-circuit.png)
 
 **Explanation**
 
@@ -418,7 +429,7 @@ Absolutely! Let's break down the clock and reset circuit of a typical 8051 micro
 * Supervisory circuits offer improved power monitoring and enhanced reset reliability.
 
 
-## 1.12. Q3b: Explain internal RAM of 8051.
+### Q3b: Explain internal RAM of 8051.
 
 **Internal RAM Organization**
 
@@ -460,11 +471,11 @@ SETB PSW.2    ; Set bit 2 (Carry flag) in the Program Status Word
 ```
 
 
-## 1.13. Q3c: Explain block diagram of 8051.
+### Q3c: Explain block diagram of 8051.
 
 **Detailed Block Diagram Breakdown**
 
-![Image of a detailed 8051 block diagram, similar to the [invalid URL removed] link, with labels and arrows showing data flow](https://codembedded.files.wordpress.com/2017/03/37899-architecture2bof2b80512bmicrocontroller.png)
+![Simplified 8051 Block Diagram](../assets/imgs/a9f6d83e89bf83f5.jpg)
 
 **Central Processing Unit (CPU)**
 
@@ -513,7 +524,7 @@ SETB PSW.2    ; Set bit 2 (Carry flag) in the Program Status Word
 * **Oscillator:** The XTAL1 and XTAL2 inputs are for connecting the crystal and other components that form the clock circuit for the microcontroller.
 
 
-## 1.14. Q3a: Explain different timer modes of 8051 microcontroller.
+### Q3a: Explain different timer modes of 8051 microcontroller.
 
 **Mode 0: 13-Bit Timer**
 
@@ -564,7 +575,7 @@ Mode selection depends on:
 * **Number of Timers Needed:** Split timer mode provides two independent 8-bit timers if needed within Timer 0.
 
 
-## 1.15. Q3b: Explain function of DPTR and PC.
+### Q3b: Explain function of DPTR and PC.
 
 **DPTR (Data Pointer)**
 
@@ -600,7 +611,7 @@ Mode selection depends on:
 * **PC mostly automatic; DPTR is programmer-controlled:** The PC increments automatically with regular program execution, while the programmer generally controls and sets the value in DPTR.
 
 
-## 1.16. Q3c: Explain interrupts of 8051 microcontroller.
+### Q3c: Explain interrupts of 8051 microcontroller.
 
 **What is an Interrupt?**
 
@@ -645,7 +656,7 @@ Mode selection depends on:
 Imagine an 8051 system monitoring a sensor. A timer interrupt might trigger periodically to read the sensor value, while an external interrupt could signal a critical threshold being exceeded, requiring immediate action.
 
 
-## 1.17. Q4a: Explain data transfer instruction with example for 8051.
+### Q4a: Explain data transfer instruction with example for 8051.
 
 **Data Transfer Instructions in the 8051**
 
@@ -704,7 +715,7 @@ SWAP:    ; ... (Code to swap values)
 ```
 
 
-## 1.18. Q4b: List and explain different addressing modes of 8051 microcontroller.
+### Q4b: List and explain different addressing modes of 8051 microcontroller.
 
 **Key Addressing Modes in the 8051**
 
@@ -745,7 +756,7 @@ SWAP:    ; ... (Code to swap values)
 * Choosing the right addressing mode is a balance between flexibility and efficiency.
 
 
-## 1.19. Q4c: Write a program to copy block of 8 data starting from location 100h to 200h.
+### Q4c: Write a program to copy block of 8 data starting from location 100h to 200h.
 
 Here's an assembly program for the 8051 microcontroller to copy a block of 8 bytes of data from starting location 100H to destination location 200H:
 
@@ -790,7 +801,7 @@ END
 * This assumes you have external RAM where you are storing the data.
 * You may need to adapt the addresses (100H and 200H) if your data is stored elsewhere.
 
-## 1.20. Q4a: Write a program to add two bytes of data and store result in R0 register.
+### Q4a: Write a program to add two bytes of data and store result in R0 register.
 
 Here's the 8051 assembly code to add two bytes of data and store the result in register R0:
 
@@ -825,7 +836,7 @@ END
 * Make sure that the sum of your two data bytes can fit into 8 bits to avoid overflow.
 
 
-## 1.21. Q4b: Explain indexed addressing mode with example.
+### Q4b: Explain indexed addressing mode with example.
 
 **What is Indexed Addressing Mode?**
 
@@ -867,7 +878,7 @@ MOVC A, @A+DPTR   ; Calculate effective address and fetch the data
 * It makes sequentially accessing elements within arrays or tables convenient.
 
 
-## 1.22. Q4c: Explain stack operation of 8051 microcontroller, PUSH and POP instruction.
+### Q4c: Explain stack operation of 8051 microcontroller, PUSH and POP instruction.
 
 **The Stack in the 8051**
 
@@ -927,7 +938,7 @@ POP A          ; Pop the original (first) number into the accumulator
 ```
 
 
-## 1.23. Q5a: Explain branching instruction with example.
+### Q5a: Explain branching instruction with example.
 
 **What are Branching Instructions?**
 
@@ -977,7 +988,7 @@ LOOP:
 * The destination of a jump can be an explicit address (e.g., `LJMP 2050H`) or often a label that the assembler translates to the correct address.
 
 
-## 1.24. Q5b: Interface 8 leds with 8051 microcontroller and write a program to turn on and off.
+### Q5b: Interface 8 leds with 8051 microcontroller and write a program to turn on and off.
 
 **Hardware Setup**
 
@@ -1035,7 +1046,7 @@ END
 * **Delay Adjustment:** Modify the values in the DELAY subroutine to change the on and off duration.
 
 
-## 1.25. Q5c: Interface LCD with 8051 microcontroller and write a program to display “welcome”.
+### Q5c: Interface LCD with 8051 microcontroller and write a program to display “welcome”.
 
 **Hardware Setup**
 
@@ -1136,7 +1147,7 @@ END ; Add an infinite loop if needed for display to stay
 * **Subroutine Implementation:** The core logic of sending commands/data to the LCD involves setting the RS/RW lines, placing data on the data port, and pulsing the Enable pin.
 
 
-## 1.26. Q5a: Explain logical instruction with example.
+### Q5a: Explain logical instruction with example.
 
 **What are Logical Instructions?**
 
@@ -1207,7 +1218,7 @@ Each bit of the first operand is compared to the corresponding bit of the second
 * **Implementing simple cryptographic functions.**
 
 
-## 1.27. Q5b: Interface 7 segment with 8051 microcontroller.
+### Q5b: Interface 7 segment with 8051 microcontroller.
 
 **Assumptions**
 
@@ -1270,7 +1281,7 @@ END
 * **Resistors:** Don't forget the current-limiting resistors!
 
 
-## 1.28. Q5c: Interface LM 35 with 8051 microcontroller and explain block diagram of temperature controller.
+### Q5c: Interface LM 35 with 8051 microcontroller and explain block diagram of temperature controller.
 
 **Interfacing LM35 with 8051**
 
@@ -1304,7 +1315,7 @@ START_CONVERSION:
 
 **Block Diagram: Temperature Controller**
 
-![Image of a basic temperature controller block diagram](https://lh6.googleusercontent.com/yUt2MR0_PnvIw_oy2qVGLzuwVnsLgnaATgMrJf7tOYaLj6Itrbp64SxYtO0T0p4-p9KQ0di7VQo98WW96wcmvksRD2RnwdfNdeqHIFgW9TFJ6tdPb1EXJ6DuRE8wTZjRmvcp06pj)
+![Block Diagram of 8051 based Temperature Control](../assets/imgs/75b4db4005f407f7.png)
 
 * **Temperature Sensor (LM35):**  Measures the ambient temperature and generates an analog voltage proportional to the temperature.
 * **ADC (Analog-to-Digital Converter):** Part of the 8051 microcontroller, it converts the analog voltage from the LM35 into a digital value.
