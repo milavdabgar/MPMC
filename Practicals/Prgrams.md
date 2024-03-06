@@ -1,6 +1,3 @@
-
-
-
 # Programs
 
 ## Assembly Language Programs
