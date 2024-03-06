@@ -13,9 +13,9 @@ This Repository contains Study Materials of MPMC Subject being offered in Diplom
 
 **Latex PDF (Best for Prints):**
 
-- [MPMC Book by MJD](Notes/Java_Book_MJD_Latex.pdf)
-- [Java Revision Notes](Notes/Java_Revision_Notes_Latex.pdf)
-- [MPMC GTU Papers Solutions](Paper_Solutions/Java_GTU_Paper_Solutions_Latex.pdf)
+- [MPMC Book by MJD](Notes/MPMC_Book_MJD_Latex.pdf)
+- [MPMC Programs](Practicals/MPMC_Prgrams_Latex.pdf)
+- [MPMC GTU Papers Solutions](Paper_Solutions/MPMC_GTU_Paper_Solutions_Latex.pdf)
 - [8051 Book by Mazidi](Books/Mazidi_Book.pdf)
 - [8085 Book by Godse](Books/Godse_Book.pdf)
 - [8085 Ramesh Gaonkar Slides](Slides/Gaonkar_PPT.pdf)
