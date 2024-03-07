@@ -343,7 +343,7 @@ Table: RISC vs. CISC
 
 ## 2.1. Pin Diagram of 8085
 
-![8085 microprocessor pin diagram](../assets/imgs/8085-pin-diagram.png)
+![8085 microprocessor pin diagram](../assets/imgs/8085_pin.jpg)
 
 **Explanation of Pin Groups**
 
