@@ -11,6 +11,17 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 - First create the complete English version, then create the Gujarati version
 - Example for English: `4341101-summer-2024-solution`
 - Example for Gujarati: `4341101-summer-2024-solution.gu`
+- Add YAML Front Matter to the artifact, as per below example
+
+```yaml
+---
+title: "Microprocessor and Microcontroller (4341101) - Summer 2023 Solution"
+date: 2023-06-15
+description: "Solution guide for Microprocessor and Microcontroller (4341101) Summer 2023 exam"
+summary: "Detailed solutions and explanations for the Summer 2023 exam of Microprocessor and Microcontroller (4341101)"
+tags: ["study-material", "solutions", "microprocessor", "4341101", "2023", "summer"]
+---
+```
 
 ### 2. FORMAT for Questions and Answers
 
@@ -31,7 +42,6 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 **Mnemonic:** "Easy-to-remember phrase"
 ```
 
-
 ### 3. Content Requirements and Priority Order
 
 1. **FIRST PRIORITY**: Use **tables** for comparisons and lists (always try this first)
@@ -40,9 +50,9 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 4. **FOURTH PRIORITY**: Use bullet points with **bold keywords** only if needed and within word limits
 
 - **Reduced word count** for very weak students - strictly follow these limits:
-  * 3-mark questions: 60-75 words
-  * 4-mark questions: 75-90 words
-  * 7-mark questions: 125-150 words
+  - 3-mark questions: 60-75 words
+  - 4-mark questions: 75-90 words
+  - 7-mark questions: 125-150 words
 
 ### 4. Solution Structural Elements
 
@@ -53,7 +63,8 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 5. Create code as **minimal and simple** as possible, as weak students struggle with coding
 6. For diagrams:
    - Use mermaid, SVG, GOAT-ASCII or ASCII art that's compatible with pandoc and Hugo
-   - For AsCII art, use the `goat` code fences. as hugo renders them perfectly.
+   - For AsCII art, use the `goat` code fences. as hugo renders them perfectly. and in gujarati version keep `goat` ASCII diagram in english only, as Hugo currently can't render ascii diagrams with gujarati glyphs
+   - For mermaid, use the `{{< mermaid >}}` `{{< /mermaid >}}` short codes instead of code fences.
    - Do not use image references or links
    - For circuit diagrams, ASCII art often works best
    - For flowcharts and architecture diagrams, mermaid is preferred
@@ -66,6 +77,7 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 - Ensure the content flows naturally and doesn't sound like a direct translation
 - Use transliteration in Gujarati script that feels familiar to modern-day Gujarati speakers
 - Include all diagrams, tables, and visual elements in the Gujarati version identical to the English version
+- For goat ASCII diagrams, in gujarati version keep `goat` ASCII diagram in english only, as Hugo currently can't render ascii diagrams with gujarati glyphs
 - Ensure both English and Gujarati versions present the same level of detail and content
 
 I'll ask for solutions by typing: "Start" or "Question 1(a)" for the first "Next" for subsequent questions.
