@@ -1,976 +1,1165 @@
-# 4341101 - Microprocessor and Microcontroller - Summer 2023 Complete Paper Solution
+# Microprocessor and Microcontroller (4341101) - Summer 2023 Solution
 
-## Question 1(a): Compare Microprocessor and Microcontroller. (Marks: 3)
+## Question 1(a) [3 marks]
 
-**Answer 1(a):**
+**Compare Microprocessor and Microcontroller.**
 
-| Feature | **Microprocessor** | **Microcontroller** |
-|---------|-------------------|---------------------|
-| Definition | CPU on a single chip | Complete computer on a chip |
+**Answer**:
+
+| Feature | Microprocessor | Microcontroller |
+|---------|---------------|-----------------|
+| Definition | CPU on single chip | Complete computer on single chip |
 | Memory | External RAM/ROM needed | Built-in RAM/ROM |
-| I/O Ports | Requires external chips | Integrated on-chip |
-| Example | Intel 8085, 8086 | 8051, PIC, AVR |
+| Applications | General computing, PCs | Embedded systems, IoT |
+| Examples | Intel 8085, 8086 | 8051, Arduino, PIC |
+| Cost | Higher | Lower |
 
-**Mnemonic:** "MP-EC, MC-IC" (MicroProcessor-External Components, MicroController-Integrated Components)
+**Mnemonic:** "PCRAM" - "Processors Connect to RAM, Microcontrollers Already have Memory"
 
-## Question 1(b): Compare RISC and CISC. (Marks: 4)
+## Question 1(b) [4 marks]
 
-**Answer 1(b):**
+**Compare RISC and CISC.**
 
-| Feature | **RISC** | **CISC** |
-|---------|----------|----------|
-| Full Form | Reduced Instruction Set Computer | Complex Instruction Set Computer |
-| Instructions | **Simple** & **fixed length** | **Complex** & **variable length** |
-| Execution | Single cycle per instruction | Multiple cycles per instruction |
-| Memory Access | Only through load/store | Many addressing modes |
-| Examples | ARM, MIPS | x86, 8086 |
+**Answer**:
 
-```mermaid
-graph TD
-    subgraph RISC
-    R1[Simple Instructions] --> R2[Fixed Length]
-    R2 --> R3[One Cycle Execution]
-    R3 --> R4[Limited Addressing Modes]
-    end
-    
-    subgraph CISC
-    C1[Complex Instructions] --> C2[Variable Length]
-    C2 --> C3[Multiple Cycles]
-    C3 --> C4[Many Addressing Modes]
-    end
+| Feature | RISC (Reduced Instruction Set Computer) | CISC (Complex Instruction Set Computer) |
+|---------|----------------------------------------|----------------------------------------|
+| Instructions | Few, simple instructions | Many, complex instructions |
+| Execution Time | Fixed (1 clock cycle) | Variable (multiple cycles) |
+| Memory Access | Only through load/store | Multiple memory access modes |
+| Pipelining | Easy implementation | Difficult implementation |
+| Examples | ARM, MIPS | Intel x86, 8085 |
+| Hardware | Simple, less transistors | Complex, more transistors |
+| Register Set | Large number of registers | Fewer registers |
+
+**Mnemonic:** "RISC-Fast, CISC-Many" (RISC uses Fast execution, CISC has Many instructions)
+
+## Question 1(c) [7 marks]
+
+**Define: Microprocessor, Operand, Instruction Cycle, Opcode, ALU, Machine Cycle, T-State**
+
+**Answer**:
+
+| Term | Definition |
+|------|------------|
+| **Microprocessor** | CPU on a single integrated circuit that processes instructions |
+| **Operand** | Data value used in an instruction operation |
+| **Instruction Cycle** | Complete process to fetch, decode and execute an instruction |
+| **Opcode** | Operation code that tells CPU what operation to perform |
+| **ALU** | Arithmetic Logic Unit that performs mathematical computations |
+| **Machine Cycle** | Basic operation like memory read/write (subset of instruction cycle) |
+| **T-State** | Time state - smallest unit of time in processor operation (clock period) |
+
+**Diagram:**
+
+```goat
++-------------------+     +-------------------+     +-------------------+
+| FETCH             |     | DECODE            |     | EXECUTE           |
+| Get instruction   |---->| Interpret opcode  |---->| Perform operation |
+| from memory       |     | Identify operands |     | Store results     |
++-------------------+     +-------------------+     +-------------------+
+           ^                                                 |
+           |                                                 |
+           +-------------------------------------------------+
+                        INSTRUCTION CYCLE
 ```
 
-**Mnemonic:** "RISC-SF-1" (RISC: Simple, Fixed-length, 1 cycle)
+**Mnemonic:** "My Old Intel Chip Only Makes Trouble" (Microprocessor, Operand, Instruction, Opcode, ALU, Machine, T-state)
 
-## Question 1(c): Define: Microprocessor, Operand, Instruction Cycle, Opcode, ALU, Machine Cycle, T-State (Marks: 7)
+## Question 1(c OR) [7 marks]
 
-**Answer 1(c):**
+**Compare Von-Neumann and Harvard architecture.**
 
-- **Microprocessor**: Central Processing Unit (CPU) on a single integrated circuit chip that performs arithmetic/logic operations
-  
-- **Operand**: Data value or memory address that the instruction operates on
+**Answer**:
 
-- **Instruction Cycle**: Complete process of fetching, decoding, and executing an instruction
-  
-```mermaid
-graph LR
-    A[Fetch] --> B[Decode]
-    B --> C[Execute]
-    C --> D[Store]
-    D --> A
+| Feature | Von-Neumann Architecture | Harvard Architecture |
+|---------|--------------------------|----------------------|
+| Memory Buses | Single memory bus for instructions and data | Separate buses for program and data memory |
+| Execution | Sequential execution | Parallel fetch and execute possible |
+| Speed | Slower due to bus bottleneck | Faster due to simultaneous access |
+| Complexity | Simpler design | More complex design |
+| Applications | General-purpose computing | DSP, microcontrollers, embedded systems |
+| Security | Less secure (code can be modified as data) | More secure (code separation from data) |
+| Example | Most PCs, 8085, 8086 | 8051, PIC, ARM Cortex-M |
+
+**Diagram:**
+
+```goat
+Von-Neumann:                    Harvard:
++---------+                     +---------+
+|         |                     |         |
+|   CPU   |<---->| Memory |     |   CPU   |<---->| Program Memory |
+|         |                     |         |
++---------+                     +---------+
+                                     ^
+                                     |
+                                     v
+                                | Data Memory |
 ```
 
-- **Opcode**: Operation code part of instruction that specifies the operation to be performed
+**Mnemonic:** "Harvard Has Separate Streets" (Harvard Has Separate memory paths)
 
-- **ALU**: Arithmetic Logic Unit that performs mathematical and logical operations
+## Question 2(a) [3 marks]
 
-- **Machine Cycle**: Time required to complete one operation of accessing memory, I/O, or acknowledging an interrupt
+**Draw Flag Register of 8085 microprocessor & explain it.**
 
-- **T-State**: Basic timing unit (Time State) in microprocessor operations, one clock period
+**Answer**:
 
-**Mnemonic:** "MOIOAMT" → "My Operators Input Output And Make Time"
+**Diagram:**
 
-## Question 1(c OR): Compare Von-Neumann and Harvard architecture. (Marks: 7)
-
-**Answer 1(c OR):**
-
-| Feature | **Von-Neumann Architecture** | **Harvard Architecture** |
-|---------|------------------------------|--------------------------|
-| Memory | **Single memory** for both program and data | **Separate memories** for program and data |
-| Bus | One common bus | Separate data and instruction buses |
-| Access | Sequential access | Simultaneous access to data and instructions |
-| Speed | Slower due to bottleneck | Faster due to parallel access |
-| Flexibility | More flexible | Less flexible |
-| Applications | General purpose computing | DSP, microcontrollers |
-
-```mermaid
-graph TD
-    subgraph "Von-Neumann Architecture"
-    VN1[CPU] <--> VN2[Common Bus]
-    VN2 <--> VN3[Single Memory for<br>Instructions & Data]
-    end
-    
-    subgraph "Harvard Architecture"
-    H1[CPU] <--> H2[Instruction Bus]
-    H1 <--> H3[Data Bus]
-    H2 <--> H4[Instruction Memory]
-    H3 <--> H5[Data Memory]
-    end
+```goat
++---+---+---+---+---+---+---+---+
+| S | Z | - | AC| - | P | - | CY|
++---+---+---+---+---+---+---+---+
+  7   6   5   4   3   2   1   0
+      FLAG REGISTER (F)
 ```
 
-**Mnemonic:** "Von-S-S" (Von-Neumann: Single memory, Sequential access)
+| Flag | Name | Purpose |
+|------|------|---------|
+| S | Sign | Set if result is negative (bit 7=1) |
+| Z | Zero | Set if result is zero |
+| AC | Auxiliary Carry | Set if carry from bit 3 to bit 4 |
+| P | Parity | Set if result has even parity |
+| CY | Carry | Set if carry from bit 7 or borrow to bit 7 |
 
-## Question 2(a): Draw Flag Register of 8085 microprocessor & explain it. (Marks: 3)
+**Mnemonic:** "Smart Zombies Always Prefer Candy" (Sign, Zero, Auxiliary, Parity, Carry)
 
-**Answer 2(a):**
+## Question 2(b) [4 marks]
 
-```
-D7  D6  D5  D4  D3  D2  D1  D0
-S   Z   0   AC  0   P   1   CY
-```
+**Explain De-multiplexing of Address and Data buses for 8085 Microprocessor.**
 
-- **S (Sign Flag)**: Set if result is **negative** (MSB=1)
-- **Z (Zero Flag)**: Set if result is **zero**
-- **AC (Auxiliary Carry)**: Set if carry from bit 3 to bit 4
-- **P (Parity Flag)**: Set if result has **even parity**
-- **CY (Carry Flag)**: Set if result generates **carry**
+**Answer**:
 
-**Mnemonic:** "SiZe AC Parking CY" (for non-zero bits)
+**Diagram:**
 
-## Question 2(b): Explain De-multiplexing of Address and Data buses for 8085 Microprocessor. (Marks: 4)
-
-**Answer 2(b):**
-
-8085 microprocessor has **multiplexed** AD₀-AD₇ pins to save pins. De-multiplexing is needed to separate this data.
-
-```mermaid
-graph TD
-    A[8085 CPU] --> B[AD0-AD7 Multiplexed bus]
-    A --> C[ALE signal]
-    B --> D[Latch 74LS373]
-    C --> D
-    D --> E[A0-A7 Address Bus]
-    B --> F[Data Bus D0-D7]
-```
-
-**Process:**
-
-- **ALE** (Address Latch Enable) goes **HIGH** → Lower address (A₀-A₇) appears on AD₀-AD₇
-- 74LS373 **latch** captures address when ALE is HIGH
-- ALE goes **LOW** → AD₀-AD₇ carries data
-- Address remains **latched** while data flows independently
-
-**Mnemonic:** "ALE High: Address, ALE Low: Data"
-
-## Question 2(c): Describe architecture of 8085 microprocessor with the help of neat diagram. (Marks: 7)
-
-**Answer 2(c):**
-
-```mermaid
-graph TB
-    subgraph "8085 Architecture"
-    ALU[Arithmetic<br>Logic Unit]
-    REGS[Register Array<br>A,B,C,D,E,H,L<br>Flags]
-    CTRL[Control Unit<br>Timing & Control]
-    ADDR[Address Buffer]
-    DATA[Data Buffer]
-    IR[Instruction<br>Register]
-    DEC[Instruction<br>Decoder]
-    SP[Stack Pointer]
-    PC[Program Counter]
-    
-    REGS --- ALU
-    ALU --- CTRL
-    CTRL --- IR --- DEC
-    CTRL --- SP
-    CTRL --- PC
-    CTRL --- ADDR --- EXTADDR[Address Bus]
-    CTRL --- DATA --- EXTDATA[Data Bus]
-    end
+```goat
+                   +----------+
+A15-A8 ----------->|          |
+                   |          |---------> A15-A8 (Higher Address)
+                   |          |
+AD7-AD0 <--------->| 8085 CPU |<----+
+                   |          |     |
+                   |          |     |    +--------+
+                   +----------+     +--->| 74LS373|----> A7-A0 (Lower Address)
+                        |                | Latch  |
+                        |                +--------+
+                        |                    ^
+                        |                    |
+                     ALE -------------------->
 ```
 
-**Main components:**
+- **Need**: 8085 has multiplexed pins (AD0-AD7) to save pins
+- **Process**:
+  1. CPU places address on AD0-AD7 pins
+  2. ALE (Address Latch Enable) signal goes HIGH
+  3. Address latch (74LS373) captures lower address bits
+  4. ALE goes LOW, latching the address
+  5. AD0-AD7 pins now free for data transfer
 
-- **ALU**: Performs **arithmetic** and **logical** operations
-- **Registers**: Temporary **data storage** (A,B,C,D,E,H,L,Flags)
-- **Control Unit**: Generates **timing** and **control** signals
-- **Program Counter**: Holds **address** of next instruction
-- **Stack Pointer**: Points to the **top** of stack in memory
-- **Instruction Register**: Holds current **instruction**
-- **Address & Data Buffer**: Interface with external **buses**
+**Mnemonic:** "ALE Latches, Data Follows" (Address Latch Enable captures address first, then data)
 
-**Mnemonic:** "ARCS-PID" (ALU, Registers, Control, Stack-PC, Instruction, Decoder)
+## Question 2(c) [7 marks]
 
-## Question 2(a OR): Explain Bus Organization of 8085 microprocessor. (Marks: 3)
+**Describe architecture of 8085 microprocessor with the help of neat diagram.**
 
-**Answer 2(a OR):**
+**Answer**:
 
-8085 has **three buses** for communication:
+**Diagram:**
 
-1. **Address Bus** (16 bits):
-   - **Unidirectional** (CPU to peripherals)
-   - Carries **16-bit address** (A₀-A₁₅)
-   - Can address **64KB** memory (2¹⁶)
-
-2. **Data Bus** (8 bits):
-   - **Bidirectional** (CPU ↔ peripherals)
-   - Transfers **8-bit data** (D₀-D₇)
-   - Lower address bits (A₀-A₇) multiplexed with data
-
-3. **Control Bus**:
-   - **RD̅**, **WR̅**: Memory/IO read/write signals
-   - **ALE**: Address Latch Enable
-   - **IO/M̅**: Distinguishes I/O or memory operation
-
-**Mnemonic:** "ADC" (Address, Data, Control)
-
-## Question 2(b OR): Explain: Program Counter & Stack pointer (Marks: 4)
-
-**Answer 2(b OR):**
-
-### Program Counter (PC):
-
-- **16-bit** register that holds the **memory address** of next instruction
-- **Automatically increments** after fetching instruction
-- Used in **sequence control** of program execution
-- Can be modified by **jump** instructions to create branches
-- **Initialized** to 0000H when the processor is reset
-
-### Stack Pointer (SP):
-
-- **16-bit** register that points to the **top of stack**
-- Stack is a **LIFO** (Last In First Out) memory area
-- Used during **subroutines** (CALL/RET) and **interrupts**
-- SP is **decremented** before PUSH, **incremented** after POP
-- Must be **initialized** before using stack operations
-
-**Mnemonic:** "PC-Next, SP-Top" (PC points to Next instruction, SP points to Top of stack)
-
-## Question 2(c OR): Describe Pin diagram of 8085 microprocessor with the help of neat diagram. (Marks: 7)
-
-**Answer 2(c OR):**
-
-```
-            _____________
-           |             |
-X1, X2 --->|             |---> SID
-RESET IN -->|             |---> SOD
-RESET OUT <--|             |<--- HOLD
-READY ----->|             |---> HLDA
-CLKOUT <----|    8085     |
-           |             |<--- INTR
-IO/M <-----|             |<--- RST 7.5
-S0, S1 <----|             |<--- RST 6.5
-ALE <-------|             |<--- RST 5.5
-           |             |<--- TRAP
-WR <-------|             |
-RD <-------|             |
-AD0-AD7 <->|             |<--> A8-A15
-VCC, GND -->|_____________|
+```goat
+    +-------------------------------------------+
+    |               8085 CPU                    |
+    |                                           |
+    |  +-------------+       +--------------+   |
+    |  | REGISTERS   |       | CONTROL UNIT |   |
+    |  |-------------|       |--------------|   |
+    |  | A (Accum.)  |<----->| Instruction  |   |
+    |  | B,C,D,E,H,L |       | Decoder      |   |
+    |  | SP, PC      |       |              |   |
+    |  | Flags       |       | Timing &     |   |
+    |  +-------------+       | Control      |   |
+    |       ^                +--------------+   |
+    |       |                      ^            |
+    |       v                      |            |
+    |  +-------------+             |            |
+    |  |    ALU      |<------------+            |
+    |  +-------------+                          |
+    |       ^                                   |
+    +-------|-----------------------------------+
+            |
+    +-------|-----------------------------------+
+    |       v                                   |
+    |  +-------------+       +--------------+   |
+    |  | Address Bus |------>| Memory &     |   |
+    |  +-------------+       | I/O Devices  |   |
+    |  | Data Bus    |<----->|              |   |
+    |  +-------------+       +--------------+   |
+    +-------------------------------------------+
 ```
 
-**Key pins:**
+- **Main Components**:
+  - **Registers**: Storage locations (A, B-L, SP, PC, Flags)
+  - **ALU**: Performs arithmetic and logical operations
+  - **Control Unit**: Generates timing and control signals
+  - **Buses**: Address bus (16-bit), Data bus (8-bit), Control bus
 
-- **Power & Clock**: VCC, GND, X1, X2, CLK
-- **Multiplexed Bus**: AD₀-AD₇ (Address/Data)
-- **Address Bus**: A₈-A₁₅ (High order address)
-- **Control Signals**: ALE, RD̅, WR̅, IO/M̅, S₀, S₁
-- **Interrupts**: INTR, RST 7.5, RST 6.5, RST 5.5, TRAP
-- **DMA**: HOLD, HLDA
-- **Serial I/O**: SID, SOD
-- **READY**: Memory/IO synchronization
+- **Key Features**:
+  - 8-bit data bus, 16-bit address bus (64KB addressable memory)
+  - 6 general-purpose registers (B,C,D,E,H,L) and accumulator
+  - 5 flags for status information
 
-**Mnemonic:** "PACES-IR" (Power, Address, Control, External sync, Serial, Interrupt, Reset)
+**Mnemonic:** "RABC" - "Registers, ALU, Buses, Control" (main components)
 
-## Question 3(a): Explain Stack, Stack Pointer and Stack operation. (Marks: 3)
+## Question 2(a OR) [3 marks]
 
-**Answer 3(a):**
+**Explain Bus Organization of 8085 microprocessor.**
 
-### Stack:
+**Answer**:
 
-- **LIFO** (Last In First Out) memory area in RAM
-- Stores **return addresses** and **register values**
-- Grows from **higher** to **lower** memory addresses
+| Bus Type | Width | Function |
+|----------|-------|----------|
+| **Address Bus** | 16-bit (A0-A15) | Carries memory/I/O device addresses |
+| **Data Bus** | 8-bit (D0-D7) | Transfers data between CPU & memory/I/O |
+| **Control Bus** | Various signals | Coordinates system operations |
 
-### Stack Pointer (SP):
+**Key Control Signals**:
 
-- **16-bit** register pointing to the **top** element
-- **Decrements** before PUSH, **increments** after POP
+- **RD̅**: Read signal (active low)
+- **WR̅**: Write signal (active low)
+- **ALE**: Address Latch Enable
+- **IO/M̅**: Distinguishes I/O (high) from memory (low) operations
 
-### Stack Operations:
+**Diagram:**
 
-1. **PUSH Rp**: (SP-1) ← Rh, (SP-2) ← Rl, SP ← SP-2
-   * Saves register pair on stack
-2. **POP Rp**: Rl ← (SP), Rh ← (SP+1), SP ← SP+2
-   * Retrieves register pair from stack
-
-```mermaid
-graph TD
-    subgraph "Stack Operations"
-    SP[Stack Pointer] --> |PUSH decrements| A[Lower Address]
-    SP --> |POP increments| B[Higher Address]
-    end
+```goat
+                    +----------+
+                    |   8085   |
+                    |   CPU    |
+                    +----------+
+                       |  |  |
+           +-----------+  |  +------------+
+           |              |               |
+    +------v-----+  +-----v------+  +-----v------+
+    | Address Bus|  |  Data Bus  |  | Control Bus|
+    | (16-bit)   |  |  (8-bit)   |  | RD̅,WR̅,ALE  |
+    +------------+  +------------+  +------------+
 ```
 
-**Mnemonic:** "LIFO-DTU" (LIFO, Down To Up movement)
+**Mnemonic:** "ADC" - "Address finds, Data travels, Control coordinates"
 
-## Question 3(b): Draw Timers/Counters logic diagram of 8051 microcontroller and explain it. (Marks: 4)
+## Question 2(b OR) [4 marks]
 
-**Answer 3(b):**
+**Explain: Program Counter & Stack pointer**
 
-```
-                  ┌──────────┐    ┌─────┐
-                  │   TMOD   │    │ TCON│
-                  └──────────┘    └─────┘
-                       │            │
-                       ▼            ▼
-           ┌───────┐       ┌───────────────┐
-T0 Pin ───>│Control│─ ─ ─ >│   Timer 0     │─ ─>TF0
-           │ Logic │       │ TH0    TL0    │
-           └───────┘       └───────────────┘
-                  
-           ┌───────┐       ┌───────────────┐
-T1 Pin ───>│Control│─ ─ ─ >│   Timer 1     │─ ─>TF1
-           │ Logic │       │ TH1    TL1    │
-           └───────┘       └───────────────┘
-```
+**Answer**:
 
-**8051 has two 16-bit timers/counters:**
+| Register | Size | Function |
+|----------|------|----------|
+| **Program Counter (PC)** | 16-bit | Holds address of next instruction to execute |
+| **Stack Pointer (SP)** | 16-bit | Points to the top of the stack in memory |
 
-- **Timer/Counter Registers**:
-  * **Timer 0**: TH0 (high byte) + TL0 (low byte)
-  * **Timer 1**: TH1 (high byte) + TL1 (low byte)
+**Program Counter (PC)**:
 
-- **Control Registers**:
-  * **TMOD**: Timer **mode** register (mode selection)
-  * **TCON**: Timer **control** register (run/stop)
+- Automatically increments after instruction fetch
+- Modified by jump/call instructions
+- Controls program execution sequence
+- Initially set to 0000H on reset
 
-- **Modes of Operation**:
-  * **Mode 0**: 13-bit timer
-  * **Mode 1**: 16-bit timer
-  * **Mode 2**: 8-bit auto-reload
-  * **Mode 3**: Split timer mode
+**Stack Pointer (SP)**:
 
-**Mnemonic:** "TMOD-13-16-8-S" (TMOD sets: 13-bit, 16-bit, 8-bit-auto, Split modes)
+- Points to last data item pushed onto stack
+- Stack works in LIFO (Last In First Out) manner
+- Used during subroutine calls and interrupts
+- Stack grows downward in memory (decrements)
 
-## Question 3(c): With the help of neat diagram explain Pin diagram of 8051 microcontroller. (Marks: 7)
+**Diagram:**
 
-**Answer 3(c):**
-
-```
-                  8051
-         ┌─────────────────────┐
-         │ 1             40    │
-P1.0 ◄──►│                     │◄──► VCC
-P1.1 ◄──►│                     │◄──► P0.0/AD0
-P1.2 ◄──►│                     │◄──► P0.1/AD1
-P1.3 ◄──►│                     │◄──► P0.2/AD2
-P1.4 ◄──►│                     │◄──► P0.3/AD3
-P1.5 ◄──►│                     │◄──► P0.4/AD4
-P1.6 ◄──►│                     │◄──► P0.5/AD5
-P1.7 ◄──►│                     │◄──► P0.6/AD6
-RST ───►│                     │◄──► P0.7/AD7
-RXD ◄───│                     │◄─── EA/VPP
-TXD ───►│                     │◄─── ALE/PROG
-INT0 ───►│                     │◄─── PSEN
-INT1 ───►│                     │◄──► P2.7/A15
-T0 ────►│                     │◄──► P2.6/A14
-T1 ────►│                     │◄──► P2.5/A13
-WR ────►│                     │◄──► P2.4/A12
-RD ────►│                     │◄──► P2.3/A11
-XTAL2 ◄──│                     │◄──► P2.2/A10
-XTAL1 ──►│                     │◄──► P2.1/A9
-GND ────│                     │◄──► P2.0/A8
-         └─────────────────────┘
+```goat
+Memory:            PC:             SP:
++--------+        +--------+      +--------+
+| Instr 1 |<------| 2001H  |      | 3FFEH  |----+
++--------+        +--------+      +--------+    |
+| Instr 2 |                                     |
++--------+        Stack:                        |
+    ...            ...                          |
++--------+        +--------+                    |
+| Data 1  |        | Empty  |                   |
++--------+        +--------+                    |
+| Data 2  |<------| Data A |<-------------------+
++--------+        +--------+
 ```
 
-**Pin Functions:**
+**Mnemonic:** "PC Previews, SP Stacks" (PC points to next instruction, SP manages stack)
 
-1. **Power & Clock Pins**:
-   - **VCC** (Pin 40): +5V supply
-   - **GND** (Pin 20): Ground
-   - **XTAL1, XTAL2** (Pins 19, 18): Crystal oscillator connection
+## Question 2(c OR) [7 marks]
 
-2. **I/O Ports**:
-   - **Port 0** (Pins 32-39): Dual-purpose (address/data bus, I/O)
-   - **Port 1** (Pins 1-8): General-purpose I/O
-   - **Port 2** (Pins 21-28): Dual-purpose (high address byte, I/O)
-   - **Port 3** (Pins 10-17): Special functions (interrupts, timers, serial)
+**Describe Pin diagram of 8085 microprocessor with the help of neat diagram.**
 
-3. **Control Pins**:
-   - **RST** (Pin 9): Reset input
-   - **EA** (Pin 31): External Access enable
-   - **ALE** (Pin 30): Address Latch Enable
-   - **PSEN** (Pin 29): Program Store Enable
+**Answer**:
 
-**Mnemonic:** "PIPER" (Power, I/O Ports, Program control, External access, Reset)
+**Diagram:**
 
-## Question 3(a OR): Explain Serial communication modes of 8051 microcontroller. (Marks: 3)
-
-**Answer 3(a OR):**
-
-8051 has an on-chip UART with 4 serial communication modes:
-
-1. **Mode 0**: 
-   - **Shift register** mode
-   - **Synchronous** transmission
-   - **Baud rate** fixed at f<sub>osc</sub>/12
-   - 8-bit data transmitted through TXD
-   - Clock pulses at RXD
-
-2. **Mode 1**:
-   - **Standard UART** mode 
-   - **Asynchronous** transmission
-   - 8-bit data, 1 start bit, 1 stop bit
-   - **Baud rate** variable (controlled by Timer 1)
-
-3. **Mode 2**:
-   - **9-bit UART** mode
-   - **Asynchronous** transmission
-   - 9-bit data (8 data + 1 programmable)
-   - **Fixed baud rate** (f<sub>osc</sub>/32 or f<sub>osc</sub>/64)
-
-4. **Mode 3**:
-   - Similar to **Mode 2** but with **variable baud rate**
-   - Controlled by Timer 1
-
-**Mnemonic:** "SSAV" (Shift register, Standard UART, Advanced 9-bit, Variable rate 9-bit)
-
-## Question 3(b OR): Explain Internal RAM Organization of 8051 microcontroller. (Marks: 4)
-
-**Answer 3(b OR):**
-
-```mermaid
-graph TD
-    subgraph "8051 Internal RAM (128 bytes)"
-    A[00h-1Fh: Register Banks 0-3] --> B[20h-2Fh: Bit-Addressable Area]
-    B --> C[30h-7Fh: General Purpose RAM]
-    end
+```goat
+                 +-------------------+
+        +5V ---->|                   |<---- GND
+                 |                   |
+         X1 ---->|                   |<---- X2
+                 |                   |
+      RESET ---->|                   |<---- READY
+                 |                   |
+      HOLD ----->|                   |<---- CLK OUT
+                 |                   |
+     HLDA <------|      8085         |<---- RESET IN
+                 |                   |
+   INTR ----->|                   |<---- RST 7.5
+                 |                   |
+   INTA <------|                   |<---- RST 6.5
+                 |                   |
+      SOD <------|                   |<---- RST 5.5
+                 |                   |
+      SID ----->|                   |<---- TRAP
+                 |                   |
+     RD <------|                   |
+                 |                   |
+     WR <------|                   |
+                 |                   |
+    IO/M <------|                   |
+                 |                   |
+     ALE <------|                   |
+                 |                   |
+      S1 <------|                   |
+                 |                   |
+      S0 <------|                   |
+                 |                   |
+    A15-A8 <-----|                   |
+                 |                   |
+  AD7-AD0 <----->|                   |
+                 +-------------------+
 ```
 
-**8051 Internal RAM is organized as:**
+**Pin Groups**:
 
-1. **Register Banks** (00H-1FH):
-   - **Four** register banks (0-3)
-   - **Eight** registers (R0-R7) per bank
-   - Bank selection via **PSW** register
-   - Used for **fast access** variables
+1. **Power & Clock**: Vcc, GND, X1, X2, CLK
+2. **Address/Data**: A8-A15, AD0-AD7 (multiplexed)
+3. **Control**: ALE, RD̅, WR̅, IO/M̅
+4. **Interrupt**: INTR, INTA, RST 5.5/6.5/7.5, TRAP
+5. **DMA**: HOLD, HLDA
+6. **Serial I/O**: SID, SOD
+7. **Status**: S0, S1
 
-2. **Bit-Addressable Area** (20H-2FH):
-   - 16 bytes (128 bits) that can be addressed bit by bit
-   - Used for **boolean** operations and **flags**
-   - Every bit has its own address (00H-7FH)
+**Mnemonic:** "PACI-DHS" (Power, Address, Control, Interrupt, DMA, Hardware status, Serial)
 
-3. **General Purpose RAM** (30H-7FH):
-   - 80 bytes for **user data**
-   - Accessed by **direct** and **indirect** addressing
-   - Used for **variables** and **stack**
+## Question 3(a) [3 marks]
 
-**Mnemonic:** "RBG" (Register Banks, Bit-addressable area, General purpose RAM)
+**Explain Stack, Stack Pointer and Stack operation.**
 
-## Question 3(c OR): Explain architecture of 8051 microcontroller with the help of neat diagram. (Marks: 7)
+**Answer**:
 
-**Answer 3(c OR):**
+| Term | Definition |
+|------|------------|
+| **Stack** | Memory area used for temporary storage in LIFO order |
+| **Stack Pointer** | 16-bit register that points to the top item in stack |
+| **PUSH** | Operation that stores data on stack (SP decrements) |
+| **POP** | Operation that retrieves data from stack (SP increments) |
 
-```mermaid
-graph TD
-    subgraph "8051 Architecture"
-    CPU[CPU with ALU] --- RegArray[Register Banks & SP]
-    CPU --- PSW[Program Status Word]
-    CPU --- PC[Program Counter]
-    
-    subgraph "Memory"
-    ROM[4K ROM] --- RAM[128 Bytes RAM]
-    end
-    
-    subgraph "Peripherals"
-    Timers[Timer 0 & 1] --- Serial[Serial Port]
-    Interrupts[Interrupt Control] --- IO[I/O Ports P0-P3]
-    end
-    
-    CPU --- ROM
-    CPU --- RAM
-    CPU --- Timers
-    CPU --- Serial
-    CPU --- Interrupts
-    CPU --- IO
-    end
+**Diagram:**
+
+```goat
+Memory:                Stack Operations:
+
+Before PUSH:           PUSH B (76H):           POP H:
++--------+ <-- 2000H   +--------+              +--------+
+|        |             |        |              |        |
++--------+ <-- 1FFFH   +--------+              +--------+
+|        |             |   76H  | <-- SP       |        | <-- SP
++--------+ <-- 1FFEH   +--------+              +--------+
+|        | <-- SP      |        |              |        |
++--------+             +--------+              +--------+
 ```
 
-**Main components:**
+**Mnemonic:** "LIFO Saves Push-Pop" (Last-In-First-Out with Push and Pop operations)
 
-1. **CPU Core**:
-   - **ALU**: Performs arithmetic/logical operations
-   - **Accumulator** (A): Primary register for arithmetic
-   - **B Register**: Used for multiply/divide operations
-   - **PSW**: Stores status flags (CY, AC, OV, P)
+## Question 3(b) [4 marks]
 
-2. **Memory**:
-   - **4K ROM**: Program memory
-   - **128 Bytes RAM**: Data memory with register banks
-   - **SFRs**: Special Function Registers for control
+**Draw Timers/Counters logic diagram of 8051 microcontroller and explain it.**
 
-3. **Peripherals**:
-   - **Timers/Counters**: Two 16-bit timers
-   - **Serial Port**: Full duplex UART
-   - **Interrupt System**: 5 interrupt sources with 2 priority levels
-   - **I/O Ports**: Four 8-bit bidirectional ports (P0-P3)
+**Answer**:
 
-**Mnemonic:** "CPU-MIS" (CPU, Memory, I/O, Special peripherals)
+**Diagram:**
 
-## Question 4(a): Write an 8051 Assembly Language Program to Exchange lower nibbles of register R5 and R6. (Marks: 3)
+```goat
+                            +----------+
+Control Bits ---+           |          |
+                |           |  Control |
+                +---------->|  Logic   |
+                            |          |
+                            +----------+
+                                 |
+                                 v
+Clock -------> Prescaler ---> TLx ---> THx ---> TFx (Overflow Flag)
+                                 ^
+External Input ------------------>
+                            (Counter Mode)
 
-**Answer 4(a):**
-
-```assembly
-; Program to exchange lower nibbles of R5 and R6
-        MOV     A, R5      ; Copy R5 to accumulator
-        ANL     A, #0FH    ; Mask upper nibble (keep only lower nibble)
-        MOV     B, A       ; Store R5's lower nibble in B
-        
-        MOV     A, R6      ; Copy R6 to accumulator
-        ANL     A, #0FH    ; Mask upper nibble (keep only lower nibble)
-        MOV     C, A       ; Store R6's lower nibble temporarily in R7
-        
-        MOV     A, R5      ; Get R5 again
-        ANL     A, #F0H    ; Keep only upper nibble of R5
-        ORL     A, C       ; Combine with R6's lower nibble
-        MOV     R5, A      ; Store back to R5
-        
-        MOV     A, R6      ; Get R6 again
-        ANL     A, #F0H    ; Keep only upper nibble of R6
-        ORL     A, B       ; Combine with R5's lower nibble
-        MOV     R6, A      ; Store back to R6
-        
-        END
+                  |----Timer/Counter x---|
 ```
 
-**Key steps:**
+- **8051 has 2 16-bit timers/counters**: Timer 0 and Timer 1
+- **Each timer has two 8-bit registers**: THx (High byte) and TLx (Low byte)
+- **4 Operating Modes**:
+  - Mode 0: 13-bit timer
+  - Mode 1: 16-bit timer
+  - Mode 2: 8-bit auto-reload
+  - Mode 3: Split timer mode
+- **Two Functions**:
+  - Timer: Counts internal clock pulses
+  - Counter: Counts external events
 
-1. **Extract** lower nibbles
-2. **Store** them temporarily
-3. **Preserve** upper nibbles
-4. **Combine** upper + swapped lower
+**Mnemonic:** "TIME-C" (Timer Input, Mode select, External count)
 
-## Question 4(b): Write an 8051 Assembly Language Program to blink LED interfaced at port P1.0. (Marks: 4)
+## Question 3(c) [7 marks]
 
-**Answer 4(b):**
+**With the help of neat diagram explain Pin diagram of 8051 microcontroller.**
 
-```assembly
-; Program to blink LED at P1.0 with 1ms delay
-        ORG     0000H
-MAIN:   SETB    P1.0        ; Turn ON LED
-        ACALL   DELAY_1MS   ; Call 1ms delay
-        CLR     P1.0        ; Turn OFF LED
-        ACALL   DELAY_1MS   ; Call 1ms delay
-        SJMP    MAIN        ; Repeat forever
+**Answer**:
 
-; 1ms delay subroutine (at 12MHz crystal)
-DELAY_1MS:
-        MOV     R7, #250    ; R7 = 250 (outer loop)
-AGAIN:  MOV     R6, #4      ; R6 = 4 (inner loop)
-HERE:   DJNZ    R6, HERE    ; Decrement R6 until zero
-        DJNZ    R7, AGAIN   ; Decrement R7 until zero
-        RET                 ; Return from subroutine
-        
-        END
+**Diagram:**
+
+```goat
+                 +-------------------+
+        VCC ---->|                   |<---- GND
+                 |                   |
+        P1.0 <-->|                   |<--> P3.0 (RXD)
+        P1.1 <-->|                   |<--> P3.1 (TXD)
+        P1.2 <-->|                   |<--> P3.2 (INT0)
+        P1.3 <-->|                   |<--> P3.3 (INT1)
+        P1.4 <-->|                   |<--> P3.4 (T0)
+        P1.5 <-->|                   |<--> P3.5 (T1)
+        P1.6 <-->|      8051         |<--> P3.6 (WR)
+        P1.7 <-->|                   |<--> P3.7 (RD)
+                 |                   |
+        RST ---->|                   |<---- XTAL2
+                 |                   |
+        P2.0 <-->|                   |<---- XTAL1
+        P2.1 <-->|                   |<--> P0.0 (AD0)
+        P2.2 <-->|                   |<--> P0.1 (AD1)
+        P2.3 <-->|                   |<--> P0.2 (AD2)
+        P2.4 <-->|                   |<--> P0.3 (AD3)
+        P2.5 <-->|                   |<--> P0.4 (AD4)
+        P2.6 <-->|                   |<--> P0.5 (AD5)
+        P2.7 <-->|                   |<--> P0.6 (AD6)
+                 |                   |<--> P0.7 (AD7)
+        PSEN --->|                   |
+                 |                   |
+        ALE ---->|                   |<---- EA
+                 +-------------------+
 ```
 
-**Key components:**
+**Pin Groups**:
 
-- **Main loop**: Toggle LED and call delay
-- **Delay routine**: Nested loops for timing
-- **Crystal**: 12MHz assumed
-- **LED connection**: Active high at P1.0
+1. **Port Pins**:
+   - P0 (Port 0): 8-bit bidirectional, multiplexed address/data
+   - P1 (Port 1): 8-bit bidirectional I/O
+   - P2 (Port 2): 8-bit bidirectional, higher address byte
+   - P3 (Port 3): 8-bit bidirectional with alternate functions
+2. **Power & Clock**: VCC, GND, XTAL1, XTAL2
+3. **Control Signals**:
+   - RST: Reset input
+   - ALE: Address Latch Enable
+   - PSEN: Program Store Enable
+   - EA: External Access
 
-## Question 4(c): List Addressing Modes of 8051 Microcontroller and explain them with examples. (Marks: 7)
+**Mnemonic:** "PORT-CAPS" (Ports 0-3, Clock, Address latch, Program store, Supply)
 
-**Answer 4(c):**
+## Question 3(a OR) [3 marks]
 
-8051 microcontroller has 7 addressing modes:
+**Explain Serial communication modes of 8051 microcontroller.**
 
-1. **Immediate Addressing**:
-   - Operand is in the instruction
-   - Example: `MOV A, #25H` (Load 25H into A)
+**Answer**:
 
-2. **Register Addressing**:
-   - Operand is in a register
-   - Example: `MOV A, R0` (Copy R0 to A)
+| Mode | Description | Baud Rate | Data Bits |
+|------|-------------|-----------|-----------|
+| **Mode 0** | Shift register | Fixed (FOSC/12) | 8 bits |
+| **Mode 1** | 8-bit UART | Variable | 10 bits (8+start+stop) |
+| **Mode 2** | 9-bit UART | Fixed (FOSC/32 or FOSC/64) | 11 bits (9+start+stop) |
+| **Mode 3** | 9-bit UART | Variable | 11 bits (9+start+stop) |
 
-3. **Direct Addressing**:
-   - Operand is at the given memory address
-   - Example: `MOV A, 30H` (Copy contents of memory 30H to A)
+**Key Components**:
 
-4. **Register Indirect Addressing**:
-   - Register contains the address of operand
-   - Example: `MOV A, @R0` (Copy contents of memory pointed by R0 to A)
+- **SBUF**: Serial buffer register
+- **SCON**: Serial control register
+- **P3.0 (RXD)**: Receive pin
+- **P3.1 (TXD)**: Transmit pin
 
-5. **Indexed Addressing**:
-   - Base address + index register
-   - Example: `MOVC A, @A+DPTR` (For table lookups)
+**Diagram:**
 
-6. **Implicit Addressing**:
-   - Operand is implicitly stated
-   - Example: `RRC A` (Rotate A right through carry)
-
-7. **Bit Addressing**:
-   - Individual bit operations
-   - Example: `SETB P1.0` (Set bit 0 of port 1)
-
-**Mnemonic:** "I-R-DIR-I-B" (Immediate, Register, Direct, Indirect, Indexed, Bit)
-
-## Question 4(a OR): Write an 8051 Assembly Language Program to add R2 and R3, put result in RAM. (Marks: 3)
-
-**Answer 4(a OR):**
-
-```assembly
-; Program to add R2 and R3, result in external RAM locations 2040H (LSB) and 2041H (MSB)
-        ORG     0000H
-        
-        MOV     A, R2      ; Copy R2 to accumulator
-        ADD     A, R3      ; Add R3 to accumulator
-        
-        MOV     DPTR, #2040H  ; Set DPTR to destination address
-        MOVX    @DPTR, A      ; Store LSB (accumulator) to 2040H
-        
-        MOV     A, #00H    ; Clear accumulator
-        ADDC    A, #00H    ; Add carry flag to accumulator
-        INC     DPTR       ; Increment DPTR to 2041H
-        MOVX    @DPTR, A   ; Store MSB (carry) to 2041H
-        
-        END
+```goat
++--------+     +-------+     +-----------+
+| Timer 1 |---->| Baud  |---->|           |     +-----+
++--------+     | Rate  |     |  Serial   |---->| TXD |-->
+                | Gen   |     | Control   |     +-----+
+                +-------+     |  Logic    |
+                              |           |     +-----+
+                              |           |<----| RXD |<--
+                              +-----------+     +-----+
+                                    |
+                                    v
+                                  +------+
+                                  | SBUF |
+                                  +------+
 ```
 
-**Key steps:**
+**Mnemonic:** "SMART" (Serial Modes Are Rate and Timing dependent)
 
-1. **Add** R2 and R3 in accumulator
-2. **Store** result byte at 2040H
-3. **Capture** carry flag in A
-4. **Store** carry byte at 2041H
+## Question 3(b OR) [4 marks]
 
-## Question 4(b OR): For 8051 Microcontroller with 12 MHz crystal, generate a delay of 5ms. (Marks: 4)
+**Explain Internal RAM Organization of 8051 microcontroller.**
 
-**Answer 4(b OR):**
+**Answer**:
 
-```assembly
-; 5ms delay routine for 8051 with 12MHz crystal
-        ORG     0000H
-DELAY_5MS:
-        MOV     R7, #5     ; Set outer loop for 5 iterations (5 x 1ms)
-OUTER:  MOV     R6, #250   ; Set middle loop (250 iterations)
-MIDDLE: MOV     R5, #4     ; Set inner loop (4 iterations)
-INNER:  DJNZ    R5, INNER  ; 2 cycles x 4 = 8 cycles
-        DJNZ    R6, MIDDLE ; 2 cycles x 250 = 500 cycles
-        DJNZ    R7, OUTER  ; Count 5 milliseconds
-        RET
-        
-        END
+**Diagram:**
+
+```goat
+8051 Internal RAM (128 bytes):
++-------------------+ 7FH
+|                   |
+|  General Purpose  |
+|       RAM         |
+|                   |
++-------------------+ 30H
+|    Bit-Addressable|
+|       Area        |
++-------------------+ 20H
+|                   |
+|  Register Banks   |
+|    (R0-R7)        |
+|                   |
++-------------------+ 00H
 ```
 
-**Calculation:**
+| Memory Region | Address Range | Description |
+|---------------|---------------|-------------|
+| **Register Banks** | 00H-1FH | Four banks (0-3) of 8 registers each |
+| **Bit-Addressable** | 20H-2FH | 16 bytes (128 bits) individually addressable |
+| **General Purpose** | 30H-7FH | Scratch pad RAM for variables |
+| **SFR** | 80H-FFH | Special Function Registers (not in RAM) |
 
-- 12MHz crystal → 1μs = 12 clock cycles
-- Machine cycle = 12 clock cycles
-- 1ms = 1000μs = 1000 machine cycles
-- For 1ms: We need 1000 cycles
-- Nested loop approach: 2(DJNZ) × 4 × 250 × 5 = 10,000 cycles
-- 10,000 ÷ 1000 = approximately 5ms
+**Key Features**:
 
-**Note:** The exact timing depends on other instructions and loop overhead.
+- Only one register bank active at a time (selected by PSW bits)
+- Each bit in bit-addressable area has its own address (20H.0-2FH.7)
+- Stack can be located anywhere in internal RAM
 
-## Question 4(c OR): Explain any seven Arithmetic Instructions with example for 8051 Microcontroller. (Marks: 7)
+**Mnemonic:** "RGB-S" (Registers, General purpose, Bit-addressable, SFRs)
 
-1. **ADD A, src**
-   - **Function**: Add source to accumulator
-   - **Example**: `ADD A, #30H` (A = A + 30H)
-   - **Flags**: C, AC, OV, P
+## Question 3(c OR) [7 marks]
 
-2. **ADDC A, src**
-   - **Function**: Add source and carry to accumulator
-   - **Example**: `ADDC A, R0` (A = A + R0 + C)
-   - **Flags**: C, AC, OV, P
+**Explain architecture of 8051 microcontroller with the help of neat diagram.**
 
-3. **SUBB A, src**
-   - **Function**: Subtract source and borrow from accumulator
-   - **Example**: `SUBB A, 50H` (A = A - 50H - C)
-   - **Flags**: C, AC, OV, P
+**Answer**:
 
-4. **INC src**
-   - **Function**: Increment source by 1
-   - **Example**: `INC R3` (R3 = R3 + 1)
-   - **Flags**: None
+**Diagram:**
 
-5. **DEC src**
-   - **Function**: Decrement source by 1
-   - **Example**: `DEC A` (A = A - 1)
-   - **Flags**: None
-
-6. **MUL AB**
-   - **Function**: Multiply A and B, result in BA (B=MSB, A=LSB)
-   - **Example**: `MUL AB` (BA = A × B)
-   - **Flags**: C, OV
-
-7. **DIV AB**
-   - **Function**: Divide A by B, quotient in A, remainder in B
-   - **Example**: `DIV AB` (A = A ÷ B, B = A % B)
-   - **Flags**: C, OV
-
-**Mnemonic:** "AASI-DMD" (Add, Add-with-Carry, Subtract-with-Borrow, Increment, Decrement, Multiply, Divide)
-
-## Question 5(a): List Applications of microcontroller in various fields. (Marks: 3)
-
-**Answer 5(a):**
-
-**Applications of microcontrollers in various fields:**
-
-1. **Consumer Electronics**:
-   - Smart TVs, washing machines, microwave ovens
-   - Remote controls, digital cameras
-
-2. **Automotive**:
-   - Engine control units (ECU)
-   - Anti-lock braking systems (ABS)
-   - Airbag control, dashboard instruments
-
-3. **Industrial Automation**:
-   - PLCs, temperature controllers
-   - Motor controls, robotic systems
-
-4. **Medical Devices**:
-   - Patient monitoring systems
-   - Digital thermometers, glucose meters
-
-5. **Smart Home**:
-   - Home automation systems
-   - Security systems, smart appliances
-
-**Mnemonic:** "CAIMS" (Consumer, Automotive, Industrial, Medical, Smart home)
-
-## Question 5(b): Interface Relay with 8051 microcontroller. (Marks: 4)
-
-**Answer 5(b):**
-
-```
-                 VCC
-                  │
-                  ▼
-                ┌───┐
-                │   │
-P2.0 ────►|────┤ULN│     ┌─────┐   AC/DC Load
-          1N4148│2003├────┤Relay├───/\/\/\/\───
-                │   │     └─────┘
-                └───┘         │
-                  │           │
-                  ▼           ▼
-                 GND         GND
+```goat
++-------------------------------------------------------+
+|                    8051 ARCHITECTURE                   |
+|                                                       |
+|  +----------+     +----------+     +------------+     |
+|  |          |     |          |     |            |     |
+|  |   CPU    |<--->|  Timers/ |     |  Interrupts|     |
+|  |          |     | Counters |     |            |     |
+|  +----------+     +----------+     +------------+     |
+|       ^                                  ^            |
+|       |                                  |            |
+|       v                                  v            |
+|  +----------+     +----------+     +------------+     |
+|  |          |     |          |     |            |     |
+|  | Internal |<--->|  Serial  |<--->| I/O Ports  |     |
+|  |   RAM    |     |   Port   |     |  P0,P1,P2,P3|    |
+|  |          |     |          |     |            |     |
+|  +----------+     +----------+     +------------+     |
+|       ^                                  ^            |
+|       |                                  |            |
+|       v                                  v            |
+|  +----------+                      +------------+     |
+|  |          |                      |            |     |
+|  | Internal |                      | External   |     |
+|  |   ROM    |                      | Interface  |     |
+|  |  (4K)    |                      |            |     |
+|  +----------+                      +------------+     |
+|                                         |             |
++-------------------------------------------------------+
+                                          |
+                                          v
+                                 External Memory & Devices
 ```
 
-**Components needed:**
+**Key Components**:
 
-- **ULN2003** or **ULN2803**: Darlington transistor array driver
-- **1N4148**: Protection diode (already built into ULN2003)
-- **Relay**: Electromagnetic switch (5V or 12V coil)
+- **CPU**: 8-bit processor with ALU, registers, and control logic
+- **Memory**: 
+  - 4KB internal ROM (program memory)
+  - 128 bytes internal RAM (data memory)
+- **I/O**: Four 8-bit I/O ports (P0-P3)
+- **Timers**: Two 16-bit timers/counters
+- **Serial Port**: Full-duplex UART
+- **Interrupts**: Five interrupt sources with two priority levels
 
-**Connection steps:**
+**Mnemonic:** "BASICS" (Bus, Architecture with CPU, Serial port, I/O ports, Counters/timers, Special functions)
 
-1. Connect 8051 pin **P2.0** to ULN2003 **input**
-2. Connect ULN2003 **output** to relay **coil**
-3. Connect other end of relay coil to **VCC**
-4. Connect ULN2003 **ground** pin to system **ground**
+## Question 4(a) [3 marks]
 
-**Control code:**
+**Write an 8051 Assembly Language Program to Exchange lower nibbles of register R5 and R6: put the lower nibble of R5 into R6, and the lower nibble of R6 into R5.**
 
-```assembly
-SETB P2.0    ; Turn ON relay
-CLR P2.0     ; Turn OFF relay
+**Answer**:
+
+```asm
+      ; Exchange lower nibbles of R5 and R6
+      MOV A, R5    ; Copy R5 to accumulator
+      ANL A, #0FH  ; Mask upper nibble (keep only lower nibble)
+      MOV B, A     ; Save R5's lower nibble in B
+      
+      MOV A, R6    ; Copy R6 to accumulator
+      ANL A, #0FH  ; Mask upper nibble (keep only lower nibble)
+      MOV C, A     ; Save temporarily in a free register (R7)
+      
+      MOV A, R5    ; Get R5 again
+      ANL A, #F0H  ; Keep only upper nibble of R5
+      ORL A, C     ; Combine with lower nibble from R6
+      MOV R5, A    ; Store result back in R5
+      
+      MOV A, R6    ; Get R6 again
+      ANL A, #F0H  ; Keep only upper nibble of R6
+      ORL A, B     ; Combine with lower nibble from R5
+      MOV R6, A    ; Store result back in R6
 ```
 
-**Mnemonic:** "MURD" (Microcontroller, ULN driver, Relay, Device)
+**Diagram:**
 
-## Question 5(c): Interface LCD with 8051 microcontroller. (Marks: 7)
-
-**Answer 5(c):**
-
-```
-   8051                 16×2 LCD
-┌─────────┐         ┌─────────────┐
-│     P1.0├────────►│D0           │
-│     P1.1├────────►│D1           │
-│     P1.2├────────►│D2           │
-│     P1.3├────────►│D3           │
-│     P1.4├────────►│D4           │
-│     P1.5├────────►│D5           │
-│     P1.6├────────►│D6           │
-│     P1.7├────────►│D7           │
-│         │         │             │
-│     P3.0├────────►│RS           │
-│     P3.1├────────►│R/W          │
-│     P3.2├────────►│E            │
-└─────────┘         └─────────────┘
+```goat
+Initially:         After Exchange:
+R5: 1010 1100     R5: 1010 0011
+    ↑↑↑↑ ↑↑↑↑         ↑↑↑↑ ↑↑↑↑
+     |    |            |    |
+     |    +--+         |    |
+     |       |         |    |
+     |    +--v         |    v
+     |    |            |    From R6
+     v    v            v
+R6: 0011 0011     R6: 0011 1100
 ```
 
-**Connection details:**
+**Mnemonic:** "MAMS" (Mask, And, Move, Swap)
 
-- **Data pins**: P1.0-P1.7 to LCD D0-D7 (8-bit mode)
-- **Control pins**:
-  * P3.0 to RS (Register Select)
-  * P3.1 to R/W (Read/Write)
-  * P3.2 to E (Enable)
+## Question 4(b) [4 marks]
 
-**Basic initialization code:**
+**Write an 8051 Assembly Language Program to blink LED interfaced at port P1.0 at time interval of 1ms.**
 
-```assembly
-    MOV P1, #38H    ; 2 lines, 5×7 matrix
-    ACALL COMMAND   ; Send command
-    MOV P1, #0EH    ; Display ON, cursor ON
-    ACALL COMMAND   ; Send command
-    MOV P1, #01H    ; Clear display
-    ACALL COMMAND   ; Send command
-    MOV P1, #06H    ; Increment cursor
-    ACALL COMMAND   ; Send command
-    
-COMMAND:
-    CLR P3.0        ; RS=0 for command
-    CLR P3.1        ; R/W=0 for write
-    SETB P3.2       ; E=1 for high pulse
-    NOP             ; Short delay
-    NOP             ; Short delay
-    CLR P3.2        ; E=0 for low pulse
-    RET
+**Answer**:
+
+```asm
+      ORG 0000H        ; Start at memory location 0000H
+MAIN: CPL P1.0         ; Complement P1.0 (toggle LED)
+      ACALL DELAY      ; Call delay subroutine
+      SJMP MAIN        ; Loop forever
+
+DELAY: MOV R7, #2      ; Load R7 for outer loop (2)
+DELAY1: MOV R6, #250   ; Load R6 for inner loop (250)
+DELAY2: NOP            ; No operation (consume time)
+        NOP            ; Additional delay
+        DJNZ R6, DELAY2 ; Decrement R6 & loop until zero
+        DJNZ R7, DELAY1 ; Decrement R7 & loop until zero
+        RET            ; Return from subroutine
 ```
 
-**Mnemonic:** "DR-ESI" (Data pins, RS-RW-E control, Send command, Initialize)
+**Diagram:**
 
-## Question 5(a OR): Draw Interfacing of LED with 8051 microcontroller. (Marks: 3)
-
-**Answer 5(a OR):**
-
-```
-    8051
-┌─────────┐         VCC
-│         │          │
-│         │          │
-│     P1.0├──────────┤330Ω├──────┬─┨LED├───┐
-│         │          resistor     │         │
-└─────────┘                      GND       GND
-```
-
-**Components required:**
-
-- **LED**: Light Emitting Diode
-- **Resistor**: 330Ω (current limiting)
-
-**Two connection methods:**
-
-1. **Active HIGH** (shown above):
-   - LED anode to resistor, cathode to ground
-   - LED ON: `SETB P1.0`
-   - LED OFF: `CLR P1.0`
-
-2. **Active LOW** (alternative):
-   - LED cathode to resistor, anode to VCC
-   - LED ON: `CLR P1.0`
-   - LED OFF: `SETB P1.0`
-
-**Simple blinking code:**
-
-```assembly
-MAIN: SETB P1.0    ; Turn ON LED
-      ACALL DELAY  ; Wait
-      CLR P1.0     ; Turn OFF LED
-      ACALL DELAY  ; Wait
-      SJMP MAIN    ; Repeat
+```goat
++----------+          +----------+
+|          |          |          |
+| P1.0 = 1 |--------->| P1.0 = 0 |
+|          |   1ms    |          |
++----------+          +----------+
+      ^                    |
+      |                    |
+      |                    |
+      +--------------------+
+             1ms
 ```
 
-**Mnemonic:** "LRC" (LED, Resistor, Controller pin)
+**Mnemonic:** "TCDL" (Toggle, Call, Delay, Loop)
 
-## Question 5(b OR): Interface DC Motor with 8051 microcontroller. (Marks: 4)
+## Question 4(c) [7 marks]
 
-**Answer 5(b OR):**
+**List Addressing Modes of 8051 Microcontroller and explain them with at least one example.**
 
-```
-          +5V
-           │
-           ▼
-         ┌───┐
-P1.0────►│   │◄──┐       DC Motor
-         │ULN│   │    ┌──────────┐
-P1.1────►│2003│   │    │          │
-         │   ├───┼────┤      M    │
-         └───┘   │    │          │
-           │     │    └──────────┘
-           ▼     │
-          GND    │
-                 │
-         ┌───────┘
-         │
-L293D/   │
-H-Bridge └──► Direction Control
-```
+**Answer**:
 
-**Components needed:**
+| Addressing Mode | Description | Example |
+|-----------------|-------------|---------|
+| **Register** | Uses registers (R0-R7) | `MOV A, R0` (Move R0 to A) |
+| **Direct** | Uses direct memory address | `MOV A, 30H` (Move data from 30H to A) |
+| **Register Indirect** | Uses register as pointer | `MOV A, @R0` (Move data from address in R0 to A) |
+| **Immediate** | Uses constant data | `MOV A, #25H` (Load A with 25H) |
+| **Indexed** | Base address + offset | `MOVC A, @A+DPTR` (Code memory access) |
+| **Bit** | Operates on individual bits | `SETB P1.0` (Set bit 0 of Port 1) |
+| **Implied** | Implicit operand | `RRC A` (Rotate A right through carry) |
 
-- **ULN2003**: Driver for motor
-- **L293D or H-Bridge**: For direction control (optional)
-- **DC Motor**: Actuator to be controlled
-- **Capacitors**: To reduce noise (not shown)
+**Diagram:**
 
-**Connection steps:**
-
-1. Connect 8051 pin **P1.0** to ULN2003 **input**
-2. Connect ULN2003 **output** to motor **terminal**
-3. Connect other motor terminal to **ground**
-4. For bidirectional control, use **L293D**:
-   - P1.0 and P1.1 control direction
-   - Enable pin controls speed (can be connected to PWM)
-
-**Basic control code:**
-
-```assembly
-SETB P1.0    ; Turn motor ON
-CLR P1.0     ; Turn motor OFF
-
-; For bidirectional (with L293D)
-SETB P1.0    ; Forward
-CLR P1.1     ; 
-; or
-SETB P1.1    ; Reverse
-CLR P1.0     ; 
+```goat
++------------------+    +------------------+    +------------------+
+| Register         |    | Direct           |    | Indirect         |
+| MOV A, R5        |    | MOV A, 40H       |    | MOV A, @R1       |
+| +---+     +---+  |    | +---+     +---+  |    | +---+    +---+   |
+| | A |<----| R5|  |    | | A |<----| 40H| |    | | A |<---| X |   |
+| +---+     +---+  |    | +---+     +---+  |    | +---+    +---+   |
++------------------+    +------------------+    |          ^       |
+                                                |          |       |
+                                                |       +--+--+    |
+                                                |       | R1=X|    |
+                                                |       +-----+    |
+                                                +------------------+
 ```
 
-**Mnemonic:** "DUMP" (Driver, ULN, Motor, Power)
+**Mnemonic:** "RIDDIBM" (Register, Immediate, Direct, Data, Indirect, Bit, iMplied)
 
-## Question 5(c OR): Interface DAC0808 with 8051 microcontroller. (Marks: 7)
+## Question 4(a OR) [3 marks]
 
-**Answer 5(c OR):**
+**Write an 8051 Assembly Language Program to add the byte in register R2 and R3, put the result in external RAM 2040h (LSB) and 2041h (MSB).**
 
-```
-    8051                DAC0808
-┌─────────┐         ┌─────────────┐
-│     P1.0├────────►│D0           │
-│     P1.1├────────►│D1           │
-│     P1.2├────────►│D2           │
-│     P1.3├────────►│D3       Iout├───┬──┐
-│     P1.4├────────►│D4           │   │  │
-│     P1.5├────────►│D5           │   R  │
-│     P1.6├────────►│D6           │   │  │
-│     P1.7├────────►│D7           │   │  │
-│         │         │             │   │  │
-│     P3.0├────────►│CS           │   │  │
-└─────────┘         └─────────────┘   ▼  ▼
-                           │        -Vref GND
-                           ▼
-                         +Vref
+**Answer**:
+
+```asm
+      MOV A, R2      ; Move R2 to accumulator
+      ADD A, R3      ; Add R3 to accumulator
+      MOV DPTR, #2040H ; Set DPTR to external RAM address 2040H
+      MOVX @DPTR, A  ; Store the result (LSB) at 2040H
+      
+      MOV A, #00H    ; Clear accumulator
+      ADDC A, #00H   ; Add carry flag to accumulator
+      INC DPTR       ; Increment DPTR to 2041H
+      MOVX @DPTR, A  ; Store the result (MSB) at 2041H
 ```
 
-**Components needed:**
+**Diagram:**
 
-- **DAC0808**: 8-bit Digital-to-Analog Converter
-- **Op-amp**: Current-to-voltage converter (not shown)
-- **Resistors**: For reference voltage and feedback
-
-**Connection details:**
-
-1. Connect **P1.0-P1.7** to DAC0808 **data inputs D0-D7**
-2. Connect **P3.0** to DAC0808 **CS** (Chip Select)
-3. Connect **+Vref** to reference voltage input
-4. Connect **-Vref** to reference voltage return
-5. Connect **Iout** to op-amp circuit to convert current to voltage
-
-**Sample code for generating sawtooth wave:**
-
-```assembly
-START:  MOV R7, #0      ; Start from 0
-LOOP:   MOV P1, R7      ; Output to DAC
-        INC R7          ; Increment value
-        ACALL DELAY     ; Small delay
-        SJMP LOOP       ; Repeat
+```goat
+  R2    R3           External RAM
++----+ +----+        +-----------+
+| 25H| | 45H|        | 2040H: 6A |  (25H + 45H = 6AH)
++----+ +----+        +-----------+
+   |      |          | 2041H: 00 |  (No carry)
+   v      v          +-----------+
+  +--------+         
+  |   ADD  |
+  +--------+
 ```
 
-**Applications:**
+**Mnemonic:** "MASIM" (Move, Add, Store, Increment, Move again)
 
-- **Waveform generation**: Sine, square, triangle
-- **Audio output**: Music, speech
-- **Control systems**: Motor control, temperature control
+## Question 4(b OR) [4 marks]
 
-**Mnemonic:** "DRIVE" (DAC, Reference, I-out, Voltage conversion, Eight bits)
+**For 8051 Microcontroller with a crystal frequency of 12 MHz, generate a delay of 5ms.**
+
+**Answer**:
+
+```asm
+      ; Delay of 5ms with 12MHz Crystal (1 machine cycle = 1μs)
+DELAY: MOV R7, #5     ; 5 loops of 1ms each
+LOOP1: MOV R6, #250   ; 250 x 4μs = 1000μs = 1ms
+LOOP2: NOP            ; 1μs
+       NOP            ; 1μs
+       DJNZ R6, LOOP2 ; 2μs (if jump taken)
+       DJNZ R7, LOOP1 ; Repeat 5 times for 5ms
+       RET            ; Return from subroutine
+```
+
+**Diagram:**
+
+```goat
+        +----------+
+        | Start    |
+        +----------+
+             |
+             v
+      +-------------+
+      | R7 = 5      |<---------+
+      +-------------+          |
+             |                 |
+             v                 |
+      +-------------+          |
+      | R6 = 250    |<----+    |
+      +-------------+     |    |
+             |            |    |
+             v            |    |
+      +-------------+     |    |
+      | 2 NOPs      |     |    |
+      +-------------+     |    |
+             |            |    |
+             v            |    |
+      +-------------+     |    |
+      | Decrement R6|-----+    |
+      +-------------+          |
+             |                 |
+             v                 |
+      +-------------+          |
+      | Decrement R7|---------+
+      +-------------+
+             |
+             v
+      +-------------+
+      | Return      |
+      +-------------+
+```
+
+**Calculation**:
+
+- 12MHz crystal = 1μs machine cycle
+- Inner loop: 2 NOPs (2μs) + DJNZ (2μs) = 4μs per iteration
+- 250 iterations × 4μs = 1000μs = 1ms
+- Outer loop: 5 iterations × 1ms = 5ms
+
+**Mnemonic:** "LOON-5" (LOOp Nested for 5ms)
+
+## Question 4(c OR) [7 marks]
+
+**Explain any seven Arithmetic Instructions with example for 8051 Microcontroller.**
+
+**Answer**:
+
+| Instruction | Function | Example | Flag Affected |
+|-------------|----------|---------|--------------|
+| **ADD A,src** | Add source to A | `ADD A,R0` (A=A+R0) | C, OV, AC |
+| **ADDC A,src** | Add source + carry to A | `ADDC A,#25H` (A=A+25H+C) | C, OV, AC |
+| **SUBB A,src** | Subtract source + borrow from A | `SUBB A,@R1` (A=A-@R1-C) | C, OV, AC |
+| **INC** | Increment by 1 | `INC R3` (R3=R3+1) | None |
+| **DEC** | Decrement by 1 | `DEC A` (A=A-1) | None |
+| **MUL AB** | Multiply A and B | `MUL AB` (B:A=A×B) | C, OV |
+| **DIV AB** | Divide A by B | `DIV AB` (A=quotient, B=remainder) | C, OV |
+
+**Diagram:**
+
+```goat
++-------------------+     +-------------------+     +-------------------+
+| ADD A,R0          |     | MUL AB            |     | DIV AB            |
+|                   |     |                   |     |                   |
+| A = 25H, R0 = 15H |     | A = 05H, B = 03H  |     | A = 14H, B = 05H  |
+| A = 25H + 15H     |     | B:A = 05H × 03H   |     | A = 14H ÷ 05H     |
+| A = 3AH           |     | B = 00H, A = 0FH  |     | A = 04H, B = 00H  |
++-------------------+     +-------------------+     +-------------------+
+```
+
+**Mnemonic:** "ACID-IBM" (Add, Carry add, Inc, Dec, Mul, Borrow subtract, Divide)
+
+## Question 5(a) [3 marks]
+
+**List Applications of microcontroller in various fields.**
+
+**Answer**:
+
+| Field | Applications |
+|-------|-------------|
+| **Consumer Electronics** | TV, washing machine, microwave, remote control |
+| **Automotive** | Engine control, anti-lock braking, airbag systems |
+| **Industrial** | Automation, robotics, process control |
+| **Medical** | Patient monitoring, medical instruments, implants |
+| **Home Automation** | Smart lighting, security systems, HVAC control |
+| **Communication** | Mobile phones, routers, modems |
+| **Aerospace** | Navigation systems, flight control, satellite systems |
+
+**Diagram:**
+
+```goat
+                   +-------------------+
+                   | Microcontroller   |
+                   | Applications      |
+                   +-------------------+
+                            |
+         +------------------+------------------+
+         |                  |                  |
++---------------+  +----------------+  +---------------+
+| Consumer      |  | Industrial     |  | Communication |
+| Electronics   |  | Automation     |  | Systems       |
++---------------+  +----------------+  +---------------+
+         |                  |                  |
++---------------+  +----------------+  +---------------+
+| Automotive    |  | Medical        |  | Home          |
+| Systems       |  | Devices        |  | Automation    |
++---------------+  +----------------+  +---------------+
+```
+
+**Mnemonic:** "CHAIM-MA" (Consumer, Home, Automotive, Industrial, Medical, Mobile, Aerospace)
+
+## Question 5(b) [4 marks]
+
+**Interface Relay with 8051 microcontroller.**
+
+**Answer**:
+
+**Diagram:**
+
+```goat
++--------+         +--------+         +------------+
+|        |         |        |         |            |
+|        |         |        |         |            |
+|  8051  |---P1.0--| Driver |---(+)---| Relay Coil |
+|        |         | ULN2003|    |    |            |
+|        |         |        |    |    |            |
++--------+         +--------+    |    +------------+
+                                 |          |
+                                 |          |
+                        +--------+          |
+                        |                   |
+                        | +5V               |
+                        +-------------------+
+                                 |
+                            Protection
+                              Diode
+```
+
+**Components Required**:
+
+- 8051 microcontroller
+- ULN2003 or similar driver IC
+- Relay (5V or 12V)
+- Protection diode (1N4007)
+- Power supply
+
+**Working**:
+
+1. 8051 sends control signal from P1.0
+2. Driver amplifies current to drive relay
+3. Protection diode prevents back EMF damage
+4. Relay switches connected devices
+
+**Mnemonic:** "DRIPS" (Driver, Relay, Input from µC, Protection diode, Switching)
+
+## Question 5(c) [7 marks]
+
+**Interface LCD with 8051 microcontroller.**
+
+**Answer**:
+
+**Diagram:**
+
+```goat
+        8051                    16x2 LCD
+    +----------+             +----------+
+    |          |             |          |
+    |      P1.0|------------>|RS        |
+    |      P1.1|------------>|R/W       |
+    |      P1.2|------------>|E         |
+    |          |             |          |
+    |      P2.0|------------>|D0        |
+    |      P2.1|------------>|D1        |
+    |      P2.2|------------>|D2        |
+    |      P2.3|------------>|D3        |
+    |      P2.4|------------>|D4        |
+    |      P2.5|------------>|D5        |
+    |      P2.6|------------>|D6        |
+    |      P2.7|------------>|D7        |
+    |          |             |          |
+    +----------+             +----------+
+                                 |
+                             +---+---+
+                             | VCC   |
+                             | Pot   |
+                             | GND   |
+                             +-------+
+```
+
+**Connections**:
+
+- **Control Lines**:
+  - P1.0 → RS (Register Select)
+  - P1.1 → R/W (Read/Write)
+  - P1.2 → E (Enable)
+- **Data Lines**:
+  - P2.0-P2.7 → D0-D7 (8-bit data bus)
+
+**Code to Initialize LCD**:
+
+```asm
+MOV A, #38H      ; 2 lines, 5x7 matrix
+ACALL COMMAND    ; Send command
+
+MOV A, #0EH      ; Display ON, cursor ON
+ACALL COMMAND    ; Send command
+
+MOV A, #01H      ; Clear LCD
+ACALL COMMAND    ; Send command
+
+MOV A, #06H      ; Increment cursor
+ACALL COMMAND    ; Send command
+```
+
+**Mnemonic:** "CIDER-8" (Control lines, Initialize, Data bus, Enable, Register select, 8-bit mode)
+
+## Question 5(a OR) [3 marks]
+
+**Draw Interfacing of LED with 8051 microcontroller.**
+
+**Answer**:
+
+**Diagram:**
+
+```goat
+       +5V
+        |
+        |
+        R (220Ω)
+        |
+        |
+        v
+    +---+---+
+    |       |
+    | LED   |
+    |       |
+    +---+---+
+        |
+        |
+        v
++----------------+
+|                |
+|       P1.0     |
+|                |
+|      8051      |
+|                |
++----------------+
+```
+
+**Components**:
+
+- 8051 microcontroller
+- LED
+- Current limiting resistor (220Ω)
+- Power supply
+
+**Working Principle**:
+
+- Active-Low configuration: LED ON when pin = 0
+- P1.0 drives LED through current limiting resistor
+- Maximum current should not exceed 20mA per pin
+
+**Code for LED Blinking**:
+
+```asm
+MAIN: CLR P1.0    ; Turn ON LED (active low)
+      CALL DELAY  ; Wait
+      SETB P1.0   ; Turn OFF LED
+      CALL DELAY  ; Wait
+      SJMP MAIN   ; Repeat
+```
+
+**Mnemonic:** "CIRCLE" (Current limiting Resistor, IO pin, Cathode to LED, LED to Earth/ground)
+
+## Question 5(b OR) [4 marks]
+
+**Interface DC Motor with 8051 microcontroller.**
+
+**Answer**:
+
+**Diagram:**
+
+```goat
++--------+         +--------+        +---------+
+|        |         |        |        |         |
+|  8051  |--P1.0-->| L293D  |--Out1--+         |
+|        |         | Motor  |        |   DC    |
+|        |--P1.1-->| Driver |--Out2--+  Motor  |
+|        |         |        |        |         |
++--------+         +--------+        +---------+
+                       |
+                       |
+                    +--+--+
+                    | +5V |
+                    +-----+
+```
+
+**Components**:
+
+- 8051 microcontroller
+- L293D motor driver IC
+- DC motor
+- Power supply
+
+**Control Logic**:
+
+| P1.0 | P1.1 | Motor Action |
+|------|------|--------------|
+| 0 | 0 | Stop (Brake) |
+| 0 | 1 | Clockwise |
+| 1 | 0 | Counter-clockwise |
+| 1 | 1 | Stop (Free-running) |
+
+**Code for Motor Control**:
+
+```asm
+MOV P1, #02H  ; P1.0=0, P1.1=1 (Clockwise)
+CALL DELAY    ; Run for some time
+MOV P1, #01H  ; P1.0=1, P1.1=0 (Counter-clockwise)
+CALL DELAY    ; Run for some time
+MOV P1, #00H  ; P1.0=0, P1.1=0 (Stop)
+```
+
+**Mnemonic:** "DICER" (Driver chip, Input from µC, Control logic, Enable motor, Rotation)
+
+## Question 5(c OR) [7 marks]
+
+**Interface DAC0808 with 8051 microcontroller.**
+
+**Answer**:
+
+**Diagram:**
+
+```goat
++--------+              +--------+          +--------+
+|        |              |        |          |        |
+|        |--P1.0-P1.7-->|D0-D7   |          |        |
+|  8051  |              |        |--Output--| Filter |---> Analog
+|        |              | DAC0808|          |        |     Output
+|        |--P3.0------->|CS      |          |        |
+|        |              |        |          |        |
++--------+              +--------+          +--------+
+                            |
+                        +---+---+
+                        | -5V   |
+                        | +5V   |
+                        | GND   |
+                        +-------+
+```
+
+**Components**:
+
+- 8051 microcontroller
+- DAC0808 (8-bit digital-to-analog converter)
+- Operational amplifier (for output buffering)
+- RC filter (for smoothing)
+- Reference voltage source
+
+**Connections**:
+
+- P1.0-P1.7 → D0-D7 (8-bit digital input)
+- P3.0 → CS (Chip Select)
+- DAC output → filter → final analog output
+
+**Sample Code for Ramp Signal Generation**:
+
+```asm
+START: MOV R0, #00H      ; Start from 0
+LOOP:  MOV P1, R0        ; Output value to DAC
+       CALL DELAY        ; Wait
+       INC R0            ; Increment value
+       SJMP LOOP         ; Loop to create ramp
+```
+
+**Applications**:
+
+- Waveform generation
+- Programmable voltage source
+- Motor speed control
+- Audio applications
+
+**Mnemonic:** "DACR" (Digital input, Analog output, Conversion, Reference voltage)
