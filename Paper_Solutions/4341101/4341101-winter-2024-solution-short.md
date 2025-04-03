@@ -4,7 +4,7 @@
 
 **List Common features of Microcontrollers.**
 
-### Answer
+**Answer**:
 
 | Feature | Purpose |
 |---------|---------|
@@ -21,7 +21,7 @@
 
 **Explain the functions of ALU.**
 
-### Answer
+**Answer**:
 
 | Function | Description |
 |----------|-------------|
@@ -53,7 +53,7 @@ Data  |          | Data
 
 **Define: Memory, Operand, Instruction Cycle, Opcode, CU, Machine Cycle, CISC**
 
-### Answer
+**Answer**:
 
 | Term | Definition |
 |------|------------|
@@ -85,7 +85,7 @@ Instruction Cycle:
 
 **i) Define: Microprocessor. ii) Compare Von-Neumann and Harvard architecture.**
 
-### Answer
+**Answer**:
 
 **i) Microprocessor Definition:**
 
@@ -130,7 +130,7 @@ Harvard:
 
 **Explain various Registers of 8085 microprocessor.**
 
-### Answer
+**Answer**:
 
 | Register | Size | Function |
 |----------|------|----------|
@@ -146,7 +146,7 @@ Harvard:
 
 **Explain Fetching, Decoding and Execution of Instruction.**
 
-### Answer
+**Answer**:
 
 | Phase | Activity | Hardware Involved |
 |-------|----------|-------------------|
@@ -156,7 +156,7 @@ Harvard:
 
 **Diagram:**
 
-```
+```goat
 +--------+    +--------+    +--------+
 | Fetch  |--->| Decode |--->|Execute |
 +--------+    +--------+    +--------+
@@ -176,7 +176,7 @@ Harvard:
 
 **Describe block diagram of 8085 microprocessor with the help of neat diagram.**
 
-### Answer
+**Answer**:
 
 | Block | Function |
 |-------|----------|
@@ -191,7 +191,7 @@ Harvard:
 
 **Diagram:**
 
-```
+```goat
 +------------------------------------------------------+
 |                  8085 MICROPROCESSOR                 |
 | +----------------+     +-------------------------+   |
@@ -227,7 +227,7 @@ Harvard:
 
 **Compare Microprocessor & Microcontroller.**
 
-### Answer
+**Answer**:
 
 | Feature | Microprocessor | Microcontroller |
 |---------|---------------|-----------------|
@@ -244,7 +244,7 @@ Harvard:
 
 **Explain De-multiplexing of Address and Data buses for 8085 Microprocessor.**
 
-### Answer
+**Answer**:
 
 | Step | Action |
 |------|--------|
@@ -255,7 +255,7 @@ Harvard:
 
 **Diagram:**
 
-```
+```goat
        8085            Latch           Memory
        ----            -----           ------
                          |
@@ -277,7 +277,7 @@ AD0-AD7 ----+------> |   |-----> A0-A7 ---> Memory
 
 **Describe Pin diagram of 8085 microprocessor with the help of neat diagram.**
 
-### Answer
+**Answer**:
 
 | Pin Group | Function |
 |-----------|----------|
@@ -291,7 +291,7 @@ AD0-AD7 ----+------> |   |-----> A0-A7 ---> Memory
 
 **Diagram:**
 
-```
+```goat
            +------+
     X1 -->|1    40|<-- Vcc
     X2 -->|2    39|<-- HOLD
@@ -328,7 +328,7 @@ RESET IN -->|4    37|<-- CLK
 
 **Explain interrupts of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 | Interrupt | Vector | Priority | Source |
 |-----------|--------|----------|--------|
@@ -340,7 +340,7 @@ RESET IN -->|4    37|<-- CLK
 
 **Diagram:**
 
-```
+```goat
            +------+
            | 8051 |
 INT0 ---->|      |
@@ -361,9 +361,9 @@ SERIAL --->|      |
 
 **Draw Pin diagram of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
-```
+```goat
         +---------------+
 RST --->|1           40|<--- Vcc
 P1.0 <->|2           39|<-> P0.0/AD0
@@ -403,7 +403,7 @@ P3.7/RD<->|20          21|<-> P2.0/A8
 
 **Explain Internal RAM Organization of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 | RAM Area | Address Range | Usage |
 |----------|---------------|-------|
@@ -414,7 +414,7 @@ P3.7/RD<->|20          21|<-> P2.0/A8
 
 **Diagram:**
 
-```
+```goat
 8051 Internal RAM (128 bytes):
 +----------------+ 00H
 | Register Bank 0|
@@ -453,7 +453,7 @@ Special Function Registers:
 
 **List SFRs with their addresses.**
 
-### Answer
+**Answer**:
 
 | SFR | Address | Function |
 |-----|---------|----------|
@@ -480,11 +480,11 @@ Special Function Registers:
 
 **Explain Timers/Counters logic diagram of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Timer/Counter Diagram:**
 
-```
+```goat
          +------------+
 TLx ---->|  8-bit     |       +-------------+
          |  Register  |------>|  8-bit      |
@@ -524,7 +524,7 @@ INTx -------------->
 
 **Explain block diagram of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 | Component | Function |
 |-----------|----------|
@@ -538,7 +538,7 @@ INTx -------------->
 
 **Diagram:**
 
-```
+```goat
 +--------------------------------------------+
 |                 8051 MCU                   |
 | +-------------+         +--------------+   |
@@ -577,7 +577,7 @@ INTx -------------->
 
 **Write an 8051 Assembly Language Program to add two bytes of data and store result in R4 register.**
 
-### Answer
+**Answer**:
 
 ```assembly
       MOV  A, #25H    ; Load first value (25H) into accumulator
@@ -599,7 +599,7 @@ INTx -------------->
 
 **Write an 8051 Assembly Language Program to OR the contents of Port-1 and Port-2 then put the result in external RAM location 0200H.**
 
-### Answer
+**Answer**:
 
 ```assembly
       MOV  A, P1      ; Load contents of Port-1 into accumulator
@@ -621,7 +621,7 @@ INTx -------------->
 
 **List Addressing Modes of 8051 Microcontroller and explain them with at least one example.**
 
-### Answer
+**Answer**:
 
 | Addressing Mode | Example | Description |
 |-----------------|---------|-------------|
@@ -649,7 +649,7 @@ INTx -------------->
 
 **Explain following instructions: (i) DJNZ (ii) POP (iii) CJNE.**
 
-### Answer
+**Answer**:
 
 | Instruction | Syntax | Operation |
 |-------------|--------|-----------|
@@ -674,7 +674,7 @@ INTx -------------->
 
 **For 8051 Microcontroller with a crystal frequency of 12 MHz, generate a delay of 4ms.**
 
-### Answer
+**Answer**:
 
 ```assembly
 ; Crystal frequency = 12 MHz
@@ -703,7 +703,7 @@ DELAY2: NOP            ; 1 machine cycle
 
 **Explain any seven Logical instructions with example for 8051 Microcontroller.**
 
-### Answer
+**Answer**:
 
 | Instruction | Example | Operation |
 |-------------|---------|-----------|
@@ -744,7 +744,7 @@ DELAY2: NOP            ; 1 machine cycle
 
 **List Applications of microcontroller in various fields.**
 
-### Answer
+**Answer**:
 
 | Field | Applications |
 |-------|--------------|
@@ -761,11 +761,11 @@ DELAY2: NOP            ; 1 machine cycle
 
 **Interface Push button Switch and LED with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
-```
+```goat
      Vcc
       |
       R (10K)
@@ -802,11 +802,11 @@ LED_OFF:CLR   P1.7           ; Turn LED off
 
 **Interface LCD with microcontroller and write a program to display "HELLO".**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
-```
+```goat
            8051                  16x2 LCD
        +--------+              +---------+
        |        |              |         |
@@ -907,11 +907,11 @@ END                     ; End of program
 
 **Draw Interfacing of LM35 with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
-```
+```goat
                 8051
         +-------------------+
         |                   |
@@ -956,11 +956,11 @@ GND-----+----+GND     |     |
 
 **Interface Stepper motor with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
-```
+```goat
           8051                      ULN2003
        +--------+                 +--------+
        |        |           +---->|IN1  OUT1|---+
@@ -1030,11 +1030,11 @@ LOOP2: DJNZ R7, LOOP2
 
 **Interface ADC0804 with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
-```
+```goat
                      8051
                  +----------+
                  |          |

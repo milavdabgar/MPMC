@@ -4,7 +4,7 @@
 
 **Compare RISC and CISC.**
 
-### Answer
+**Answer**:
 
 | Feature | RISC | CISC |
 |---------|------|------|
@@ -20,7 +20,7 @@
 
 **Compare Von-Neumann and Harvard architecture.**
 
-### Answer
+**Answer**:
 
 | Feature | Von-Neumann | Harvard |
 |---------|-------------|---------|
@@ -55,7 +55,7 @@ Harvard:
 
 **Explain: 8085 Instruction Format, Control Unit, Machine Cycle, ALU**
 
-### Answer
+**Answer**:
 
 **Instruction Format:**
 
@@ -102,7 +102,7 @@ Harvard:
 
 **Compare Microprocessor and Microcontroller.**
 
-### Answer
+**Answer**:
 
 | Feature | Microprocessor | Microcontroller |
 |---------|---------------|-----------------|
@@ -143,7 +143,7 @@ Microcontroller:
 
 **Explain Instruction Fetching, Decoding and Execution Operation in microprocessor.**
 
-### Answer
+**Answer**:
 
 | Phase | Operation |
 |-------|-----------|
@@ -165,7 +165,7 @@ Microcontroller:
 
 **Explain Bus Organization of 8085 microprocessor.**
 
-### Answer
+**Answer**:
 
 | Bus Type | Width | Function |
 |----------|-------|----------|
@@ -193,7 +193,7 @@ Microcontroller:
 
 **Describe architecture of 8085 microprocessor with the help of neat diagram.**
 
-### Answer
+**Answer**:
 
 | Component | Function |
 |-----------|----------|
@@ -243,7 +243,7 @@ Microcontroller:
 
 **Explain De-multiplexing of Address and Data buses for 8085 Microprocessor.**
 
-### Answer
+**Answer**:
 
 | Step | Action |
 |------|--------|
@@ -268,7 +268,7 @@ AD0-AD7 ----+------> Latch -----> A0-A7
 
 **Draw Flag Register of 8085 microprocessor & explain it.**
 
-### Answer
+**Answer**:
 
 ```
 Flag Register (8-bit):
@@ -292,7 +292,7 @@ Flag Register (8-bit):
 
 **Describe Pin diagram of 8085 microprocessor with the help of neat diagram.**
 
-### Answer
+**Answer**:
 
 | Pin Group | Function |
 |-----------|----------|
@@ -342,7 +342,7 @@ RESET IN -->|4    37|<-- CLK
 
 **Explain Stack, Stack Pointer and Stack operation.**
 
-### Answer
+**Answer**:
 
 | Term | Description |
 |------|-------------|
@@ -369,7 +369,7 @@ Memory:      Stack Pointer:
 
 **Draw Pin diagram of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 ```
         +---------------+
@@ -409,7 +409,7 @@ P3.7/RD<->|20          21|<-> P2.0/A8
 
 **Draw Timers/Counters logic diagram of 8051 microcontroller and explain its operation in various modes.**
 
-### Answer
+**Answer**:
 
 **Timer/Counter Diagram:**
 
@@ -452,7 +452,7 @@ INTx -------------->
 
 **List Common features of Microcontrollers.**
 
-### Answer
+**Answer**:
 
 | Feature | Purpose |
 |---------|---------|
@@ -469,7 +469,7 @@ INTx -------------->
 
 **Explain Internal RAM Organization of 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 | RAM Area | Address Range | Usage |
 |----------|---------------|-------|
@@ -505,7 +505,7 @@ INTx -------------->
 
 **Explain architecture of 8051 microcontroller with the help of neat diagram.**
 
-### Answer
+**Answer**:
 
 | Component | Function |
 |-----------|----------|
@@ -558,7 +558,7 @@ INTx -------------->
 
 **Write an 8051 Assembly Language Program to Copy the data from external RAM Location 0123h to TL0 and Data from external RAM location 0234h to TH0.**
 
-### Answer
+**Answer**:
 
 ```assembly
       MOV  DPTR, #0123H   ; Load DPTR with source address 0123H
@@ -582,7 +582,7 @@ INTx -------------->
 
 **Write an 8051 Assembly Language Program to blink LED interfaced at port P1.3 at time interval of 1ms.**
 
-### Answer
+**Answer**:
 
 ```assembly
 AGAIN:  SETB P1.3         ; Turn ON LED at P1.3
@@ -610,7 +610,7 @@ INNER:  DJNZ R6, INNER    ; Decrement R6 until zero
 
 **List Addressing Modes of 8051 Microcontroller and explain all of them with the help of example.**
 
-### Answer
+**Answer**:
 
 | Addressing Mode | Example | Description |
 |-----------------|---------|-------------|
@@ -638,7 +638,7 @@ INNER:  DJNZ R6, INNER    ; Decrement R6 until zero
 
 **Write an 8051 Assembly Language Program to Subtract the content of RAM location 11h from RAM location 14h; put result in RAM location 3Ch.**
 
-### Answer
+**Answer**:
 
 ```assembly
       MOV  A, 14H       ; Load content of RAM location 14H to A
@@ -660,7 +660,7 @@ INNER:  DJNZ R6, INNER    ; Decrement R6 until zero
 
 **Write an 8051 Assembly Language Program to generate a square wave of 50% duty cycle on bit 3 of Port 1 using Timer 0 in Mode 1.**
 
-### Answer
+**Answer**:
 
 ```assembly
       MOV  TMOD, #01H   ; Timer 0, Mode 1 (16-bit)
@@ -687,7 +687,7 @@ AGAIN: MOV  TH0, #0FCH   ; Load high byte
 
 **Explain any seven Logical Instructions with example for 8051 Microcontroller.**
 
-### Answer
+**Answer**:
 
 | Instruction | Example | Operation |
 |-------------|---------|-----------|
@@ -715,7 +715,7 @@ AGAIN: MOV  TH0, #0FCH   ; Load high byte
 
 **Draw Interfacing of Push button Switch with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 ```
          Vcc
@@ -743,7 +743,7 @@ P1.0 -----+------ Push Button ------ GND
 
 **Interface Relay with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 ```
                  5V
@@ -788,7 +788,7 @@ P1.0 ---R(330)---+---|<|---+
 
 **Interface ADC0804 with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
@@ -831,7 +831,7 @@ INTR--->|        |          |---->|P3.2    |
 
 **List Applications of microcontroller in various fields.**
 
-### Answer
+**Answer**:
 
 | Field | Applications |
 |-------|--------------|
@@ -848,7 +848,7 @@ INTR--->|        |          |---->|P3.2    |
 
 **Interface Stepper motor with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
@@ -888,7 +888,7 @@ STEP_SEQ: DB 0000_1000B  ; Step 1
 
 **Interface LCD with 8051 microcontroller.**
 
-### Answer
+**Answer**:
 
 **Circuit Diagram:**
 
