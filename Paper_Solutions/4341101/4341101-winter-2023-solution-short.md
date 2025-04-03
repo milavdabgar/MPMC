@@ -32,7 +32,7 @@
 
 **Diagram:**
 
-```
+```goat
 Von-Neumann:
 +-------+         +-------+
 | CPU   |<=======>| Memory|
@@ -59,7 +59,7 @@ Harvard:
 
 **Instruction Format:**
 
-```
+```goat
 +--------+--------+--------+
 | Opcode | Operand1| Operand2|
 +--------+--------+--------+
@@ -80,7 +80,7 @@ Harvard:
 
 **Diagram:**
 
-```
+```goat
 +----------------------------------+
 |              8085                |
 |  +------------+  +------------+  |
@@ -116,7 +116,7 @@ Harvard:
 
 **Diagram:**
 
-```
+```goat
 Microprocessor System:
 +-------+    +-------+    +-------+
 | CPU   |<-->| Memory|<-->| I/O   |
@@ -153,7 +153,7 @@ Microcontroller:
 
 **Diagram:**
 
-```
+```goat
 +--------+    +--------+    +--------+
 | Fetch  |--->| Decode |--->|Execute |
 +--------+    +--------+    +--------+
@@ -176,7 +176,7 @@ Microcontroller:
 
 **Diagram:**
 
-```
+```goat
 8085 Microprocessor
     |
     |---- Address Bus (16-bit) ----> Memory
@@ -208,7 +208,7 @@ Microcontroller:
 
 **Diagram:**
 
-```
+```goat
 +------------------------------------------------------+
 |                  8085 MICROPROCESSOR                 |
 | +----------------+     +-------------------------+   |
@@ -254,7 +254,7 @@ Microcontroller:
 
 **Diagram:**
 
-```
+```goat
 AD0-AD7 ----+------> Latch -----> A0-A7
             |         ^
             |         |
@@ -270,7 +270,7 @@ AD0-AD7 ----+------> Latch -----> A0-A7
 
 **Answer**:
 
-```
+```goat
 Flag Register (8-bit):
 +---+---+---+---+---+---+---+---+
 | S | Z | 0 | AC| 0 | P | 1 | CY|
@@ -306,7 +306,7 @@ Flag Register (8-bit):
 
 **Diagram:**
 
-```
+```goat
            +------+
     X1 -->|1    40|<-- Vcc
     X2 -->|2    39|<-- HOLD
@@ -352,7 +352,7 @@ RESET IN -->|4    37|<-- CLK
 
 **Diagram:**
 
-```
+```goat
 Memory:      Stack Pointer:
 +-----+      +-----+
 |     |<---- | SP  |
@@ -371,7 +371,7 @@ Memory:      Stack Pointer:
 
 **Answer**:
 
-```
+```goat
         +---------------+
 RST --->|1           40|<--- Vcc
 P1.0 <->|2           39|<-> P0.0/AD0
@@ -413,7 +413,7 @@ P3.7/RD<->|20          21|<-> P2.0/A8
 
 **Timer/Counter Diagram:**
 
-```
+```goat
          +------------+
 TLx ---->|  8-bit     |       +-------------+
          |  Register  |------>|  8-bit      |
@@ -480,7 +480,7 @@ INTx -------------->
 
 **Diagram:**
 
-```
+```goat
 8051 Internal RAM (128 bytes):
 +----------------+ 00H
 | Register Bank 0|
@@ -519,7 +519,7 @@ INTx -------------->
 
 **Diagram:**
 
-```
+```goat
 +--------------------------------------------+
 |                 8051 MCU                   |
 | +-------------+         +--------------+   |
@@ -717,7 +717,7 @@ AGAIN: MOV  TH0, #0FCH   ; Load high byte
 
 **Answer**:
 
-```
+```goat
          Vcc
           |
           R (10K)
@@ -745,7 +745,7 @@ P1.0 -----+------ Push Button ------ GND
 
 **Answer**:
 
-```
+```goat
                  5V
                  |
                  R (1K)
@@ -792,7 +792,7 @@ P1.0 ---R(330)---+---|<|---+
 
 **Circuit Diagram:**
 
-```
+```goat
                      8051
                  +----------+
                  |          |
@@ -852,7 +852,7 @@ INTR--->|        |          |---->|P3.2    |
 
 **Circuit Diagram:**
 
-```
+```goat
           8051                      ULN2003
        +--------+                 +--------+
        |        |           +---->|IN1  OUT1|---+
@@ -892,7 +892,7 @@ STEP_SEQ: DB 0000_1000B  ; Step 1
 
 **Circuit Diagram:**
 
-```
+```goat
            8051                  16x2 LCD
        +--------+              +---------+
        |        |              |         |
