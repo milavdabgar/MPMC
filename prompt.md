@@ -16,13 +16,14 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 
 ```markdown
 ## Question X(y) [Z marks] or Question X(y OR) [Z marks]
-[Question text in normal font]
 
-### Answer:
+[**Question text in bold face**]
+
+**Answer**:
 [Answer content with diagrams, tables, simple code blocks Bullet Points for key points related to quest as per below format]
 
 **Diagram/Table/CodeBlock:**
-- Each answer should have atleast one diagram, table, or code block. choose the best one based on the question.
+- Each answer should have at least one diagram, table, or code block. choose the best one based on the question.
 
 - **Bold keyword 1**: Brief explanation
 - **Bold keyword 2**: Brief explanation
@@ -34,12 +35,12 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 ### 3. Content Requirements and Priority Order
 
 1. **FIRST PRIORITY**: Use **tables** for comparisons and lists (always try this first)
-2. **SECOND PRIORITY**: Include a **simple diagram** using mermaid/ASCII/SVG if it helps explain concepts
+2. **SECOND PRIORITY**: Include a **simple diagram** using mermaid/goat/ASCII/SVG if it helps explain concepts.
 3. **THIRD PRIORITY**: For coding questions, write the **simplest, shortest code** possible
 4. **FOURTH PRIORITY**: Use bullet points with **bold keywords** only if needed and within word limits
 
 - **Reduced word count** for very weak students - strictly follow these limits:
-  * 3-mark questions: 50-60 words
+  * 3-mark questions: 60-75 words
   * 4-mark questions: 75-90 words
   * 7-mark questions: 125-150 words
 
@@ -51,7 +52,8 @@ Create simple GTU paper solutions using a systematic artifact-based approach for
 4. Create memorable **mnemonics** to help students recall the answer
 5. Create code as **minimal and simple** as possible, as weak students struggle with coding
 6. For diagrams:
-   - Use mermaid, SVG, or ASCII art that's compatible with pandoc and Hugo
+   - Use mermaid, SVG, GOAT-ASCII or ASCII art that's compatible with pandoc and Hugo
+   - For AsCII art, use the `goat` code fences. as hugo renders them perfectly.
    - Do not use image references or links
    - For circuit diagrams, ASCII art often works best
    - For flowcharts and architecture diagrams, mermaid is preferred
