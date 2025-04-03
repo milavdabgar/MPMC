@@ -32,7 +32,7 @@
 
 **Diagram:**
 
-```
+```goat
       +----------+
       |   ALU    |
       |          |
@@ -72,7 +72,7 @@ Data  |          | Data
 
 **Diagram:**
 
-```
+```goat
 Instruction Cycle:
 +--------+    +--------+    +--------+
 | Fetch  |--->| Decode |--->|Execute |
@@ -107,7 +107,7 @@ control circuitry on a single chip.
 
 **Diagram:**
 
-```
+```goat
 Von-Neumann:
 +-------+         +-------+
 | CPU   |<=======>| Memory|
